@@ -16,36 +16,51 @@ const zoomOut = () => {
   })
 }
 
-onMounted(() => {
-  // todo set token in .env
-  mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0aHVyZGFuam91IiwiYSI6ImNsNzBubWxqdTBnNHgzb295aXB6bnhnbXYifQ.DOGRAgZv3Uuenpj-jBPHLQ'
-  map.value = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/arthurdanjou/cl70o0t2e001t15qa3lutno19',
-    center: [2.180586, 48.871748],
-    zoom: 13,
-    scrollZoom: false,
-    doubleClickZoom: false,
-    touchZoomRotate: false,
-    dragPan: false,
-  })
-
-  const card = document.getElementById('card-map')
+const playAnimation = (document: Document) => {
   const marker = document.getElementById('marker')
   const markerContainer = document.getElementById('marker-container')
-  card.addEventListener('mouseenter', () => {
-    if (marker && markerContainer) {
-      marker.style.transform = 'scale(1.15)'
-      markerContainer.style.animation = 'markerAnimation 2s infinite'
-    }
-  })
-  card.addEventListener('mouseleave', () => {
-    if (marker && markerContainer) {
-      marker.style.transform = 'scale(1)'
-      markerContainer.style.transform = 'scale(1) rotate(0deg);'
-      markerContainer.style.animation = 'none'
-    }
-  })
+  if (marker && markerContainer) {
+    marker.style.transform = 'scale(1.15)'
+    markerContainer.style.animation = 'markerAnimation 2s infinite'
+  }
+}
+
+const stopAnimation = (document: Document) => {
+  const marker = document.getElementById('marker')
+  const markerContainer = document.getElementById('marker-container')
+  if (marker && markerContainer) {
+    marker.style.transform = 'scale(1)'
+    markerContainer.style.transform = 'scale(1) rotate(0deg);'
+    markerContainer.style.animation = 'none'
+  }
+}
+
+onMounted(() => {
+  // todo set token in .env
+  const container = document.getElementById('map')
+  console.log(container)
+  if (container !== null) {
+    map.value = new mapboxgl.Map({
+      container,
+      accessToken: 'pk.eyJ1IjoiYXJ0aHVyZGFuam91IiwiYSI6ImNsNzBubWxqdTBnNHgzb295aXB6bnhnbXYifQ.DOGRAgZv3Uuenpj-jBPHLQ',
+      style: 'mapbox://styles/arthurdanjou/cl70o0t2e001t15qa3lutno19',
+      center: [2.180586, 48.871748],
+      zoom: 13,
+      scrollZoom: false,
+      doubleClickZoom: false,
+      touchZoomRotate: false,
+      dragPan: false,
+    })
+    const card = document.getElementById('card-map')
+    card.addEventListener('mouseenter', () => playAnimation(document))
+    card.addEventListener('mouseleave', () => stopAnimation(document))
+  }
+})
+
+onUnmounted(() => {
+  const card = document.getElementById('card-map')
+  card.removeEventListener('mouseenter', () => playAnimation(document))
+  card.removeEventListener('mouseleave', () => stopAnimation(document))
 })
 
 const getImage = () => {
@@ -57,6 +72,7 @@ const getImage = () => {
 }
 
 const isMapReady = computed(() => map.value !== null)
+const getZoom = computed(() => map.value.getZoom())
 </script>
 
 <template>
@@ -72,7 +88,7 @@ const isMapReady = computed(() => map.value !== null)
     </div>
     <transition name="fade">
       <div
-        v-if="isMapReady && map.getZoom() > 3"
+        v-if="isMapReady && getZoom > 3"
         class="z-3 p-2 duration-300 cursor-pointer absolute bottom-4 left-4 border-2 rounded-full border-dark
         bg-white text-stone-400 dark:(bg-dark-800 text-stone-600) hover:(shadow-dark text-black) dark:hover:text-white"
         @click.prevent="zoomOut"
@@ -84,7 +100,7 @@ const isMapReady = computed(() => map.value !== null)
     </transition>
     <transition name="fade">
       <div
-        v-if="isMapReady && map.getZoom() <= 12"
+        v-if="isMapReady && getZoom <= 12"
         class="z-3 p-2 duration-300 cursor-pointer absolute bottom-4 right-4 border-2 rounded-full border-dark
         bg-white text-stone-400 dark:(bg-dark-800 text-stone-600) hover:(shadow-dark text-black) dark:hover:text-white"
         @click.prevent="zoomIn"
