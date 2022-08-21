@@ -14,7 +14,7 @@ const { getTextColor, getBackgroundColor } = useTheme()
             <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
             <span class="hey-animation">👋</span>
           </h1>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
+          <p class="text-stone-500 dark:text-gray-400 mb-4">
             A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
           </p>
           <CardButton />
@@ -23,9 +23,37 @@ const { getTextColor, getBackgroundColor } = useTheme()
       <ResumeCard />
       <MapCard />
       <Card width="2">
-        <CardDiv>
-          <SpotifyIcon />
-        </CardDiv>
+        <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
+          <div class="flex justify-center">
+            <div>
+              <SpotifyIcon />
+            </div>
+            <div class="flex items-center">
+              <div class="flex">
+                <div class="flex items-center mx-8">
+                  <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
+                  <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
+                  <div class="play-indicator" style="animation: playAnimation 0.62s infinite" />
+                  <div class="play-indicator" style="animation: playAnimation 1.11s infinite" />
+                  <div class="play-indicator" style="animation: playAnimation 0.79s infinite" />
+                  <div class="play-indicator" style="animation: playAnimation 1s infinite" />
+                </div>
+                <p v-if="true" class="text-2xl text-spotify">
+                  Nothing playing right now.
+                </p>
+                <div v-else class="">
+                  <h1 class="font-black text-3xl font-spotify">
+                    Mona Lisa
+                  </h1>
+                  <h1 class="text-stone-500 dark:text-gray-400 font-black text-xl font-spotify">
+                    Booba
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <CardButton />
+        </CardLink>
       </Card>
       <Card height="2">
         Latest project
@@ -74,8 +102,24 @@ const { getTextColor, getBackgroundColor } = useTheme()
 </template>
 
 <style lang="scss">
+.play-indicator {
+  @apply w-3px h-3px mr-3px rounded-3px bg-spotify flex items-center justify-center;
+}
+
 .title {
   @apply text-3xl font-bold mb-8;
+}
+
+@keyframes playAnimation {
+  0% {
+    height: 3px;
+  }
+  50% {
+    height: 20px;
+  }
+  100% {
+    height: 3px;
+  }
 }
 
 .subtitle {
