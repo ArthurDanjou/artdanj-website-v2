@@ -128,7 +128,7 @@ const { getTextColor } = useTheme()
             </div>
           </div>
           <p class="text-md text-stone-500 dark:text-gray-400 uppercase">
-            Heures de pratique
+            Heures de pratique par an
           </p>
         </CardDiv>
       </Card>
