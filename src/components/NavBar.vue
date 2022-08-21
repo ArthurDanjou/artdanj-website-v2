@@ -75,7 +75,7 @@ const toggleMute = () => {
       <NuxtLink to="/contact" class="nav-link">
         <PinIcon :filled="isRoute('/contact')" class="text-2xl" />
       </NuxtLink>
-      <div class="bg-stone-200 dark:bg-dark-900 w-1px mx-2" />
+      <div class="bg-stone-200 dark:bg-dark-300 w-1px mx-2 h-7/8" />
       <div id="color" class="nav-link h-44px w-44px" @click.prevent="toggleColorMode()">
         <ColorModeIcon :light="color.preference !== 'light'" class="text-2xl" />
       </div>
@@ -94,7 +94,7 @@ const toggleMute = () => {
 
 <style lang="scss">
 .nav-container {
-  @apply shadow-nav-dark w-full bg-white dark:(bg-dark-800 shadow-nav-light) border-dark border rounded-16px flex justify-center p-12px gap-2;
+  @apply flex items-center shadow-nav-dark w-full bg-white dark:(bg-dark-800 shadow-nav-light) border-dark border rounded-16px flex justify-center p-12px gap-2;
 }
 
 .nav-link {
