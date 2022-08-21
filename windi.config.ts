@@ -4,6 +4,15 @@ export default defineConfig({
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        spotify: ['DynaPuff', 'sans-serif'],
+      },
+      textColor: {
+        spotify: '#1db954',
+      },
+      backgroundColor: {
+        spotify: '#1db954',
+      },
       borderColor: {
         dark: 'hsla(0,0%,51.4%,.16)',
       },
