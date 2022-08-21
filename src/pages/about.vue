@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { getThemeTextColor } from '~/types/themes'
-import { useThemeStore } from '~/store/theme'
-
-const themeStore = useThemeStore()
-const getColor = () => {
-  return getThemeTextColor(themeStore.theme)
-}
+import { useTheme } from '~/composables/useTheme'
+const { getTextColor } = useTheme()
 </script>
 
 <template>
@@ -14,14 +9,15 @@ const getColor = () => {
     <CardContainer>
       <Card width="3">
         <CardDiv>
-          C'est moi
+          It is me
+          <!-- todo insert photo -->
         </CardDiv>
       </Card>
       <Card>
         <CardDiv class="flex">
           <h1 class="font-bold text-4xl my-4 leading-12">
             Hey, I am
-            <span :class="getColor()">Arthur</span> 👋
+            <span :class="getTextColor()">Arthur</span> 👋
           </h1>
           <h3 class="my-4 text-sm text-stone-500 dark:text-gray-400 uppercase">
             A software engineer from France 🇫🇷
@@ -29,10 +25,61 @@ const getColor = () => {
         </CardDiv>
       </Card>
       <Card width="2">
-        About me
+        <CardDiv>
+          <h1 class="text-3xl font-bold mb-4">
+            About me
+          </h1>
+          <h3 class="text-lg leading-5 text-stone-500 dark:text-gray-400 text-justify">
+            Software Engineer, but also student in Mathematics 🎓. I live in Paris 🇫🇷. I am 19 years old.
+            I am passionate about networking, infrastructure and cloud computing ☁️. I use modern technologies to get the best possible result ✨.
+            I love sharing my knowledge and helping others. Sometimes, I write technical articles on my blog and I always try to contribute to open-source projects 👑.
+          </h3>
+        </CardDiv>
       </Card>
       <Card width="2">
-        Interests
+        <CardDiv>
+          <h1 class="text-3xl font-bold mb-12">
+            Interests
+          </h1>
+          <div class="flex w-full justify-between space-x-8">
+            <div class="interest-item">
+              <CPUIcon :class="getTextColor()" />
+              <p class="interests-title">
+                Technologies
+              </p>
+            </div>
+            <div class="interest-item">
+              <ServerIcon :class="getTextColor()" />
+              <p class="interests-title">
+                DevOps
+              </p>
+            </div>
+            <div class="interest-item">
+              <PlaneIcon :class="getTextColor()" />
+              <p class="interests-title">
+                Trips
+              </p>
+            </div>
+            <div class="interest-item">
+              <CameraIcon :class="getTextColor()" />
+              <p class="interests-title">
+                Photo
+              </p>
+            </div>
+            <div class="interest-item">
+              <CloudIcon :class="getTextColor()" />
+              <p class="interests-title">
+                Cloud computing
+              </p>
+            </div>
+            <div class="interest-item">
+              <FunctionIcon :class="getTextColor()" />
+              <p class="interests-title">
+                Mathematics
+              </p>
+            </div>
+          </div>
+        </CardDiv>
       </Card>
       <Card>
         <CardDiv class="flex items-center justify-center">
@@ -73,7 +120,7 @@ const getColor = () => {
           <div class="flex">
             <div class="bg-clip-text bg-text-purple">
               <div class="text-7xl inline -mr-2 font-bold">
-                400
+                500
               </div>
               <div class="text-4xl inline align-top leading-6">
                 +
@@ -108,6 +155,14 @@ const getColor = () => {
 </template>
 
 <style lang="scss">
+.interest-item {
+  @apply flex flex-col items-center;
+}
+
+.interests-title {
+  @apply mt-4 text-sm text-stone-500 dark:text-gray-400 text-center uppercase;
+}
+
 .bg-text-green {
   background-image: linear-gradient(225deg,#5af141,#2a9dce);
   @apply text-transparent;
