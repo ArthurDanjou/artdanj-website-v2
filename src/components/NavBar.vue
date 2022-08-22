@@ -17,6 +17,13 @@ const toggleColorMode = () => {
   playAnimation('color')
 }
 
+const language = ref('fr')
+const changeLanguage = () => {
+  // todo import nuxt-i18n
+  playAnimation('lang')
+  language.value = language.value === 'fr' ? 'en' : 'fr'
+}
+
 const themeStore = useThemeStore()
 const toggleColorTheme = () => {
   const nextTheme = THEMES[(THEMES.indexOf(themeStore.theme) + 1) % THEMES.length]
@@ -82,8 +89,8 @@ const toggleMute = () => {
       <div id="theme" class="nav-link h-44px w-44px" @click.prevent="toggleColorTheme()">
         <PaintBrushIcon class="text-2xl" />
       </div>
-      <div id="lang" class="nav-link h-44px w-44px text-center" @click.prevent="toggleColorMode()">
-        <TranslationIcon lang="en" class="text-2xl" />
+      <div id="lang" class="nav-link h-44px w-44px text-center" @click.prevent="changeLanguage()">
+        <TranslationIcon :lang="language" />
       </div>
       <div id="sound" class="nav-link h-44px w-44px text-center" @click.prevent="toggleMute()">
         <SoundIcon :muted="isMuted" class="text-2xl" />
