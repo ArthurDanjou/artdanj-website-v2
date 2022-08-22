@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import type { NewsletterForm } from '~/types/types'
+
 const { getTextColor, getBackgroundColor } = useTheme()
+
+const form = ref<NewsletterForm>({} as NewsletterForm)
+
+const handleForm = () => {
+  // todo send form
+}
 </script>
 
 <template>
@@ -22,39 +30,7 @@ const { getTextColor, getBackgroundColor } = useTheme()
       </Card>
       <ResumeCard />
       <MapCard />
-      <Card width="2">
-        <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
-          <div class="flex justify-center">
-            <div>
-              <SpotifyIcon />
-            </div>
-            <div class="flex items-center">
-              <div class="flex">
-                <div class="flex items-center mx-8">
-                  <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
-                  <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
-                  <div class="play-indicator" style="animation: playAnimation 0.62s infinite" />
-                  <div class="play-indicator" style="animation: playAnimation 1.11s infinite" />
-                  <div class="play-indicator" style="animation: playAnimation 0.79s infinite" />
-                  <div class="play-indicator" style="animation: playAnimation 1s infinite" />
-                </div>
-                <p v-if="true" class="text-2xl text-spotify">
-                  Nothing playing right now.
-                </p>
-                <div v-else class="">
-                  <h1 class="font-black text-3xl font-spotify">
-                    Mona Lisa
-                  </h1>
-                  <h1 class="text-stone-500 dark:text-gray-400 font-black text-xl font-spotify">
-                    Booba
-                  </h1>
-                </div>
-              </div>
-            </div>
-          </div>
-          <CardButton />
-        </CardLink>
-      </Card>
+      <SpotifyCard />
       <Card height="2">
         Latest project
       </Card>
@@ -95,31 +71,49 @@ const { getTextColor, getBackgroundColor } = useTheme()
         Latest blog
       </Card>
       <Card width="2">
-        Newsletter
+        <CardDiv>
+          <h1 class="text-3xl font-bold">
+            Subscribe to my newsletter 📫
+          </h1>
+          <h3 class="text-sm text-stone-500 dark:text-gray-400 mt-2">
+            Get emails from me about web development, tech, and early access to new articles.
+          </h3>
+          <div class="w-full my-4">
+            <input
+              v-model="form.email"
+              type="email"
+              required
+              placeholder="Email address"
+              class="w-full text-gray-400 dark:text-gray-500 py-2 border-b-2 border-dark bg-white dark:bg-dark-800 outline-none"
+            >
+            <div class="mt-1">
+              <p class="text-sm text-gray-700 dark:text-gray-300">
+                Your information is only used to receive new emails from me. <strong>No spam.</strong>
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <button
+              class="px-4 py-2 duration-300 cursor-pointer border-2 rounded-full border-dark
+              bg-white text-stone-400 dark:(bg-dark-800 text-stone-600) hover:(shadow-dark text-black) dark:hover:text-white"
+            >
+              <div class="flex items-center justify-center flex items-center justify-center">
+                Subscribe
+              </div>
+            </button>
+            <p class="ml-4">
+              You will be subscriber number <span>x</span>.
+            </p>
+          </div>
+        </CardDiv>
       </Card>
     </CardContainer>
   </section>
 </template>
 
 <style lang="scss">
-.play-indicator {
-  @apply w-3px h-3px mr-3px rounded-3px bg-spotify flex items-center justify-center;
-}
-
 .title {
-  @apply text-3xl font-bold mb-8;
-}
-
-@keyframes playAnimation {
-  0% {
-    height: 3px;
-  }
-  50% {
-    height: 20px;
-  }
-  100% {
-    height: 3px;
-  }
+  @apply text-3xl font-bolder mb-8;
 }
 
 .subtitle {
