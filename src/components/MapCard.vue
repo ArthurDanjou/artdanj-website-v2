@@ -37,6 +37,8 @@ const stopAnimation = (document: Document) => {
 
 onMounted(() => {
   // todo set token in .env
+  const config = useRuntimeConfig()
+  console.log(config.mapToken)
   const container = document.getElementById('map')
   console.log(container)
   if (container !== null) {
