@@ -10,8 +10,12 @@ export default defineNuxtConfig({
     ],
   },
 
+  router: {
+    trailingSlash: false,
+  },
+
   runtimeConfig: {
-    mapboxToken: process.env.MAPBOX_TOKEN,
+    mapToken: process.env.NUXT_MAP_TOKEN,
   },
 
   modules: [
