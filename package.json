@@ -10,27 +10,19 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "preview": "nuxt preview",
-    "lint": "eslint . --fix",
-    "story:dev": "histoire dev",
-    "story:build": "histoire build",
-    "story:preview": "histoire preview"
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "@prisma/client": "^4.2.1",
-    "@types/mapbox-gl": "^2.7.5",
-    "mapbox-gl": "^2.9.2",
     "pinia-plugin-persistedstate": "^2.1.1",
     "windicss": "^3.5.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.1",
-    "@histoire/plugin-nuxt": "^0.10.3",
-    "@histoire/plugin-vue": "^0.10.3",
     "@nuxtjs/color-mode": "^3.1.4",
     "@pinia/nuxt": "^0.4.0",
     "@vueuse/nuxt": "^9.1.0",
     "eslint": "^8.22.0",
-    "histoire": "^0.10.3",
     "nuxt": "rc",
     "nuxt-windicss": "^2.5.0",
     "prisma": "^4.2.1",
