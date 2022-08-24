@@ -7,7 +7,7 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
 
 <template>
   <Card width="2">
-    <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
+    <CardLink v-if="data !== null" href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
       <div class="flex justify-center">
         <div>
           <SpotifyIcon />
@@ -23,10 +23,7 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
               <div class="play-indicator" :style="data.is_playing ? 'animation: playAnimation 1s infinite' : ''" />
             </div>
             <!-- todo implement spotify connection -->
-            <p v-if="!data.is_playing" class="text-2xl text-spotify">
-              Nothing playing right now.
-            </p>
-            <div v-else class="">
+            <div v-if="data.is_playing">
               <h1 class="font-black text-3xl font-spotify">
                 {{ data.name }}
               </h1>
@@ -34,6 +31,9 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
                 {{ data.author }}
               </h1>
             </div>
+            <p v-else class="text-2xl text-spotify">
+              Nothing playing right now.
+            </p>
           </div>
         </div>
       </div>
