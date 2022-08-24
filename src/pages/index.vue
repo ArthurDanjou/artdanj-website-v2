@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
-import type { NewsletterForm } from '~/types/types'
 
 const { getTextColor, getBackgroundColor } = useTheme()
-
-const form = ref<NewsletterForm>({} as NewsletterForm)
-
-const handleForm = () => {
-  // todo send form
-}
 </script>
 
 <template>
@@ -29,7 +22,18 @@ const handleForm = () => {
         </CardLink>
       </Card>
       <ResumeCard />
-      <MapCard />
+      <Card>
+        <CardLink href="uses" class="flex flex-col justify-center">
+          <LampIcon :class="getTextColor()" />
+          <h3 class="subtitle">
+            Discover my dev environment
+          </h3>
+          <h1 class="title">
+            How do I work ?
+          </h1>
+          <CardButton />
+        </CardLink>
+      </Card>
       <SpotifyCard />
       <Card height="2">
         Latest project
@@ -65,48 +69,24 @@ const handleForm = () => {
         </CardDiv>
       </Card>
       <Card>
+        <CardLink href="guestbook" class="flex flex-col justify-center">
+          <BookIcon :class="getTextColor()" />
+          <h3 class="subtitle">
+            Do you want to leave a message ?
+          </h3>
+          <h1 class="title">
+            Sign my book
+          </h1>
+          <CardButton />
+        </CardLink>
+      </Card>
+      <Card width="2" height="2">
         Photos
       </Card>
       <Card width="2">
         Latest blog
       </Card>
-      <Card width="2">
-        <CardDiv>
-          <h1 class="text-3xl font-bold">
-            Subscribe to my newsletter 📫
-          </h1>
-          <h3 class="text-sm text-stone-500 dark:text-gray-400 mt-2">
-            Get emails from me about web development, tech, and early access to new articles.
-          </h3>
-          <div class="w-full my-4">
-            <input
-              v-model="form.email"
-              type="email"
-              required
-              placeholder="Email address"
-              class="w-full text-gray-400 dark:text-gray-500 py-2 border-b-2 border-dark bg-white dark:bg-dark-800 outline-none"
-            >
-            <div class="mt-1">
-              <p class="text-sm text-gray-700 dark:text-gray-300">
-                Your information is only used to receive new emails from me. <strong>No spam.</strong>
-              </p>
-            </div>
-          </div>
-          <div class="flex items-center justify-between">
-            <button
-              class="px-4 py-2 duration-300 cursor-pointer border-2 rounded-full border-dark
-              bg-white text-stone-400 dark:(bg-dark-800 text-stone-600) hover:(shadow-dark text-black) dark:hover:text-white"
-            >
-              <div class="flex items-center justify-center flex items-center justify-center">
-                Subscribe
-              </div>
-            </button>
-            <p class="ml-4">
-              You will be subscriber number <span>x</span>.
-            </p>
-          </div>
-        </CardDiv>
-      </Card>
+      <NewsletterCard />
     </CardContainer>
   </section>
 </template>
@@ -117,7 +97,7 @@ const handleForm = () => {
 }
 
 .subtitle {
-  @apply my-4 text-sm text-stone-500 dark:text-gray-400 uppercase;
+  @apply mt-4 mb-2 text-sm text-stone-500 dark:text-gray-400 uppercase;
 }
 
 .bg-photo {
