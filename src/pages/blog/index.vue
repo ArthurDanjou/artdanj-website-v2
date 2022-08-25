@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
 const { getTextColor } = useTheme()
+
+const { data: posts } = await useAsyncData('posts', () => queryContent('/posts').find())
 </script>
 
 <template>
@@ -8,21 +10,13 @@ const { getTextColor } = useTheme()
     <PageTitle title="My Shelf" />
     <div class="flex justify-center">
       <div class="grid grid-cols-2 gap-6 grid-flow-row-dense auto-">
-        <Card>
+        <Card v-for="post in posts" :key="post.slug">
           <CardLink href="/blog/123">
             <h1 class="text-3xl font-bold" :class="getTextColor()">
-              TITLE
+              {{ post.title }}
             </h1>
             <h3 class="text-sm text-stone-500 dark:text-gray-400 mt-2 text-justify">
-              DESCRIPTION
-              DESCRIPTION
-              DESCRIPTION
-              DESCRIPTION
-              DESCRIPTION
-              DESCRIPTION
-              DESCRIPTION
-              DESCRIPTION
-              DESCRIPTION
+              {{ post.description }}
             </h3>
             <div class="flex items-center justify-between mt-4">
               <button
@@ -34,7 +28,7 @@ const { getTextColor } = useTheme()
                 </div>
               </button>
               <p class="ml-4" :class="getTextColor()">
-                6 Feb. 2003
+                {{ post.date }}
               </p>
             </div>
           </CardLink>

@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
+    '@nuxt/content',
   ],
 
   css: [
@@ -24,6 +25,12 @@ export default defineNuxtConfig({
     '~/components/icons',
     '~/components/cards',
   ],
+
+  content: {
+    highlight: {
+      theme: 'dracula',
+    },
+  },
 
   colorMode: {
     preference: 'system',
