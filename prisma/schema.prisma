@@ -24,14 +24,6 @@ model Announcement {
   updatedAt DateTime   @default(now())
 }
 
-model Translation {
-  id        String     @id @default(cuid())
-  code      String
-  content   String
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @default(now())
-}
-
 model Subscriber {
   id        String     @id @default(autoincrement())
   email     String     @unique
