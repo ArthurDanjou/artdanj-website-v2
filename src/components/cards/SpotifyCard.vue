@@ -6,8 +6,8 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
 </script>
 
 <template>
-  <Card width="2">
-    <CardLink v-if="data !== null" href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
+  <Card v-if="data !== null" width="2">
+    <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
       <div class="flex justify-center">
         <div>
           <SpotifyIcon />
