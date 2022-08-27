@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
-import AnnounceCard from '~/components/cards/AnnounceCard.vue'
 
 const { getTextColor, getBackgroundColor } = useTheme()
 
