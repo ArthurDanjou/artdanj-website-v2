@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+
 const { getTextColor } = useTheme()
+
+useHead({
+  title: 'My blog - Arthur Danjou',
+})
 </script>
 
 <template>

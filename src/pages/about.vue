@@ -3,6 +3,10 @@ import { useTheme } from '~/composables/useTheme'
 const { getTextColor } = useTheme()
 
 const age = ref(19)
+
+useHead({
+  title: 'About me - Arthur Danjou',
+})
 </script>
 
 <template>

@@ -2,6 +2,10 @@
 import { useTheme } from '~/composables/useTheme'
 
 const { getTextColor, getBackgroundColor } = useTheme()
+
+useHead({
+  title: 'Arthur Danjou - Software Engineer',
+})
 </script>
 
 <template>
@@ -21,6 +25,9 @@ const { getTextColor, getBackgroundColor } = useTheme()
           <CardButton />
         </CardLink>
       </Card>
+      <Card width="2">
+
+      </Card>
       <ResumeCard />
       <Card>
         <CardLink href="uses" class="flex flex-col justify-center">
@@ -38,8 +45,20 @@ const { getTextColor, getBackgroundColor } = useTheme()
       <Card height="2">
         Latest project
       </Card>
-      <TwitterCard />
+      <Card>
+        <CardLink href="guestbook" class="flex flex-col justify-center">
+          <BookIcon :class="getTextColor()" />
+          <h3 class="subtitle">
+            Do you want to leave a message ?
+          </h3>
+          <h1 class="title">
+            Sign my book
+          </h1>
+          <CardButton />
+        </CardLink>
+      </Card>
       <GitHubCard />
+      <TwitterCard />
       <ContactCard />
       <Card width="2">
         <CardDiv>
@@ -68,25 +87,12 @@ const { getTextColor, getBackgroundColor } = useTheme()
           </h1>
         </CardDiv>
       </Card>
-      <Card>
-        <CardLink href="guestbook" class="flex flex-col justify-center">
-          <BookIcon :class="getTextColor()" />
-          <h3 class="subtitle">
-            Do you want to leave a message ?
-          </h3>
-          <h1 class="title">
-            Sign my book
-          </h1>
-          <CardButton />
-        </CardLink>
-      </Card>
       <Card width="2" height="2">
         Photos
       </Card>
       <Card width="2">
         Latest blog
       </Card>
-      <NewsletterCard />
     </CardContainer>
   </section>
 </template>

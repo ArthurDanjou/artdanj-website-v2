@@ -16,7 +16,3 @@ export interface SpotifyData {
   duration: number
   started_at: number
 }
-
-export interface NewsletterForm {
-  email: string
-}
