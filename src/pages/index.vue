@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import AnnounceCard from '~/components/cards/AnnounceCard.vue'
 
 const { getTextColor, getBackgroundColor } = useTheme()
 
@@ -25,9 +26,7 @@ useHead({
           <CardButton />
         </CardLink>
       </Card>
-      <Card width="2">
-
-      </Card>
+      <AnnounceCard />
       <ResumeCard />
       <Card>
         <CardLink href="uses" class="flex flex-col justify-center">
