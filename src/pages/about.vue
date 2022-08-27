@@ -36,7 +36,7 @@ useHead({
             About me
           </h1>
           <h3 class="text-lg leading-5 text-stone-500 dark:text-gray-400 text-justify">
-            Software Engineer, but also student in <span :class="getTextColor()">Mathematics</span> 🎓. I live in Paris 🇫🇷. I am <span :class="getTextColor()">{{ age }}</span> years old.
+            Software Engineer, but also student in <span :class="getTextColor()">Mathematics</span> 🎓. I live in Paris, France 🇫🇷. I am <span :class="getTextColor()">{{ age }}</span> years old.
             I am passionate about <span :class="getTextColor()">networking</span>, <span :class="getTextColor()">infrastructure</span> and <span :class="getTextColor()">cloud computing</span> ☁️. I use modern <span :class="getTextColor()">technologies</span> to get the best possible result ✨.
             I love sharing my <span :class="getTextColor()">knowledge</span> and helping others. Sometimes, I write technical <span :class="getTextColor()">articles</span> on my blog and I always try to contribute to <span :class="getTextColor()">open-source</span> projects 👑.
           </h3>
