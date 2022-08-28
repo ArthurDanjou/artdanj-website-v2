@@ -5,7 +5,7 @@ useHead({
 </script>
 
 <template>
-  <main>
+  <section>
     <PageTitle title="My Uses" />
-  </main>
+  </section>
 </template>
