@@ -45,12 +45,6 @@ const isRoute = (route: string) => {
   const currentRoutePath = router.currentRoute.value.path
   return currentRoutePath === route || (currentRoutePath.includes(route) && route !== '/')
 }
-
-const isMuted = ref(false)
-const toggleMute = () => {
-  isMuted.value = !isMuted.value
-  playAnimation('sound')
-}
 </script>
 
 <template>
@@ -92,14 +86,11 @@ const toggleMute = () => {
       <div id="lang" class="nav-link h-44px w-44px text-center" @click.prevent="changeLanguage()">
         <TranslationIcon :lang="language" />
       </div>
-      <div id="sound" class="nav-link h-44px w-44px text-center" @click.prevent="toggleMute()">
-        <SoundIcon :muted="isMuted" class="text-2xl" />
-      </div>
     </nav>
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .nav-container {
   @apply flex items-center shadow-nav-dark w-full bg-white dark:(bg-dark-800 shadow-nav-light) border-dark border rounded-16px flex justify-center p-12px gap-2;
 }
