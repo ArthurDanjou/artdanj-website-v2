@@ -95,7 +95,7 @@ useHead({
   </section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .title {
   @apply text-3xl font-bolder mb-8;
 }

@@ -160,7 +160,7 @@ useHead({
   </section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .interest-item {
   @apply flex flex-col items-center;
 }
