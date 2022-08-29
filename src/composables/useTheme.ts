@@ -1,5 +1,5 @@
 import { useThemeStore } from '~/store/theme'
-import { getThemeBackgroundColor, getThemeTextColor } from '~/types/themes'
+import { getThemeBackgroundColor, getThemeHoverBackgroundColor, getThemeTextColor } from '~/types/themes'
 
 export function useTheme() {
   const getTheme = computed(() => useThemeStore().theme)
@@ -9,9 +9,13 @@ export function useTheme() {
   const getBackgroundColor = () => {
     return getThemeBackgroundColor(getTheme.value)
   }
+  const getBackgroundHoverColor = () => {
+    return getThemeHoverBackgroundColor(getTheme.value)
+  }
   return {
     getTheme,
     getTextColor,
     getBackgroundColor,
+    getBackgroundHoverColor,
   }
 }
