@@ -23,11 +23,7 @@ useHead({
           </h1>
         </CardDiv>
       </Card>
-      <Card height="2" width="2">
-        <CardDiv>
-          Form
-        </CardDiv>
-      </Card>
+      <FormCard />
       <GitHubCard />
       <Card>
         <CardDiv>
