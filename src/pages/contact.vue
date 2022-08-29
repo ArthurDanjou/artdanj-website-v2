@@ -15,12 +15,12 @@ useHead({
       <Card>
         <CardDiv>
           <SpeakerIcon :class="getTextColor()" />
-          <h3 class="subtitle mt-4">
-            I’m always open to collaborate on a project or hear about an opportunity!
-          </h3>
           <h1 class="title">
             Get in touch ✨
           </h1>
+          <h3 class="subtitle mt-4 ">
+            I’m always open to collaborate on a project or hear about an opportunity!
+          </h3>
         </CardDiv>
       </Card>
       <FormCard />
@@ -31,7 +31,7 @@ useHead({
           <h1 class="title">
             Development
           </h1>
-          <p>
+          <p class="subtitle">
             Hello
           </p>
         </CardDiv>
@@ -43,7 +43,7 @@ useHead({
           <h1 class="title">
             Design
           </h1>
-          <p>
+          <p class="subtitle">
             Hello
           </p>
         </CardDiv>
@@ -54,7 +54,7 @@ useHead({
           <h1 class="title">
             Strategy
           </h1>
-          <p>
+          <p class="subtitle">
             Hello
           </p>
         </CardDiv>
@@ -70,6 +70,6 @@ useHead({
 }
 
 .subtitle {
-  @apply text-sm text-stone-500 dark:text-gray-400 uppercase;
+  @apply text-lg leading-5 text-stone-500 dark:text-gray-400 text-justify;
 }
 </style>
