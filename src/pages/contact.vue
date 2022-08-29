@@ -12,7 +12,7 @@ useHead({
   <section>
     <PageTitle title="Contact Me" />
     <CardContainer>
-      <Card width="2">
+      <Card>
         <CardDiv>
           <SpeakerIcon :class="getTextColor()" />
           <h3 class="subtitle mt-4">
@@ -23,9 +23,12 @@ useHead({
           </h1>
         </CardDiv>
       </Card>
+      <Card height="2" width="2">
+        <CardDiv>
+          Form
+        </CardDiv>
+      </Card>
       <GitHubCard />
-      <TwitterCard />
-      <MailCard />
       <Card>
         <CardDiv>
           <DevIcon :class="getTextColor()" />
@@ -37,6 +40,7 @@ useHead({
           </p>
         </CardDiv>
       </Card>
+      <TwitterCard />
       <Card>
         <CardDiv>
           <DesignIcon :class="getTextColor()" />
@@ -59,6 +63,7 @@ useHead({
           </p>
         </CardDiv>
       </Card>
+      <MailCard />
     </CardContainer>
   </section>
 </template>
