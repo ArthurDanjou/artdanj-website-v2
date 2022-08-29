@@ -11,7 +11,7 @@ const { getTextColor } = useTheme()
         Let's work together
       </h3>
       <h1 class="title">
-        Get in touch now ✨
+        Get in touch ✨
       </h1>
       <CardButton />
     </CardLink>
