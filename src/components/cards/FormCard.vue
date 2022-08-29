@@ -4,22 +4,50 @@ import { useTheme } from '~/composables/useTheme'
 
 const { getTextColor, getBackgroundColor, getBackgroundHoverColor } = useTheme()
 
-const form = ref({} as FormData)
-const sent = ref(false)
+const form = ref({
+  name: '',
+  email: '',
+  content: '',
+} as FormData)
+const sent = ref({ error: false, success: false })
 
-const handleForm = () => {
-  sent.value = true
-  setTimeout(() => {
-    sent.value = false
-    form.value = {} as FormData
-  }, 4000)
+const handleForm = async () => {
+  if (sent.value.success)
+    return
+
+  if (form.value.name.length <= 0 || form.value.email.length <= 0 || form.value.content.length <= 0)
+    return
+
+  const { data } = await useAsyncData('form', () => {
+    return $fetch('/api/form', {
+      method: 'POST',
+      body: {
+        name: form.value.name,
+        email: form.value.email,
+        content: form.value.content,
+      },
+    })
+  })
+
+  if (data.value.code === 200)
+    sent.value.success = true
+  else
+    sent.value.error = true
 }
 </script>
 
 <template>
   <Card height="2" width="2">
-    <CardDiv v-if="sent">
-      Form sent
+    <CardDiv v-if="sent.success" class="flex items-center justify-center">
+      <div class="h-1/2 w-1/2 mb-8">
+        <img src="~/assets/images/Fiesta.png" alt="Fiesta Image">
+      </div>
+      <div class="text-xl text-spotify">
+        Your message was successfully sent ✅
+      </div>
+    </CardDiv>
+    <CardDiv v-else-if="sent.error">
+      Form Error
     </CardDiv>
     <CardDiv v-else>
       <form class="w-full h-full flex flex-col space-y-4">
@@ -47,9 +75,9 @@ const handleForm = () => {
         <div class="w-full">
           <input
             type="submit"
-            @click.prevent="handleForm()"
             class="w-full p-4 rounded-md cursor-pointer font-bold text-black"
             :class="[getBackgroundColor(), getBackgroundHoverColor()]"
+            @click.prevent="handleForm()"
           >
         </div>
       </form>
@@ -58,5 +86,9 @@ const handleForm = () => {
 </template>
 
 <style scoped lang="scss">
+@keyframes fiestAnimation {
+  0% {
 
+  }
+}
 </style>
