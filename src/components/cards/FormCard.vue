@@ -48,6 +48,7 @@ const handleForm = async () => {
     </CardDiv>
     <CardDiv v-else-if="sent.error">
       Form Error
+      <!-- todo -->
     </CardDiv>
     <CardDiv v-else>
       <form class="w-full h-full flex flex-col space-y-4">
