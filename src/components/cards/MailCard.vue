@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
-const { getTextColor } = useTheme()
+const { getTheme, getTextColor } = useTheme()
 </script>
 
 <template>
@@ -10,9 +10,9 @@ const { getTextColor } = useTheme()
       <h3 class="subtitle">
         Just want to email me ?
       </h3>
-      <h1 class="title">
+      <Link class="title" link="mailto:contact@arthurdanjou.fr" :color="getTheme" :group="true">
         contact@arthurdanjou.fr
-      </h1>
+      </Link>
       <CardButton />
     </CardLink>
   </Card>
