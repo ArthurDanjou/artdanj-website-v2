@@ -9,7 +9,7 @@ const form = ref({
   email: '',
   content: '',
 } as FormData)
-const sent = ref({ error: false, success: false })
+const sent = ref({ error: true, success: false })
 
 const handleForm = async () => {
   if (sent.value.success)
@@ -39,16 +39,20 @@ const handleForm = async () => {
 <template>
   <Card height="2" width="2">
     <CardDiv v-if="sent.success" class="flex items-center justify-center">
-      <div class="h-1/2 w-1/2 mb-8">
-        <img src="~/assets/images/Fiesta.png" alt="Fiesta Image">
+      <div class="flex justify-center mb-8">
+        <img class="w-1/2" src="~/assets/images/Fiesta.png" alt="Fiesta Image">
       </div>
-      <div class="text-xl text-spotify">
+      <div class="text-xl text-spotify text-center">
         Your message was successfully sent ✅
       </div>
     </CardDiv>
     <CardDiv v-else-if="sent.error">
-      Form Error
-      <!-- todo -->
+      <div class="flex justify-center mb-8">
+        <img class="w-1/2" src="~/assets/images/Sad.png" alt="Fiesta Image">
+      </div>
+      <div class="text-xl text-red-500 text-center">
+        The system encountered an error. Please try again later. ❌
+      </div>
     </CardDiv>
     <CardDiv v-else>
       <form class="w-full h-full flex flex-col space-y-4">
@@ -78,6 +82,7 @@ const handleForm = async () => {
             type="submit"
             class="w-full p-4 rounded-md cursor-pointer font-bold text-black"
             :class="[getBackgroundColor(), getBackgroundHoverColor()]"
+            value="Send your message"
             @click.prevent="handleForm()"
           >
         </div>
