@@ -47,7 +47,7 @@ useHead({
           <h1 class="text-3xl font-bold mb-12">
             Interests
           </h1>
-          <div class="flex w-full justify-between space-x-8">
+          <div class="grid w-full gap-6 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
               <CPUIcon :class="getTextColor()" />
               <p class="interests-title">

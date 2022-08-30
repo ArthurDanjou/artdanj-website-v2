@@ -11,7 +11,7 @@ useHead({
 <template>
   <section>
     <PageTitle title="My Shelf" />
-    <CardContainer class="grid-cols-2">
+    <CardContainer class="lg:grid-cols-2">
       <Card>
         <CardLink href="/blog/123">
           <h1 class="text-3xl font-bold" :class="getTextColor()">
