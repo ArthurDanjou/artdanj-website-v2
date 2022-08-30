@@ -14,10 +14,10 @@ useHead({
       <Card width="2" height="2">
         <CardLink href="about" class="flex flex-col justify-center">
           <div class="bg-photo h-48 w-48 rounded-1/2" :class="getBackgroundColor()" />
-          <h1 class="flex font-bold text-4xl my-8">
+          <h1 class="font-bold text-4xl my-8">
             Hi, I am
             <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
-            <span class="hey-animation">👋</span>
+            <span class="hey-animation inline-block">👋</span>
           </h1>
           <p class="text-stone-500 dark:text-gray-400 mb-4">
             A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
