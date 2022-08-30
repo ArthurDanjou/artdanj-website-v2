@@ -5,7 +5,7 @@ const { getBackgroundColor } = useTheme()
 
 <template>
   <footer class="flex items-center justify-center mt-18 mb-44">
-    <div class="w-full mx-32 duration-300" :class="getBackgroundColor()">
+    <div class="w-full mx-32 duration-300 text-center" :class="getBackgroundColor()">
       Footer yeah
     </div>
   </footer>
