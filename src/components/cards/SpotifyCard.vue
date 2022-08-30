@@ -28,7 +28,7 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
             {{ data.author }}
           </h1>
         </div>
-        <p v-else class="text-2xl text-spotify">
+        <p v-else class="text-2xl text-spotify flex items-center text-center">
           Nothing playing right now.
         </p>
       </div>
