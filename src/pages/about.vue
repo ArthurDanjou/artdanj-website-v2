@@ -47,11 +47,11 @@ useHead({
           <h1 class="text-3xl font-bold mb-12">
             Interests
           </h1>
-          <div class="grid w-full gap-6 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
+          <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
               <CPUIcon :class="getTextColor()" />
               <p class="interests-title">
-                Technologies
+                Tech.
               </p>
             </div>
             <div class="interest-item">
@@ -75,13 +75,13 @@ useHead({
             <div class="interest-item">
               <CloudIcon :class="getTextColor()" />
               <p class="interests-title">
-                Cloud computing
+                Cloud
               </p>
             </div>
             <div class="interest-item">
               <FunctionIcon :class="getTextColor()" />
               <p class="interests-title">
-                Mathematics
+                Maths.
               </p>
             </div>
           </div>

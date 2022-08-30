@@ -1,5 +1,5 @@
 <template>
-  <svg width="64" height="64" viewBox="0 0 24 24">
+  <svg class="card-icon" viewBox="0 0 24 24">
     <path
       fill="none"
       stroke="currentColor"

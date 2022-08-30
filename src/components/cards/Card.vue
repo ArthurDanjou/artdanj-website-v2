@@ -13,9 +13,9 @@ const props = defineProps({
 const getHeight = computed(() => {
   switch (props.height) {
     case '1':
-      return 'lg:row-span-1'
+      return 'row-span-1'
     case '2':
-      return 'lg:row-span-2'
+      return 'row-span-2'
   }
 })
 

@@ -28,7 +28,7 @@ useHead({
             DESCRIPTION
             DESCRIPTION
           </h3>
-          <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center justify-between mt-8">
             <button
               class="px-4 py-2 duration-300 cursor-pointer border-2 rounded-full border-dark
                 bg-white text-stone-400 dark:(bg-dark-800 text-stone-600) group-hover:(shadow-dark text-black) dark:group-hover:text-white"
