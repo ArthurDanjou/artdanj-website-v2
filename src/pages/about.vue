@@ -23,7 +23,7 @@ useHead({
         <CardDiv class="flex">
           <h1 class="font-bold text-4xl my-4 leading-12">
             Hey, I am
-            <span :class="getTextColor()">Arthur</span> 👋
+            <span :class="getTextColor()">Arthur Danjou</span> 👋
           </h1>
           <h3 class="my-4 text-sm text-stone-500 dark:text-gray-400 uppercase">
             A software engineer from France 🇫🇷
