@@ -3,6 +3,14 @@
 import type { SpotifyData } from '~/types/types'
 
 const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
+
+/* try in production
+onMounted(() => {
+  setTimeout(() => {
+    refreshNuxtData('spotify')
+  }, 5000)
+})
+*/
 </script>
 
 <template>
