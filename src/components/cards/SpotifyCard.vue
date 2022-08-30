@@ -21,10 +21,10 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
           </div>
         </div>
         <div v-if="data.is_playing" class="flex flex-col justify-center items-center">
-          <h1 class="font-black text-3xl font-spotify">
+          <h1 class="font-black text-3xl font-spotify text-center">
             {{ data.name }}
           </h1>
-          <h1 class="text-stone-500 dark:text-gray-400 font-black text-xl font-spotify">
+          <h1 class="text-stone-500 dark:text-gray-400 font-black text-xl font-spotify text-center">
             {{ data.author }}
           </h1>
         </div>
