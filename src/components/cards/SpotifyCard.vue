@@ -37,7 +37,7 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
   </Card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .play-indicator {
   @apply w-3px h-3px mr-3px rounded-3px bg-spotify;
 }
