@@ -9,7 +9,7 @@ const form = ref({
   email: '',
   content: '',
 } as FormData)
-const sent = ref({ error: true, success: false })
+const sent = ref({ error: false, success: false })
 
 const handleForm = async () => {
   if (sent.value.success)
