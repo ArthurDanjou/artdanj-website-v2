@@ -12,7 +12,6 @@
 - i18n
 - content
 - posts likes
-- Responsive design
 
 ## Design
 - projects covers
