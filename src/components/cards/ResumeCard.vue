@@ -4,7 +4,7 @@ const { getTextColor } = useTheme()
 </script>
 
 <template>
-  <Card>
+  <Card :order="1">
     <CardLink href="resume" class="flex flex-col justify-center">
       <PersonBoxIcon :class="getTextColor()" />
       <h3 class="subtitle">

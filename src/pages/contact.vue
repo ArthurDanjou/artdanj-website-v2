@@ -25,7 +25,7 @@ useHead({
       </Card>
       <FormCard />
       <GitHubCard />
-      <Card>
+      <Card :order="1">
         <CardDiv>
           <DevIcon :class="getTextColor()" />
           <h1 class="title">
@@ -37,7 +37,7 @@ useHead({
         </CardDiv>
       </Card>
       <TwitterCard />
-      <Card>
+      <Card :order="1">
         <CardDiv>
           <DesignIcon :class="getTextColor()" />
           <h1 class="title">
@@ -48,7 +48,7 @@ useHead({
           </p>
         </CardDiv>
       </Card>
-      <Card>
+      <Card :order="1">
         <CardDiv>
           <CommentIcon :class="getTextColor()" />
           <h1 class="title">
