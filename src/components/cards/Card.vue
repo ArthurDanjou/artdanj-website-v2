@@ -9,8 +9,9 @@ const props = defineProps({
     default: '1',
   },
   order: {
-    type: Number,
-    default: 0,
+    type: String,
+    enum: ['first', 'normal', 'last'],
+    default: 'normal',
   },
 })
 
@@ -36,10 +37,12 @@ const getWidth = computed(() => {
 
 const getOrder = computed(() => {
   switch (props.order) {
-    case 0:
-      return 'order-0'
-    case 1:
-      return 'order-1 lg:order-0'
+    case 'first':
+      return 'first-order'
+    case 'last':
+      return 'last-order'
+    case 'normal':
+      return 'order-normal'
   }
 })
 </script>
@@ -53,3 +56,25 @@ const getOrder = computed(() => {
     <slot />
   </div>
 </template>
+
+<style scoped lang="scss">
+.first-order {
+  order: -9999;
+}
+
+@media (min-width: 768px) {
+  .first-order {
+    order: 0;
+  }
+}
+
+.last-order {
+  order: 9999;
+}
+
+@media (min-width: 768px) {
+  .last-order {
+    order: 0;
+  }
+}
+</style>
