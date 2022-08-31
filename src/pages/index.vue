@@ -34,7 +34,7 @@ useHead({
             Discover my dev environment
           </h3>
           <h1 class="title">
-            How do I work ?
+            How do I work
           </h1>
           <CardButton />
         </CardLink>
@@ -97,7 +97,7 @@ useHead({
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bolder mb-8;
+  @apply text-3xl font-bold mb-8;
 }
 
 .subtitle {
