@@ -9,6 +9,7 @@ export default defineConfig({
       },
       textColor: {
         spotify: '#1db954',
+        nuxt: '#41b883',
       },
       backgroundColor: {
         spotify: '#1db954',
