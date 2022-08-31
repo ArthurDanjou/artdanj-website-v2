@@ -6,6 +6,8 @@ const { getTextColor } = useTheme()
 useHead({
   title: 'Contact me - Arthur Danjou',
 })
+
+//todo complete cards
 </script>
 
 <template>
@@ -24,8 +26,8 @@ useHead({
         </CardDiv>
       </Card>
       <FormCard />
-      <GitHubCard />
-      <Card :order="1">
+      <GitHubCard order="normal" />
+      <Card order="last">
         <CardDiv>
           <DevIcon :class="getTextColor()" />
           <h1 class="title">
@@ -36,8 +38,8 @@ useHead({
           </p>
         </CardDiv>
       </Card>
-      <TwitterCard />
-      <Card :order="1">
+      <TwitterCard order="normal" />
+      <Card order="last">
         <CardDiv>
           <DesignIcon :class="getTextColor()" />
           <h1 class="title">
@@ -48,7 +50,7 @@ useHead({
           </p>
         </CardDiv>
       </Card>
-      <Card :order="1">
+      <Card order="last">
         <CardDiv>
           <CommentIcon :class="getTextColor()" />
           <h1 class="title">
