@@ -20,7 +20,7 @@ const { getTextColor } = useTheme()
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bolder mb-8;
+  @apply text-3xl font-bold mb-8;
 }
 
 .subtitle {
