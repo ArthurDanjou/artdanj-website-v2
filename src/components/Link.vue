@@ -41,7 +41,8 @@ const getColor = computed(() => {
         return 'decoration-red-500 group-hover:text-red-500 group-hover:decoration-red-500/30 focus:text-red-500 focus:ring-red-500/40\n'
             + 'dark:(decoration-red-400 group-hover:text-red-400 group-hover:decoration-red-400/30 focus:text-red-400 focus:ring-red-400/40)'
     }
-  } else {
+  }
+  else {
     switch (props.color) {
       case 'sky':
         return 'decoration-sky-500 hover:text-sky-500 hover:decoration-sky-500/30 focus:text-sky-500 focus:ring-sky-500/40\n'
@@ -71,8 +72,7 @@ const getColor = computed(() => {
     :href="props.link"
     :target="props.target"
     class="focusable rounded-sm font-medium text-zinc-800 dark:text-white
-      underline decoration-2 underline-offset-2
-      transition duration-100"
+      underline decoration-2 underline-offset-2 font-bold duration-300"
     :class="getColor"
   >
     <slot />
