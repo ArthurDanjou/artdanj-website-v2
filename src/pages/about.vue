@@ -91,10 +91,10 @@ useHead({
         <CardDiv class="flex items-center justify-center">
           <div class="flex">
             <div class="bg-clip-text bg-text-green">
-              <div class="text-7xl inline -mr-2 font-bold">
+              <div class="text-7xl inline -mr-4 font-bold">
                 12
               </div>
-              <div class="text-4xl inline align-top leading-6">
+              <div class="text-4xl inline align-top leading-6 font-bold">
                 +
               </div>
             </div>
@@ -111,7 +111,7 @@ useHead({
               <div class="text-7xl inline -mr-2 font-bold">
                 7
               </div>
-              <div class="text-7xl inline leading-6">
+              <div class="text-7xl inline leading-6 font-bold">
                 Ans
               </div>
             </div>
@@ -125,10 +125,10 @@ useHead({
         <CardDiv class="flex items-center justify-center">
           <div class="flex">
             <div class="bg-clip-text bg-text-purple">
-              <div class="text-7xl inline -mr-2 font-bold">
+              <div class="text-7xl inline -mr-4 font-bold">
                 500
               </div>
-              <div class="text-4xl inline align-top leading-6">
+              <div class="text-4xl inline align-top leading-6 font-bold">
                 +
               </div>
             </div>
