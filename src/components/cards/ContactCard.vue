@@ -4,7 +4,7 @@ const { getTextColor } = useTheme()
 </script>
 
 <template>
-  <Card :order="1">
+  <Card order="last">
     <CardLink href="contact">
       <MailBoxIcon :class="getTextColor()" />
       <h3 class="subtitle">
