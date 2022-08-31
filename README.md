@@ -1,17 +1,15 @@
 # Todo
 
-## Components:
-- footer
-
 ## Pages:
-- Uses
-- Resume
+- Uses with Use nuxt content
+- Resume 
 - Guestbook
 
 ## Implements
 - i18n
 - content
-- posts likes
+- posts likes & post views ?
+- Maintenance mode
 
 ## Design
 - projects covers
