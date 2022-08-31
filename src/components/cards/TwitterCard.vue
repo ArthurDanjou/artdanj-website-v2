@@ -1,7 +1,7 @@
 <template>
   <Card>
     <CardLink class="flex items-center" target="_blank" href="https://twitter.com/ArthurDanj">
-      <TwitterIcon />
+      <TwitterLogo />
       <CardButton />
     </CardLink>
   </Card>

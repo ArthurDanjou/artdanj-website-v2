@@ -18,7 +18,7 @@ onMounted(() => {
     <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
       <div class="flex flex-col justify-center gap-y-4 lg:(flex-row gap-x-12)">
         <div class="flex items-center justify-center gap-x-8 lg:(flex-col gap-y-4)">
-          <SpotifyIcon />
+          <SpotifyLogo />
           <div v-if="data.is_playing" class="flex items-center justify-center h-30px">
             <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
             <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
@@ -36,7 +36,7 @@ onMounted(() => {
             {{ data.author }}
           </h1>
         </div>
-        <p v-else class="text-2xl text-spotify flex items-center text-center">
+        <p v-else class="text-2xl text-spotify flex items-center text-center font-bold">
           Nothing playing right now.
         </p>
       </div>
