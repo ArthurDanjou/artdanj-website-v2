@@ -72,6 +72,6 @@ useHead({
 }
 
 .subtitle {
-  @apply text-lg leading-5 text-stone-500 dark:text-gray-400 text-justify;
+  @apply text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify;
 }
 </style>

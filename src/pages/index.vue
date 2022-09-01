@@ -19,7 +19,7 @@ useHead({
             <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
             <span class="hey-animation inline-block">👋</span>
           </h1>
-          <p class="text-stone-500 dark:text-gray-400 mb-4">
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
             A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
           </p>
           <CardButton />
@@ -101,7 +101,7 @@ useHead({
 }
 
 .subtitle {
-  @apply mt-4 mb-2 text-sm text-stone-500 dark:text-gray-400 uppercase;
+  @apply mt-4 mb-2 text-sm text-gray-600 dark:text-gray-400 uppercase;
 }
 
 .bg-photo {

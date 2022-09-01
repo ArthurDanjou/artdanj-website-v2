@@ -34,6 +34,6 @@ const year = computed(() => new Date().getFullYear())
 }
 
 .subtitle {
-  @apply text-sm text-stone-500 dark:text-gray-400;
+  @apply text-sm text-gray-600 dark:text-gray-400;
 }
 </style>

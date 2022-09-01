@@ -25,7 +25,7 @@ useHead({
             Hey, I am
             <span :class="getTextColor()">Arthur Danjou</span> 👋
           </h1>
-          <h3 class="my-4 text-sm text-stone-500 dark:text-gray-400 uppercase">
+          <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400 uppercase">
             A software engineer from France 🇫🇷
           </h3>
         </CardDiv>
@@ -35,7 +35,7 @@ useHead({
           <h1 class="text-3xl font-bold mb-4">
             About me
           </h1>
-          <h3 class="text-lg leading-5 text-stone-500 dark:text-gray-400 text-justify">
+          <h3 class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
             Software Engineer, but also student in <span :class="getTextColor()">Mathematics</span> 🎓. I live in Paris, France 🇫🇷. I am <span :class="getTextColor()">{{ age }}</span> years old.
             I am passionate about <span :class="getTextColor()">networking</span>, <span :class="getTextColor()">infrastructure</span> and <span :class="getTextColor()">cloud computing</span> ☁️. I use modern <span :class="getTextColor()">technologies</span> to get the best possible result ✨.
             I love sharing my <span :class="getTextColor()">knowledge</span> and helping others. Sometimes, I write technical <span :class="getTextColor()">articles</span> on my blog and I always try to contribute to <span :class="getTextColor()">open-source</span> projects 👑.
@@ -99,7 +99,7 @@ useHead({
               </div>
             </div>
           </div>
-          <p class="text-md text-stone-500 dark:text-gray-400 uppercase">
+          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
             Clients satisfaits
           </p>
         </CardDiv>
@@ -116,7 +116,7 @@ useHead({
               </div>
             </div>
           </div>
-          <p class="text-md text-stone-500 dark:text-gray-400 uppercase">
+          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
             D'expérience
           </p>
         </CardDiv>
@@ -133,7 +133,7 @@ useHead({
               </div>
             </div>
           </div>
-          <p class="text-md text-stone-500 dark:text-gray-400 uppercase">
+          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
             Heures de pratique par an
           </p>
         </CardDiv>
@@ -147,7 +147,7 @@ useHead({
               </div>
             </div>
           </div>
-          <p class="text-md text-stone-500 dark:text-gray-400 uppercase">
+          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
             Passion
           </p>
         </CardDiv>
@@ -166,7 +166,7 @@ useHead({
 }
 
 .interests-title {
-  @apply mt-4 text-sm text-stone-500 dark:text-gray-400 text-center uppercase;
+  @apply mt-4 text-sm text-gray-600 dark:text-gray-400 text-center uppercase;
 }
 
 .bg-text-green {

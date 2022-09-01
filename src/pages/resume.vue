@@ -14,10 +14,16 @@ useHead({
     <CardContainer>
       <Card>
         <CardDiv>
-          Arthur Danjou
-          Software Engineer
-          Paris, France
-          Socials
+          <h1 class="font-bold text-3xl" :class="getTextColor()">
+            Arthur Danjou
+          </h1>
+          <h3 class="mt-2 mb-4 text-lg text-gray-600 dark:text-gray-400">
+            Software Engineer
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Paris, France
+          </p>
+          <ul />
         </CardDiv>
       </Card>
       <Card>
@@ -53,6 +59,6 @@ useHead({
 }
 
 .subtitle {
-  @apply text-lg leading-5 text-stone-500 dark:text-gray-400 text-justify;
+  @apply text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify;
 }
 </style>

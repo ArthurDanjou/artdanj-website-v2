@@ -32,7 +32,7 @@ onMounted(() => {
           <h1 class="font-black text-3xl font-spotify text-center">
             {{ data.name }}
           </h1>
-          <h1 class="text-stone-500 dark:text-gray-400 font-black text-xl font-spotify text-center">
+          <h1 class="text-gray-600 dark:text-gray-400 font-black text-xl font-spotify text-center">
             {{ data.author }}
           </h1>
         </div>

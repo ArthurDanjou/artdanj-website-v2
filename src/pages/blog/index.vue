@@ -17,7 +17,7 @@ useHead({
           <h1 class="text-3xl font-bold" :class="getTextColor()">
             TITLE
           </h1>
-          <h3 class="text-sm text-stone-500 dark:text-gray-400 mt-2 text-justify">
+          <h3 class="text-sm text-gray-600 dark:text-gray-400 mt-2 text-justify">
             DESCRIPTION
             DESCRIPTION
             DESCRIPTION
@@ -48,7 +48,7 @@ useHead({
           <h1 class="text-3xl font-bold" :class="getTextColor()">
             TITLE
           </h1>
-          <h3 class="text-sm text-stone-500 dark:text-gray-400 mt-2 text-justify">
+          <h3 class="text-sm text-gray-600 dark:text-gray-400 mt-2 text-justify">
             DESCRIPTION
             DESCRIPTION
             DESCRIPTION
@@ -79,7 +79,7 @@ useHead({
           <h1 class="text-3xl font-bold" :class="getTextColor()">
             TITLE
           </h1>
-          <h3 class="text-sm text-stone-500 dark:text-gray-400 mt-2 text-justify">
+          <h3 class="text-sm text-gray-600 dark:text-gray-400 mt-2 text-justify">
             DESCRIPTION
             DESCRIPTION
             DESCRIPTION
