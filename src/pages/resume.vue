@@ -16,6 +16,7 @@ useHead({
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 auto-rows-fr">
           <Card>
             <CardDiv>
+              <img class="border-2 border-dark rounded-full w-1/3" src="~/assets/images/MeHappy.png" alt="Image of me">
               <h1 class="font-bold text-3xl" :class="getTextColor()">
                 Arthur Danjou
               </h1>
