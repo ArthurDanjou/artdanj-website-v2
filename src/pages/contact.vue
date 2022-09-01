@@ -7,7 +7,7 @@ useHead({
   title: 'Contact me - Arthur Danjou',
 })
 
-//todo complete cards
+// todo complete cards
 </script>
 
 <template>

@@ -15,7 +15,7 @@ useHead({
       <Card>
         <CardLink href="/blog/123">
           <div>
-            <img />
+            <img>
           </div>
           <div>
             <h3 class="text-sm text-gray-600 dark:text-gray-400 mb-2">
