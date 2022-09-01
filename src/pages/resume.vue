@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
-import ResumeTitle from "~/components/ResumeTitle.vue";
 
 const { getTextColor } = useTheme()
 
