@@ -25,7 +25,6 @@ useHead({
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 Paris, France
               </p>
-              <ul />
             </CardDiv>
           </Card>
           <Card>
