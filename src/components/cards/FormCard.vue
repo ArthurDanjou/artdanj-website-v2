@@ -48,7 +48,7 @@ const handleForm = async () => {
     </CardDiv>
     <CardDiv v-else-if="sent.error">
       <div class="flex justify-center mb-8">
-        <img class="w-1/2" src="~/assets/images/Sad.png" alt="Fiesta Image">
+        <img class="w-1/2" src="~/assets/images/Sad.png" alt="Sad Image">
       </div>
       <div class="text-xl text-red-500 text-center">
         The system encountered an error. Please try again later. ❌
