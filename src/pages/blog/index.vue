@@ -10,7 +10,7 @@ useHead({
 
 <template>
   <section>
-    <PageTitle title="My Shelf" />
+    <PageTitle title="blog" />
     <CardContainer class="lg:grid-cols-2">
       <Card>
         <CardLink href="/blog/123">

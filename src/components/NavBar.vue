@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useThemeStore } from '~/store/theme'
 import { THEMES } from '~/types/themes'
-import {useI18n} from "vue-i18n";
 
 const color = useColorMode()
 

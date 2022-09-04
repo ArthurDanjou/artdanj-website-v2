@@ -1,4 +1,90 @@
 {
+  "head": {
+    "index": "Arthur Danjou - Software Engineer",
+    "about": "About me - Arthur Danjou",
+    "projects": "My work - Arthur Danjou",
+    "contact": "Contact me - Arthur Danjou",
+    "guestbook": "My guestbook - Arthur Danjou"
+  },
+  "titles": {
+    "contact": "Contact me",
+    "about": "About Me",
+    "uses": "My Uses",
+    "guestbook": "My Book",
+    "blog": "My Shelf",
+    "projects": "All Works",
+    "resume": "My Resume"
+  },
+  "index": {
+    "main": "Hey, I am",
+    "description": "A software engineer passionate about networking, infrastructure and cloud but also a student living in France.",
+    "work": {
+      "dev": "Development",
+      "design": "Design",
+      "strategy": "Strategy",
+      "title": "What I do"
+    }
+  },
+  "about": {
+    "main": "Hey, I am",
+    "description": "A software engineer from France \uD83C\uDDEB\uD83C\uDDF7",
+    "about": {
+      "title": "About me",
+      "description": {
+        "text": "Software Engineer, but also student in {maths} \uD83C\uDF93. I live in Paris, France \uD83C\uDDEB\uD83C\uDDF7. I am {age} years old.\nI am passionate about {networking}, {infrastructure} and {cloud} ☁️. I use modern {technologies} to get the best possible result ✨.\nI love sharing my {knowledge} and helping others. Sometimes, I write technical {articles} on my blog and I always try to contribute to {opensource} projects \uD83D\uDC51.",
+        "maths": "Mathematics",
+        "networking": "networking",
+        "infrastructure": "infrastructure",
+        "cloud": "cloud computing",
+        "technologies": "technologies",
+        "knowledge": "knowledge",
+        "articles": "articles",
+        "opensource": "open-source"
+      }
+    },
+    "interests": {
+      "title": "Interests",
+      "trips": "Trips"
+    },
+    "stats": {
+      "customers": "Satisfied customers",
+      "years": "Years",
+      "experience": "Of experience",
+      "hours": "Hours per year"
+    }
+  },
+  "contact": {
+    "main": {
+      "title": "Get in touch ✨",
+      "subtitle": "I’m always open to collaborate on a project or hear about an opportunity!"
+    },
+    "what": {
+      "dev": {
+        "title": "Development",
+        "subtitle": "..."
+      },
+      "strategy": {
+        "title": "Strategy",
+        "subtitle": "..."
+      },
+      "design": {
+        "title": "Design",
+        "subtitle": "..."
+      }
+    }
+  },
+  "uses": {
+    "card": {
+      "title": "How do I work",
+      "subtitle": "Discover my dev environment"
+    }
+  },
+  "guestbook": {
+    "card": {
+      "title": "Sign my book",
+      "subtitle": "Do you want to leave a message ?"
+    }
+  },
   "footer": {
     "builtBy": "Designed & Built by",
     "madeWith": "Made with"

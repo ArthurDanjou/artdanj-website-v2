@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
 
 const { getTextColor } = useTheme()
 
+const { t } = useI18n()
+
 useHead({
-  title: 'Contact me - Arthur Danjou',
+  title: t('head.contact'),
 })
 
 // todo complete cards
@@ -12,16 +15,16 @@ useHead({
 
 <template>
   <section>
-    <PageTitle title="Contact Me" />
+    <PageTitle title="contact" />
     <CardContainer>
       <Card>
         <CardDiv>
           <MailBoxIcon :class="getTextColor()" />
           <h1 class="title">
-            Get in touch ✨
+            {{ t('contact.main.title') }}
           </h1>
           <h3 class="subtitle mt-4 ">
-            I’m always open to collaborate on a project or hear about an opportunity!
+            {{ t('contact.main.subtitle') }}
           </h3>
         </CardDiv>
       </Card>
@@ -31,10 +34,10 @@ useHead({
         <CardDiv>
           <DevIcon :class="getTextColor()" />
           <h1 class="title">
-            Development
+            {{ t('contact.what.dev.title') }}
           </h1>
           <p class="subtitle">
-            Hello
+            {{ t('contact.what.dev.subtitle') }}
           </p>
         </CardDiv>
       </Card>
@@ -43,10 +46,10 @@ useHead({
         <CardDiv>
           <DesignIcon :class="getTextColor()" />
           <h1 class="title">
-            Design
+            {{ t('contact.what.design.title') }}
           </h1>
           <p class="subtitle">
-            Hello
+            {{ t('contact.what.design.title') }}
           </p>
         </CardDiv>
       </Card>
@@ -54,10 +57,10 @@ useHead({
         <CardDiv>
           <CommentIcon :class="getTextColor()" />
           <h1 class="title">
-            Strategy
+            {{ t('contact.what.strategy.title') }}
           </h1>
           <p class="subtitle">
-            Hello
+            {{ t('contact.what.strategy.title') }}
           </p>
         </CardDiv>
       </Card>

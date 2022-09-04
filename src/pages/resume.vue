@@ -10,7 +10,7 @@ useHead({
 
 <template>
   <section>
-    <PageTitle title="My Resume" />
+    <PageTitle title="resume" />
     <div class="flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/4">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 auto-rows-fr">

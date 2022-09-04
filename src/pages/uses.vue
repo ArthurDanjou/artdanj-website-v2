@@ -10,6 +10,6 @@ useHead({
 
 <template>
   <section>
-    <PageTitle title="My Uses" />
+    <PageTitle title="uses" />
   </section>
 </template>

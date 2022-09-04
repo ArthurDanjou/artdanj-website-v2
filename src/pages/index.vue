@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
 
 const { getTextColor, getBackgroundColor } = useTheme()
 
+const { t } = useI18n()
+
 useHead({
-  title: 'Arthur Danjou - Software Engineer',
+  title: t('head.index'),
 })
 </script>
 
@@ -15,12 +18,12 @@ useHead({
         <CardLink href="about" class="flex flex-col justify-center">
           <div class="bg-photo h-48 w-48 rounded-1/2" :class="getBackgroundColor()" />
           <h1 class="font-bold text-4xl my-8">
-            Hi, I am
+            {{ t('index.main') }}
             <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
             <span class="hey-animation inline-block">👋</span>
           </h1>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
-            A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
+            {{ t('index.description') }}
           </p>
           <CardButton />
         </CardLink>
@@ -31,10 +34,10 @@ useHead({
         <CardLink href="uses" class="flex flex-col justify-center">
           <LampIcon :class="getTextColor()" />
           <h3 class="subtitle">
-            Discover my dev environment
+            {{ t('uses.card.subtitle') }}
           </h3>
           <h1 class="title">
-            How do I work
+            {{ t('uses.card.title') }}
           </h1>
           <CardButton />
         </CardLink>
@@ -47,10 +50,10 @@ useHead({
         <CardLink href="guestbook" class="flex flex-col justify-center">
           <BookIcon :class="getTextColor()" />
           <h3 class="subtitle">
-            Do you want to leave a message ?
+            {{ t('uses.guestbook.subtitle') }}
           </h3>
           <h1 class="title">
-            Sign my book
+            {{ t('uses.guestbook.title') }}
           </h1>
           <CardButton />
         </CardLink>
@@ -64,24 +67,24 @@ useHead({
             <div class="flex flex-col items-center">
               <DevIcon :class="getTextColor()" />
               <p class="subtitle">
-                Development
+                {{ t('index.work.dev') }}
               </p>
             </div>
             <div class="flex flex-col items-center">
               <DesignIcon :class="getTextColor()" />
               <p class="subtitle">
-                Design
+                {{ t('index.work.design') }}
               </p>
             </div>
             <div class="flex flex-col items-center">
               <CommentIcon :class="getTextColor()" />
               <p class="subtitle">
-                Strategy
+                {{ t('index.work.strategy') }}
               </p>
             </div>
           </div>
           <h1 class="title !mb-0">
-            What I do
+            {{ t('index.work.title') }}
           </h1>
         </CardDiv>
       </Card>
