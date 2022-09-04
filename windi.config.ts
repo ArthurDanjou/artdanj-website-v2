@@ -9,6 +9,12 @@ export default defineConfig({
       },
       textColor: {
         spotify: '#1db954',
+        nuxt: '#41b883',
+      },
+      textDecorationColor: {
+        'nuxt-light': '#71f5af',
+        'nuxt-dark': '#205e47',
+        'nuxt': '#41b883',
       },
       backgroundColor: {
         spotify: '#1db954',
@@ -18,8 +24,8 @@ export default defineConfig({
       },
       boxShadow: {
         'dark': 'hsla(0,0%,51.4%,.16) 0px 0px 0px 3px',
-        'nav-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'nav-light': '0 2px 2px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -1px rgba(255, 255, 255, 0.06)',
+        'nav-dark': '0 20px 20px -3px rgba(0, 0, 0, 0.15), 0 0 8px -1px rgba(0, 0, 0, 0.06)',
+        'nav-light': '0 20px 20px -3px rgba(255, 255, 255, 0.05), 0 0 8px -1px rgba(255, 255, 255, 0.06)',
       },
     },
   },

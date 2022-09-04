@@ -7,16 +7,16 @@ export interface SpotifyData {
   author: string
   id: string
   image: {
-
     height: number
     width: number
     url: string
-
   }
   duration: number
   started_at: number
 }
 
-export interface NewsletterForm {
+export interface FormData {
+  name: string
   email: string
+  content: string
 }

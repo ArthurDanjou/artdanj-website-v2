@@ -2,6 +2,10 @@
 import { useTheme } from '~/composables/useTheme'
 
 const { getTextColor, getBackgroundColor } = useTheme()
+
+useHead({
+  title: 'Arthur Danjou - Software Engineer',
+})
 </script>
 
 <template>
@@ -10,17 +14,18 @@ const { getTextColor, getBackgroundColor } = useTheme()
       <Card width="2" height="2">
         <CardLink href="about" class="flex flex-col justify-center">
           <div class="bg-photo h-48 w-48 rounded-1/2" :class="getBackgroundColor()" />
-          <h1 class="flex font-bold text-4xl my-8">
+          <h1 class="font-bold text-4xl my-8">
             Hi, I am
             <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
-            <span class="hey-animation">👋</span>
+            <span class="hey-animation inline-block">👋</span>
           </h1>
-          <p class="text-stone-500 dark:text-gray-400 mb-4">
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
             A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
           </p>
           <CardButton />
         </CardLink>
       </Card>
+      <AnnounceCard />
       <ResumeCard />
       <Card>
         <CardLink href="uses" class="flex flex-col justify-center">
@@ -29,7 +34,7 @@ const { getTextColor, getBackgroundColor } = useTheme()
             Discover my dev environment
           </h3>
           <h1 class="title">
-            How do I work ?
+            How do I work
           </h1>
           <CardButton />
         </CardLink>
@@ -38,8 +43,20 @@ const { getTextColor, getBackgroundColor } = useTheme()
       <Card height="2">
         Latest project
       </Card>
-      <TwitterCard />
+      <Card>
+        <CardLink href="guestbook" class="flex flex-col justify-center">
+          <BookIcon :class="getTextColor()" />
+          <h3 class="subtitle">
+            Do you want to leave a message ?
+          </h3>
+          <h1 class="title">
+            Sign my book
+          </h1>
+          <CardButton />
+        </CardLink>
+      </Card>
       <GitHubCard />
+      <TwitterCard />
       <ContactCard />
       <Card width="2">
         <CardDiv>
@@ -68,36 +85,23 @@ const { getTextColor, getBackgroundColor } = useTheme()
           </h1>
         </CardDiv>
       </Card>
-      <Card>
-        <CardLink href="guestbook" class="flex flex-col justify-center">
-          <BookIcon :class="getTextColor()" />
-          <h3 class="subtitle">
-            Do you want to leave a message ?
-          </h3>
-          <h1 class="title">
-            Sign my book
-          </h1>
-          <CardButton />
-        </CardLink>
-      </Card>
       <Card width="2" height="2">
         Photos
       </Card>
       <Card width="2">
         Latest blog
       </Card>
-      <NewsletterCard />
     </CardContainer>
   </section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .title {
-  @apply text-3xl font-bolder mb-8;
+  @apply text-3xl font-bold mb-8;
 }
 
 .subtitle {
-  @apply mt-4 mb-2 text-sm text-stone-500 dark:text-gray-400 uppercase;
+  @apply mt-4 mb-2 text-sm text-gray-600 dark:text-gray-400 uppercase;
 }
 
 .bg-photo {

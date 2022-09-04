@@ -1,29 +1,20 @@
-# Nuxt 3 Minimal Starter
+# Todo
 
-We recommend to look at the [documentation](https://v3.nuxtjs.org).
+## Pages:
+- Uses with Use nuxt content
+- Resume 
+- Guestbook
+- 404
+- Maintenance
 
-## Setup
+## Implements
+- i18n
+- content
+- posts likes & post views ?
+- Maintenance mode
 
-Make sure to install the dependencies
+## Design
+- projects covers
+- blog covers
 
-```bash
-yarn install
-```
-
-## Development
-
-Start the development server on http://localhost:3000
-
-```bash
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-yarn build
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+## Rewrite blog posts

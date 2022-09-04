@@ -3,6 +3,10 @@ import { useTheme } from '~/composables/useTheme'
 const { getTextColor } = useTheme()
 
 const { data: posts } = await useAsyncData('posts', () => queryContent('/posts').find())
+
+useHead({
+  title: 'My blog - Arthur Danjou',
+})
 </script>
 
 <template>

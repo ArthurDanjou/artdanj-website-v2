@@ -1,8 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=DynaPuff:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DynaPuff:wght@500&display=swap');
 
 body {
   font-family: 'DM Sans', sans-serif;
   @apply bg-stone-100 dark:bg-dark-900 dark:text-white duration-300;
+}
+
+.card-icon {
+  @apply h-48px w-48px md:(h-64px w-64px);
+}
+
+.interest-icon {
+  @apply h-32px w-32px md:(h-48px w-48px);
+}
+
+.social-icon {
+  @apply h-100px w-100px md:(h-128px w-128px)
 }
 
 // Page transition animation
@@ -28,4 +40,19 @@ body {
     opacity: 1;
     transform: scale(1, 1);
   }
+}
+
+// Change Scrollbar
+::-webkit-scrollbar {
+  @apply w-8px h-8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-stone-100 dark:bg-dark-900;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-stone-400 dark:bg-dark-600 rounded-lg cursor-pointer;
 }

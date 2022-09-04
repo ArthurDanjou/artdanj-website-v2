@@ -1,5 +1,15 @@
+<script setup lang="ts">
+import { useTheme } from '~/composables/useTheme'
+
+const { getTextColor } = useTheme()
+
+useHead({
+  title: 'My uses - Arthur Danjou',
+})
+</script>
+
 <template>
-  <main>
+  <section>
     <PageTitle title="My Uses" />
-  </main>
+  </section>
 </template>

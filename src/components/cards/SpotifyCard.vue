@@ -1,41 +1,46 @@
 <script setup lang="ts">
-// todo add refresh
 import type { SpotifyData } from '~/types/types'
 
-const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
+const { data, refresh } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
+
+let refreshDataInterval: null | ReturnType<typeof setInterval> = null
+onMounted(() => {
+  // todo remove comment
+  // refreshDataInterval = setInterval(refresh, 5000)
+})
+onUnmounted(() => {
+  if (refreshDataInterval) {
+    clearInterval(refreshDataInterval)
+  }
+})
 </script>
 
 <template>
-  <Card width="2">
-    <CardLink v-if="data !== null" href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
-      <div class="flex justify-center">
-        <div>
-          <SpotifyIcon />
-        </div>
-        <div class="flex items-center">
-          <div class="flex">
-            <div class="flex items-center mx-8">
-              <div class="play-indicator" :style="data.is_playing ? 'animation: playAnimation 0.85s infinite' : ''" />
-              <div class="play-indicator" :style="data.is_playing ? 'animation: playAnimation 1.26s infinite' : ''" />
-              <div class="play-indicator" :style="data.is_playing ? 'animation: playAnimation 0.62s infinite' : ''" />
-              <div class="play-indicator" :style="data.is_playing ? 'animation: playAnimation 1.11s infinite' : ''" />
-              <div class="play-indicator" :style="data.is_playing ? 'animation: playAnimation 0.79s infinite' : ''" />
-              <div class="play-indicator" :style="data.is_playing ? 'animation: playAnimation 1s infinite' : ''" />
-            </div>
-            <!-- todo implement spotify connection -->
-            <div v-if="data.is_playing">
-              <h1 class="font-black text-3xl font-spotify">
-                {{ data.name }}
-              </h1>
-              <h1 class="text-stone-500 dark:text-gray-400 font-black text-xl font-spotify">
-                {{ data.author }}
-              </h1>
-            </div>
-            <p v-else class="text-2xl text-spotify">
-              Nothing playing right now.
-            </p>
+  <Card v-if="data !== null" width="2">
+    <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
+      <div class="flex flex-col justify-center gap-y-4 lg:(flex-row gap-x-12)">
+        <div class="flex items-center justify-center gap-x-8 lg:(flex-col gap-y-4)">
+          <SpotifyLogo />
+          <div v-if="data.is_playing" class="flex items-center justify-center h-30px">
+            <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
+            <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
+            <div class="play-indicator" style="animation: playAnimation 0.62s infinite" />
+            <div class="play-indicator" style="animation: playAnimation 1.11s infinite" />
+            <div class="play-indicator" style="animation: playAnimation 0.79s infinite" />
+            <div class="play-indicator" style="animation: playAnimation 1s infinite" />
           </div>
         </div>
+        <div v-if="data.is_playing" class="flex flex-col justify-center items-center">
+          <h1 class="font-black text-3xl font-spotify text-center">
+            {{ data.name }}
+          </h1>
+          <h1 class="text-gray-600 dark:text-gray-400 font-black text-xl font-spotify text-center">
+            {{ data.author }}
+          </h1>
+        </div>
+        <p v-else class="text-2xl text-spotify flex items-center text-center font-bold">
+          Nothing playing right now.
+        </p>
       </div>
       <CardButton />
     </CardLink>
@@ -44,7 +49,7 @@ const { data } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https:
 
 <style lang="scss">
 .play-indicator {
-  @apply w-3px h-3px mr-3px rounded-3px bg-spotify flex items-center justify-center;
+  @apply w-3px h-3px mr-3px rounded-3px bg-spotify;
 }
 
 @keyframes playAnimation {
