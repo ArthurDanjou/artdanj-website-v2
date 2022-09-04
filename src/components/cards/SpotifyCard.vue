@@ -5,7 +5,8 @@ const { data, refresh } = await useAsyncData<SpotifyData>('spotify', () => $fetc
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
-  refreshDataInterval = setInterval(refresh, 5000)
+  // todo remove comment
+  // refreshDataInterval = setInterval(refresh, 5000)
 })
 onUnmounted(() => {
   if (refreshDataInterval) {
