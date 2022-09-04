@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=DynaPuff:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DynaPuff:wght@500&display=swap');
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -40,4 +40,19 @@ body {
     opacity: 1;
     transform: scale(1, 1);
   }
+}
+
+// Change Scrollbar
+::-webkit-scrollbar {
+  @apply w-8px h-8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-stone-100 dark:bg-dark-900;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-stone-400 dark:bg-dark-600 rounded-lg cursor-pointer;
 }

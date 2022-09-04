@@ -25,10 +25,10 @@ const { data } = await useAsyncData('announce', () => $fetch('/api/announces'))
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bolder mb-8;
+  @apply text-3xl font-bold mb-8;
 }
 
 .subtitle {
-  @apply mt-4 mb-2 text-sm text-stone-500 dark:text-gray-400 uppercase;
+  @apply mt-4 mb-2 text-sm text-gray-600 dark:text-gray-400 uppercase;
 }
 </style>

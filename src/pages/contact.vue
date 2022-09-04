@@ -7,7 +7,7 @@ useHead({
   title: 'Contact me - Arthur Danjou',
 })
 
-//todo complete cards
+// todo complete cards
 </script>
 
 <template>
@@ -16,7 +16,7 @@ useHead({
     <CardContainer>
       <Card>
         <CardDiv>
-          <SpeakerIcon :class="getTextColor()" />
+          <MailBoxIcon :class="getTextColor()" />
           <h1 class="title">
             Get in touch ✨
           </h1>
@@ -68,10 +68,10 @@ useHead({
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bolder my-4;
+  @apply text-3xl font-bold my-4;
 }
 
 .subtitle {
-  @apply text-lg leading-5 text-stone-500 dark:text-gray-400 text-justify;
+  @apply text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify;
 }
 </style>
