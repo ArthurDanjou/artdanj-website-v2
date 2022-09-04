@@ -11,5 +11,6 @@ useHead({
 <template>
   <section>
     <PageTitle title="My Uses" />
+    <ContentDoc path="/uses" />
   </section>
 </template>
