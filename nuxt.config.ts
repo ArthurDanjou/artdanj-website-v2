@@ -1,5 +1,8 @@
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'url'
 import type { NuxtConfig } from 'nuxt'
 import { defineNuxtConfig } from 'nuxt'
+import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineNuxtConfig({
   srcDir: 'src',
@@ -13,7 +16,6 @@ export default defineNuxtConfig({
     'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
-    '@nuxtjs/i18n',
   ],
 
   css: [
@@ -34,28 +36,13 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
-  i18n: {
-    locales: [
-      {
-        code: 'en',
-        name: 'English',
-        iso: 'en-EN',
-        file: 'en-EN.json',
-      },
-      {
-        code: 'fr',
-        name: 'Français',
-        iso: 'fr-FR',
-        file: 'fr-FR.json',
-      },
+  vite: {
+    plugins: [
+      VueI18nVitePlugin({
+        include: [
+          resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json'),
+        ],
+      }),
     ],
-    strategy: 'no_prefix',
-    defaultLocale: 'en',
-    langDir: 'locales/',
-    lazy: true,
-    seo: true,
-    vueI18n: {
-      fallbackLocale: 'en',
-    },
   },
 } as NuxtConfig)

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
 const { getTheme } = useTheme()
 const year = computed(() => new Date().getFullYear())
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -12,14 +15,14 @@ const year = computed(() => new Date().getFullYear())
       </p>
       <div class="flex gap-x-1">
         <p class="subtitle">
-          Designed & Built by
+          {{ t('footer.builtBy') }}
         </p>
         <Link class="text-sm" link="https://twitter.com/arthurdanj" target="_blank" :color="getTheme">
           Arthur Danjou
         </Link>
       </div>
       <p class="subtitle flex gap-x-1 items-center">
-        Made with
+        {{ t('footer.madeWith') }}
         <a href="https://v3.nuxtjs.org/" target="_blank" class="group flex gap-x-1 items-center">
           <span class="font-bold duration-300 text-black group-hover:(text-nuxt decoration-nuxt-light) decoration-nuxt dark:(text-white group-hover:decoration-nuxt-dark) underline decoration-2 underline-offset-2">Nuxt 3</span><NuxtLogo />
         </a>

@@ -1,3 +1,6 @@
 {
-  "test": "test"
+  "footer": {
+    "builtBy": "Designed & Built by",
+    "madeWith": "Made with"
+  }
 }
