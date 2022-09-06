@@ -108,7 +108,7 @@ useHead({
 }
 
 .bg-photo {
-  background-image: url("~/assets/images/MainPhoto.png");
+  background-image: url("~/assets/images/hand.png");
   @apply bg-clip-content bg-center bg-contain border-dark border-2;
 }
 

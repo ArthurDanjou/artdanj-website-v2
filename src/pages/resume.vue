@@ -19,7 +19,7 @@ useHead({
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 auto-rows-fr">
           <Card>
             <CardDiv>
-              <img class="mb-4 w-1/2" src="~/assets/images/MeHappy.png" alt="Image of me">
+              <img class="mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
               <h1 class="font-bold text-3xl">
                 Arthur Danjou
               </h1>
