@@ -1,16 +1,19 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
 
 const { getTextColor } = useTheme()
 
+const { t } = useI18n()
+
 useHead({
-  title: 'My work - Arthur Danjou',
+  title: t('head.projects'),
 })
 </script>
 
 <template>
   <section>
-    <PageTitle title="All Works" />
+    <PageTitle title="projects" />
     <CardContainer>
       <Card>
         <CardLink href="/blog/123">

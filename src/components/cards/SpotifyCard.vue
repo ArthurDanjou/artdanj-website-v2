@@ -3,15 +3,14 @@ import type { SpotifyData } from '~/types/types'
 
 const { data, refresh } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
-let refreshDataInterval: null | ReturnType<typeof setInterval> = null
+const refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
   // todo remove comment
   // refreshDataInterval = setInterval(refresh, 5000)
 })
 onUnmounted(() => {
-  if (refreshDataInterval) {
+  if (refreshDataInterval)
     clearInterval(refreshDataInterval)
-  }
 })
 </script>
 

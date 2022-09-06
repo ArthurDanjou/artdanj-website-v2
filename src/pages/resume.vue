@@ -1,27 +1,30 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
 
 const { getTextColor } = useTheme()
 
+const { t } = useI18n()
+
 useHead({
-  title: 'My résumé - Arthur Danjou',
+  title: t('head.resume'),
 })
 </script>
 
 <template>
   <section>
-    <PageTitle title="My Resume" />
+    <PageTitle title="resume" />
     <div class="flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/4">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 auto-rows-fr">
           <Card>
             <CardDiv>
-              <img class="mb-4 w-1/2" src="~/assets/images/MeHappy.png" alt="Image of me">
+              <img class="mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
               <h1 class="font-bold text-3xl">
                 Arthur Danjou
               </h1>
               <h3 class="text-xl text-gray-600 dark:text-gray-400" :class="getTextColor()">
-                Software Engineer
+                {{ t('resume.job') }}
               </h3>
               <p class="text-md text-gray-600 dark:text-gray-400">
                 Paris, France
@@ -36,33 +39,44 @@ useHead({
         </div>
       </div>
       <div class="w-full mt-16 lg:(w-3/4 ml-16 mt-0)">
-        <ResumeTitle title="About Me" />
+        <ResumeTitle title="resume.titles.about" />
         <ResumeSection>
           <p class="text-gray-600 dark:text-gray-400 text-justify leading-6">
-            I am Arthur Danjou, a mathematics student at the Faculty of Sciences of Paris-Saclay but also a freelance software engineer. I am very interested in new technologies, development and computing. I am able to quickly learn new technologies to meet the needs of different projects. I am always motivated by a challenge and like to be well organized to produce consistent results. Being able to create software from scratch is a real source of motivation.
+            {{ t('resume.about.first') }}
             <br><br>
-            I love sharing my knowledge and helping others. I do a lot of research and read a lot of technical articles to discover new features. As long as I share my passions, I will continue to do this.
+            {{ t('resume.about.second') }}
           </p>
         </ResumeSection>
-        <ResumeTitle title="Work Experiences" />
+        <ResumeTitle title="resume.titles.work" />
         <ResumeSection class="space-y-4">
-          <!-- todo use nuxt content to fetch -->
+          <!-- todo use nuxt content to fetch and use TagComment -->
         </ResumeSection>
-        <ResumeTitle title="Education" />
+        <ResumeTitle title="resume.titles.education" />
         <ResumeSection>
           <!-- todo use nuxt content to fetch -->
         </ResumeSection>
-        <ResumeTitle title="Skills" />
+        <ResumeTitle title="resume.titles.skills" />
         <ResumeSection>
-          <Stack title="Languages" content="TypeScript, JavaScript, Python, Java, Rust" />
+          <Stack :title="t('resume.skills')" content="TypeScript, JavaScript, Python, Java, Rust" />
           <Stack title="FrontEnd" content="VueJs, NuxtJs, WindiCss, Sass, TauriApp, ViteJs" />
           <Stack title="BackEnd" content="AdonisJs, MariaDB, Redis, RabbitMQ" />
           <Stack title="DevOps" content="Git, Docker, CI/CD, Traefik, Kubernetes" />
         </ResumeSection>
-        <ResumeTitle title="Languages" />
-        <ResumeSection>
-          <strong>French</strong> (Native Speaker), <strong>English</strong> (Fluent)
-        </ResumeSection>
+        <ResumeTitle title="resume.titles.languages" />
+        <i18n-t keypath="resume.languages.text" tag="div" class="p-6 text-gray-600 dark:text-gray-400">
+          <template #french>
+            <strong class="text-black dark:text-white">{{ t('resume.languages.french') }}</strong>
+          </template>
+          <template #native>
+            {{ t('resume.languages.native') }}
+          </template>
+          <template #english>
+            <strong class="text-black dark:text-white">{{ t('resume.languages.english') }}</strong>
+          </template>
+          <template #fluent>
+            {{ t('resume.languages.fluent') }}
+          </template>
+        </i18n-t>
       </div>
     </div>
   </section>

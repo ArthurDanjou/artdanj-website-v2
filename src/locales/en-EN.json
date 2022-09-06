@@ -1,0 +1,133 @@
+{
+  "head": {
+    "index": "Arthur Danjou - Software Engineer",
+    "about": "About Me - Arthur Danjou",
+    "projects": "My Work - Arthur Danjou",
+    "contact": "Contact Me - Arthur Danjou",
+    "guestbook": "My Guestbook - Arthur Danjou",
+    "resume": "My Résumé - Arthur Danjou",
+    "uses": "My Uses - Arthur Danjou"
+  },
+  "titles": {
+    "contact": "Contact me",
+    "about": "About Me",
+    "uses": "My Uses",
+    "guestbook": "My Book",
+    "blog": "My Shelf",
+    "projects": "My Works",
+    "resume": "My Résumé"
+  },
+  "resume": {
+    "job": "Software Engineer",
+    "about": {
+      "first": "I am Arthur Danjou, a mathematics student at the Faculty of Sciences of Paris-Saclay but also a freelance software engineer. I am very interested in new technologies, development and computing. I am able to quickly learn new technologies to meet the needs of different projects. I am always motivated by a challenge and like to be well organized to produce consistent results. Being able to create software from scratch is a real source of motivation.",
+      "second": "I love sharing my knowledge and helping others. I do a lot of research and read a lot of technical articles to discover new features. As long as I share my passions, I will continue to do this."
+    },
+    "skills": "Languages",
+    "titles": {
+      "about": "About Me",
+      "education": "Education",
+      "work": "Work Experiences",
+      "skills": "Skills",
+      "languages": "Languages"
+    },
+    "languages": {
+      "french": "French",
+      "english": "English",
+      "native": "Native Speaker",
+      "fluent": "Fluent",
+      "text": "{french} ({native}), {english} ({fluent})"
+    }
+  },
+  "index": {
+    "main": "Hey, I am",
+    "description": "A software engineer passionate about networking, infrastructure and cloud but also a student living in France.",
+    "work": {
+      "dev": "Development",
+      "design": "Design",
+      "strategy": "Strategy",
+      "title": "What I do"
+    }
+  },
+  "about": {
+    "main": "Hey, I am",
+    "description": "A software engineer from France \uD83C\uDDEB\uD83C\uDDF7",
+    "about": {
+      "title": "About me",
+      "description": {
+        "text": "Software Engineer, but also student in {maths} \uD83C\uDF93. I live in Paris, France \uD83C\uDDEB\uD83C\uDDF7. I am {age} years old.\nI am passionate about {networking}, {infrastructure} and {cloud} ☁️. I use modern {technologies} to get the best possible result ✨.\nI love sharing my {knowledge} and helping others. Sometimes, I write technical {articles} on my blog and I always try to contribute to {opensource} projects \uD83D\uDC51.",
+        "maths": "mathematics",
+        "networking": "networking",
+        "infrastructure": "infrastructure",
+        "cloud": "cloud computing",
+        "technologies": "technologies",
+        "knowledge": "knowledge",
+        "articles": "articles",
+        "opensource": "open-source"
+      }
+    },
+    "interests": {
+      "title": "Interests",
+      "trips": "Trips"
+    },
+    "stats": {
+      "customers": "Satisfied customers",
+      "years": "Years",
+      "experience": "Of experience",
+      "hours": "Hours per year"
+    }
+  },
+  "contact": {
+    "main": {
+      "title": "Get in touch ✨",
+      "subtitle": "I’m always open to collaborate on a project or hear about an opportunity!"
+    },
+    "what": {
+      "dev": {
+        "title": "Development",
+        "subtitle": "..."
+      },
+      "strategy": {
+        "title": "Strategy",
+        "subtitle": "..."
+      },
+      "design": {
+        "title": "Design",
+        "subtitle": "..."
+      }
+    }
+  },
+  "uses": {
+    "card": {
+      "title": "How do I work ?",
+      "subtitle": "Discover my development environment"
+    }
+  },
+  "guestbook": {
+    "card": {
+      "title": "Sign my book",
+      "subtitle": "Do you want to leave a message ?"
+    }
+  },
+  "footer": {
+    "builtBy": "Designed & Built by",
+    "madeWith": "Made with"
+  },
+  "date": {
+    "today": "Today",
+    "months": {
+      "01": "January",
+      "02": "February",
+      "03": "March",
+      "04": "April",
+      "05": "May",
+      "06": "June",
+      "07": "July",
+      "08": "August",
+      "09": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    }
+  }
+}

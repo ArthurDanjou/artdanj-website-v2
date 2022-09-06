@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
 
 const props = defineProps({
@@ -24,17 +25,18 @@ const props = defineProps({
   },
 })
 
+const { t } = useI18n()
+
 const { getTheme, getTextColor } = useTheme()
 
 const getEndDate = computed(() => {
-  // todo translate
   return props.endDate === 'Today'
-    ? 'Today'
-    : `months.${props.endDate.split('/')[0]} ${props.endDate.split('/')[1]}` // `${t(`months.${props.endDate.split('/')[0]}`)} ${props.endDate.split('/')[1]}`
+    ? t('date.today')
+    : `${t(`months.${props.endDate.split('/')[0]}`)} ${props.endDate.split('/')[1]}`
 })
 
 const getBeginDate = computed(() => {
-  return `months.${props.beginDate.split('/')[0]} ${props.beginDate.split('/')[1]}`
+  return `${t(`months.${props.endDate.split('/')[0]}`)} ${props.endDate.split('/')[1]}`
 })
 </script>
 

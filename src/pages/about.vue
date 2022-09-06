@@ -1,17 +1,20 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
 const { getTextColor } = useTheme()
 
 const age = ref(19)
 
+const { t } = useI18n()
+
 useHead({
-  title: 'About me - Arthur Danjou',
+  title: t('head.about'),
 })
 </script>
 
 <template>
   <section>
-    <PageTitle title="About Me" />
+    <PageTitle title="about" />
     <CardContainer>
       <Card width="3">
         <CardDiv>
@@ -22,30 +25,51 @@ useHead({
       <Card>
         <CardDiv class="flex">
           <h1 class="font-bold text-4xl my-4 leading-12">
-            Hey, I am
+            {{ t('about.main') }}
             <span :class="getTextColor()">Arthur Danjou</span> 👋
           </h1>
           <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400 uppercase">
-            A software engineer from France 🇫🇷
+            {{ t('about.description') }}
           </h3>
         </CardDiv>
       </Card>
       <Card width="2">
         <CardDiv>
           <h1 class="text-3xl font-bold mb-4">
-            About me
+            {{ t('about.about.title') }}
           </h1>
-          <h3 class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
-            Software Engineer, but also student in <span :class="getTextColor()">Mathematics</span> 🎓. I live in Paris, France 🇫🇷. I am <span :class="getTextColor()">{{ age }}</span> years old.
-            I am passionate about <span :class="getTextColor()">networking</span>, <span :class="getTextColor()">infrastructure</span> and <span :class="getTextColor()">cloud computing</span> ☁️. I use modern <span :class="getTextColor()">technologies</span> to get the best possible result ✨.
-            I love sharing my <span :class="getTextColor()">knowledge</span> and helping others. Sometimes, I write technical <span :class="getTextColor()">articles</span> on my blog and I always try to contribute to <span :class="getTextColor()">open-source</span> projects 👑.
-          </h3>
+          <i18n-t keypath="about.about.description.text" tag="p" class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
+            <template #maths>
+              <span :class="getTextColor()">{{ t('about.about.description.maths') }}</span>
+            </template>
+            <template #age>
+              <span :class="getTextColor()">{{ age }}</span>
+            </template>
+            <template #networking>
+              <span :class="getTextColor()">{{ t('about.about.description.networking') }}</span>
+            </template>
+            <template #infrastructure>
+              <span :class="getTextColor()">{{ t('about.about.description.infrastructure') }}</span>
+            </template>
+            <template #cloud>
+              <span :class="getTextColor()">{{ t('about.about.description.cloud') }}</span>
+            </template>
+            <template #technologies>
+              <span :class="getTextColor()">{{ t('about.about.description.technologies') }}</span>
+            </template>
+            <template #knowledge>
+              <span :class="getTextColor()">{{ t('about.about.description.knowledge') }}</span>
+            </template>
+            <template #opensource>
+              <span :class="getTextColor()">{{ t('about.about.description.opensource') }}</span>
+            </template>
+          </i18n-t>
         </CardDiv>
       </Card>
       <Card width="2">
         <CardDiv>
           <h1 class="text-3xl font-bold mb-12">
-            Interests
+            {{ t('about.interests.title') }}
           </h1>
           <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
@@ -63,7 +87,7 @@ useHead({
             <div class="interest-item">
               <PlaneIcon :class="getTextColor()" />
               <p class="interests-title">
-                Trips
+                {{ t('about.interests.trips') }}
               </p>
             </div>
             <div class="interest-item">
@@ -100,7 +124,7 @@ useHead({
             </div>
           </div>
           <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
-            Clients satisfaits
+            {{ t('about.stats.customers') }}
           </p>
         </CardDiv>
       </Card>
@@ -112,12 +136,12 @@ useHead({
                 7
               </div>
               <div class="text-7xl inline leading-6 font-bold">
-                Ans
+                {{ t('about.stats.years') }}
               </div>
             </div>
           </div>
           <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
-            D'expérience
+            {{ t('about.stats.experience') }}
           </p>
         </CardDiv>
       </Card>
@@ -134,7 +158,7 @@ useHead({
             </div>
           </div>
           <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
-            Heures de pratique par an
+            {{ t('about.stats.hours') }}
           </p>
         </CardDiv>
       </Card>

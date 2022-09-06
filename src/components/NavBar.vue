@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useThemeStore } from '~/store/theme'
 import { THEMES } from '~/types/themes'
+import { useLang } from '~/composables/useLang'
 
 const color = useColorMode()
 
@@ -17,11 +19,12 @@ const toggleColorMode = () => {
   color.preference = color.value === 'dark' ? 'light' : 'dark'
 }
 
-const language = ref('fr')
+const { locale } = useI18n()
+const { setLang, getLang } = useLang()
 const changeLanguage = () => {
-  // todo import nuxt-i18n
   playAnimation('lang')
-  setTimeout(() => language.value = language.value === 'fr' ? 'en' : 'fr', 200)
+  locale.value = locale.value === 'en' ? 'fr' : 'en'
+  setLang(locale.value)
 }
 
 const themeStore = useThemeStore()
@@ -84,7 +87,7 @@ const isRoute = (route: string) => {
         <PaintBrushIcon class="text-2xl" />
       </div>
       <div id="lang" class="nav-link h-44px w-44px text-center" @click.prevent="changeLanguage()">
-        <TranslationIcon :lang="language" />
+        <TranslationIcon :lang="getLang()" />
       </div>
     </nav>
   </div>
