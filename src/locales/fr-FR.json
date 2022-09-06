@@ -1,6 +1,133 @@
 {
+  "head": {
+    "index": "Arthur Danjou - Ingénieur logiciel",
+    "about": "A Propos - Arthur Danjou",
+    "projects": "Mes travaux - Arthur Danjou",
+    "contact": "Me Contacter - Arthur Danjou",
+    "guestbook": "Mon Livre - Arthur Danjou",
+    "resume": "Mon Résumé - Arthur Danjou",
+    "uses": "Mes Usages - Arthur Danjou"
+  },
+  "titles": {
+    "contact": "Contact",
+    "about": "A Propos",
+    "uses": "Mes Usages",
+    "guestbook": "Mon Livre",
+    "blog": "Mon Blog",
+    "projects": "Mon Travail",
+    "resume": "Mon C.V."
+  },
+  "resume": {
+    "job": "Ingénieur Logiciel",
+    "about": {
+      "first": "Je suis Arthur Danjou, étudiant en mathématiques à la Faculté des Sciences de Paris-Saclay mais également ingénieur logiciel indépendant. Je suis très intéressé par les nouvelles technologies, le développement et l'informatique. Je suis capable d'apprendre rapidement de nouvelles technologies pour répondre aux besoins de différents projets. Je suis toujours motivé par un défi et j'aime être bien organisé pour produire des résultats constants. Pouvoir créer un logiciel à partir de rien est une vraie source de motivation.\n",
+      "second": "J'aime partager mes connaissances et aider les autres. Je fais beaucoup de recherches et lis beaucoup d'articles techniques pour découvrir de nouvelles fonctionnalités. Tant que je partage mes passions, je continuerai à le faire."
+    },
+    "skills": "Langues",
+    "titles": {
+      "about": "A propos",
+      "education": "Diplômes",
+      "work": "Expériences de travail",
+      "skills": "Compétences",
+      "languages": "Langues"
+    },
+    "languages": {
+      "french": "Français",
+      "english": "Anglais",
+      "native": "Langue natale",
+      "fluent": "Langue courante",
+      "text": "{french} ({native}), {english} ({fluent})"
+    }
+  },
+  "index": {
+    "main": "Salut, je suis",
+    "description": "Un ingénieur logiciel passionné par le réseau, l'infrastructure et le cloud mais aussi étudiant vivant en France.",
+    "work": {
+      "dev": "Développement",
+      "design": "Design",
+      "strategy": "Stratégie",
+      "title": "Ce que je fais"
+    }
+  },
+  "about": {
+    "main": "Salut, je suis",
+    "description": "Un ingénieur logiciel français \uD83C\uDDEB\uD83C\uDDF7",
+    "about": {
+      "title": "A mon propos",
+      "description": {
+        "text": "Ingénieur logiciel, mais aussi étudiant en {maths} \uD83C\uDF93. J'habite à Paris, France \uD83C\uDDEB\uD83C\uDDF7. J'ai {age} ans.\nJe suis passionné par le {networking}, l'{infrastructure} et le {cloud} ☁️. J'utilise des {technologies} modernes pour obtenir le meilleur résultat possible ✨.\nJ'aime partager mes {knowledge} et aider les autres. Parfois, j'écris des {articles} techniques sur mon blog et j'essaie toujours de contribuer à des projets {opensource} \uD83D\uDC51.",
+        "maths": "mathématiques",
+        "networking": "réseau",
+        "infrastructure": "infrastructure",
+        "cloud": "cloud computing",
+        "technologies": "technologies",
+        "knowledge": "savoirs",
+        "articles": "articles",
+        "opensource": "open-source"
+      }
+    },
+    "interests": {
+      "title": "Intérêts",
+      "trips": "Voyages"
+    },
+    "stats": {
+      "customers": "Clients satisfaits",
+      "years": "Ans",
+      "experience": "D'expérience",
+      "hours": "Heures par an"
+    }
+  },
+  "contact": {
+    "main": {
+      "title": "Entrer en contact ✨",
+      "subtitle": "Je suis toujours ouvert à collaborer sur un projet ou à entendre parler d'une opportunité !"
+    },
+    "what": {
+      "dev": {
+        "title": "Développment",
+        "subtitle": "..."
+      },
+      "strategy": {
+        "title": "Stratégie",
+        "subtitle": "..."
+      },
+      "design": {
+        "title": "Design",
+        "subtitle": "..."
+      }
+    }
+  },
+  "uses": {
+    "card": {
+      "title": "Comment je travaille ?",
+      "subtitle": "Découvrir mon environnement de développement"
+    }
+  },
+  "guestbook": {
+    "card": {
+      "title": "Signer mon livre",
+      "subtitle": "Voulez-vous laisser un message ?"
+    }
+  },
   "footer": {
     "builtBy": "Conçu et développé par",
     "madeWith": "Fait avec"
+  },
+  "date": {
+    "today": "Aujourd'hui",
+    "months": {
+      "01": "Janvier",
+      "02": "Février",
+      "03": "Mars",
+      "04": "Avril",
+      "05": "Mai",
+      "06": "Juin",
+      "07": "Juil",
+      "08": "Août",
+      "09": "Septembre",
+      "10": "Octobre",
+      "11": "Novembre",
+      "12": "Decembre"
+    }
   }
 }

@@ -1,12 +1,12 @@
 {
   "head": {
     "index": "Arthur Danjou - Software Engineer",
-    "about": "About me - Arthur Danjou",
-    "projects": "My work - Arthur Danjou",
-    "contact": "Contact me - Arthur Danjou",
-    "guestbook": "My guestbook - Arthur Danjou",
-    "resume": "My résumé - Arthur Danjou",
-    "uses": "My uses - Arthur Danjou"
+    "about": "About Me - Arthur Danjou",
+    "projects": "My Work - Arthur Danjou",
+    "contact": "Contact Me - Arthur Danjou",
+    "guestbook": "My Guestbook - Arthur Danjou",
+    "resume": "My Résumé - Arthur Danjou",
+    "uses": "My Uses - Arthur Danjou"
   },
   "titles": {
     "contact": "Contact me",
@@ -14,8 +14,8 @@
     "uses": "My Uses",
     "guestbook": "My Book",
     "blog": "My Shelf",
-    "projects": "All Works",
-    "resume": "My Resume"
+    "projects": "My Works",
+    "resume": "My Résumé"
   },
   "resume": {
     "job": "Software Engineer",
@@ -56,7 +56,7 @@
       "title": "About me",
       "description": {
         "text": "Software Engineer, but also student in {maths} \uD83C\uDF93. I live in Paris, France \uD83C\uDDEB\uD83C\uDDF7. I am {age} years old.\nI am passionate about {networking}, {infrastructure} and {cloud} ☁️. I use modern {technologies} to get the best possible result ✨.\nI love sharing my {knowledge} and helping others. Sometimes, I write technical {articles} on my blog and I always try to contribute to {opensource} projects \uD83D\uDC51.",
-        "maths": "Mathematics",
+        "maths": "mathematics",
         "networking": "networking",
         "infrastructure": "infrastructure",
         "cloud": "cloud computing",
@@ -99,8 +99,8 @@
   },
   "uses": {
     "card": {
-      "title": "How do I work",
-      "subtitle": "Discover my dev environment"
+      "title": "How do I work ?",
+      "subtitle": "Discover my development environment"
     }
   },
   "guestbook": {
@@ -117,7 +117,7 @@
     "today": "Today",
     "months": {
       "01": "January",
-      "02": "Debruary",
+      "02": "February",
       "03": "March",
       "04": "April",
       "05": "May",
