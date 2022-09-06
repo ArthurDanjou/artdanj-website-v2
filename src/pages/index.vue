@@ -50,10 +50,10 @@ useHead({
         <CardLink href="guestbook" class="flex flex-col justify-center">
           <BookIcon :class="getTextColor()" />
           <h3 class="subtitle">
-            {{ t('uses.guestbook.subtitle') }}
+            {{ t('guestbook.card.subtitle') }}
           </h3>
           <h1 class="title">
-            {{ t('uses.guestbook.title') }}
+            {{ t('guestbook.card.title') }}
           </h1>
           <CardButton />
         </CardLink>

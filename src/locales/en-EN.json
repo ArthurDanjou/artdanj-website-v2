@@ -4,7 +4,9 @@
     "about": "About me - Arthur Danjou",
     "projects": "My work - Arthur Danjou",
     "contact": "Contact me - Arthur Danjou",
-    "guestbook": "My guestbook - Arthur Danjou"
+    "guestbook": "My guestbook - Arthur Danjou",
+    "resume": "My résumé - Arthur Danjou",
+    "uses": "My uses - Arthur Danjou"
   },
   "titles": {
     "contact": "Contact me",
@@ -14,6 +16,28 @@
     "blog": "My Shelf",
     "projects": "All Works",
     "resume": "My Resume"
+  },
+  "resume": {
+    "job": "Software Engineer",
+    "about": {
+      "first": "I am Arthur Danjou, a mathematics student at the Faculty of Sciences of Paris-Saclay but also a freelance software engineer. I am very interested in new technologies, development and computing. I am able to quickly learn new technologies to meet the needs of different projects. I am always motivated by a challenge and like to be well organized to produce consistent results. Being able to create software from scratch is a real source of motivation.",
+      "second": "I love sharing my knowledge and helping others. I do a lot of research and read a lot of technical articles to discover new features. As long as I share my passions, I will continue to do this."
+    },
+    "skills": "Languages",
+    "titles": {
+      "about": "About Me",
+      "education": "Education",
+      "work": "Work Experiences",
+      "skills": "Skills",
+      "languages": "Languages"
+    },
+    "languages": {
+      "french": "French",
+      "english": "English",
+      "native": "Native Speaker",
+      "fluent": "Fluent",
+      "text": "{french} ({native}), {english} ({fluent})"
+    }
   },
   "index": {
     "main": "Hey, I am",
@@ -88,5 +112,22 @@
   "footer": {
     "builtBy": "Designed & Built by",
     "madeWith": "Made with"
+  },
+  "date": {
+    "today": "Today",
+    "months": {
+      "01": "January",
+      "02": "Debruary",
+      "03": "March",
+      "04": "April",
+      "05": "May",
+      "06": "June",
+      "07": "July",
+      "08": "August",
+      "09": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    }
   }
 }

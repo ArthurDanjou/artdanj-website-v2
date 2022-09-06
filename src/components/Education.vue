@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import {useI18n} from "vue-i18n";
+
+const { t } = useI18n()
 const props = defineProps({
   title: {
     type: String,
@@ -19,9 +22,8 @@ const props = defineProps({
 })
 
 const getEndDate = computed(() => {
-  // todo translate
   return props.endDate === 'Today'
-    ? 'date.today'
+    ? t('date.today')
     : `months.${props.endDate.split('/')[0]} ${props.endDate.split('/')[1]}`
 })
 
