@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { SpotifyData } from '~/types/types'
+import {useI18n} from "vue-i18n";
 
+const { t } = useI18n()
 const { data, refresh } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
 const refreshDataInterval: null | ReturnType<typeof setInterval> = null
@@ -38,7 +40,7 @@ onUnmounted(() => {
           </h1>
         </div>
         <p v-else class="text-2xl text-spotify flex items-center text-center font-bold">
-          Nothing playing right now.
+          {{ t('cards.spotify') }}
         </p>
       </div>
       <CardButton />

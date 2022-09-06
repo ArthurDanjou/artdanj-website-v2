@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
 
 const { getTextColor } = useTheme()
 
+const { t } = useI18n()
+// todo insert french and english text
 const { data } = await useAsyncData('announce', () => $fetch('/api/announces'))
 </script>
 
@@ -11,13 +14,13 @@ const { data } = await useAsyncData('announce', () => $fetch('/api/announces'))
     <CardDiv>
       <SpeakerIcon :class="getTextColor()" />
       <h3 class="subtitle">
-        What are the latest news ?
+        {{ t('cards.announces.title') }}
       </h3>
       <h1 v-if="data" class="title">
         {{ data.content }}
       </h1>
       <h1 v-else class="title">
-        Welcome to the website !
+        {{ t('cards.announces.default') }}
       </h1>
     </CardDiv>
   </Card>

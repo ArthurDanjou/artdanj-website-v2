@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
 const { getTheme, getTextColor } = useTheme()
+const { t } = useI18n()
 </script>
 
 <template>
@@ -8,7 +10,7 @@ const { getTheme, getTextColor } = useTheme()
     <CardLink href="mailto:contact@arthurdanjou.fr">
       <EmailIcon :class="getTextColor()" />
       <h3 class="subtitle">
-        Just want to email me ?
+        {{ t('cards.mail') }}
       </h3>
       <Link class="title" link="mailto:contact@arthurdanjou.fr" :color="getTheme" :group="true">
         contact@arthurdanjou.fr

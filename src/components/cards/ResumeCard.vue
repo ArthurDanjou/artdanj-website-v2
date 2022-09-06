@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
 const { getTextColor } = useTheme()
+const { t } = useI18n()
 </script>
 
 <template>
@@ -8,10 +10,10 @@ const { getTextColor } = useTheme()
     <CardLink href="resume" class="flex flex-col justify-center">
       <PersonBoxIcon :class="getTextColor()" />
       <h3 class="subtitle">
-        Learn more about me
+        {{ t('cards.resume.subtitle') }}
       </h3>
       <h1 class="title">
-        See my resume
+        {{ t('cards.resume.title') }}
       </h1>
       <CardButton />
     </CardLink>
