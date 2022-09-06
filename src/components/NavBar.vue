@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useThemeStore } from '~/store/theme'
 import { THEMES } from '~/types/themes'
+import {useLang} from "~/composables/useLang";
 
 const color = useColorMode()
 
@@ -19,9 +20,11 @@ const toggleColorMode = () => {
 }
 
 const { locale } = useI18n()
+const { setLang, getLang } = useLang()
 const changeLanguage = () => {
   playAnimation('lang')
-  locale.value = locale.value === 'fr' ? 'en' : 'fr'
+  locale.value = locale.value === 'en' ? 'fr' : 'en'
+  setLang(locale.value)
 }
 
 const themeStore = useThemeStore()
@@ -84,7 +87,7 @@ const isRoute = (route: string) => {
         <PaintBrushIcon class="text-2xl" />
       </div>
       <div id="lang" class="nav-link h-44px w-44px text-center" @click.prevent="changeLanguage()">
-        <TranslationIcon :lang="locale" />
+        <TranslationIcon :lang="getLang()" />
       </div>
     </nav>
   </div>
