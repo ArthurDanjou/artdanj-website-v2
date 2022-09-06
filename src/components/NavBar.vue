@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useThemeStore } from '~/store/theme'
 import { THEMES } from '~/types/themes'
-import {useLang} from "~/composables/useLang";
+import { useLang } from '~/composables/useLang'
 
 const color = useColorMode()
 

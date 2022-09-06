@@ -1,8 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
-import {useI18n} from "vue-i18n";
-
-const { t } = useI18n()
 
 const props = defineProps({
   title: {
@@ -27,12 +25,14 @@ const props = defineProps({
   },
 })
 
+const { t } = useI18n()
+
 const { getTheme, getTextColor } = useTheme()
 
 const getEndDate = computed(() => {
   return props.endDate === 'Today'
     ? t('date.today')
-    :`${t(`months.${props.endDate.split('/')[0]}`)} ${props.endDate.split('/')[1]}`
+    : `${t(`months.${props.endDate.split('/')[0]}`)} ${props.endDate.split('/')[1]}`
 })
 
 const getBeginDate = computed(() => {

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import {useI18n} from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
 const props = defineProps({
   title: {
     type: String,
@@ -20,7 +19,7 @@ const props = defineProps({
     required: true,
   },
 })
-
+const { t } = useI18n()
 const getEndDate = computed(() => {
   return props.endDate === 'Today'
     ? t('date.today')

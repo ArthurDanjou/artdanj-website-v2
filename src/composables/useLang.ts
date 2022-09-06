@@ -1,4 +1,4 @@
-import {useCookie} from "#app";
+import { useCookie } from '#app'
 
 export function useLang() {
   const cookie = useCookie('lang', {
