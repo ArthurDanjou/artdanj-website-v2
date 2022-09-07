@@ -77,7 +77,7 @@ useHead({
               </p>
             </div>
             <div class="flex flex-col items-center">
-              <Icon name="uil:comment" size="42px" :class="getTextColor()"/>
+              <Icon name="uil:comment" size="42px" :class="getTextColor()" />
               <p class="subtitle">
                 {{ t('index.work.strategy') }}
               </p>

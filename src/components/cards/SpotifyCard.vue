@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import type { SpotifyData } from '~/types/types'
-import {useI18n} from "vue-i18n";
 
 const { t } = useI18n()
 const { data, refresh } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))

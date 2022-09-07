@@ -55,7 +55,7 @@ useHead({
       </Card>
       <Card order="last">
         <CardDiv>
-          <Icon name="uil:comment" size="42px" :class="getTextColor()"/>
+          <Icon name="uil:comment" size="42px" :class="getTextColor()" />
           <h1 class="title">
             {{ t('contact.what.strategy.title') }}
           </h1>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
-import {useI18n} from "vue-i18n";
 const { getTheme, getTextColor } = useTheme()
 const { t } = useI18n()
 </script>

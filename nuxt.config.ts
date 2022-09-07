@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
     '@nuxt/content',
-    'nuxt-icon'
+    'nuxt-icon',
   ],
 
   css: [
@@ -35,6 +35,10 @@ export default defineNuxtConfig({
     highlight: {
       theme: 'dracula',
     },
+    locales: [
+      'fr',
+      'en'
+    ]
   },
 
   colorMode: {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import type { FormData } from '~/types/types'
 import { useTheme } from '~/composables/useTheme'
-import {useI18n} from "vue-i18n";
 
 const { t } = useI18n()
 const { getTextColor, getBackgroundColor, getBackgroundHoverColor } = useTheme()

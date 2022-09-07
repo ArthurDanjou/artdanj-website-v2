@@ -14,6 +14,10 @@ useHead({
 <template>
   <section>
     <PageTitle title="uses" />
-    <ContentDoc path="/uses" />
+    <ContentDoc path="/uses.md">
+      <template #not-found>
+        <h1>Document not found</h1>
+      </template>
+    </ContentDoc>
   </section>
 </template>
