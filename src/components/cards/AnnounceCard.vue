@@ -12,7 +12,7 @@ const { data } = await useAsyncData('announce', () => $fetch('/api/announces'))
 <template>
   <Card width="2">
     <CardDiv>
-      <SpeakerIcon :class="getTextColor()" />
+      <Icon name="tabler:speakerphone" size="42px" :class="getTextColor()" />
       <h3 class="subtitle">
         {{ t('cards.announces.title') }}
       </h3>

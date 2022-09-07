@@ -73,37 +73,37 @@ useHead({
           </h1>
           <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
-              <CPUIcon :class="getTextColor()" />
+              <Icon name="ph:cpu-bold" size="40px" :class="getTextColor()" />
               <p class="interests-title">
                 Tech.
               </p>
             </div>
             <div class="interest-item">
-              <ServerIcon :class="getTextColor()" />
+              <Icon name="uil:server" size="42px" :class="getTextColor()" />
               <p class="interests-title">
                 DevOps
               </p>
             </div>
             <div class="interest-item">
-              <PlaneIcon :class="getTextColor()" />
+              <Icon name="ph:airplane-tilt-bold" size="42px" :class="getTextColor()" />
               <p class="interests-title">
                 {{ t('about.interests.trips') }}
               </p>
             </div>
             <div class="interest-item">
-              <CameraIcon :class="getTextColor()" />
+              <Icon name="ph:camera-bold" size="42px" :class="getTextColor()" />
               <p class="interests-title">
                 Photo
               </p>
             </div>
             <div class="interest-item">
-              <CloudIcon :class="getTextColor()" />
+              <Icon name="ic:outline-wb-cloudy" size="42px" :class="getTextColor()" />
               <p class="interests-title">
                 Cloud
               </p>
             </div>
             <div class="interest-item">
-              <FunctionIcon :class="getTextColor()" />
+              <Icon name="mdi:function-variant" size="42px" :class="getTextColor()" />
               <p class="interests-title">
                 Maths.
               </p>
@@ -186,7 +186,7 @@ useHead({
 
 <style scoped lang="scss">
 .interest-item {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center justify-center;
 }
 
 .interests-title {

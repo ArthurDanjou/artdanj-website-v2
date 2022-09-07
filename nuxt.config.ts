@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
+    'nuxt-icon'
   ],
 
   css: [

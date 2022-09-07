@@ -8,7 +8,7 @@ const { t } = useI18n()
 <template>
   <Card width="2">
     <CardLink href="mailto:contact@arthurdanjou.fr">
-      <EmailIcon :class="getTextColor()" />
+      <Icon name="material-symbols:alternate-email-rounded" size="42px" :class="getTextColor()" />
       <h3 class="subtitle">
         {{ t('cards.mail') }}
       </h3>

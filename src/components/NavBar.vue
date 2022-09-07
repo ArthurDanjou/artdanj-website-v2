@@ -56,7 +56,7 @@ const isRoute = (route: string) => {
     <transition name="arrow">
       <div v-if="isBlog" class="cursor-pointer nav-container group" @click.prevent="goBack">
         <div class="h-44px w-44px p-2 duration-300 rounded-xl bg-stone-200 text-black dark:(text-white bg-dark-900) text-black dark:text-white flex items-center justify-center">
-          <ArrowLeftIcon class="duration-500 group-hover:opacity-50 text-2xl" />
+          <Icon name="humbleicons:arrow-go-back" size="24px" class="duration-500 group-hover:opacity-50 text-2xl" />
         </div>
       </div>
     </transition>
@@ -81,13 +81,15 @@ const isRoute = (route: string) => {
       </NuxtLink>
       <div class="bg-stone-200 dark:bg-dark-300 w-1px mx-2 h-40px flex-shrink-0" />
       <div id="color" class="nav-link h-44px w-44px" @click.prevent="toggleColorMode()">
-        <ColorModeIcon :light="color.preference !== 'light'" class="text-2xl" />
+        <Icon v-if="color.preference === 'light'" name="ph:sun-bold" size="24px" />
+        <Icon v-else name="pepicons:moon" size="24px" />
       </div>
       <div id="theme" class="nav-link h-44px w-44px" @click.prevent="toggleColorTheme()">
-        <PaintBrushIcon class="text-2xl" />
+        <Icon name="ph:paint-brush-bold" size="24px" />
       </div>
       <div id="lang" class="nav-link h-44px w-44px text-center" @click.prevent="changeLanguage()">
-        <TranslationIcon :lang="getLang()" />
+        <Icon v-if="getLang() === 'fr'" name="twemoji:flag-france" size="24px" />
+        <Icon v-else name="twemoji:flag-united-kingdom" size="24px" />
       </div>
     </nav>
   </div>

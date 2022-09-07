@@ -8,7 +8,7 @@ const { t } = useI18n()
 <template>
   <Card order="last">
     <CardLink href="resume" class="flex flex-col justify-center">
-      <PersonBoxIcon :class="getTextColor()" />
+      <Icon name="fluent:person-12-regular" size="42px" :class="getTextColor()" />
       <h3 class="subtitle">
         {{ t('cards.resume.subtitle') }}
       </h3>

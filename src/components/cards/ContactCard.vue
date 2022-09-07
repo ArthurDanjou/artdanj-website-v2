@@ -9,7 +9,7 @@ const { t } = useI18n()
 <template>
   <Card order="last">
     <CardLink href="contact">
-      <MailBoxIcon :class="getTextColor()" />
+      <Icon name="material-symbols:inbox-outline" size="42px" :class="getTextColor()" />
       <h3 class="subtitle">
         {{ t('cards.contact.subtitle') }}
       </h3>
