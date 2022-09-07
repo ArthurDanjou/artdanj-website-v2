@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
 const { getTheme, getTextColor } = useTheme()
+const { t } = useI18n()
 </script>
 
 <template>
   <Card width="2">
     <CardLink href="mailto:contact@arthurdanjou.fr">
-      <EmailIcon :class="getTextColor()" />
+      <Icon name="material-symbols:alternate-email-rounded" size="42px" :class="getTextColor()" />
       <h3 class="subtitle">
-        Just want to email me ?
+        {{ t('cards.mail') }}
       </h3>
       <Link class="title" link="mailto:contact@arthurdanjou.fr" :color="getTheme" :group="true">
         contact@arthurdanjou.fr

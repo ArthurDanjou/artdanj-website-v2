@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
+
 const { getTextColor } = useTheme()
+const { t } = useI18n()
 </script>
 
 <template>
   <Card order="last">
     <CardLink href="contact">
-      <MailBoxIcon :class="getTextColor()" />
+      <Icon name="material-symbols:inbox-outline" size="42px" :class="getTextColor()" />
       <h3 class="subtitle">
-        Let's work together
+        {{ t('cards.contact.subtitle') }}
       </h3>
       <h1 class="title">
-        Get in touch ✨
+        {{ t('cards.contact.title') }}
       </h1>
       <CardButton />
     </CardLink>

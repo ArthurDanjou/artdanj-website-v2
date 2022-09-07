@@ -18,6 +18,30 @@
     "projects": "Mon Travail",
     "resume": "Mon C.V."
   },
+  "cards": {
+    "announces": {
+      "title": "Quelles sont les dernières nouvelles ?",
+      "default": "Bienvenue sur mon nouveau site !"
+    },
+    "contact": {
+      "title": "Entrons en contact ✨",
+      "subtitle": "Travaillons ensemble"
+    },
+    "form": {
+      "success": "Votre message a été envoyé avec succès ✅",
+      "error": "Le système a rencontré une erreur. Veuillez réessayer plus tard. ❌",
+      "name": "Nom",
+      "email": "Email",
+      "content": "Ecrivez votre message",
+      "submit": "Envoyer votre message"
+    },
+    "mail": "Vous voulez juste m'envoyer un e-mail ?",
+    "spotify": "Rien en cours de lecture pour le moment.",
+    "resume": {
+      "title": "Voir mon CV",
+      "subtitle": "En savoir plus sur moi"
+    }
+  },
   "resume": {
     "job": "Ingénieur Logiciel",
     "about": {
@@ -80,7 +104,7 @@
   },
   "contact": {
     "main": {
-      "title": "Entrer en contact ✨",
+      "title": "Entrons en contact ✨",
       "subtitle": "Je suis toujours ouvert à collaborer sur un projet ou à entendre parler d'une opportunité !"
     },
     "what": {

@@ -5,18 +5,6 @@ body {
   @apply bg-stone-100 dark:bg-dark-900 dark:text-white duration-300;
 }
 
-.card-icon {
-  @apply h-48px w-48px md:(h-64px w-64px);
-}
-
-.interest-icon {
-  @apply h-32px w-32px md:(h-48px w-48px);
-}
-
-.social-icon {
-  @apply h-100px w-100px md:(h-128px w-128px)
-}
-
 // Page transition animation
 .page-enter-active, .page-leave-active,
 .layout-enter-active, .layout-leave-active {

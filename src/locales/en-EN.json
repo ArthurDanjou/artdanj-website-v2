@@ -18,6 +18,30 @@
     "projects": "My Works",
     "resume": "My Résumé"
   },
+  "cards": {
+    "announces": {
+      "title": "What are the latest news ?",
+      "default": "Welcome to my new website !"
+    },
+    "contact": {
+      "title": "Get in touch ✨",
+      "subtitle": "Let's work together"
+    },
+    "form": {
+      "success": "Your message was successfully sent ✅",
+      "error": "The system encountered an error. Please try again later. ❌",
+      "name": "Name",
+      "email": "Email",
+      "content": "Write your message",
+      "submit": "Send your message"
+    },
+    "mail": "Just want to email me ?",
+    "spotify": "Nothing playing right now.",
+    "resume": {
+      "title": "See my resume",
+        "subtitle": "Learn more about me"
+    }
+  },
   "resume": {
     "job": "Software Engineer",
     "about": {

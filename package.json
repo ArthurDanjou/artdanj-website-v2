@@ -30,6 +30,7 @@
     "@vueuse/nuxt": "^9.1.1",
     "eslint": "^8.23.0",
     "nuxt": "rc",
+    "nuxt-icon": "^0.1.5",
     "nuxt-windicss": "^2.5.1",
     "prisma": "^4.3.1",
     "sass": "^1.54.8",

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { SpotifyData } from '~/types/types'
+import {useI18n} from "vue-i18n";
 
+const { t } = useI18n()
 const { data, refresh } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
 const refreshDataInterval: null | ReturnType<typeof setInterval> = null
@@ -19,7 +21,7 @@ onUnmounted(() => {
     <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
       <div class="flex flex-col justify-center gap-y-4 lg:(flex-row gap-x-12)">
         <div class="flex items-center justify-center gap-x-8 lg:(flex-col gap-y-4)">
-          <SpotifyLogo />
+          <Icon name="mdi:spotify" size="100px" style="color: #1DB954" />
           <div v-if="data.is_playing" class="flex items-center justify-center h-30px">
             <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
             <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
@@ -38,7 +40,7 @@ onUnmounted(() => {
           </h1>
         </div>
         <p v-else class="text-2xl text-spotify flex items-center text-center font-bold">
-          Nothing playing right now.
+          {{ t('cards.spotify') }}
         </p>
       </div>
       <CardButton />

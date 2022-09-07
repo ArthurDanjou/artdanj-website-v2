@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { FormData } from '~/types/types'
 import { useTheme } from '~/composables/useTheme'
+import {useI18n} from "vue-i18n";
 
+const { t } = useI18n()
 const { getTextColor, getBackgroundColor, getBackgroundHoverColor } = useTheme()
 
 const form = ref({
@@ -43,7 +45,7 @@ const handleForm = async () => {
         <img class="w-1/2" src="~/assets/images/partying.png" alt="Image of me feasting">
       </div>
       <div class="text-xl text-spotify text-center">
-        Your message was successfully sent ✅
+        {{ t('cards.form.success') }}
       </div>
     </CardDiv>
     <CardDiv v-else-if="sent.error">
@@ -51,7 +53,7 @@ const handleForm = async () => {
         <img class="w-1/2" src="~/assets/images/crying.png" alt="Image of me sad">
       </div>
       <div class="text-xl text-red-500 text-center">
-        The system encountered an error. Please try again later. ❌
+        {{ t('cards.form.error') }}
       </div>
     </CardDiv>
     <CardDiv v-else>
@@ -60,21 +62,21 @@ const handleForm = async () => {
           <input
             v-model="form.name"
             type="text"
-            placeholder="Name"
+            :placeholder="t('cards.form.name')"
             required
             class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
           >
           <input
             v-model="form.email"
             type="email"
-            placeholder="Email"
+            :placeholder="t('cards.form.email')"
             required
             class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
           >
         </div>
         <textarea
           v-model="form.content"
-          placeholder="Type your message"
+          :placeholder="t('cards.form.content')"
           class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300 invalid:bg-red-600 required:bg-red-600"
         />
         <div class="w-full">
@@ -82,7 +84,7 @@ const handleForm = async () => {
             type="submit"
             class="w-full p-4 rounded-md cursor-pointer font-bold text-black"
             :class="[getBackgroundColor(), getBackgroundHoverColor()]"
-            value="Send your message"
+            :value="t('cards.form.submit')"
             @click.prevent="handleForm()"
           >
         </div>
@@ -94,7 +96,7 @@ const handleForm = async () => {
 <style scoped lang="scss">
 @keyframes fiestAnimation {
   0% {
-
+    // todo do animation
   }
 }
 </style>

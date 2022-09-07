@@ -32,7 +32,7 @@ useHead({
       <ResumeCard />
       <Card>
         <CardLink href="uses" class="flex flex-col justify-center">
-          <LampIcon :class="getTextColor()" />
+          <Icon name="lucide:lamp-desk" size="42px" :class="getTextColor()" />
           <h3 class="subtitle">
             {{ t('uses.card.subtitle') }}
           </h3>
@@ -48,7 +48,7 @@ useHead({
       </Card>
       <Card>
         <CardLink href="guestbook" class="flex flex-col justify-center">
-          <BookIcon :class="getTextColor()" />
+          <Icon name="icon-park-outline:bookshelf" size="42px" :class="getTextColor()" />
           <h3 class="subtitle">
             {{ t('guestbook.card.subtitle') }}
           </h3>
@@ -65,19 +65,19 @@ useHead({
         <CardDiv>
           <div class="flex w-full justify-between">
             <div class="flex flex-col items-center">
-              <DevIcon :class="getTextColor()" />
+              <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
               <p class="subtitle">
                 {{ t('index.work.dev') }}
               </p>
             </div>
             <div class="flex flex-col items-center">
-              <DesignIcon :class="getTextColor()" />
+              <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
               <p class="subtitle">
                 {{ t('index.work.design') }}
               </p>
             </div>
             <div class="flex flex-col items-center">
-              <CommentIcon :class="getTextColor()" />
+              <Icon name="uil:comment" size="42px" :class="getTextColor()"/>
               <p class="subtitle">
                 {{ t('index.work.strategy') }}
               </p>

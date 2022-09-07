@@ -19,7 +19,7 @@ useHead({
     <CardContainer>
       <Card>
         <CardDiv>
-          <MailBoxIcon :class="getTextColor()" />
+          <Icon name="material-symbols:inbox-outline" size="42px" :class="getTextColor()" />
           <h1 class="title">
             {{ t('contact.main.title') }}
           </h1>
@@ -32,7 +32,7 @@ useHead({
       <GitHubCard order="normal" />
       <Card order="last">
         <CardDiv>
-          <DevIcon :class="getTextColor()" />
+          <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
           <h1 class="title">
             {{ t('contact.what.dev.title') }}
           </h1>
@@ -44,7 +44,7 @@ useHead({
       <TwitterCard order="normal" />
       <Card order="last">
         <CardDiv>
-          <DesignIcon :class="getTextColor()" />
+          <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
           <h1 class="title">
             {{ t('contact.what.design.title') }}
           </h1>
@@ -55,7 +55,7 @@ useHead({
       </Card>
       <Card order="last">
         <CardDiv>
-          <CommentIcon :class="getTextColor()" />
+          <Icon name="uil:comment" size="42px" :class="getTextColor()"/>
           <h1 class="title">
             {{ t('contact.what.strategy.title') }}
           </h1>
