@@ -24,7 +24,7 @@
       "default": "Bienvenue sur mon nouveau site !"
     },
     "contact": {
-      "title": "Entrer en contact ✨",
+      "title": "Entrons en contact ✨",
       "subtitle": "Travaillons ensemble"
     },
     "form": {
@@ -104,7 +104,7 @@
   },
   "contact": {
     "main": {
-      "title": "Entrer en contact ✨",
+      "title": "Entrons en contact ✨",
       "subtitle": "Je suis toujours ouvert à collaborer sur un projet ou à entendre parler d'une opportunité !"
     },
     "what": {
