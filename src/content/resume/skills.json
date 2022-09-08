@@ -1,0 +1,20 @@
+{
+  "body": [
+    {
+      "name": "skill.languages",
+      "skills": []
+    },
+    {
+      "name": "skill.frontend",
+      "skills": []
+    },
+    {
+      "name": "skill.backend",
+      "skills": []
+    },
+    {
+      "name": "skill.devops",
+      "skills": []
+    }
+  ]
+}
