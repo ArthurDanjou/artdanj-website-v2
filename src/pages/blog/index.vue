@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
+import type { Post } from '~/types/content'
 
 const { getTextColor } = useTheme()
 
-const { data: posts } = await useAsyncData('posts', () => queryContent('/posts').find())
+const { data: posts } = await useAsyncData('posts', () => queryContent<Post[]>('/posts')
+  .only(['title', 'slug', 'description', 'publishedAt', 'cover', 'readingMins'])
+  .find())
 
 const { t } = useI18n()
 
@@ -16,11 +19,10 @@ useHead({
 <template>
   <section>
     <PageTitle title="blog" />
-    {{ posts}}
     <div class="flex justify-center">
-      <div class="grid grid-cols-2 gap-6 grid-flow-row-dense auto-">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 grid-flow-row-dense">
         <Card v-for="post in posts" :key="post.slug">
-          <CardLink href="/blog/123">
+          <CardLink :href="`/blog/${post.slug}`">
             <h1 class="text-3xl font-bold" :class="getTextColor()">
               {{ post.title }}
             </h1>
@@ -36,8 +38,8 @@ useHead({
                   Read more <Icon name="material-symbols:add-circle-outline-rounded" size="28px" class="ml-2" />
                 </div>
               </button>
-              <p class="ml-4" :class="getTextColor()">
-                {{ post.date }}
+              <p class="ml-4">
+                <span :class="getTextColor()">{{ post.publishedAt }}</span> - <span :class="getTextColor()">{{ post.readingMins }}</span> min.
               </p>
             </div>
           </CardLink>

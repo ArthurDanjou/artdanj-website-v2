@@ -22,6 +22,8 @@ export default defineNuxtConfig({
 
   css: [
     '@/assets/css/style.scss',
+    '@/assets/css/scrollbar.scss',
+    '@/assets/css/prose.scss',
   ],
 
   components: [
@@ -37,8 +39,8 @@ export default defineNuxtConfig({
     },
     locales: [
       'fr',
-      'en'
-    ]
+      'en',
+    ],
   },
 
   colorMode: {

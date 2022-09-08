@@ -1,38 +1,38 @@
-import {MarkdownParsedContent, ParsedContent} from "@nuxt/content/dist/runtime/types";
+import type { MarkdownParsedContent, ParsedContent } from '@nuxt/content/dist/runtime/types'
 
 export interface Post extends MarkdownParsedContent {
-  slug: string,
-  title: string,
-  description: string,
-  readingMins: number,
-  publishedAt: Date,
-  modifiedAt: Date,
+  slug: string
+  title: string
+  description: string
+  readingMins: number
+  publishedAt: Date
+  modifiedAt: Date
+  cover: string
 }
 
 export interface Project extends ParsedContent {
-  name: string,
-  description: string,
-  link: string,
-  image: string,
+  name: string
+  description: string
+  link: string
+  image: string
 }
 
 export interface WorkExperience extends ParsedContent {
-  title: string,
-  description: string,
-  company: string,
-  location: string,
-  companyLink?: string,
-  startDate: Date,
-  endDate: Date | 'Today',
-  cover: string,
+  title: string
+  description: string
+  company: string
+  location: string
+  companyLink?: string
+  startDate: Date
+  endDate: Date | 'Today'
 }
 
 export interface Education extends ParsedContent {
-  title: string,
-  description: string,
-  location: string,
-  startDate: Date,
-  endDate: Date | 'Today',
+  title: string
+  description: string
+  location: string
+  startDate: Date
+  endDate: Date | 'Today'
 }
 
 export interface JsonParsedContent<T> extends ParsedContent {
@@ -44,6 +44,6 @@ interface Skill {
 }
 
 export interface SkillList extends ParsedContent {
-  name: string,
+  name: string
   skills: Skill[]
 }

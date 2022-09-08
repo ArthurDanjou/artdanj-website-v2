@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { formatDate } from '~/logic/date'
 
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: 'Title',
@@ -19,16 +19,6 @@ const props = defineProps({
     required: true,
   },
 })
-const { t } = useI18n()
-const getEndDate = computed(() => {
-  return props.endDate === 'Today'
-    ? t('date.today')
-    : `months.${props.endDate.split('/')[0]} ${props.endDate.split('/')[1]}`
-})
-
-const getBeginDate = computed(() => {
-  return `months.${props.beginDate.split('/')[0]} ${props.beginDate.split('/')[1]}`
-})
 </script>
 
 <template>
@@ -38,7 +28,7 @@ const getBeginDate = computed(() => {
         <strong>{{ title }}</strong>, {{ location }}
       </h1>
       <h3 class="my-1 text-sm text-gray-500 dark:text-gray-400">
-        {{ 'date.from' }} {{ getBeginDate }} {{ 'date.to' }} {{ getEndDate }}
+        {{ 'date.from' }} {{ formatDate(beginDate) }} {{ 'date.to' }} {{ formatDate(endDate) }}
       </h3>
     </div>
     <p class="text-justify text-md leading-5 dark:text-gray-300">

@@ -1,6 +1,6 @@
-import {useAsyncData} from "#app";
-import {queryContent} from "@nuxt/content/dist/runtime/composables/query";
-import {Education, JsonParsedContent, Post, Project, SkillList, WorkExperience} from "~/types/content";
+import { queryContent } from '@nuxt/content/dist/runtime/composables/query'
+import { useAsyncData } from '#app'
+import type { Education, JsonParsedContent, Post, Project, SkillList, WorkExperience } from '~/types/content'
 
 export const useProjects = () => {
   return useAsyncData('content:projects', () =>
@@ -32,6 +32,6 @@ export const usePosts = () => {
       .sort({
         publishedAt: -1,
       })
-      .find()
+      .find(),
   )
 }

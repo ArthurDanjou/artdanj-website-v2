@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { formatDate } from '~/logic/date'
 import { useTheme } from '~/composables/useTheme'
 
-const props = defineProps({
+defineProps({
   title: {
     type: String,
   },
@@ -25,19 +25,7 @@ const props = defineProps({
   },
 })
 
-const { t } = useI18n()
-
 const { getTheme, getTextColor } = useTheme()
-
-const getEndDate = computed(() => {
-  return props.endDate === 'Today'
-    ? t('date.today')
-    : `${t(`months.${props.endDate.split('/')[0]}`)} ${props.endDate.split('/')[1]}`
-})
-
-const getBeginDate = computed(() => {
-  return `${t(`months.${props.endDate.split('/')[0]}`)} ${props.endDate.split('/')[1]}`
-})
 </script>
 
 <template>
@@ -51,11 +39,11 @@ const getBeginDate = computed(() => {
       <h1 v-else class="text-lg">
         <span class="font-medium text-black dark:text-white">{{ company }}</span> - <span class="text-gray-700 dark:text-gray-300">{{ title }}</span>
       </h1>
-      <h3 v-if="getBeginDate === getEndDate" class="text-sm text-gray-500 dark:text-gray-400 my-1">
-        {{ 'date.in' }} {{ getEndDate }} <span class="mx-2">|</span> {{ location }}
+      <h3 v-if="beginDate === endDate" class="text-sm text-gray-500 dark:text-gray-400 my-1">
+        {{ 'date.in' }} {{ formatDate(endDate) }} <span class="mx-2">|</span> {{ location }}
       </h3>
       <h3 v-else class="text-sm text-gray-500 dark:text-gray-400 my-1">
-        {{ 'date.from' }} {{ getBeginDate }} {{ 'date.to' }} {{ getEndDate }} <span class="mx-2">|</span> {{ location }}
+        {{ 'date.from' }} {{ formatDate(beginDate) }} {{ 'date.to' }} {{ formatDate(beginDate) }} <span class="mx-2">|</span> {{ location }}
       </h3>
     </div>
     <p class="text-justify text-md leading-5 dark:text-gray-300">
