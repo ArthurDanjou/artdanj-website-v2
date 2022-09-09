@@ -3,10 +3,17 @@ import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
 
 const { getTextColor } = useTheme()
-
-const { t } = useI18n()
-// todo insert french and english text
-const { data } = await useAsyncData('announce', () => $fetch('/api/announces'))
+const { t, setLocaleMessage } = useI18n()
+const { data } = await useAsyncData('announce', async () => {
+  const announce = await $fetch('/api/announces')
+  setLocaleMessage('en', {
+    message: data.value.english_content
+  })
+  setLocaleMessage('fr', {
+    message: data.value.french_content
+  })
+  return announce
+})
 </script>
 
 <template>
@@ -17,7 +24,7 @@ const { data } = await useAsyncData('announce', () => $fetch('/api/announces'))
         {{ t('cards.announces.title') }}
       </h3>
       <h1 v-if="data" class="title">
-        {{ data.content }}
+        {{ t(data.title) }}
       </h1>
       <h1 v-else class="title">
         {{ t('cards.announces.default') }}
