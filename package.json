@@ -10,11 +10,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "preview": "nuxt preview",
-    "lint": "eslint . --fix",
-    "db:studio": "prisma studio",
-    "db:migrate": "prisma migrate dev",
-    "db:pull": "prisma db pull",
-    "db:push": "prisma db push"
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "@prisma/client": "^4.3.1",
