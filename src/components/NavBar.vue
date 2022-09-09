@@ -87,7 +87,7 @@ const isRoute = (route: string) => {
       <div id="theme" class="nav-link h-44px w-44px" @click.prevent="toggleColorTheme()">
         <Icon name="ph:paint-brush-bold" size="24px" />
       </div>
-      <div id="lang" class="nav-link h-44px w-44px text-center" @click.prevent="changeLanguage()">
+      <div id="lang" class="nav-link h-44px w-44px" @click.prevent="changeLanguage()">
         <Icon v-if="getLang() === 'fr'" name="twemoji:flag-france" size="24px" />
         <Icon v-else name="twemoji:flag-united-kingdom" size="24px" />
       </div>
@@ -107,7 +107,7 @@ const isRoute = (route: string) => {
 }
 
 .nav-link {
-  @apply z-11 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-xl bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900);
+  @apply z-11 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-xl bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900)  flex items-center justify-center;
 
   &.router-link-exact-active {
     @apply border-stone-700 text-black dark:text-white dark:border-stone-300;
