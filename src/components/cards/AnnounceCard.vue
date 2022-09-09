@@ -7,10 +7,10 @@ const { t, setLocaleMessage } = useI18n()
 const { data } = await useAsyncData('announce', async () => {
   const announce = await $fetch('/api/announces')
   setLocaleMessage('en', {
-    message: data.value.english_content
+    message: data.value.english_content,
   })
   setLocaleMessage('fr', {
-    message: data.value.french_content
+    message: data.value.french_content,
   })
   return announce
 })
