@@ -5,34 +5,41 @@ export interface Post extends MarkdownParsedContent {
   title: string
   description: string
   readingMins: number
-  publishedAt: Date
-  modifiedAt: Date
+  publishedAt: string
+  modifiedAt: string
   cover: string
 }
 
+interface Translation {
+  code: string
+  french: string
+  english: string
+}
+
 export interface Project extends ParsedContent {
-  name: string
-  description: string
+  name: Translation
+  description: Translation
   link: string
   image: string
+  date: string
 }
 
-export interface WorkExperience extends ParsedContent {
-  title: string
-  description: string
+export interface WorkExperience {
+  title: Translation
+  description: Translation
   company: string
   location: string
-  companyLink?: string
-  startDate: Date
-  endDate: Date | 'Today'
+  companyLink: string
+  startDate: string
+  endDate: string | 'Today'
 }
 
-export interface Education extends ParsedContent {
-  title: string
-  description: string
+export interface Education {
+  title: Translation
+  description: Translation
   location: string
-  startDate: Date
-  endDate: Date | 'Today'
+  startDate: string
+  endDate: string | 'Today'
 }
 
 export interface JsonParsedContent<T> extends ParsedContent {
@@ -44,6 +51,6 @@ interface Skill {
 }
 
 export interface SkillList extends ParsedContent {
-  name: string
+  name: Translation
   skills: Skill[]
 }
