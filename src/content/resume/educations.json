@@ -1,5 +1,64 @@
 {
   "body": [
-
+    {
+      "title": {
+        "code": "educations.maths.title",
+        "french": "Licence de Mathématiques",
+        "english": "Mathematics Degree"
+      },
+      "description": {
+        "code": "educations.maths.description",
+        "french": "2ème année de licence",
+        "english": "2nd year of degree"
+      },
+      "location": "Faculté des Sciences de l'Université Paris-Saclay, Orsay (France)",
+      "startDate": "09/2021",
+      "endDate": "Today"
+    },
+    {
+      "title": {
+        "code": "educations.self-taught.title",
+        "french": "Apprentissage en autodidacte",
+        "english": "Self-taught learning"
+      },
+      "description": {
+        "code": "educations.self-taught.description",
+        "french": "Apprentissage de langages de programmation (TypeScript, Rust, Java, Python...) et de technologies (VueJS, AdonisJs, Tauri...)",
+        "english": "Learning programming languages (TypeScript, Rust, Java, Python...) and technologies (VueJS, AdonisJs, Tauri...)"
+      },
+      "location": "Bedroom (Remote)",
+      "startDate": "08/2015",
+      "endDate": "Today"
+    },
+    {
+      "title": {
+        "code": "educations.bac.title",
+        "french": "Baccalauréat Général spécialités Mathématiques et Physique-Chimie",
+        "english": "General baccalaureate with specializations in Mathematics and Physics-Chemistry"
+      },
+      "description": {
+        "code": "educations.bac.description",
+        "french": "Mention Bien (+15/20)",
+        "english": "Mention Bien (+15/20)"
+      },
+      "location": "Lycée La Salle Passy-Buzenval, Rueil-Malmaison (France)",
+      "startDate": "09/2020",
+      "endDate": "07/2021"
+    },
+    {
+      "title": {
+        "code": "educations.dnb.title",
+        "french": "Diplôme National du Brevet",
+        "english": "Diplôme National du Brevet"
+      },
+      "description": {
+        "code": "educations.dnb.description",
+        "french": "Mention Très Bien (+17/20)",
+        "english": "Mention Très Bien (+17/20)"
+      },
+      "location": "Collège La Salle Passy-Buzenval, Rueil-Malmaison (France)",
+      "startDate": "09/2017",
+      "endDate": "07/2018"
+    }
   ]
 }
