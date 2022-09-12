@@ -1,20 +1,76 @@
 {
   "body": [
     {
-      "name": "skill.languages",
-      "skills": []
+      "name": {
+        "code": "skill.languages",
+        "french": "Langages",
+        "english": "Languages"
+      },
+      "skills": [
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "HTML",
+        "CSS",
+        "Java",
+        "Rust",
+        "SQL"
+      ]
     },
     {
-      "name": "skill.frontend",
-      "skills": []
+      "name": {
+        "code": "skill.frontend",
+        "french": "Frontend",
+        "english": "Frontend"
+      },
+      "skills": [
+        "VueJs",
+        "NuxtJs",
+        "WindiCss",
+        "Sass",
+        "ViteJs",
+        "Vitest"
+      ]
     },
     {
-      "name": "skill.backend",
-      "skills": []
+      "name": {
+        "code": "skill.backend",
+        "french": "Backend",
+        "english": "Backend"
+      },
+      "skills": [
+        "AdonisJs",
+        "MariaDB",
+        "Redis",
+        "RabbitMQ"
+      ]
     },
     {
-      "name": "skill.devops",
-      "skills": []
+      "name": {
+        "code": "skill.devops",
+        "french": "DevOps",
+        "english": "DevOps"
+      },
+      "skills": [
+        "Docker",
+        "Kubernetes",
+        "CI/CD",
+        "Traefik",
+        "Linux"
+      ]
+    },
+    {
+      "name": {
+        "code": "skill.other",
+        "french": "Autres",
+        "english": "Others"
+      },
+      "skills": [
+        "Jira",
+        "Confluence",
+        "Git",
+        "Trello"
+      ]
     }
   ]
 }
