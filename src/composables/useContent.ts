@@ -1,6 +1,5 @@
-import { queryContent } from '@nuxt/content/dist/runtime/composables/query'
-import { useAsyncData } from '#app'
 import type { Education, JsonParsedContent, Post, Project, SkillList, WorkExperience } from '~/types/content'
+import { queryContent, useAsyncData } from '#imports'
 
 export const useProjects = () => {
   return useAsyncData('content:projects', () =>
@@ -10,19 +9,19 @@ export const useProjects = () => {
 
 export const useEducations = () => {
   return useAsyncData('content:educations', () =>
-    queryContent<JsonParsedContent<Education>>('educations').find(),
+    queryContent<JsonParsedContent<Education>>('resume/educations').findOne(),
   )
 }
 
 export const useWorkExperiences = () => {
   return useAsyncData('content:experiences', () =>
-    queryContent<JsonParsedContent<WorkExperience>>('experiences').find(),
+    queryContent<JsonParsedContent<WorkExperience>>('resume/experiences').findOne(),
   )
 }
 
 export const useSkills = () => {
   return useAsyncData('content:skills', () =>
-    queryContent<JsonParsedContent<SkillList>>('skills').find(),
+    queryContent<JsonParsedContent<SkillList>>('resume/skills').findOne(),
   )
 }
 
