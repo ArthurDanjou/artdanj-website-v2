@@ -1,3 +1,71 @@
 {
-  "body": []
+  "body": [
+    {
+      "title": {
+        "code": "experiences.auto-entrepreneur.title",
+        "french": "Développement FullStack Web et Logiciel",
+        "english": "FullStack Web and Software Development"
+      },
+      "description": {
+        "code": "experiences.auto-entrepreneur.description",
+        "french": "Développement, conception et illustration de projets informatiques personnels. Apprentissage de nouvelles technologies et langages de programmation",
+        "english": "Development, design and illustration of personal computer projects. Learning new technologies and programming languages"
+      },
+      "company": "ArtDanjProduction",
+      "companyLink": "https://www.arthurdanjou.fr",
+      "location": "Rueil-Malmaison, France",
+      "startDate": "09/2015",
+      "endDate": "Today"
+    },
+    {
+      "title": {
+        "code": "experiences.erisium.title",
+        "french": "Développeur Junior",
+        "english": "Junior Developer"
+      },
+      "description": {
+        "code": "experiences.erisium.description",
+        "french": "Développement et réalisation de projets informatiques conçus par l’équipe de Design. Maintien et mise à jour de projets en production. Correction de bugs présents",
+        "english": "Development and realization of IT projects designed by the Design team. Maintaining and updating projects in production. Fixed bugs present"
+      },
+      "company": "Erisium",
+      "companyLink": "https://www.erisium.com/",
+      "location": "Remote",
+      "startDate": "02/2019",
+      "endDate": "11/2020"
+    },
+    {
+      "title": {
+        "code": "experiences.idemia.title",
+        "french": "Stage d'observation",
+        "english": "Internship observation"
+      },
+      "description": {
+        "code": "experience.idemia.description",
+        "french": "Découverte du secteur IT, technologie de l’information et du Datacenter. Découverte de différents métiers de la société",
+        "english": "Discovery of the IT sector, information technology and Datacenter. Discovery of different professions of the company"
+      },
+      "company": "Idemia",
+      "companyLink": "https://idemia.com",
+      "location": "Courbevoie, France",
+      "startDate": "06/2020",
+      "endDate": "06/2020"
+    },
+    {
+      "title": {
+        "code": "experiences.lsam.title",
+        "french": "Stage de découverte",
+        "english": "Internship discovery"
+      },
+      "description": {
+        "code": "experience.lsam.description",
+        "french": "Nettoyage et préparation de la salle, accueil des clients, prise de commandes et services en salle",
+        "english": "Room cleaning and preparation, customer reception, order taking and room services"
+      },
+      "company": "La Salle à manger",
+      "location": "Boulogne-Billancourt, France",
+      "startDate": "04/2018",
+      "endDate": "04/2018"
+    }
+  ]
 }
