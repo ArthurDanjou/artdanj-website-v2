@@ -48,11 +48,10 @@
       "first": "Je suis Arthur Danjou, étudiant en mathématiques à la Faculté des Sciences de Paris-Saclay mais également ingénieur logiciel indépendant. Je suis très intéressé par les nouvelles technologies, le développement et l'informatique. Je suis capable d'apprendre rapidement de nouvelles technologies pour répondre aux besoins de différents projets. Je suis toujours motivé par un défi et j'aime être bien organisé pour produire des résultats constants. Pouvoir créer un logiciel à partir de rien est une vraie source de motivation.\n",
       "second": "J'aime partager mes connaissances et aider les autres. Je fais beaucoup de recherches et lis beaucoup d'articles techniques pour découvrir de nouvelles fonctionnalités. Tant que je partage mes passions, je continuerai à le faire."
     },
-    "skills": "Langues",
     "titles": {
       "about": "A propos",
-      "education": "Diplômes",
-      "work": "Expériences de travail",
+      "educations": "Diplômes",
+      "experiences": "Expériences de travail",
       "skills": "Compétences",
       "languages": "Langues"
     },
