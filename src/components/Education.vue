@@ -1,38 +1,25 @@
 <script setup lang="ts">
-import { formatDate } from '~/logic/date'
+import { useI18n } from 'vue-i18n'
+import type { PropType } from '@vue/runtime-core'
+import type { Education } from '~/types/content'
 
 defineProps({
-  title: {
-    type: String,
-    default: 'Title',
-  },
-  location: {
-    type: String,
-    default: 'Location',
-  },
-  beginDate: {
-    type: String,
-    required: true,
-  },
-  endDate: {
-    type: String,
-    required: true,
-  },
+  education: Object as PropType<Education>,
 })
+
+const { t } = useI18n()
 </script>
 
 <template>
   <div>
     <div>
+      <DateTag :start-date="education.startDate" :end-date="education.endDate" />
       <h1 class="text-lg leading-5">
-        <strong>{{ title }}</strong>, {{ location }}
+        <strong>{{ t(education.title.code) }}</strong> — {{ education.location }}
       </h1>
-      <h3 class="my-1 text-sm text-gray-500 dark:text-gray-400">
-        {{ 'date.from' }} {{ formatDate(beginDate) }} {{ 'date.to' }} {{ formatDate(endDate) }}
-      </h3>
     </div>
     <p class="text-justify text-md leading-5 dark:text-gray-300">
-      <slot />
+      {{ t(education.description.code) }}
     </p>
   </div>
 </template>
