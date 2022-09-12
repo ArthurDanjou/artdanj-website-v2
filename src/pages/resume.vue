@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
+import { useEducations, useSkills, useWorkExperiences } from '~/composables/useContent'
 
 const { getTextColor } = useTheme()
 
-const { t } = useI18n()
+const { data: educations } = await useEducations()
+const { data: experiences } = await useWorkExperiences()
+const { data: skills } = await useSkills()
 
+const { t } = useI18n()
 useHead({
   title: t('head.resume'),
 })
@@ -47,20 +51,30 @@ useHead({
             {{ t('resume.about.second') }}
           </p>
         </ResumeSection>
-        <ResumeTitle title="resume.titles.work" />
+        <ResumeTitle title="resume.titles.experiences" />
         <ResumeSection class="space-y-4">
           <!-- todo use nuxt content to fetch and use TagComment -->
+          <WorkExperience
+            v-for="experience in experiences.body"
+            :key="experience.id"
+            :experience="experience"
+          />
         </ResumeSection>
-        <ResumeTitle title="resume.titles.education" />
-        <ResumeSection>
-          <!-- todo use nuxt content to fetch -->
+        <ResumeTitle title="resume.titles.educations" />
+        <ResumeSection class="space-y-4">
+          <Education
+            v-for="education in educations.body"
+            :key="education.id"
+            :education="education"
+          />
         </ResumeSection>
         <ResumeTitle title="resume.titles.skills" />
         <ResumeSection>
-          <Stack :title="t('resume.skills')" content="TypeScript, JavaScript, Python, Java, Rust" />
-          <Stack title="FrontEnd" content="VueJs, NuxtJs, WindiCss, Sass, TauriApp, ViteJs" />
-          <Stack title="BackEnd" content="AdonisJs, MariaDB, Redis, RabbitMQ" />
-          <Stack title="DevOps" content="Git, Docker, CI/CD, Traefik, Kubernetes" />
+          <Stack
+            v-for="skill in skills.body"
+            :key="skill.id"
+            :skill="skill"
+          />
         </ResumeSection>
         <ResumeTitle title="resume.titles.languages" />
         <i18n-t keypath="resume.languages.text" tag="div" class="p-6 text-gray-600 dark:text-gray-400">
