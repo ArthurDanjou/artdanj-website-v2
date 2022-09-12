@@ -49,7 +49,7 @@ useHead({
             {{ t('contact.what.design.title') }}
           </h1>
           <p class="subtitle">
-            {{ t('contact.what.design.title') }}
+            {{ t('contact.what.design.subtitle') }}
           </p>
         </CardDiv>
       </Card>
@@ -60,7 +60,7 @@ useHead({
             {{ t('contact.what.strategy.title') }}
           </h1>
           <p class="subtitle">
-            {{ t('contact.what.strategy.title') }}
+            {{ t('contact.what.strategy.subtitle') }}
           </p>
         </CardDiv>
       </Card>
