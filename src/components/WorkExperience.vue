@@ -9,7 +9,7 @@ defineProps({
 })
 
 const { t } = useI18n()
-const { getTheme, getTextColor } = useTheme()
+const { getTextColor } = useTheme()
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const { getTheme, getTextColor } = useTheme()
     <div>
       <DateTag :start-date="experience.startDate" :end-date="experience.endDate" />
       <div v-if="experience.companyLink" class="text-lg">
-        <Link :href="experience.companyLink" target="_blank" :color="getTheme">
+        <Link :href="experience.companyLink" target="_blank">
           {{ experience.company }}
         </Link>
         <span class="text-gray-700 dark:text-gray-300"> — {{ t(experience.title.code) }}</span>

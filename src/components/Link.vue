@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {useTheme} from "#imports";
+
 const props = defineProps({
   link: {
     type: String,
@@ -9,19 +11,17 @@ const props = defineProps({
     default: '_parent',
     enum: ['_blank', '_parent', '_self', '_top'],
   },
-  color: {
-    type: String,
-    default: 'red',
-  },
   group: {
     type: Boolean,
     default: false,
   },
 })
 
+const { getTheme } = useTheme()
+
 const getColor = computed(() => {
   if (props.group) {
-    switch (props.color) {
+    switch (getTheme.value) {
       case 'sky':
         return 'decoration-sky-500 group-hover:text-sky-500 group-hover:decoration-sky-500/30 focus:text-sky-500 focus:ring-sky-500/40\n'
             + 'dark:(decoration-sky-400 group-hover:text-sky-400 group-hover:decoration-sky-400/30 focus:text-sky-400 focus:ring-sky-400/40)'
@@ -43,7 +43,7 @@ const getColor = computed(() => {
     }
   }
   else {
-    switch (props.color) {
+    switch (getTheme.value) {
       case 'sky':
         return 'decoration-sky-500 hover:text-sky-500 hover:decoration-sky-500/30 focus:text-sky-500 focus:ring-sky-500/40\n'
             + 'dark:(decoration-sky-400 hover:text-sky-400 hover:decoration-sky-400/30 focus:text-sky-400 focus:ring-sky-400/40)'

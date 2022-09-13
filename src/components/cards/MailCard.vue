@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useTheme } from '~/composables/useTheme'
-const { getTheme, getTextColor } = useTheme()
+const { getTextColor } = useTheme()
 const { t } = useI18n()
 </script>
 
@@ -12,7 +12,7 @@ const { t } = useI18n()
       <h3 class="subtitle">
         {{ t('cards.mail') }}
       </h3>
-      <Link class="title" link="mailto:contact@arthurdanjou.fr" :color="getTheme" :group="true">
+      <Link class="title" link="mailto:contact@arthurdanjou.fr" :group="true">
         contact@arthurdanjou.fr
       </Link>
       <CardButton />
