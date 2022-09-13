@@ -69,8 +69,8 @@ const getColor = computed(() => {
 
 <template>
   <NuxtLink
-    :href="props.link"
-    :target="props.target"
+    :href="link"
+    :target="target"
     class="focusable rounded-sm font-medium text-zinc-800 dark:text-white
       underline decoration-2 underline-offset-2 font-bold duration-300"
     :class="getColor"
