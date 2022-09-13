@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
-const { getTheme } = useTheme()
 const year = computed(() => new Date().getFullYear())
 
 const { t } = useI18n()
@@ -17,7 +15,7 @@ const { t } = useI18n()
         <p class="subtitle">
           {{ t('footer.builtBy') }}
         </p>
-        <Link class="text-sm" link="https://twitter.com/arthurdanj" target="_blank" :color="getTheme">
+        <Link class="text-sm" link="https://twitter.com/arthurdanj" target="_blank">
           Arthur Danjou
         </Link>
       </div>
