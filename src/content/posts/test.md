@@ -23,6 +23,9 @@ console.log(test)
 
 - Just
 - An
+
+Is it laggy ?
+
 - Unordered
 - List
 
@@ -30,6 +33,27 @@ console.log(test)
 
 _Just an italic paragraph._
 
+[Hello World](https://google.com)
+
+:Alert
+
+::content-link
+---
+link: "https://arthurdanjou.fr"
+target: "_blank"
+content: "Hey"
+---
+::
+
+```js [.eslintrc.js]
+module.exports = {
+  extends: [
+    // ...
+    'plugin:vue/vue3-recommended',
+    // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
+  ],
+}
+```
 
 | Key | Type      | Description |
 |-----|-----------|-------------|
