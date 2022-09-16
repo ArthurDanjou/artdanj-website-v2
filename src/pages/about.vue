@@ -16,24 +16,24 @@ useHead({
   <section>
     <PageTitle title="about" />
     <CardContainer>
-      <Card width="3">
+      <Card order="first" width="3">
         <CardDiv>
           It is me
           <!-- todo insert photo -->
         </CardDiv>
       </Card>
-      <Card>
+      <Card order="first">
         <CardDiv class="flex">
           <h1 class="font-bold text-4xl my-4 leading-12">
             {{ t('about.main') }}
             <span :class="getTextColor()">Arthur Danjou</span> 👋
           </h1>
-          <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400 uppercase">
+          <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400">
             {{ t('about.description') }}
           </h3>
         </CardDiv>
       </Card>
-      <Card width="2">
+      <Card order="first" width="2">
         <CardDiv>
           <h1 class="text-3xl font-bold mb-4">
             {{ t('about.about.title') }}
@@ -73,37 +73,49 @@ useHead({
           </h1>
           <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
-              <Icon name="ph:cpu-bold" size="40px" :class="getTextColor()" />
+              <CardIcon :stick="true">
+                <Icon name="ph:cpu-bold" size="40px" :class="getTextColor()" />
+              </CardIcon>
               <p class="interests-title">
                 Tech.
               </p>
             </div>
             <div class="interest-item">
-              <Icon name="uil:server" size="42px" :class="getTextColor()" />
+              <CardIcon :stick="true">
+                <Icon name="uil:server" size="42px" :class="getTextColor()" />
+              </CardIcon>
               <p class="interests-title">
                 DevOps
               </p>
             </div>
             <div class="interest-item">
-              <Icon name="ph:airplane-tilt-bold" size="42px" :class="getTextColor()" />
+              <CardIcon :stick="true">
+                <Icon name="ph:airplane-tilt-bold" size="42px" :class="getTextColor()" />
+              </CardIcon>
               <p class="interests-title">
                 {{ t('about.interests.trips') }}
               </p>
             </div>
             <div class="interest-item">
-              <Icon name="ph:camera-bold" size="42px" :class="getTextColor()" />
+              <CardIcon :stick="true">
+                <Icon name="ph:camera-bold" size="42px" :class="getTextColor()" />
+              </CardIcon>
               <p class="interests-title">
                 Photo
               </p>
             </div>
             <div class="interest-item">
-              <Icon name="ic:outline-wb-cloudy" size="42px" :class="getTextColor()" />
+              <CardIcon :stick="true">
+                <Icon name="ic:outline-wb-cloudy" size="42px" :class="getTextColor()" />
+              </CardIcon>
               <p class="interests-title">
                 Cloud
               </p>
             </div>
             <div class="interest-item">
-              <Icon name="mdi:function-variant" size="42px" :class="getTextColor()" />
+              <CardIcon :stick="true">
+                <Icon name="mdi:function-variant" size="42px" :class="getTextColor()" />
+              </CardIcon>
               <p class="interests-title">
                 Maths.
               </p>
@@ -111,71 +123,55 @@ useHead({
           </div>
         </CardDiv>
       </Card>
-      <Card>
-        <CardDiv class="flex items-center justify-center">
-          <div class="flex">
-            <div class="bg-clip-text bg-text-green">
-              <div class="text-7xl inline -mr-4 font-bold">
-                12
-              </div>
-              <div class="text-4xl inline align-top leading-6 font-bold">
-                +
-              </div>
-            </div>
+      <StatsCard>
+        <div class="bg-clip-text bg-text-green">
+          <div class="text-7xl inline -mr-4 font-bold">
+            12
           </div>
-          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
-            {{ t('about.stats.customers') }}
-          </p>
-        </CardDiv>
-      </Card>
-      <Card>
-        <CardDiv class="flex items-center justify-center">
-          <div class="flex">
-            <div class="bg-clip-text bg-text-blue">
-              <div class="text-7xl inline -mr-2 font-bold">
-                7
-              </div>
-              <div class="text-7xl inline leading-6 font-bold">
-                {{ t('about.stats.years') }}
-              </div>
-            </div>
+          <div class="text-4xl inline align-top leading-6 font-bold">
+            +
           </div>
-          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
-            {{ t('about.stats.experience') }}
-          </p>
-        </CardDiv>
-      </Card>
-      <Card>
-        <CardDiv class="flex items-center justify-center">
-          <div class="flex">
-            <div class="bg-clip-text bg-text-purple">
-              <div class="text-7xl inline -mr-4 font-bold">
-                500
-              </div>
-              <div class="text-4xl inline align-top leading-6 font-bold">
-                +
-              </div>
-            </div>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          {{ t('about.stats.customers') }}
+        </p>
+      </StatsCard>
+      <StatsCard>
+        <div class="bg-clip-text bg-text-blue">
+          <div class="text-7xl inline -mr-2 font-bold">
+            7
           </div>
-          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
-            {{ t('about.stats.hours') }}
-          </p>
-        </CardDiv>
-      </Card>
-      <Card>
-        <CardDiv class="flex items-center justify-center">
-          <div class="flex">
-            <div class="bg-clip-text bg-text-rose">
-              <div class="text-7xl font-bold">
-                100%
-              </div>
-            </div>
+          <div class="text-7xl inline leading-6 font-bold">
+            {{ t('about.stats.years') }}
           </div>
-          <p class="text-md text-gray-600 dark:text-gray-400 uppercase">
-            Passion
-          </p>
-        </CardDiv>
-      </Card>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          {{ t('about.stats.experience') }}
+        </p>
+      </StatsCard>
+      <StatsCard>
+        <div class="bg-clip-text bg-text-purple">
+          <div class="text-7xl inline -mr-4 font-bold">
+            500
+          </div>
+          <div class="text-4xl inline align-top leading-6 font-bold">
+            +
+          </div>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          {{ t('about.stats.hours') }}
+        </p>
+      </StatsCard>
+      <StatsCard>
+        <div class="bg-clip-text bg-text-rose">
+          <div class="text-7xl font-bold">
+            100%
+          </div>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          Passion
+        </p>
+      </StatsCard>
       <ContactCard />
       <TwitterCard />
       <GitHubCard />
@@ -190,7 +186,7 @@ useHead({
 }
 
 .interests-title {
-  @apply mt-4 text-sm text-gray-600 dark:text-gray-400 text-center uppercase;
+  @apply mt-4 text-sm text-gray-600 dark:text-gray-400 text-center;
 }
 
 .bg-text-green {
