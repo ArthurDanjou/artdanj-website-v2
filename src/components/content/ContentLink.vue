@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useTheme} from "#imports";
+import { useTheme } from '#imports'
 
 defineProps({
   link: {
@@ -12,8 +12,8 @@ defineProps({
     enum: ['_blank', '_parent', '_self', '_top'],
   },
   content: {
-    type: String
-  }
+    type: String,
+  },
 })
 
 const { getTheme } = useTheme()
