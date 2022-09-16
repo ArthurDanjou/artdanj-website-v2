@@ -19,6 +19,9 @@ console.log(test)
 
 > Block quote
 
+`code inline`.  
+`const codeInline: string = 'highlighted code inline'`{lang="ts"}
+
 ## H3 Heading
 
 - Just
@@ -55,8 +58,8 @@ module.exports = {
 }
 ```
 
-| Key | Type      | Description |
-|-----|-----------|-------------|
-| 1   | Wonderful | Table       |
-| 2   | Wonderful | Data        |
-| 3   | Wonderful | Website     |
+| Key | Type      | Description | Test   |
+|-----|-----------|-------------|--------|
+| 1   | Wonderful | Table       | This   |
+| 2   | Type 2    | Data        | is     |
+| 3   | Wonderful | Website     | a test |
