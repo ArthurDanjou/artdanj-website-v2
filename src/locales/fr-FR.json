@@ -24,7 +24,7 @@
       "default": "Bienvenue sur mon nouveau site !"
     },
     "contact": {
-      "title": "Entrons en contact ✨",
+      "title": "Entrons en contact",
       "subtitle": "Travaillons ensemble"
     },
     "form": {
@@ -78,11 +78,11 @@
   },
   "about": {
     "main": "Salut, je suis",
-    "description": "Un ingénieur logiciel français \uD83C\uDDEB\uD83C\uDDF7",
+    "description": "Un ingénieur logiciel français",
     "about": {
       "title": "A mon propos",
       "description": {
-        "text": "Ingénieur logiciel, mais aussi étudiant en {maths} \uD83C\uDF93. J'habite à Paris, France \uD83C\uDDEB\uD83C\uDDF7. J'ai {age} ans.\nJe suis passionné par le {networking}, l'{infrastructure} et le {cloud} ☁️. J'utilise des {technologies} modernes pour obtenir le meilleur résultat possible ✨.\nJ'aime partager mes {knowledge} et aider les autres. Parfois, j'écris des {articles} techniques sur mon blog et j'essaie toujours de contribuer à des projets {opensource} \uD83D\uDC51.",
+        "text": "Ingénieur logiciel, mais aussi étudiant en {maths}. J'habite à Paris, France. J'ai {age} ans. Je suis passionné par le {networking}, l'{infrastructure} et le {cloud}️. J'utilise des {technologies} modernes pour obtenir le meilleur résultat possible. J'aime partager mes {knowledge} et aider les autres. Parfois, j'écris des {articles} techniques sur mon blog et j'essaie toujours de contribuer à des projets {opensource}.",
         "maths": "mathématiques",
         "networking": "réseau",
         "infrastructure": "infrastructure",
@@ -106,7 +106,7 @@
   },
   "contact": {
     "main": {
-      "title": "Entrons en contact ✨",
+      "title": "Entrons en contact",
       "subtitle": "Je suis toujours ouvert à collaborer sur un projet ou à entendre parler d'une opportunité !"
     },
     "what": {
@@ -126,7 +126,7 @@
   },
   "uses": {
     "card": {
-      "title": "Comment je travaille ?",
+      "title": "Comment je travaille",
       "subtitle": "Découvrir mon environnement de développement"
     }
   },

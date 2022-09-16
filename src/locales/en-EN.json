@@ -24,7 +24,7 @@
       "default": "Welcome to my new website !"
     },
     "contact": {
-      "title": "Get in touch ✨",
+      "title": "Get in touch",
       "subtitle": "Let's work together"
     },
     "form": {
@@ -78,11 +78,11 @@
   },
   "about": {
     "main": "Hey, I am",
-    "description": "A software engineer from France \uD83C\uDDEB\uD83C\uDDF7",
+    "description": "A software engineer from France",
     "about": {
       "title": "About me",
       "description": {
-        "text": "Software Engineer, but also student in {maths} \uD83C\uDF93. I live in Paris, France \uD83C\uDDEB\uD83C\uDDF7. I am {age} years old.\nI am passionate about {networking}, {infrastructure} and {cloud} ☁️. I use modern {technologies} to get the best possible result ✨.\nI love sharing my {knowledge} and helping others. Sometimes, I write technical {articles} on my blog and I always try to contribute to {opensource} projects \uD83D\uDC51.",
+        "text": "Software Engineer, but also student in {maths}. I live in Paris, France. I am {age} years old. I am passionate about {networking}, {infrastructure} and {cloud}️. I use modern {technologies} to get the best possible result. I love sharing my {knowledge} and helping others. Sometimes, I write technical {articles} on my blog and I always try to contribute to {opensource} projects.",
         "maths": "mathematics",
         "networking": "networking",
         "infrastructure": "infrastructure",
@@ -106,7 +106,7 @@
   },
   "contact": {
     "main": {
-      "title": "Get in touch ✨",
+      "title": "Get in touch",
       "subtitle": "I’m always open to collaborate on a project or hear about an opportunity!"
     },
     "what": {
