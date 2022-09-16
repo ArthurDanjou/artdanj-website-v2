@@ -183,7 +183,7 @@ useHead({
 }
 
 .interests-title {
-  @apply mt-4 text-sm text-gray-600 dark:text-gray-400 text-center;
+  @apply mt-2 text-sm text-gray-600 dark:text-gray-400 text-center;
 }
 
 .bg-text-green {
