@@ -18,9 +18,9 @@ useHead({
 <template>
   <section>
     <PageTitle title="resume" />
-    <div class="flex flex-col lg:flex-row">
+    <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-16">
       <div class="w-full lg:w-1/4">
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 auto-rows-fr">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2 auto-rows-fr">
           <Card>
             <CardDiv>
               <img class="mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
@@ -42,7 +42,7 @@ useHead({
           </Card>
         </div>
       </div>
-      <div class="w-full mt-16 lg:(w-3/4 ml-16 mt-0)">
+      <div class="w-full mt-16 lg:(w-3/4 mt-0)">
         <ResumeTitle title="resume.titles.about" />
         <ResumeSection>
           <p class="text-gray-600 dark:text-gray-400 text-justify leading-6">
@@ -53,7 +53,6 @@ useHead({
         </ResumeSection>
         <ResumeTitle title="resume.titles.experiences" />
         <ResumeSection class="space-y-4">
-          <!-- todo use nuxt content to fetch and use TagComment -->
           <WorkExperience
             v-for="experience in experiences.body"
             :key="experience.id"
