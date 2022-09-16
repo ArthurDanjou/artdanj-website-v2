@@ -76,6 +76,9 @@
       "title": "Ce que je fais"
     }
   },
+  "blog": {
+    "read": "Lire"
+  },
   "about": {
     "main": "Salut, je suis",
     "description": "Un ingénieur logiciel français",

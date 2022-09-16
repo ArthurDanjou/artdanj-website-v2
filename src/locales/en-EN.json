@@ -76,6 +76,9 @@
       "title": "What I do"
     }
   },
+  "blog": {
+    "read": "Read"
+  },
   "about": {
     "main": "Hey, I am",
     "description": "A software engineer from France",
