@@ -1,5 +1,5 @@
 <template>
-  <main class="md:mt-16 md:mx-16 mx-4 mt-16">
+  <main class="m-2">
     <NavBar />
     <slot />
     <Footer />
