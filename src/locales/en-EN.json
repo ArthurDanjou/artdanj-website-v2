@@ -36,7 +36,10 @@
       "submit": "Send your message"
     },
     "mail": "Just want to email me ?",
-    "spotify": "Nothing playing right now.",
+    "spotify": {
+      "nothing": "Nothing playing right now.",
+      "playing": "I'm listening to"
+    },
     "resume": {
       "title": "See my resume",
       "subtitle": "Learn more about me"

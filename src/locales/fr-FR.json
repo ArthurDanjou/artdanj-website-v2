@@ -36,7 +36,10 @@
       "submit": "Envoyer votre message"
     },
     "mail": "Vous voulez juste m'envoyer un e-mail ?",
-    "spotify": "Rien en cours de lecture pour le moment.",
+    "spotify": {
+      "nothing": "Rien en cours de lecture pour le moment.",
+      "playing": "J'écoute actuellement"
+    },
     "resume": {
       "title": "Voir mon CV",
       "subtitle": "En savoir plus sur moi"
