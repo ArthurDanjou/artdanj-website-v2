@@ -19,10 +19,12 @@ onUnmounted(() => {
 <template>
   <Card v-if="data !== null" width="2">
     <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
-      <div class="flex flex-col justify-center gap-y-4 lg:(flex-row gap-x-12)">
-        <div class="flex items-center justify-center gap-x-8 lg:(flex-col gap-y-4)">
-          <Icon name="mdi:spotify" size="100px" style="color: #1DB954" />
-          <div v-if="data.is_playing" class="flex items-center justify-center h-30px">
+      <CardIcon>
+        <Icon name="mdi:spotify" size="42px" style="color: #1DB954" />
+      </CardIcon>
+      <div v-if="data.is_playing" class="flex flex-col space-y-2 mt-4">
+        <div class="flex space-x-2 items-center">
+          <div v-if="data.is_playing" class="flex items-center h-30px">
             <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
             <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
             <div class="play-indicator" style="animation: playAnimation 0.62s infinite" />
@@ -30,19 +32,22 @@ onUnmounted(() => {
             <div class="play-indicator" style="animation: playAnimation 0.79s infinite" />
             <div class="play-indicator" style="animation: playAnimation 1s infinite" />
           </div>
-        </div>
-        <div v-if="data.is_playing" class="flex flex-col justify-center items-center">
-          <h1 class="font-black text-3xl font-spotify text-center">
-            {{ data.name }}
+          <h1 class="text-2xl text-spotify font-bold">
+            {{ t('cards.spotify.playing') }}
           </h1>
-          <h1 class="text-gray-600 dark:text-gray-400 font-black text-xl font-spotify text-center">
+        </div>
+        <div class="flex space-x-2">
+          <h1 class="font-black text-xl font-spotify">
+            {{ data.name }},
+          </h1>
+          <h1 class="text-gray-600 dark:text-gray-400 font-black text-lg font-spotify">
             {{ data.author }}
           </h1>
         </div>
-        <p v-else class="text-2xl text-spotify flex items-center text-center font-bold">
-          {{ t('cards.spotify') }}
-        </p>
       </div>
+      <p v-else class="text-2xl text-spotify font-bold">
+        {{ t('cards.spotify.nothing') }}
+      </p>
       <CardButton />
     </CardLink>
   </Card>

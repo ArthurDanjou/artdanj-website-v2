@@ -8,13 +8,17 @@ const { t } = useI18n()
 <template>
   <Card width="2">
     <CardLink href="mailto:contact@arthurdanjou.fr">
-      <Icon name="material-symbols:alternate-email-rounded" size="42px" :class="getTextColor()" />
-      <h3 class="subtitle">
-        {{ t('cards.mail') }}
-      </h3>
-      <Link class="title" link="mailto:contact@arthurdanjou.fr" :group="true">
-        contact@arthurdanjou.fr
-      </Link>
+      <CardIcon>
+        <Icon name="material-symbols:alternate-email-rounded" size="42px" :class="getTextColor()" />
+      </CardIcon>
+      <div class="flex flex-col space-y-4">
+        <Link class="title" link="mailto:contact@arthurdanjou.fr" :group="true">
+          contact@arthurdanjou.fr
+        </Link>
+        <h3 class="subtitle">
+          {{ t('cards.mail') }}
+        </h3>
+      </div>
       <CardButton />
     </CardLink>
   </Card>
@@ -22,10 +26,10 @@ const { t } = useI18n()
 
 <style scoped lang="scss">
 .title {
-  @apply text-xl lg:text-3xl font-bold mb-8;
+  @apply text-xl lg:text-3xl font-bold;
 }
 
 .subtitle {
-  @apply mt-4 mb-2 text-sm text-gray-600 dark:text-gray-400 uppercase;
+  @apply text-sm text-gray-600 dark:text-gray-400;
 }
 </style>

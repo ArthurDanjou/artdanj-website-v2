@@ -8,13 +8,17 @@ const { t } = useI18n()
 <template>
   <Card order="last">
     <CardLink href="resume" class="flex flex-col justify-center">
-      <Icon name="fluent:person-12-regular" size="42px" :class="getTextColor()" />
-      <h3 class="subtitle">
-        {{ t('cards.resume.subtitle') }}
-      </h3>
-      <h1 class="title">
-        {{ t('cards.resume.title') }}
-      </h1>
+      <CardIcon>
+        <Icon name="fluent:person-12-regular" size="42px" :class="getTextColor()" />
+      </CardIcon>
+      <div class="flex flex-col space-y-4">
+        <h1 class="title">
+          {{ t('cards.resume.title') }}
+        </h1>
+        <h3 class="subtitle">
+          {{ t('cards.resume.subtitle') }}
+        </h3>
+      </div>
       <CardButton />
     </CardLink>
   </Card>
@@ -22,10 +26,10 @@ const { t } = useI18n()
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bold mb-8;
+  @apply text-3xl font-bold;
 }
 
 .subtitle {
-  @apply mt-4 mb-2 text-sm text-gray-600 dark:text-gray-400 uppercase;
+  @apply text-sm text-gray-600 dark:text-gray-400;
 }
 </style>

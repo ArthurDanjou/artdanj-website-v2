@@ -42,7 +42,7 @@ const handleForm = async () => {
   <Card height="2" width="2">
     <CardDiv v-if="sent.success" class="flex items-center justify-center">
       <div class="flex justify-center mb-8">
-        <img class="w-1/2" src="~/assets/images/partying.png" alt="Image of me feasting">
+        <img class="w-1/2 animate-heartBeat animate-infinite animate-slower" src="~/assets/images/partying.png" alt="Image of me feasting">
       </div>
       <div class="text-xl text-spotify text-center">
         {{ t('cards.form.success') }}

@@ -17,28 +17,32 @@ const { data } = await useAsyncData('announce', async () => {
 </script>
 
 <template>
-  <Card width="2">
+  <Card order="first" width="2">
     <CardDiv>
-      <Icon name="tabler:speakerphone" size="42px" :class="getTextColor()" />
-      <h3 class="subtitle">
-        {{ t('cards.announces.title') }}
-      </h3>
-      <h1 v-if="data" class="title">
-        {{ t(data.title) }}
-      </h1>
-      <h1 v-else class="title">
-        {{ t('cards.announces.default') }}
-      </h1>
+      <CardIcon>
+        <Icon name="tabler:speakerphone" size="42px" :class="getTextColor()" />
+      </CardIcon>
+      <div class="flex flex-col space-y-4">
+        <h1 v-if="data" class="title">
+          {{ t(data.title) }}
+        </h1>
+        <h1 v-else class="title">
+          {{ t('cards.announces.default') }}
+        </h1>
+        <h3 class="subtitle">
+          {{ t('cards.announces.title') }}
+        </h3>
+      </div>
     </CardDiv>
   </Card>
 </template>
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bold mb-8;
+  @apply text-3xl font-bold;
 }
 
 .subtitle {
-  @apply mt-4 mb-2 text-sm text-gray-600 dark:text-gray-400 uppercase;
+  @apply text-sm text-gray-600 dark:text-gray-400;
 }
 </style>
