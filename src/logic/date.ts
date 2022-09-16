@@ -8,3 +8,10 @@ export const formatDate = (date: string) => {
     ? t('date.today')
     : `${t(`date.months.${split[0]}`)} ${split[1]}`
 }
+
+export const formatPostDate = (date: string) => {
+  const { t } = useI18n()
+  const split = date.split('/')
+
+  return `${split[1]} ${t(`date.months.${split[0]}`)} ${split[2]}`
+}

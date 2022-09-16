@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import type { Post } from '~/types/content'
+import { formatPostDate } from '~/logic/date'
 
 const { data: posts } = await useAsyncData('posts', () => queryContent<Post[]>('/posts')
   .only(['title', 'slug', 'description', 'publishedAt', 'cover', 'readingMins'])
@@ -23,12 +24,12 @@ useHead({
             <h1 class="text-3xl font-bold">
               {{ post.title }}
             </h1>
-            <h3 class="text-sm text-stone-500 dark:text-gray-400 mt-2 text-justify">
+            <h3 class="text-sm text-gray-600 dark:text-gray-400 mt-2 text-justify">
               {{ post.description }}
             </h3>
             <div class="flex items-center justify-between mt-8">
               <p>
-                <span>{{ post.publishedAt }}</span> <br>
+                <span>{{ formatPostDate(post.publishedAt) }}</span> <br>
                 <span>{{ post.readingMins }}</span> min.
               </p>
               <button
