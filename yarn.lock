@@ -781,14 +781,6 @@
     lodash.template "^4.5.0"
     pathe "^0.3.5"
 
-"@pinia/nuxt@^0.4.1":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@pinia/nuxt/-/nuxt-0.4.2.tgz#83b230843cae3b165baf0cda37ba1299c5f403ba"
-  integrity sha512-yPrJVFOTVDsCcwzVvElLmSFB6IKWo+0WpVmVPCZyj/LD2uNYBK8I3lTPHdZ4q/VS2Sj8LkA7aq6S8PFpwguQ0A==
-  dependencies:
-    "@nuxt/kit" "^3.0.0-rc.9"
-    pinia ">=2.0.22"
-
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
@@ -2725,9 +2717,9 @@ eslint-plugin-unicorn@^43.0.2:
     strip-indent "^3.0.0"
 
 eslint-plugin-vue@^9.4.0:
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-9.5.0.tgz#bbfea787cee8d57d6418d0425c5daa00d044f530"
-  integrity sha512-Dm4KJRD6yFZGy6OhtgcG35oMR9rAhGfP6vbANw2k5wvQn9YjKu9huRV3Y63pYUbqPTHJ3V4v5+EcGmJSSjWgSA==
+  version "9.5.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-9.5.1.tgz#87ce075882cf7d824b95f46c224f91495fafcc54"
+  integrity sha512-Y0sL2RY7Xc9S8kNih9lbwHIDmewUg9bfas6WSzsOWRgDXhIHKxRBZYNAnVcXBFfE+bMWHUA5GLChl7TcTYUI8w==
   dependencies:
     eslint-utils "^3.0.0"
     natural-compare "^1.4.0"
@@ -5437,19 +5429,6 @@ pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
-
-pinia-plugin-persistedstate@^2.1.1:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-2.2.0.tgz#46b203e9ba3b9f6fbc4929eec4fb567d61f38e99"
-  integrity sha512-j3CknBg4H17MXDwG+X6JT50wmGkxG5cWshVb5pdV8o/ivMxiVsML9ADwe7SEchas1myIWd6/sYeVv0/IGT5YrQ==
-
-pinia@>=2.0.22:
-  version "2.0.22"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.22.tgz#435468e8e6d6aa6f319cb727b23bd51db0844c4a"
-  integrity sha512-u+b8/BC+tmvo3ACbYO2w5NfxHWFOjvvw9DQnyT0dW8aUMCPRQT5QnfZ5R5W2MzZBMTeZRMQI7V/QFbafmM9QHw==
-  dependencies:
-    "@vue/devtools-api" "^6.2.1"
-    vue-demi "*"
 
 pkg-types@^0.3.4, pkg-types@^0.3.5:
   version "0.3.5"

@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    ['@pinia/nuxt'],
     'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
