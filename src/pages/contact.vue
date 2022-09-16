@@ -19,7 +19,9 @@ useHead({
     <CardContainer>
       <Card>
         <CardDiv>
-          <Icon name="material-symbols:inbox-outline" size="42px" :class="getTextColor()" />
+          <CardIcon>
+            <Icon name="material-symbols:inbox-outline" size="42px" :class="getTextColor()" />
+          </CardIcon>
           <h1 class="title">
             {{ t('contact.main.title') }}
           </h1>
@@ -32,7 +34,9 @@ useHead({
       <GitHubCard order="normal" />
       <Card order="last">
         <CardDiv>
-          <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
+          <CardIcon>
+            <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
+          </CardIcon>
           <h1 class="title">
             {{ t('contact.what.dev.title') }}
           </h1>
@@ -44,7 +48,9 @@ useHead({
       <TwitterCard order="normal" />
       <Card order="last">
         <CardDiv>
-          <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
+          <CardIcon>
+            <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
+          </CardIcon>
           <h1 class="title">
             {{ t('contact.what.design.title') }}
           </h1>
@@ -55,7 +61,9 @@ useHead({
       </Card>
       <Card order="last">
         <CardDiv>
-          <Icon name="uil:comment" size="42px" :class="getTextColor()" />
+          <CardIcon>
+            <Icon name="uil:comment" size="42px" :class="getTextColor()" />
+          </CardIcon>
           <h1 class="title">
             {{ t('contact.what.strategy.title') }}
           </h1>
@@ -71,7 +79,7 @@ useHead({
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bold my-4;
+  @apply text-3xl font-bold;
 }
 
 .subtitle {
