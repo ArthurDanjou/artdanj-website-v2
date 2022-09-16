@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <NuxtLink :target="target" :href="href" class="group p-8 w-full h-full flex flex-col justify-center">
+  <NuxtLink :target="target" :href="href" class="group p-4 w-full h-full flex flex-col justify-between">
     <slot />
   </NuxtLink>
 </template>
