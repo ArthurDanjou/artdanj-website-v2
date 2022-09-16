@@ -18,7 +18,7 @@ const { t } = useI18n()
         <strong>{{ t(education.title.code) }}</strong> — {{ education.location }}
       </h1>
     </div>
-    <p class="text-justify text-md leading-5 dark:text-gray-300">
+    <p class="text-justify text-md leading-5 text-gray-600 dark:text-gray-400">
       {{ t(education.description.code) }}
     </p>
   </div>

@@ -27,7 +27,7 @@ const { getTextColor } = useTheme()
         <span class="text-gray-700 dark:text-gray-300"> — {{ t(experience.title.code) }}</span>
       </h1>
     </div>
-    <p class="text-justify text-md leading-5 dark:text-gray-300">
+    <p class="text-justify text-md leading-5 text-gray-600 dark:text-gray-400">
       {{ t(experience.description.code) }}
     </p>
   </div>
