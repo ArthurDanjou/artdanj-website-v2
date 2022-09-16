@@ -14,71 +14,89 @@ useHead({
 <template>
   <section>
     <CardContainer>
-      <Card width="2" height="2">
-        <CardLink href="about" class="flex flex-col justify-center">
-          <div class="bg-photo h-48 w-48 rounded-1/2" :class="getBackgroundColor()" />
-          <h1 class="font-bold text-4xl my-8">
-            {{ t('index.main') }}
-            <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
-            <span class="hey-animation inline-block">👋</span>
-          </h1>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
-            {{ t('index.description') }}
-          </p>
+      <Card order="first" width="2">
+        <CardLink href="about" class="flex flex-col">
+          <div class="h-full flex items-center">
+            <div class="bg-photo h-32 w-32 rounded-1/2" :class="getBackgroundColor()" />
+          </div>
+          <div class="flex flex flex-col space-y-4">
+            <h1 class="font-bold text-4xl mt-4">
+              {{ t('index.main') }}
+              <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
+              <span class="hey-animation inline-block">👋</span>
+            </h1>
+            <p class="text-gray-600 dark:text-gray-400 pr-54px">
+              {{ t('index.description') }}
+            </p>
+          </div>
           <CardButton />
         </CardLink>
       </Card>
       <AnnounceCard />
       <ResumeCard />
-      <Card>
+      <Card order="last">
         <CardLink href="uses" class="flex flex-col justify-center">
-          <Icon name="lucide:lamp-desk" size="42px" :class="getTextColor()" />
-          <h3 class="subtitle">
-            {{ t('uses.card.subtitle') }}
-          </h3>
-          <h1 class="title">
-            {{ t('uses.card.title') }}
-          </h1>
+          <CardIcon>
+            <Icon name="lucide:lamp-desk" size="42px" :class="getTextColor()" />
+          </CardIcon>
+          <div class="flex flex-col space-y-4">
+            <h1 class="title">
+              {{ t('uses.card.title') }}
+            </h1>
+            <h3 class="subtitle">
+              {{ t('uses.card.subtitle') }}
+            </h3>
+          </div>
           <CardButton />
         </CardLink>
       </Card>
+      <Card order="last">
+        <CardLink href="guestbook" class="flex flex-col justify-center">
+          <CardIcon>
+            <Icon name="icon-park-outline:bookshelf" size="42px" :class="getTextColor()" />
+          </CardIcon>
+          <div class="flex flex-col space-y-4">
+            <h1 class="title">
+              {{ t('guestbook.card.title') }}
+            </h1>
+            <h3 class="subtitle">
+              {{ t('guestbook.card.subtitle') }}
+            </h3>
+          </div>
+          <CardButton />
+        </CardLink>
+      </Card>
+      <ContactCard />
       <SpotifyCard />
+      <TwitterCard />
+      <GitHubCard />
       <Card height="2">
         Latest project
       </Card>
-      <Card>
-        <CardLink href="guestbook" class="flex flex-col justify-center">
-          <Icon name="icon-park-outline:bookshelf" size="42px" :class="getTextColor()" />
-          <h3 class="subtitle">
-            {{ t('guestbook.card.subtitle') }}
-          </h3>
-          <h1 class="title">
-            {{ t('guestbook.card.title') }}
-          </h1>
-          <CardButton />
-        </CardLink>
-      </Card>
-      <GitHubCard />
-      <TwitterCard />
-      <ContactCard />
       <Card width="2">
         <CardDiv>
           <div class="flex w-full justify-between">
             <div class="flex flex-col items-center">
-              <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
-              <p class="subtitle">
+              <CardIcon :stick="true">
+                <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
+              </CardIcon>
+              <p class="subtitle mt-2">
                 {{ t('index.work.dev') }}
               </p>
             </div>
             <div class="flex flex-col items-center">
-              <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
-              <p class="subtitle">
+              <CardIcon :stick="true">
+                <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
+              </CardIcon>
+              <p class="subtitle mt-2">
                 {{ t('index.work.design') }}
               </p>
             </div>
             <div class="flex flex-col items-center">
-              <Icon name="uil:comment" size="42px" :class="getTextColor()" />
-              <p class="subtitle">
+              <CardIcon :stick="true">
+                <Icon name="uil:comment" size="42px" :class="getTextColor()" />
+              </CardIcon>
+              <p class="subtitle mt-2">
                 {{ t('index.work.strategy') }}
               </p>
             </div>
@@ -88,7 +106,8 @@ useHead({
           </h1>
         </CardDiv>
       </Card>
-      <Card width="2" height="2">
+      <InstagramCard />
+      <Card>
         Photos
       </Card>
       <Card width="2">
@@ -100,11 +119,11 @@ useHead({
 
 <style scoped lang="scss">
 .title {
-  @apply text-3xl font-bold mb-8;
+  @apply mt-4 text-3xl font-bold;
 }
 
 .subtitle {
-  @apply mt-4 mb-2 text-sm text-gray-600 dark:text-gray-400 uppercase;
+  @apply text-sm text-gray-600 dark:text-gray-400;
 }
 
 .bg-photo {
