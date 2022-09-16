@@ -20,7 +20,7 @@ useHead({
   <section>
     <PageTitle title="blog" />
     <div class="flex justify-center">
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 grid-flow-row-dense">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-2 grid-flow-row-dense">
         <Card v-for="post in posts" :key="post.slug">
           <CardLink :href="`/blog/${post.slug}`">
             <h1 class="text-3xl font-bold" :class="getTextColor()">
@@ -30,17 +30,18 @@ useHead({
               {{ post.description }}
             </h3>
             <div class="flex items-center justify-between mt-8">
+              <p>
+                <span :class="getTextColor()">{{ post.publishedAt }}</span> <br>
+                <span :class="getTextColor()">{{ post.readingMins }}</span> min.
+              </p>
               <button
-                class="px-4 py-2 duration-300 cursor-pointer border-2 rounded-full border-dark
-                bg-white text-stone-400 dark:(bg-dark-800 text-stone-600) group-hover:(shadow-dark text-black) dark:group-hover:text-white"
+                  class="px-4 py-2 duration-300 cursor-pointer border-2 rounded-full border-dark
+                bg-white text-stone-400 dark:(bg-dark-900 text-stone-600) group-hover:(shadow-dark text-black) dark:group-hover:text-white"
               >
                 <div class="flex items-center justify-center flex items-center justify-center">
                   Read more <Icon name="material-symbols:add-circle-outline-rounded" size="28px" class="ml-2" />
                 </div>
               </button>
-              <p class="ml-4">
-                <span :class="getTextColor()">{{ post.publishedAt }}</span> - <span :class="getTextColor()">{{ post.readingMins }}</span> min.
-              </p>
             </div>
           </CardLink>
         </Card>
