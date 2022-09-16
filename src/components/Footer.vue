@@ -6,7 +6,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <footer class="flex items-center justify-center mt-16 mb-36">
+  <footer class="flex items-center justify-center mt-8 mb-28">
     <div class="w-full duration-300 text-center flex flex-col md:(flex-row justify-between) items-center gap-y-2">
       <p class="subtitle">
         © {{ year }} ArtDanjProduction
