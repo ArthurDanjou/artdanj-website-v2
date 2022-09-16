@@ -14,8 +14,6 @@ defineProps({
   },
 })
 
-const { getTheme } = useTheme()
-
 const getColor = computed(() => {
   switch ('') {
     case 'sky':
