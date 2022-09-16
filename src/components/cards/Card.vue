@@ -15,16 +15,16 @@ const props = defineProps({
   },
 })
 
-const getHeight = computed(() => {
+const getRow = computed(() => {
   switch (props.height) {
     case '1':
       return 'row-span-1'
     case '2':
-      return 'row-span-2'
+      return 'lg:row-span-2'
   }
 })
 
-const getWidth = computed(() => {
+const getColumn = computed(() => {
   switch (props.width) {
     case '1':
       return 'lg:col-span-1'
@@ -49,9 +49,9 @@ const getOrder = computed(() => {
 
 <template>
   <div
-    class="relative rounded-28px flex flex-col
-    border border-dark bg-white dark:bg-dark-800 h-full w-full"
-    :class="[getHeight, getWidth, getOrder]"
+    class="card relative rounded-16px flex flex-col
+    border border-dark bg-white dark:bg-dark-900 w-full h-full"
+    :class="[getRow, getColumn, getOrder]"
   >
     <slot />
   </div>
@@ -61,18 +61,14 @@ const getOrder = computed(() => {
 .first-order {
   order: -9999;
 }
-
-@media (min-width: 768px) {
-  .first-order {
-    order: 0;
-  }
-}
-
 .last-order {
   order: 9999;
 }
 
 @media (min-width: 768px) {
+  .first-order {
+    order: 0;
+  }
   .last-order {
     order: 0;
   }
