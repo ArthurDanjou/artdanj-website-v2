@@ -2,7 +2,7 @@
   <Card order="first">
     <CardLink class="flex" target="_blank" href="https://twitter.com/ArthurDanj">
       <CardIcon>
-        <Icon name="mdi:twitter" size="42px" style="color: #1DA1F2" />
+        <Icon name="mdi:twitter" size="42px" />
       </CardIcon>
       <div class="flex flex-col space-y-4">
         <h1 class="title">

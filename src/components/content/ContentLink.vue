@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useTheme } from '#imports'
-
 defineProps({
   link: {
     type: String,
@@ -19,7 +17,7 @@ defineProps({
 const { getTheme } = useTheme()
 
 const getColor = computed(() => {
-  switch (getTheme.value) {
+  switch ('') {
     case 'sky':
       return 'decoration-sky-500 hover:text-sky-500 hover:decoration-sky-500/30 focus:text-sky-500 focus:ring-sky-500/40\n'
           + 'dark:(decoration-sky-400 hover:text-sky-400 hover:decoration-sky-400/30 focus:text-sky-400 focus:ring-sky-400/40)'

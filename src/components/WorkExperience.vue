@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from '@vue/runtime-core'
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
 import type { WorkExperience } from '~/types/content'
 
 defineProps({
@@ -9,7 +8,6 @@ defineProps({
 })
 
 const { t } = useI18n()
-const { getTextColor } = useTheme()
 </script>
 
 <template>

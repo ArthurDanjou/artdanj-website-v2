@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
-
-const { getTextColor } = useTheme()
 
 const { t } = useI18n()
 
@@ -20,7 +17,7 @@ useHead({
       <Card>
         <CardDiv>
           <CardIcon>
-            <Icon name="material-symbols:inbox-outline" size="42px" :class="getTextColor()" />
+            <Icon name="material-symbols:inbox-outline" size="42px" />
           </CardIcon>
           <h1 class="title">
             {{ t('contact.main.title') }}
@@ -35,7 +32,7 @@ useHead({
       <Card order="last">
         <CardDiv>
           <CardIcon>
-            <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
+            <Icon name="uil:web-grid" size="42px" />
           </CardIcon>
           <h1 class="title">
             {{ t('contact.what.dev.title') }}
@@ -49,7 +46,7 @@ useHead({
       <Card order="last">
         <CardDiv>
           <CardIcon>
-            <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
+            <Icon name="ic:outline-design-services" size="42px" />
           </CardIcon>
           <h1 class="title">
             {{ t('contact.what.design.title') }}
@@ -62,7 +59,7 @@ useHead({
       <Card order="last">
         <CardDiv>
           <CardIcon>
-            <Icon name="uil:comment" size="42px" :class="getTextColor()" />
+            <Icon name="uil:comment" size="42px" />
           </CardIcon>
           <h1 class="title">
             {{ t('contact.what.strategy.title') }}

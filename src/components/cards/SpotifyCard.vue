@@ -20,7 +20,7 @@ onUnmounted(() => {
   <Card v-if="data !== null" width="2">
     <CardLink href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
       <CardIcon>
-        <Icon name="mdi:spotify" size="42px" style="color: #1DB954" />
+        <Icon name="mdi:spotify" size="42px" />
       </CardIcon>
       <div v-if="data.is_playing" class="flex flex-col space-y-2 mt-4">
         <div class="flex space-x-2 items-center">
@@ -32,20 +32,20 @@ onUnmounted(() => {
             <div class="play-indicator" style="animation: playAnimation 0.79s infinite" />
             <div class="play-indicator" style="animation: playAnimation 1s infinite" />
           </div>
-          <h1 class="text-2xl text-spotify font-bold">
+          <h1 class="text-3xl font-bold">
             {{ t('cards.spotify.playing') }}
           </h1>
         </div>
         <div class="flex space-x-2">
-          <h1 class="font-black text-xl font-spotify">
+          <h1 class="text-sm font-spotify">
             {{ data.name }},
           </h1>
-          <h1 class="text-gray-600 dark:text-gray-400 font-black text-lg font-spotify">
+          <h1 class="text-gray-600 dark:text-gray-400 text-sm font-spotify">
             {{ data.author }}
           </h1>
         </div>
       </div>
-      <p v-else class="text-2xl text-spotify font-bold">
+      <p v-else class="text-2xl font-bold">
         {{ t('cards.spotify.nothing') }}
       </p>
       <CardButton />
@@ -55,7 +55,7 @@ onUnmounted(() => {
 
 <style lang="scss">
 .play-indicator {
-  @apply w-3px h-3px mr-3px rounded-3px bg-spotify;
+  @apply w-3px h-3px mr-3px rounded-3px bg-black dark:bg-white;
 }
 
 @keyframes playAnimation {

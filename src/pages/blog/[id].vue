@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from '#app'
-import { useTheme } from '#imports'
 
 const route = useRoute()
-const { getTextColor } = useTheme()
 </script>
 
 <template>
@@ -21,8 +19,6 @@ const { getTextColor } = useTheme()
 <style scoped lang="scss">
 #prose {
   // todo add theme for blog post
-  h1 {
-    @apply v-bind(getTextColor()) bg-red-300
-  }
+
 }
 </style>

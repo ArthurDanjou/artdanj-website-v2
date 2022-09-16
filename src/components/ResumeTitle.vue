@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
 
 defineProps({
   title: {
@@ -10,14 +9,12 @@ defineProps({
   },
 })
 
-const { getBackgroundColor } = useTheme()
-
 const { t } = useI18n()
 </script>
 
 <template>
   <h3>
-    <span :class="getBackgroundColor()" class="pl-1 pr-4 title py-1 font-bold text-xl relative">
+    <span class="pl-1 pr-4 title py-1 font-bold text-xl relative bg-black text-white dark:(bg-white text-black)">
       {{ t(title) }}
     </span>
   </h3>

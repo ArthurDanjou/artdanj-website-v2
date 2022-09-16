@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
 import { useEducations, useSkills, useWorkExperiences } from '~/composables/useContent'
-
-const { getTextColor } = useTheme()
 
 const { data: educations } = await useEducations()
 const { data: experiences } = await useWorkExperiences()
@@ -27,7 +24,7 @@ useHead({
               <h1 class="font-bold text-3xl">
                 Arthur Danjou
               </h1>
-              <h3 class="text-xl" :class="getTextColor()">
+              <h3 class="text-xl">
                 {{ t('resume.job') }}
               </h3>
               <p class="text-md text-gray-600 dark:text-gray-400">

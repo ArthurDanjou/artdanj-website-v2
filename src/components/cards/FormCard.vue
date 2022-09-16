@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import type { FormData } from '~/types/types'
-import { useTheme } from '~/composables/useTheme'
 
 const { t } = useI18n()
-const { getTextColor, getBackgroundColor, getBackgroundHoverColor } = useTheme()
 
 const form = ref({
   name: '',
@@ -82,8 +80,7 @@ const handleForm = async () => {
         <div class="w-full">
           <input
             type="submit"
-            class="w-full p-4 rounded-md cursor-pointer font-bold text-black"
-            :class="[getBackgroundColor(), getBackgroundHoverColor()]"
+            class="w-full p-4 rounded-md cursor-pointer font-bold text-black bg-stone-200 hover:bg-stone-300 duration-500 dark:(bg-neutral-700 text-white hover:bg-neutral-500)"
             :value="t('cards.form.submit')"
             @click.prevent="handleForm()"
           >

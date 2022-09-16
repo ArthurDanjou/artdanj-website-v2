@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
-
-const { getTextColor, getBackgroundColor } = useTheme()
 
 const { t } = useI18n()
 
@@ -17,12 +14,12 @@ useHead({
       <Card order="first" width="2">
         <CardLink href="about" class="flex flex-col">
           <div class="h-full flex items-center">
-            <div class="bg-photo h-32 w-32 rounded-1/2" :class="getBackgroundColor()" />
+            <div class="bg-photo h-32 w-32 rounded-1/2" />
           </div>
           <div class="flex flex flex-col space-y-4">
             <h1 class="font-bold text-4xl mt-4">
               {{ t('index.main') }}
-              <span class="mx-2" :class="getTextColor()">Arthur Danjou</span>
+              <span class="mx-2">Arthur Danjou</span>
               <span class="hey-animation inline-block">👋</span>
             </h1>
             <p class="text-gray-600 dark:text-gray-400 pr-54px">
@@ -37,7 +34,7 @@ useHead({
       <Card order="last">
         <CardLink href="uses" class="flex flex-col justify-center">
           <CardIcon>
-            <Icon name="lucide:lamp-desk" size="42px" :class="getTextColor()" />
+            <Icon name="lucide:lamp-desk" size="42px" />
           </CardIcon>
           <div class="flex flex-col space-y-4">
             <h1 class="title">
@@ -53,7 +50,7 @@ useHead({
       <Card order="last">
         <CardLink href="guestbook" class="flex flex-col justify-center">
           <CardIcon>
-            <Icon name="icon-park-outline:bookshelf" size="42px" :class="getTextColor()" />
+            <Icon name="icon-park-outline:bookshelf" size="42px" />
           </CardIcon>
           <div class="flex flex-col space-y-4">
             <h1 class="title">
@@ -78,7 +75,7 @@ useHead({
           <div class="flex w-full justify-between">
             <div class="flex flex-col items-center">
               <CardIcon :stick="true">
-                <Icon name="uil:web-grid" size="42px" :class="getTextColor()" />
+                <Icon name="uil:web-grid" size="42px" />
               </CardIcon>
               <p class="subtitle mt-2">
                 {{ t('index.work.dev') }}
@@ -86,7 +83,7 @@ useHead({
             </div>
             <div class="flex flex-col items-center">
               <CardIcon :stick="true">
-                <Icon name="ic:outline-design-services" size="42px" :class="getTextColor()" />
+                <Icon name="ic:outline-design-services" size="42px" />
               </CardIcon>
               <p class="subtitle mt-2">
                 {{ t('index.work.design') }}
@@ -94,7 +91,7 @@ useHead({
             </div>
             <div class="flex flex-col items-center">
               <CardIcon :stick="true">
-                <Icon name="uil:comment" size="42px" :class="getTextColor()" />
+                <Icon name="uil:comment" size="42px" />
               </CardIcon>
               <p class="subtitle mt-2">
                 {{ t('index.work.strategy') }}

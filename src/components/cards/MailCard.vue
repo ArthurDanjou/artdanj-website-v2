@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
-const { getTextColor } = useTheme()
+
 const { t } = useI18n()
 </script>
 
@@ -9,7 +8,7 @@ const { t } = useI18n()
   <Card width="2">
     <CardLink href="mailto:contact@arthurdanjou.fr">
       <CardIcon>
-        <Icon name="material-symbols:alternate-email-rounded" size="42px" :class="getTextColor()" />
+        <Icon name="material-symbols:alternate-email-rounded" size="42px" />
       </CardIcon>
       <div class="flex flex-col space-y-4">
         <Link class="title" link="mailto:contact@arthurdanjou.fr" :group="true">

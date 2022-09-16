@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
 
-const { getTextColor } = useTheme()
 const { t, setLocaleMessage } = useI18n()
 const { data } = await useAsyncData('announce', async () => {
   const announce = await $fetch('/api/announces')
@@ -20,7 +18,7 @@ const { data } = await useAsyncData('announce', async () => {
   <Card order="first" width="2">
     <CardDiv>
       <CardIcon>
-        <Icon name="tabler:speakerphone" size="42px" :class="getTextColor()" />
+        <Icon name="tabler:speakerphone" size="42px" />
       </CardIcon>
       <div class="flex flex-col space-y-4">
         <h1 v-if="data" class="title">

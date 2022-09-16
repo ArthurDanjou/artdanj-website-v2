@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useThemeStore } from '~/store/theme'
-import { THEMES } from '~/types/themes'
 import { useLang } from '~/composables/useLang'
 
 const color = useColorMode()
@@ -27,14 +25,6 @@ const changeLanguage = () => {
   setLang(locale.value)
 }
 
-const themeStore = useThemeStore()
-const toggleColorTheme = () => {
-  const nextTheme = THEMES[(THEMES.indexOf(themeStore.theme) + 1) % THEMES.length]
-  themeStore.setTheme(nextTheme)
-  playAnimation('theme')
-  return nextTheme
-}
-
 const router = useRouter()
 const goBack = () => {
   router.push('/blog')
@@ -51,7 +41,7 @@ const isRoute = (route: string) => {
 </script>
 
 <template>
-  <!-- todo add overflow, add tooltip -->
+  <!-- add tooltip -->
   <div class="duration-300 z-10 fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 width">
     <transition name="arrow">
       <div v-if="isBlog" class="cursor-pointer nav-container group" @click.prevent="goBack">
@@ -83,9 +73,6 @@ const isRoute = (route: string) => {
       <div id="color" class="nav-link h-44px w-44px" @click.prevent="toggleColorMode()">
         <Icon v-if="color.preference === 'light'" name="ph:sun-bold" size="24px" />
         <Icon v-else name="pepicons:moon" size="24px" />
-      </div>
-      <div id="theme" class="nav-link h-44px w-44px" @click.prevent="toggleColorTheme()">
-        <Icon name="ph:paint-brush-bold" size="24px" />
       </div>
       <div id="lang" class="nav-link h-44px w-44px" @click.prevent="changeLanguage()">
         <Icon v-if="getLang() === 'fr'" name="twemoji:flag-france" size="24px" />

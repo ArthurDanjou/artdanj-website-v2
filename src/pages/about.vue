@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTheme } from '~/composables/useTheme'
-const { getTextColor } = useTheme()
 
 const age = ref(19)
-
 const { t } = useI18n()
 
 useHead({
@@ -26,7 +23,7 @@ useHead({
         <CardDiv class="flex">
           <h1 class="font-bold text-4xl my-4 leading-12">
             {{ t('about.main') }}
-            <span :class="getTextColor()">Arthur Danjou</span> 👋
+            <span>Arthur Danjou</span> 👋
           </h1>
           <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400">
             {{ t('about.description') }}
@@ -40,28 +37,28 @@ useHead({
           </h1>
           <i18n-t keypath="about.about.description.text" tag="p" class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
             <template #maths>
-              <span :class="getTextColor()">{{ t('about.about.description.maths') }}</span>
+              <span>{{ t('about.about.description.maths') }}</span>
             </template>
             <template #age>
-              <span :class="getTextColor()">{{ age }}</span>
+              <span>{{ age }}</span>
             </template>
             <template #networking>
-              <span :class="getTextColor()">{{ t('about.about.description.networking') }}</span>
+              <span>{{ t('about.about.description.networking') }}</span>
             </template>
             <template #infrastructure>
-              <span :class="getTextColor()">{{ t('about.about.description.infrastructure') }}</span>
+              <span>{{ t('about.about.description.infrastructure') }}</span>
             </template>
             <template #cloud>
-              <span :class="getTextColor()">{{ t('about.about.description.cloud') }}</span>
+              <span>{{ t('about.about.description.cloud') }}</span>
             </template>
             <template #technologies>
-              <span :class="getTextColor()">{{ t('about.about.description.technologies') }}</span>
+              <span>{{ t('about.about.description.technologies') }}</span>
             </template>
             <template #knowledge>
-              <span :class="getTextColor()">{{ t('about.about.description.knowledge') }}</span>
+              <span>{{ t('about.about.description.knowledge') }}</span>
             </template>
             <template #opensource>
-              <span :class="getTextColor()">{{ t('about.about.description.opensource') }}</span>
+              <span>{{ t('about.about.description.opensource') }}</span>
             </template>
           </i18n-t>
         </CardDiv>
@@ -74,7 +71,7 @@ useHead({
           <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
               <CardIcon :stick="true">
-                <Icon name="ph:cpu-bold" size="40px" :class="getTextColor()" />
+                <Icon name="ph:cpu-bold" size="40px" />
               </CardIcon>
               <p class="interests-title">
                 Tech.
@@ -82,7 +79,7 @@ useHead({
             </div>
             <div class="interest-item">
               <CardIcon :stick="true">
-                <Icon name="uil:server" size="42px" :class="getTextColor()" />
+                <Icon name="uil:server" size="42px" />
               </CardIcon>
               <p class="interests-title">
                 DevOps
@@ -90,7 +87,7 @@ useHead({
             </div>
             <div class="interest-item">
               <CardIcon :stick="true">
-                <Icon name="ph:airplane-tilt-bold" size="42px" :class="getTextColor()" />
+                <Icon name="ph:airplane-tilt-bold" size="42px" />
               </CardIcon>
               <p class="interests-title">
                 {{ t('about.interests.trips') }}
@@ -98,7 +95,7 @@ useHead({
             </div>
             <div class="interest-item">
               <CardIcon :stick="true">
-                <Icon name="ph:camera-bold" size="42px" :class="getTextColor()" />
+                <Icon name="ph:camera-bold" size="42px" />
               </CardIcon>
               <p class="interests-title">
                 Photo
@@ -106,7 +103,7 @@ useHead({
             </div>
             <div class="interest-item">
               <CardIcon :stick="true">
-                <Icon name="ic:outline-wb-cloudy" size="42px" :class="getTextColor()" />
+                <Icon name="ic:outline-wb-cloudy" size="42px" />
               </CardIcon>
               <p class="interests-title">
                 Cloud
@@ -114,7 +111,7 @@ useHead({
             </div>
             <div class="interest-item">
               <CardIcon :stick="true">
-                <Icon name="mdi:function-variant" size="42px" :class="getTextColor()" />
+                <Icon name="mdi:function-variant" size="42px" />
               </CardIcon>
               <p class="interests-title">
                 Maths.
