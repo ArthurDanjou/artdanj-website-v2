@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useTheme} from "#imports";
+import { useTheme } from '#imports'
 
 const props = defineProps({
   link: {
