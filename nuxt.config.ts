@@ -23,7 +23,6 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/style.scss',
     '@/assets/css/scrollbar.scss',
-    '@/assets/css/prose.scss',
   ],
 
   components: [
