@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
       content: body.content,
     },
   })
+  await client.$disconnect()
   return {
     code: form !== null ? 200 : 500,
   }

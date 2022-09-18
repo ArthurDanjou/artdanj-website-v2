@@ -3,9 +3,11 @@ import { PrismaClient } from '@prisma/client'
 
 export default defineEventHandler(async () => {
   const client = new PrismaClient()
-  return await client.announcement.findFirst({
+  const announce = await client.announcement.findFirst({
     orderBy: {
       createdAt: 'desc',
     },
   })
+  await client.$disconnect()
+  return announce
 })
