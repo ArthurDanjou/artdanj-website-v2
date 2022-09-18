@@ -51,32 +51,32 @@ const isRoute = (route: string) => {
       </div>
     </transition>
     <nav class="nav-container overflow-x-auto sm:overflow-x-hidden">
-      <NavBarItem :isRoute="isRoute('/')">
+      <NavBarItem :is-route="isRoute('/')">
         <NuxtLink to="/" class="nav-link">
           <HouseIcon :filled="isRoute('/')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <NavBarItem :isRoute="isRoute('/about')">
+      <NavBarItem :is-route="isRoute('/about')">
         <NuxtLink to="/about" class="nav-link">
           <PersonIcon :filled="isRoute('/about')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <NavBarItem :isRoute="isRoute('/blog')">
+      <NavBarItem :is-route="isRoute('/blog')">
         <NuxtLink to="/blog" class="nav-link" :class="{ 'router-link-exact-active': isRoute('/blog') }">
           <PencilIcon :filled="isRoute('/blog')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <NavBarItem :isRoute="isRoute('/projects')">
+      <NavBarItem :is-route="isRoute('/projects')">
         <NuxtLink to="/projects" class="nav-link">
           <LightningIcon :filled="isRoute('/projects')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <NavBarItem :isRoute="isRoute('/resume')">
+      <NavBarItem :is-route="isRoute('/resume')">
         <NuxtLink to="/resume" class="nav-link">
           <MailIcon :filled="isRoute('/resume')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <NavBarItem :isRoute="isRoute('/contact')">
+      <NavBarItem :is-route="isRoute('/contact')">
         <NuxtLink to="/contact" class="nav-link">
           <PinIcon :filled="isRoute('/contact')" class="text-2xl" />
         </NuxtLink>
