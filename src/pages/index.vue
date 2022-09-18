@@ -19,7 +19,7 @@ useHead({
           <div class="flex flex flex-col space-y-4">
             <h1 class="font-bold text-4xl mt-4">
               {{ t('index.main') }}
-              <span class="mx-2">Arthur Danjou</span>
+              <span class="mx-1">Arthur Danjou</span>
               <span class="hey-animation inline-block">👋</span>
             </h1>
             <p class="text-gray-600 dark:text-gray-400 pr-54px">
