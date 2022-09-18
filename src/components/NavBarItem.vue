@@ -1,18 +1,18 @@
-<template>
-  <div class="flex flex-col items-center relative">
-    <slot />
-    <div :class="{'indicator': isRoute}"/>
-  </div>
-</template>
-
 <script setup lang="ts">
 defineProps({
   isRoute: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 </script>
+
+<template>
+  <div class="flex flex-col items-center relative">
+    <slot />
+    <div :class="{ indicator: isRoute }" />
+  </div>
+</template>
 
 <style lang="scss">
 .indicator {
