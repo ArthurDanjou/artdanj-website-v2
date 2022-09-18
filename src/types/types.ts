@@ -20,3 +20,12 @@ export interface FormData {
   email: string
   content: string
 }
+
+export interface Announcement {
+  id: number
+  title: string
+  french_content: string
+  english_content: string
+  createdAt: Date
+  updatedAt: Date
+}
