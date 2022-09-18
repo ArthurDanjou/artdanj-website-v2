@@ -37,28 +37,28 @@ useHead({
           </h1>
           <i18n-t keypath="about.about.description.text" tag="p" class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
             <template #maths>
-              <span>{{ t('about.about.description.maths') }}</span>
+              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.maths') }}</span>
             </template>
             <template #age>
               <span>{{ age }}</span>
             </template>
             <template #networking>
-              <span>{{ t('about.about.description.networking') }}</span>
+              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.networking') }}</span>
             </template>
             <template #infrastructure>
-              <span>{{ t('about.about.description.infrastructure') }}</span>
+              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.infrastructure') }}</span>
             </template>
             <template #cloud>
-              <span>{{ t('about.about.description.cloud') }}</span>
+              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.cloud') }}</span>
             </template>
             <template #technologies>
-              <span>{{ t('about.about.description.technologies') }}</span>
+              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.technologies') }}</span>
             </template>
             <template #knowledge>
-              <span>{{ t('about.about.description.knowledge') }}</span>
+              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.knowledge') }}</span>
             </template>
             <template #opensource>
-              <span>{{ t('about.about.description.opensource') }}</span>
+              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.opensource') }}</span>
             </template>
           </i18n-t>
         </CardDiv>
