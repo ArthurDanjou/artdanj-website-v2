@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useEducations, useSkills, useWorkExperiences } from '~/composables/useContent'
+import {useEducations, useSkills, useWorkExperiences} from "~/composables/useContent";
 
-const { data: educations } = await useEducations()
-const { data: experiences } = await useWorkExperiences()
-const { data: skills } = await useSkills()
+const { t, mergeLocaleMessage } = useI18n()
 
-const { t } = useI18n()
+const { data: educations } = useEducations(mergeLocaleMessage)
+const { data: experiences } = useWorkExperiences(mergeLocaleMessage)
+const { data: skills } = useSkills(mergeLocaleMessage)
+
 useHead({
   title: t('head.resume'),
 })
