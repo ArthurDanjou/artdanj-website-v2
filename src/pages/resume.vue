@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import {useEducations, useSkills, useWorkExperiences} from "~/composables/useContent";
+import { useEducations, useSkills, useWorkExperiences } from "~/composables/useContent";
 
 const { t, mergeLocaleMessage } = useI18n()
 
