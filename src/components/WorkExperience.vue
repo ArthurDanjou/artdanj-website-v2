@@ -18,11 +18,11 @@ const { t } = useI18n()
         <Link :href="experience.companyLink" target="_blank">
           {{ experience.company }}
         </Link>
-        <span class="text-gray-700 dark:text-gray-300"> — {{ t(experience.title.code) }}</span>
+        <span class="text-gray-600 dark:text-gray-400"> — {{ t(experience.title.code) }}</span>
       </div>
       <h1 v-else class="text-lg">
         <span class="font-medium text-black dark:text-white">{{ experience.company }}</span>
-        <span class="text-gray-700 dark:text-gray-300"> — {{ t(experience.title.code) }}</span>
+        <span class="text-gray-600 dark:text-gray-400"> — {{ t(experience.title.code) }}</span>
       </h1>
     </div>
     <p class="text-justify text-md leading-5 text-gray-600 dark:text-gray-400">
