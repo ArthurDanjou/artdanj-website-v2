@@ -8,7 +8,6 @@
 
 ## Implements
 - posts likes & post views ?
-- Maintenance mode
 
 ## Design
 - projects covers
