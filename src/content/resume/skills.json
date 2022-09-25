@@ -1,11 +1,7 @@
 {
   "body": [
     {
-      "name": {
-        "code": "skill.languages",
-        "french": "Langages",
-        "english": "Languages"
-      },
+      "name": "Languages",
       "skills": [
         "TypeScript",
         "JavaScript",
@@ -18,11 +14,7 @@
       ]
     },
     {
-      "name": {
-        "code": "skill.frontend",
-        "french": "Frontend",
-        "english": "Frontend"
-      },
+      "name": "Frontend",
       "skills": [
         "VueJs",
         "NuxtJs",
@@ -33,11 +25,7 @@
       ]
     },
     {
-      "name": {
-        "code": "skill.backend",
-        "french": "Backend",
-        "english": "Backend"
-      },
+      "name": "Backend",
       "skills": [
         "AdonisJs",
         "MariaDB",
@@ -46,11 +34,7 @@
       ]
     },
     {
-      "name": {
-        "code": "skill.devops",
-        "french": "DevOps",
-        "english": "DevOps"
-      },
+      "name": "DevOps",
       "skills": [
         "Docker",
         "Kubernetes",
@@ -60,11 +44,7 @@
       ]
     },
     {
-      "name": {
-        "code": "skill.other",
-        "french": "Autres",
-        "english": "Others"
-      },
+      "name": "Others",
       "skills": [
         "Jira",
         "Confluence",

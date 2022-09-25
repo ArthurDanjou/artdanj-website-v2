@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { ref, useHead } from '#imports'
 
 const age = ref(19)
-const { t } = useI18n()
 
 useHead({
-  title: t('head.about'),
+  title: 'About Me - Arthur Danjou',
 })
 </script>
 
 <template>
   <section>
-    <PageTitle title="about" />
+    <PageTitle title="About Me" />
     <CardContainer>
       <Card order="first" width="3">
         <CardDiv>
@@ -22,51 +21,28 @@ useHead({
       <Card order="first">
         <CardDiv class="flex">
           <h1 class="font-bold text-4xl my-4 leading-12">
-            {{ t('about.main') }}
+            Hey, I am
             <span>Arthur Danjou</span> 👋
           </h1>
           <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400">
-            {{ t('about.description') }}
+            A software engineer from France
           </h3>
         </CardDiv>
       </Card>
       <Card order="first" width="2">
         <CardDiv>
           <h1 class="text-3xl font-bold mb-4">
-            {{ t('about.about.title') }}
+            About me
           </h1>
-          <i18n-t keypath="about.about.description.text" tag="p" class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
-            <template #maths>
-              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.maths') }}</span>
-            </template>
-            <template #age>
-              <span>{{ age }}</span>
-            </template>
-            <template #networking>
-              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.networking') }}</span>
-            </template>
-            <template #infrastructure>
-              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.infrastructure') }}</span>
-            </template>
-            <template #cloud>
-              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.cloud') }}</span>
-            </template>
-            <template #technologies>
-              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.technologies') }}</span>
-            </template>
-            <template #knowledge>
-              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.knowledge') }}</span>
-            </template>
-            <template #opensource>
-              <span class="text-black dark:text-white font-bold">{{ t('about.about.description.opensource') }}</span>
-            </template>
-          </i18n-t>
+          <p class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
+            Software Engineer, but also student in <span class="about-word">maths</span>. I live in Paris, France. I am <span class="about-word">{{ age }}</span> years old. I am passionate about <span class="about-word">networking</span>, <span class="about-word">infrastructure</span> and <span class="about-word">cloud computing</span>️. I use modern <span class="about-word">technologies</span> to get the best possible result. I love sharing my <span class="about-word">knowledge</span> and helping others. Sometimes, I write technical <span class="about-word">articles</span> on my blog and I always try to contribute to <span class="about-word">opensource</span> projects.
+          </p>
         </CardDiv>
       </Card>
       <Card width="2">
         <CardDiv>
           <h1 class="text-3xl font-bold mb-12">
-            {{ t('about.interests.title') }}
+            My Interests
           </h1>
           <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
@@ -90,7 +66,7 @@ useHead({
                 <Icon name="ph:airplane-tilt-bold" size="42px" />
               </CardIcon>
               <p class="interests-title">
-                {{ t('about.interests.trips') }}
+                Trips
               </p>
             </div>
             <div class="interest-item">
@@ -130,7 +106,7 @@ useHead({
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
-          {{ t('about.stats.customers') }}
+          Satisfied customers
         </p>
       </StatsCard>
       <StatsCard>
@@ -139,11 +115,11 @@ useHead({
             7
           </div>
           <div class="text-7xl inline leading-6 font-bold">
-            {{ t('about.stats.years') }}
+            Years
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
-          {{ t('about.stats.experience') }}
+          Of experience
         </p>
       </StatsCard>
       <StatsCard>
@@ -156,7 +132,7 @@ useHead({
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
-          {{ t('about.stats.hours') }}
+          Hours per year
         </p>
       </StatsCard>
       <StatsCard>
@@ -184,6 +160,10 @@ useHead({
 
 .interests-title {
   @apply mt-2 text-sm text-gray-600 dark:text-gray-400 text-center;
+}
+
+.about-word {
+  @apply text-black dark:text-white font-bold;
 }
 
 .bg-text-green {

@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import { useHead } from '#imports'
 
 useHead({
-  title: t('head.guestbook'),
+  title: 'My Guestbook - Arthur Danjou',
 })
 </script>
 
 <template>
   <main>
-    <PageTitle title="guestbook" />
+    <PageTitle title="My Book" />
   </main>
 </template>

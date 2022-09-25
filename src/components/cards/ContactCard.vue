@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
-</script>
-
 <template>
   <Card order="last">
     <CardLink href="contact">
@@ -12,10 +6,10 @@ const { t } = useI18n()
       </CardIcon>
       <div class="flex flex-col space-y-4">
         <h1 class="title">
-          {{ t('cards.contact.title') }}
+          Get in touch
         </h1>
         <h3 class="subtitle">
-          {{ t('cards.contact.subtitle') }}
+          Let's work together
         </h3>
       </div>
       <CardButton />

@@ -2,8 +2,8 @@
 slug: 'test'
 title: 'Test'
 description: 'Description de test'
-publishedAt: '02/07/2003'
-modifiedAt: '02/07/2003'
+publishedAt: '06 February 2021'
+modifiedAt: '06 February 2021'
 readingMins: 5
 cover: 'test'
 ---

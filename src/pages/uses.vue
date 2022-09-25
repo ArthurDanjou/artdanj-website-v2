@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import { useHead } from '#imports'
 
 useHead({
-  title: t('head.uses'),
+  title: 'My Uses - Arthur Danjou',
 })
 </script>
 
 <template>
   <section>
-    <PageTitle title="uses" />
+    <PageTitle title="My Uses" />
     <div class="flex justify-center">
       <ContentDoc class="w-1/2 prose" path="/uses" />
     </div>

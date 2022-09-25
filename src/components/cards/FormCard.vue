@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import type { FormData } from '~/types/types'
-
-const { t } = useI18n()
 
 const form = ref({
   name: '',
@@ -43,7 +40,7 @@ const handleForm = async () => {
         <img class="w-1/2 animate-heartBeat animate-infinite animate-slower" src="~/assets/images/partying.png" alt="Image of me feasting">
       </div>
       <div class="text-xl text-spotify text-center">
-        {{ t('cards.form.success') }}
+        Your message was successfully sent ✅
       </div>
     </CardDiv>
     <CardDiv v-else-if="sent.error">
@@ -51,7 +48,7 @@ const handleForm = async () => {
         <img class="w-1/2" src="~/assets/images/crying.png" alt="Image of me sad">
       </div>
       <div class="text-xl text-red-500 text-center">
-        {{ t('cards.form.error') }}
+        The system encountered an error. Please try again later. ❌
       </div>
     </CardDiv>
     <CardDiv v-else>
@@ -60,28 +57,28 @@ const handleForm = async () => {
           <input
             v-model="form.name"
             type="text"
-            :placeholder="t('cards.form.name')"
+            placeholder="Name"
             required
             class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
           >
           <input
             v-model="form.email"
             type="email"
-            :placeholder="t('cards.form.email')"
+            placeholder="Email"
             required
             class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
           >
         </div>
         <textarea
           v-model="form.content"
-          :placeholder="t('cards.form.content')"
+          placeholder="Write your message"
           class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300 invalid:bg-red-600 required:bg-red-600"
         />
         <div class="w-full">
           <input
             type="submit"
             class="w-full p-4 rounded-md cursor-pointer font-bold text-black bg-stone-200 hover:bg-stone-300 duration-500 dark:(bg-neutral-700 text-white hover:bg-neutral-500)"
-            :value="t('cards.form.submit')"
+            value="Send your message"
             @click.prevent="handleForm()"
           >
         </div>

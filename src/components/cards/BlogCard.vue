@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from '@vue/runtime-core'
-import { useI18n } from 'vue-i18n'
 import type { Post } from '~/types/content'
-import { formatPostDate } from '~/logic/date'
 
 defineProps({
   post: Object as PropType<Post>,
@@ -11,8 +9,6 @@ defineProps({
     default: '1',
   },
 })
-
-const { t } = useI18n()
 </script>
 
 <template>
@@ -26,7 +22,7 @@ const { t } = useI18n()
       </h3>
       <div class="flex items-center justify-between mt-8">
         <p>
-          {{ formatPostDate(post.publishedAt) }}<br>
+          {{ post.publishedAt }}<br>
           <span class="text-gray-600 dark:text-gray-400">{{ post.readingMins }} min.</span>
         </p>
         <div
@@ -34,7 +30,7 @@ const { t } = useI18n()
                 bg-white text-stone-400 dark:(bg-dark-900 text-stone-600) group-hover:(shadow-dark text-black) dark:group-hover:text-white"
         >
           <div class="flex items-center justify-center flex items-center justify-center">
-            {{ t('blog.read') }}<Icon name="material-symbols:add-circle-outline-rounded" size="20px" class="ml-1" />
+            Read more<Icon name="material-symbols:add-circle-outline-rounded" size="20px" class="ml-1" />
           </div>
         </div>
       </div>

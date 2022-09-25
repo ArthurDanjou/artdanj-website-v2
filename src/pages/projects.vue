@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import { useHead } from '#imports'
 
 useHead({
-  title: t('head.projects'),
+  title: 'All Works - Arthur Danjou',
 })
 </script>
 
 <template>
   <section>
-    <PageTitle title="projects" />
+    <PageTitle title="My Works" />
     <CardContainer>
       <Card>
         <CardLink href="/blog/123">

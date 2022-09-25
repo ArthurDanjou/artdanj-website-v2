@@ -23,9 +23,7 @@ export interface FormData {
 
 export interface Announcement {
   id: number
-  title: string
-  french_content: string
-  english_content: string
+  content: string
   createdAt: Date
   updatedAt: Date
 }

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
-</script>
-
 <template>
   <Card width="2">
     <CardLink href="mailto:contact@arthurdanjou.fr">
@@ -15,7 +9,7 @@ const { t } = useI18n()
           contact@arthurdanjou.fr
         </Link>
         <h3 class="subtitle">
-          {{ t('cards.mail') }}
+          Just want to email me ?
         </h3>
       </div>
       <CardButton />

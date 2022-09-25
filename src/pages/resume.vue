@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { useEducations, useSkills, useWorkExperiences } from "~/composables/useContent";
+import { useEducations, useHead, useSkills, useWorkExperiences } from '#imports'
 
-const { t, mergeLocaleMessage } = useI18n()
-
-const { data: educations } = useEducations(mergeLocaleMessage)
-const { data: experiences } = useWorkExperiences(mergeLocaleMessage)
-const { data: skills } = useSkills(mergeLocaleMessage)
+const { data: educations } = await useEducations()
+const { data: experiences } = await useWorkExperiences()
+const { data: skills } = await useSkills()
 
 useHead({
-  title: t('head.resume'),
+  title: 'My Résumé - Arthur Danjou',
 })
 </script>
 
 <template>
   <section>
-    <PageTitle title="resume" />
+    <PageTitle title="My Résumé" />
     <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-16">
       <div class="w-full lg:w-1/4">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2 auto-rows-fr">
@@ -26,7 +23,7 @@ useHead({
                 Arthur Danjou
               </h1>
               <h3 class="text-xl">
-                {{ t('resume.job') }}
+                Software Engineer
               </h3>
               <p class="text-md text-gray-600 dark:text-gray-400">
                 Paris, France
@@ -41,15 +38,14 @@ useHead({
         </div>
       </div>
       <div class="w-full mt-16 lg:(w-3/4 mt-0)">
-        <ResumeTitle title="resume.titles.about" />
+        <ResumeTitle title="About Me" />
         <ResumeSection>
           <p class="text-gray-600 dark:text-gray-400 text-justify leading-6">
-            {{ t('resume.about.first') }}
-            <br><br>
-            {{ t('resume.about.second') }}
+            I am Arthur Danjou, a mathematics student at the Faculty of Sciences of Paris-Saclay but also a freelance software engineer. I am very interested in new technologies, development and computing. I am able to quickly learn new technologies to meet the needs of different projects. I am always motivated by a challenge and like to be well organized to produce consistent results. Being able to create software from scratch is a real source of motivation.
+            I love sharing my knowledge and helping others. I do a lot of research and read a lot of technical articles to discover new features. As long as I share my passions, I will continue to do this.
           </p>
         </ResumeSection>
-        <ResumeTitle title="resume.titles.experiences" />
+        <ResumeTitle title="Work Experiences" />
         <ResumeSection class="space-y-4">
           <WorkExperience
             v-for="experience in experiences.body"
@@ -57,7 +53,7 @@ useHead({
             :experience="experience"
           />
         </ResumeSection>
-        <ResumeTitle title="resume.titles.educations" />
+        <ResumeTitle title="Educations" />
         <ResumeSection class="space-y-4">
           <Education
             v-for="education in educations.body"
@@ -65,7 +61,7 @@ useHead({
             :education="education"
           />
         </ResumeSection>
-        <ResumeTitle title="resume.titles.skills" />
+        <ResumeTitle title="Skills" />
         <ResumeSection>
           <Stack
             v-for="skill in skills.body"
@@ -73,21 +69,10 @@ useHead({
             :skill="skill"
           />
         </ResumeSection>
-        <ResumeTitle title="resume.titles.languages" />
-        <i18n-t keypath="resume.languages.text" tag="div" class="p-6 text-gray-600 dark:text-gray-400">
-          <template #french>
-            <strong class="text-black dark:text-white">{{ t('resume.languages.french') }}</strong>
-          </template>
-          <template #native>
-            {{ t('resume.languages.native') }}
-          </template>
-          <template #english>
-            <strong class="text-black dark:text-white">{{ t('resume.languages.english') }}</strong>
-          </template>
-          <template #fluent>
-            {{ t('resume.languages.fluent') }}
-          </template>
-        </i18n-t>
+        <ResumeTitle title="Languages" />
+        <ResumeSection>
+          <strong class="text-black dark:text-white">French</strong> (Native Speaker), <strong class="text-black dark:text-white">English</strong> (Fluent)
+        </ResumeSection>
       </div>
     </div>
   </section>

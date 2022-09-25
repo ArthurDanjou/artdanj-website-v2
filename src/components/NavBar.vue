@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { useLang } from '~/composables/useLang'
-
 const color = useColorMode()
 
 const playAnimation = (id) => {
@@ -15,14 +12,6 @@ const playAnimation = (id) => {
 const toggleColorMode = () => {
   playAnimation('color')
   color.preference = color.value === 'dark' ? 'light' : 'dark'
-}
-
-const { locale } = useI18n()
-const { setLang, getLang } = useLang()
-const changeLanguage = () => {
-  playAnimation('lang')
-  locale.value = locale.value === 'en' ? 'fr' : 'en'
-  setLang(locale.value)
 }
 
 const router = useRouter()
@@ -85,10 +74,6 @@ const isRoute = (route: string) => {
       <div id="color" class="nav-link h-44px w-44px" @click.prevent="toggleColorMode()">
         <Icon v-if="color.preference === 'light'" name="ph:sun-bold" size="24px" />
         <Icon v-else name="pepicons:moon" size="24px" />
-      </div>
-      <div id="lang" class="nav-link h-44px w-44px" @click.prevent="changeLanguage()">
-        <Icon v-if="getLang() === 'fr'" name="twemoji:flag-france" size="24px" />
-        <Icon v-else name="twemoji:flag-united-kingdom" size="24px" />
       </div>
     </nav>
   </div>

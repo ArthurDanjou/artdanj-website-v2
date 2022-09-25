@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import { useHead } from '#imports'
 
 useHead({
-  title: t('head.contact'),
+  title: 'Contact Me - Arthur Danjou',
 })
 
 // todo complete cards
@@ -12,7 +10,7 @@ useHead({
 
 <template>
   <section>
-    <PageTitle title="contact" />
+    <PageTitle title="Contact me" />
     <CardContainer>
       <Card>
         <CardDiv>
@@ -20,10 +18,10 @@ useHead({
             <Icon name="material-symbols:inbox-outline" size="42px" />
           </CardIcon>
           <h1 class="title">
-            {{ t('contact.main.title') }}
+            Get in touch
           </h1>
           <h3 class="subtitle mt-4 ">
-            {{ t('contact.main.subtitle') }}
+            I’m always open to collaborate on a project or hear about an opportunity!
           </h3>
         </CardDiv>
       </Card>
@@ -35,10 +33,10 @@ useHead({
             <Icon name="uil:web-grid" size="42px" />
           </CardIcon>
           <h1 class="title">
-            {{ t('contact.what.dev.title') }}
+            Development
           </h1>
           <p class="subtitle">
-            {{ t('contact.what.dev.subtitle') }}
+            ...
           </p>
         </CardDiv>
       </Card>
@@ -49,10 +47,10 @@ useHead({
             <Icon name="ic:outline-design-services" size="42px" />
           </CardIcon>
           <h1 class="title">
-            {{ t('contact.what.design.title') }}
+            Design
           </h1>
           <p class="subtitle">
-            {{ t('contact.what.design.subtitle') }}
+            ...
           </p>
         </CardDiv>
       </Card>
@@ -62,10 +60,10 @@ useHead({
             <Icon name="uil:comment" size="42px" />
           </CardIcon>
           <h1 class="title">
-            {{ t('contact.what.strategy.title') }}
+            Strategy
           </h1>
           <p class="subtitle">
-            {{ t('contact.what.strategy.subtitle') }}
+            ...
           </p>
         </CardDiv>
       </Card>

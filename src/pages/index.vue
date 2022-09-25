@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { useLatestPost } from '~/composables/useContent'
+import { useHead, useLatestPost } from '#imports'
 
-const { t } = useI18n()
 const { data: post } = await useLatestPost()
 
 useHead({
-  title: t('head.index'),
+  title: 'Arthur Danjou - Software Engineer',
 })
 </script>
 
@@ -20,12 +18,12 @@ useHead({
           </div>
           <div class="flex flex flex-col space-y-4">
             <h1 class="font-bold text-4xl mt-4">
-              {{ t('index.main') }}
+              Hey, I am
               <span class="mx-1">Arthur Danjou</span>
               <span class="hey-animation inline-block">👋</span>
             </h1>
             <p class="text-gray-600 dark:text-gray-400 pr-54px">
-              {{ t('index.description') }}
+              A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
             </p>
           </div>
           <CardButton />
@@ -40,10 +38,10 @@ useHead({
           </CardIcon>
           <div class="flex flex-col space-y-4">
             <h1 class="title">
-              {{ t('uses.card.title') }}
+              How do I work ?
             </h1>
             <h3 class="subtitle">
-              {{ t('uses.card.subtitle') }}
+              Discover my development environment
             </h3>
           </div>
           <CardButton />
@@ -56,10 +54,10 @@ useHead({
           </CardIcon>
           <div class="flex flex-col space-y-4">
             <h1 class="title">
-              {{ t('guestbook.card.title') }}
+              Sign my book
             </h1>
             <h3 class="subtitle">
-              {{ t('guestbook.card.subtitle') }}
+              Do you want to leave a message ?
             </h3>
           </div>
           <CardButton />
@@ -80,7 +78,7 @@ useHead({
                 <Icon name="uil:web-grid" size="42px" />
               </CardIcon>
               <p class="subtitle mt-2">
-                {{ t('index.work.dev') }}
+                Development
               </p>
             </div>
             <div class="flex flex-col items-center">
@@ -88,7 +86,7 @@ useHead({
                 <Icon name="ic:outline-design-services" size="42px" />
               </CardIcon>
               <p class="subtitle mt-2">
-                {{ t('index.work.design') }}
+                Design
               </p>
             </div>
             <div class="flex flex-col items-center">
@@ -96,12 +94,12 @@ useHead({
                 <Icon name="uil:comment" size="42px" />
               </CardIcon>
               <p class="subtitle mt-2">
-                {{ t('index.work.strategy') }}
+                Strategy
               </p>
             </div>
           </div>
           <h1 class="title !mb-0">
-            {{ t('index.work.title') }}
+            What I do
           </h1>
         </CardDiv>
       </Card>

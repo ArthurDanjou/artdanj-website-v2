@@ -10,23 +10,17 @@ export interface Post extends MarkdownParsedContent {
   cover: string
 }
 
-interface Translation {
-  code: string
-  french: string
-  english: string
-}
-
 export interface Project extends ParsedContent {
-  name: Translation
-  description: Translation
+  name: string
+  description: string
   link: string
   image: string
   date: string
 }
 
 export interface WorkExperience {
-  title: Translation
-  description: Translation
+  title: string
+  description: string
   company: string
   location: string
   companyLink: string
@@ -35,8 +29,8 @@ export interface WorkExperience {
 }
 
 export interface Education {
-  title: Translation
-  description: Translation
+  title: string
+  description: string
   location: string
   startDate: string
   endDate: string | 'Today'
@@ -51,6 +45,6 @@ interface Skill {
 }
 
 export interface SkillList extends ParsedContent {
-  name: Translation
+  name: string
   skills: Skill[]
 }

@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { useRoute } from '#app'
 import type { Post } from '~/types/content'
-import { formatPostDate } from '~/logic/date'
-import { queryContent, useAsyncData, useHead } from '#imports'
+import {queryContent, useAsyncData, useHead, useRoute} from '#imports'
 
 const route = useRoute()
 const { data } = await useAsyncData(`blog:post:${route.params.id}`, () => queryContent<Post>(`/posts/${route.params.id}`).findOne())
@@ -23,7 +21,7 @@ useHead({
       </h3>
       <div class="flex space-x-2 text-sm text-gray-600 dark:text-gray-400">
         <div>
-          {{ formatPostDate(data.publishedAt) }}
+          {{ data.publishedAt}}
         </div>
         <span>—</span>
         <div>

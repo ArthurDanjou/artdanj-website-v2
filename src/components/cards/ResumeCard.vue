@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
-</script>
-
 <template>
   <Card order="last">
     <CardLink href="resume" class="flex flex-col justify-center">
@@ -12,10 +6,10 @@ const { t } = useI18n()
       </CardIcon>
       <div class="flex flex-col space-y-4">
         <h1 class="title">
-          {{ t('cards.resume.title') }}
+          See my resume
         </h1>
         <h3 class="subtitle">
-          {{ t('cards.resume.subtitle') }}
+          Learn more about me
         </h3>
       </div>
       <CardButton />
