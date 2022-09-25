@@ -49,7 +49,7 @@ const getOrder = computed(() => {
 
 <template>
   <div
-    class="card relative rounded-16px flex flex-col
+    class="card relative rounded-24px flex flex-col
     border border-dark bg-white dark:bg-dark-900 w-full h-full"
     :class="[getRow, getColumn, getOrder]"
   >
