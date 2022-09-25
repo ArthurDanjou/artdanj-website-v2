@@ -2,14 +2,11 @@
 slug: 'test'
 title: 'Test'
 description: 'Description de test'
-publishedAt: '02/06/2003'
-modifiedAt: '02/06/2003'
+publishedAt: '02/07/2003'
+modifiedAt: '02/07/2003'
 readingMins: 5
 cover: 'test'
 ---
-
-# Hello World !
-
 This is my new post !
 
 ```ts
