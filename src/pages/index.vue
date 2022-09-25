@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useLatestPost } from '~/composables/useContent'
 
 const { t } = useI18n()
+const { data: post } = await useLatestPost()
 
 useHead({
   title: t('head.index'),
@@ -107,8 +109,8 @@ useHead({
       <Card>
         Photos
       </Card>
-      <Card width="2">
-        Latest blog
+      <Card>
+        {{ post }}
       </Card>
     </CardContainer>
   </section>
