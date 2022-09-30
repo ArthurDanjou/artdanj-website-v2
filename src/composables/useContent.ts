@@ -1,10 +1,9 @@
 import type { Education, JsonParsedContent, Post, Project, SkillList, WorkExperience } from '~/types/content'
-import { useAsyncData } from '#app'
-import { queryContent } from '#imports'
+import { queryContent, useAsyncData } from '#imports'
 
 export const useProjects = () => {
   return useAsyncData('content:projects', () => {
-    return queryContent<JsonParsedContent<Project>>('projects').findOne()
+    return queryContent<JsonParsedContent<Project[]>>('projects').findOne()
   })
 }
 
