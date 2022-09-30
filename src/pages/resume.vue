@@ -31,8 +31,56 @@ useHead({
             </CardDiv>
           </Card>
           <Card>
-            <CardDiv>
-              Socials
+            <CardDiv class="p-8">
+              <NuxtLink class="group" target="_blank" to="https://instagram.com/arthur.dnj">
+                <div class="social-div">
+                  <div class="social-item">
+                    <Icon name="mdi:instagram" size="24px" />
+                    <p>Instagram</p>
+                  </div>
+                  <Icon class="social-arrow" name="material-symbols:arrow-circle-right-outline-rounded" size="24px" />
+                </div>
+              </NuxtLink>
+              <div class="divider" />
+              <NuxtLink class="group" target="_blank" to="https://github.com/arthurdanjou">
+                <div class="social-div">
+                  <div class="social-item">
+                    <Icon name="mdi:github" size="24px" />
+                    <p>GitHub</p>
+                  </div>
+                  <Icon class="social-arrow" name="material-symbols:arrow-circle-right-outline-rounded" size="24px" />
+                </div>
+              </NuxtLink>
+              <div class="divider" />
+              <NuxtLink class="group" target="_blank" to="https://twitter.com/arthurdanj">
+                <div class="social-div">
+                  <div class="social-item">
+                    <Icon name="mdi:twitter" size="24px" />
+                    <p>Twitter</p>
+                  </div>
+                  <Icon class="social-arrow" name="material-symbols:arrow-circle-right-outline-rounded" size="24px" />
+                </div>
+              </NuxtLink>
+              <div class="divider" />
+              <NuxtLink class="group" target="_blank" to="https://www.linkedin.com/in/arthurdanjou/">
+                <div class="social-div">
+                  <div class="social-item">
+                    <Icon name="mdi:linkedin" size="24px" />
+                    <p>LinkedIn</p>
+                  </div>
+                  <Icon class="social-arrow" name="material-symbols:arrow-circle-right-outline-rounded" size="24px" />
+                </div>
+              </NuxtLink>
+              <div class="divider" />
+              <NuxtLink class="group" target="_blank" to="mailto:contact@arthurdanjou.fr">
+                <div class="social-div">
+                  <div class="social-item">
+                    <Icon name="ic:baseline-alternate-email" size="24px" />
+                    <p>Mail</p>
+                  </div>
+                  <Icon class="social-arrow" name="material-symbols:arrow-circle-right-outline-rounded" size="24px" />
+                </div>
+              </NuxtLink>
             </CardDiv>
           </Card>
         </div>
@@ -79,6 +127,26 @@ useHead({
 </template>
 
 <style scoped lang="scss">
+.social-div {
+  @apply py-2 flex justify-between;
+
+  .social-arrow {
+    @apply transform -rotate-45 duration-300 group-hover:(rotate-0 scale-110);
+  }
+
+  .social-item {
+    p {
+      @apply font-bold text-gray-600 duration-300 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white;
+    }
+
+    @apply flex items-center space-x-2;
+  }
+}
+
+.divider {
+  @apply border-b border-gray-300 dark:border-gray-600;
+}
+
 .title {
   @apply text-3xl font-bold my-4;
 }
