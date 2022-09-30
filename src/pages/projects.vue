@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { useHead } from '#imports'
+import {useHead, useProjects} from '#imports'
+
+const { data: projects } = await useProjects()
 
 useHead({
   title: 'All Works - Arthur Danjou',
@@ -11,21 +13,24 @@ useHead({
     <PageTitle title="My Works" />
     <CardContainer>
       <Card>
-        <CardLink href="/blog/123">
-          <div>
-            <img>
-          </div>
+        Projects -> Github
+      </Card>
+      <Card v-for="project in projects.body" :key="project">
+        <CardLink :href="project.link" target="_blank">
+          <CardIcon>
+            <Icon :name="project.icon" size="42px" />
+          </CardIcon>
           <div>
             <h1 class="text-3xl font-bold">
-              Erisium
+              {{ project.name }}
             </h1>
-            <h3 class="text-sm text-gray-600 dark:text-gray-400 mb-2 space-x-1">
-              <div class="mb-1 translate-y-px inline-block flex-none rounded bg-zinc-200 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-                Dev
+            <div class="flex space-x-2 my-4">
+              <div v-for="tag in project.tags" :key="tag" class="translate-y-px inline-block flex-none rounded bg-zinc-200 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                {{ tag }}
               </div>
-              <div class="mb-1 translate-y-px inline-block flex-none rounded bg-zinc-200 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-                Personnal
-              </div>
+            </div>
+            <h3 class="text-sm text-gray-600 dark:text-gray-400 text-justify">
+              {{ project.description }}
             </h3>
           </div>
         </CardLink>
