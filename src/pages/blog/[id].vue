@@ -11,7 +11,7 @@ useHead({
 </script>
 
 <template>
-  <section class="mt-12 md:w-2/3 mx-auto sm:rounded">
+  <section class="mt-16 md:w-2/3 mx-auto sm:rounded">
     <main class="max-w-2xl px-4 mx-auto sm:px-8">
       <h1 class="text-4xl font-bold">
         {{ data.title }}
@@ -19,29 +19,21 @@ useHead({
       <h3 class="text-xl text-gray-600 dark:text-gray-400 my-2">
         {{ data.description }}
       </h3>
-      <div class="flex space-x-2 text-sm text-gray-600 dark:text-gray-400">
+      <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
         <div>
-          {{ data.publishedAt}}
+          Arthur Danjou / {{ data.publishedAt}}
         </div>
-        <span>—</span>
         <div>
-          {{ data.readingMins }} min.
+          {{ data.readingMins }} min read • xxx.xxx.xxx views
         </div>
       </div>
-      <div class="w-full">
+      <div class="w-full bg-gray-300 my-4 rounded-md my-8">
         {{ data.cover }}
       </div>
-      <ContentRenderer id="prose" class="mt-8 prose dark:prose-invert text-justify" :value="data" />
-      <div>
+      <ContentRenderer class="prose dark:prose-invert leading-6" :value="data" />
+      <div class="my-8">
         Footer blog
       </div>
     </main>
   </section>
 </template>
-
-<style scoped lang="scss">
-#prose {
-  // todo add theme for blog post
-
-}
-</style>
