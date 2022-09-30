@@ -8,7 +8,7 @@ defineProps({
     type: String,
     default: '_parent',
     enum: ['_blank', '_parent', '_self', '_top'],
-  }
+  },
 })
 
 const getColor = computed(() => {
@@ -19,11 +19,11 @@ const getColor = computed(() => {
 
 <template>
   <NuxtLink
-      :href="link"
-      :target="target"
-      class="focusable rounded-sm font-bold
+    :href="link"
+    :target="target"
+    class="focusable rounded-sm font-bold
       underline decoration-2 underline-offset-2 font-bold duration-300"
-      :class="getColor"
+    :class="getColor"
   >
     <slot />
   </NuxtLink>

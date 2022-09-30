@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '~/types/content'
-import {queryContent, useAsyncData, useHead, useRoute} from '#imports'
+import { queryContent, useAsyncData, useHead, useRoute } from '#imports'
 
 const route = useRoute()
 const { data } = await useAsyncData(`blog:post:${route.params.id}`, () => queryContent<Post>(`/posts/${route.params.id}`).findOne())
@@ -21,7 +21,7 @@ useHead({
       </h3>
       <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
         <div>
-          Arthur Danjou / {{ data.publishedAt}}
+          Arthur Danjou / {{ data.publishedAt }}
         </div>
         <div>
           {{ data.readingMins }} min read • xxx.xxx.xxx views

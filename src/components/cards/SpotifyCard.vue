@@ -54,8 +54,12 @@ onUnmounted(() => {
         <Icon style="animation: spin 2s infinite" name="ph:spinner-bold" size="42px" />
       </CardIcon>
       <div class="flex flex-col space-y-4">
-        <h1 class="title">Loading state...</h1>
-        <h3 class="subtitle">Fetching data from spotify</h3>
+        <h1 class="title">
+          Loading state...
+        </h1>
+        <h3 class="subtitle">
+          Fetching data from spotify
+        </h3>
       </div>
     </CardDiv>
   </Card>
