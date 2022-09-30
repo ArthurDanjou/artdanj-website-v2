@@ -10,12 +10,12 @@ export interface Post extends MarkdownParsedContent {
   cover: string
 }
 
-export interface Project extends ParsedContent {
+export interface Project {
   name: string
   description: string
   link: string
-  image: string
-  date: string
+  icon: string
+  tags: string[]
 }
 
 export interface WorkExperience {
