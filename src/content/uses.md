@@ -5,7 +5,7 @@ description: 'This is my uses page'
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique erat semper mi dictum, in ornare tellus dapibus. Vestibulum accumsan arcu diam, et tincidunt nisl dignissim id. Sed nec ullamcorper sem, sed consequat sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae velit nec mauris venenatis dapibus. Cras eget nulla sit amet enim condimentum pellentesque vitae et lacus. Nullam hendrerit feugiat porttitor. Praesent cursus nunc porttitor auctor ultrices. 
 
-## Computer / Office
+# Computer / Office
 
 - [MacBook Pro 13"](https://www.apple.com/macbook-pro-13/) - My main computer for coding
 - [Personalized Computer]() - My gaming computer
@@ -14,7 +14,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique erat semp
 - [Beats Studio 3](https://www.beatsbydre.com/headphones/studio3-wireless) - My headphones
 - [Microphone]() - My microphone
 
-## Editors
+# Editors
 
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/) - My main editor for Java and Kotlin
 - [WebStorm](https://www.jetbrains.com/webstorm/) - My main editor for JavaScript and TypeScript
@@ -25,7 +25,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique erat semp
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/) - My main font for coding
 - [ITerm 2](https://iterm2.com/) - My main terminal for macOS
 
-## Software and Applications
+# Software and Applications
 
 - [Apple Mail](https://www.apple.com/macos/mail/) - My main email client
 - [Apple Calendar](https://www.apple.com/macos/calendar/) - My main calendar
@@ -40,7 +40,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique erat semp
 - [Spotify](https://www.spotify.com/) - My main music player
 - [RayCast](https://raycast.com/) - My main launcher
 
-## Hosting
+# Hosting
 
 - [PulseHeberg](https://www.pulseheberg.fr/) - My main hosting provider
 - [DigitalOcean](https://www.digitalocean.com/) - My second hosting provider
