@@ -41,8 +41,8 @@ _Just an italic paragraph._
 ---
 link: "https://arthurdanjou.fr"
 target: "_blank"
-content: "Hey"
 ---
+Hey 
 ::
 
 ```js [.eslintrc.js]
