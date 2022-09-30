@@ -1,7 +1,6 @@
 # Todo
 
 ## Pages:
-- Uses with Use nuxt content
 - Guestbook
 - 404
 - Maintenance
