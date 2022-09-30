@@ -107,9 +107,7 @@ useHead({
       <Card>
         Photos
       </Card>
-      <Card>
-        {{ post }}
-      </Card>
+      <BlogCard width="2" :post="post[0]" />
     </CardContainer>
   </section>
 </template>
