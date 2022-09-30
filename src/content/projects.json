@@ -1,3 +1,46 @@
 {
-  "body": []
+  "body": [
+    {
+      "name": "artdanj-website",
+      "description": "My personal website, my portfolio, and my blog",
+      "link": "https://arthurdanjou.fr",
+      "tags": ["Web"],
+      "icon": "heroicons:globe-europe-africa-solid"
+    },
+    {
+      "name": "artdanj-api",
+      "description": "My personal API connected to my instances and my services",
+      "link": "https://api.arthurdanjou.fr",
+      "tags": ["API"],
+      "icon": "ph:gear-six-bold"
+    },
+    {
+      "name": "Erisium",
+      "description": "Junior Developer at Erisium, a French speaking minecraft server",
+      "link": "https://erisium.com",
+      "tags": ["MineCraft"],
+      "icon": "mdi:cube"
+    },
+    {
+      "name": "artdanj-shortener",
+      "description": "URL Shortener for Developers",
+      "link": "https://go.arthurdanjou.fr",
+      "tags": ["Software", "OpenSource"],
+      "icon": "mdi:toolbox-outline"
+    },
+    {
+      "name": "make-my-server",
+      "description": "Deploy many services present on my infrastructure from files for Kubernetes",
+      "link": "https://github.com/ArthurDanjou/make-my-server",
+      "tags": ["DevOps", "Servers"],
+      "icon": "tabler:server-2"
+    },
+    {
+      "name": "artdanj-fallback",
+      "description": "Upstream fallback routing for my hosted Traefik instance, routes traffic elsewhere when a service is down",
+      "link": "https://github.com/ArthurDanjou/artdanj-fallback",
+      "tags": ["DevOps", "Servers"],
+      "icon": "octicon:tools-16"
+    }
+  ]
 }
