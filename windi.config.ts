@@ -13,6 +13,9 @@ export default defineConfig({
         spotify: '#1db954',
         nuxt: '#41b883',
       },
+      fontSize: {
+        xxs: '.65rem'
+      },
       textDecorationColor: {
         'nuxt-light': '#71f5af',
         'nuxt-dark': '#205e47',
