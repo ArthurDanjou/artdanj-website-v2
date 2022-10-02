@@ -10,7 +10,7 @@ useHead({
 
 <template>
   <section>
-    <PageTitle title="My Works" />
+    <PageTitle title="All Works" />
     <CardContainer>
       <Card>
         <CardLink href="https://github.com/ArthurDanjou?tab=repositories" target="_blank">
