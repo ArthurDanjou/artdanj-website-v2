@@ -118,7 +118,7 @@ useHead({
           />
         </ResumeSection>
         <ResumeTitle title="Languages" />
-        <ResumeSection>
+        <ResumeSection class="text-gray-600 dark:text-gray-400">
           <strong class="text-black dark:text-white">French</strong> (Native Speaker), <strong class="text-black dark:text-white">English</strong> (Fluent)
         </ResumeSection>
       </div>
@@ -144,7 +144,7 @@ useHead({
 }
 
 .divider {
-  @apply border-b border-gray-300 dark:border-gray-600;
+  @apply border-b border-zinc-400 dark:border-zinc-600;
 }
 
 .title {
