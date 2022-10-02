@@ -6,12 +6,12 @@ const route = useRoute()
 const { data } = await useAsyncData(`blog:post:${route.params.id}`, () => queryContent<Post>(`/posts/${route.params.id}`).findOne())
 
 useHead({
-  title: `${data.value.title} - Arthur Danjou`,
+  title: `${data.value.title} - Arthur Danjou's shelf`,
 })
 </script>
 
 <template>
-  <section class="mt-16 md:w-2/3 mx-auto sm:rounded">
+  <section class="mt-16 md:mt-32 md:w-2/3 mx-auto sm:rounded">
     <main class="max-w-2xl px-4 mx-auto sm:px-8">
       <h1 class="text-4xl font-bold">
         {{ data.title }}
