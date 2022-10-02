@@ -71,7 +71,7 @@ useHead({
         Latest project
       </Card>
       <Card width="2">
-        <CardDiv>
+        <CardLink href="/projects">
           <div class="flex w-full justify-between">
             <div class="flex flex-col items-center">
               <CardIcon :stick="true">
@@ -101,7 +101,8 @@ useHead({
           <h1 class="title !mb-0">
             What I do
           </h1>
-        </CardDiv>
+          <CardButton />
+        </CardLink>
       </Card>
       <InstagramCard />
       <Card>
