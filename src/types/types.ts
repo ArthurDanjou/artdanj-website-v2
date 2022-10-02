@@ -27,3 +27,10 @@ export interface Announcement {
   createdAt: Date
   updatedAt: Date
 }
+
+export interface GuestBookMessage {
+  username: string
+  content: string
+  createdAt: Date
+  updatedAt: Date
+}
