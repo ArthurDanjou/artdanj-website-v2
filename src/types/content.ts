@@ -15,6 +15,7 @@ export interface Project {
   description: string
   link: string
   icon: string
+  skills: Skill[]
   tags: string[]
 }
 
