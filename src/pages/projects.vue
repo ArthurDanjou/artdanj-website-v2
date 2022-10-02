@@ -13,7 +13,20 @@ useHead({
     <PageTitle title="My Works" />
     <CardContainer>
       <Card>
-        Projects -> Github
+        <CardLink href="https://github.com/ArthurDanjou?tab=repositories" target="_blank">
+          <CardIcon>
+            <Icon name="ph:lightbulb-bold" size="42px" />
+          </CardIcon>
+          <div>
+            <h1 class="font-bold text-4xl my-4 leading-12">
+              What I have done
+            </h1>
+            <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400">
+              See more projects on <Link href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">GitHub</Link>
+            </h3>
+          </div>
+          <CardButton />
+        </CardLink>
       </Card>
       <Card v-for="project in projects.body" :key="project">
         <CardLink :href="project.link" target="_blank">
@@ -21,17 +34,20 @@ useHead({
             <Icon :name="project.icon" size="42px" />
           </CardIcon>
           <div>
+            <div class="flex space-x-2 my-2">
+              <Tag v-for="tag in project.tags" :key="tag">
+                {{ tag }}
+              </Tag>
+            </div>
             <h1 class="text-3xl font-bold">
               {{ project.name }}
             </h1>
-            <div class="flex space-x-2 my-4">
-              <div v-for="tag in project.tags" :key="tag" class="translate-y-px inline-block flex-none rounded bg-zinc-200 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-                {{ tag }}
-              </div>
-            </div>
             <h3 class="text-sm text-gray-600 dark:text-gray-400 text-justify">
               {{ project.description }}
             </h3>
+            <div class="flex space-x-2 mt-2">
+              <SkillTag v-for="skill in project.skills" :key="skill" :skill="skill.name" />
+            </div>
           </div>
         </CardLink>
       </Card>
