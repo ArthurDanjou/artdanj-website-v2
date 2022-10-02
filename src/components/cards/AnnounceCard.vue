@@ -2,14 +2,27 @@
 import { useAsyncData } from '#imports'
 import type { Announcement } from '~/types/types'
 
-const { data: announce } = await useAsyncData('announce', async () => {
+const { data: announce, pending } = await useAsyncData('announce', async () => {
   return $fetch<Announcement>('/api/announces')
 })
 </script>
 
 <template>
   <Card order="first" width="2">
-    <CardDiv>
+    <CardDiv v-if="pending">
+      <CardIcon>
+        <Icon style="animation: spin 2s infinite" name="ph:spinner-bold" size="42px" />
+      </CardIcon>
+      <div class="flex flex-col space-y-4">
+        <h1 class="title">
+          Loading state...
+        </h1>
+        <h3 class="subtitle">
+          Fetching announcement from database
+        </h3>
+      </div>
+    </CardDiv>
+    <CardDiv v-else>
       <CardIcon>
         <Icon name="tabler:speakerphone" size="42px" />
       </CardIcon>
