@@ -4,7 +4,7 @@ import { useHead, usePosts } from '#imports'
 const { data: posts } = await usePosts()
 
 useHead({
-  title: 'My blog - Arthur Danjou',
+  title: 'My Shelf - Arthur Danjou',
 })
 </script>
 
