@@ -1,5 +1,5 @@
 ---
-title: 'Uses Page'
+title: 'My Uses - Arthur Danjou'
 description: 'This is my uses page'
 ---
 
