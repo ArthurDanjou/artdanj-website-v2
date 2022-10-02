@@ -2,7 +2,7 @@
 import type { SpotifyData } from '~/types/types'
 import { useAsyncData } from '#imports'
 
-const { data, refresh } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
+const { data, refresh, pending } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
 const refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
@@ -17,11 +17,24 @@ onUnmounted(() => {
 
 <template>
   <Card width="2">
-    <CardLink v-if="data !== null" href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
+    <CardDiv v-if="pending">
+      <CardIcon>
+        <Icon style="animation: spin 2s infinite" name="ph:spinner-bold" size="42px" />
+      </CardIcon>
+      <div class="flex flex-col space-y-4">
+        <h1 class="title">
+          Loading state...
+        </h1>
+        <h3 class="subtitle">
+          Fetching data from spotify
+        </h3>
+      </div>
+    </CardDiv>
+    <CardLink v-else href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
       <CardIcon>
         <Icon name="mdi:spotify" size="42px" />
       </CardIcon>
-      <div v-if="data.is_playing" class="flex flex-col space-y-2 mt-4">
+      <div v-if="data && data.is_playing" class="flex flex-col space-y-2 mt-4">
         <div class="flex space-x-2 items-center">
           <div v-if="data.is_playing" class="flex items-center h-30px">
             <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
@@ -35,7 +48,7 @@ onUnmounted(() => {
             I'm listening to
           </h1>
         </div>
-        <div class="flex space-x-2">
+        <div v-if="data !== null" class="flex space-x-2">
           <h1 class="text-sm font-spotify">
             {{ data.name }},
           </h1>
@@ -49,19 +62,6 @@ onUnmounted(() => {
       </p>
       <CardButton />
     </CardLink>
-    <CardDiv v-else>
-      <CardIcon>
-        <Icon style="animation: spin 2s infinite" name="ph:spinner-bold" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
-        <h1 class="title">
-          Loading state...
-        </h1>
-        <h3 class="subtitle">
-          Fetching data from spotify
-        </h3>
-      </div>
-    </CardDiv>
   </Card>
 </template>
 
