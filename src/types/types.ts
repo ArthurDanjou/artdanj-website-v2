@@ -29,6 +29,7 @@ export interface Announcement {
 }
 
 export interface GuestBookMessage {
+  email: string
   username: string
   content: string
   createdAt: Date
