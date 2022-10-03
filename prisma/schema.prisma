@@ -25,9 +25,9 @@ model Announcement {
 
 model GuestBook {
   id        Int      @id @default(autoincrement())
-  name      String
+  username  String
   email     String
-  message   String
+  content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 }
