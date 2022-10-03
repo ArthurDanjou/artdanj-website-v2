@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useHead, useProjects} from '#imports'
+import { useHead, useProjects } from '#imports'
 
 const { data: projects } = await useProjects()
 
@@ -22,7 +22,10 @@ useHead({
               What I have done
             </h1>
             <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400">
-              See more projects on <Link href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">GitHub</Link>
+              See more projects on
+              <Link href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">
+                GitHub
+              </Link>
             </h3>
           </div>
           <CardButton />
