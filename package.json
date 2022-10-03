@@ -20,6 +20,7 @@
     "@antfu/eslint-config": "^0.26.3",
     "@nuxt/content": "2.1.0",
     "@nuxtjs/color-mode": "^3.1.4",
+    "@nuxtjs/supabase": "^0.1.27",
     "@vueuse/nuxt": "^9.1.1",
     "@windicss/plugin-animations": "^1.0.9",
     "eslint": "^8.23.0",
