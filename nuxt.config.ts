@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/content',
     'nuxt-icon',
+    '@nuxtjs/supabase',
   ],
 
   css: [
