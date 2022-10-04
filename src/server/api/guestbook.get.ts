@@ -1,11 +1,12 @@
-import { defineEventHandler } from 'h3'
+import { defineEventHandler, getQuery } from 'h3'
 import { PrismaClient } from '@prisma/client'
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   const client = new PrismaClient()
-  const guestbook = await client.guestBook.findMany({
-    orderBy: {
-      updatedAt: 'desc',
+  const query = await getQuery(event)
+  const guestbook = await client.guestBook.findFirst({
+    where: {
+      email: String(query.email),
     },
   })
   await client.$disconnect()
