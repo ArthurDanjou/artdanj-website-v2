@@ -1,4 +1,5 @@
 import type { RouterConfig } from '@nuxt/schema'
+import { useNuxtApp } from '#imports'
 
 // https://router.vuejs.org/api/#routeroptions
 export default <RouterConfig>{
@@ -14,6 +15,10 @@ export default <RouterConfig>{
         })
       })
     }
+    // Prevent oauth
+    if (to.hash.includes('token') || from.hash.includes('token'))
+      return
+
     // Scroll to heading on click
     if (to.hash) {
       setTimeout(() => {
