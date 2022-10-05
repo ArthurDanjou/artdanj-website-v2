@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
     },
     update: {
       content: body.content,
+      username: body.username,
     },
   })
   await client.$disconnect()
