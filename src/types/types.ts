@@ -35,3 +35,21 @@ export interface GuestBookMessage {
   createdAt: Date
   updatedAt: Date
 }
+
+export interface PostDB {
+  id: number
+  slug: string
+  views: number
+  likes: number
+  createdAt: Date
+  updatedAt: Date
+}
+
+export interface Maintenance {
+  id: number
+  reason: string
+  beginAt: Date
+  endAt: Date
+  createdAt: Date
+  updatedAt: Date
+}
