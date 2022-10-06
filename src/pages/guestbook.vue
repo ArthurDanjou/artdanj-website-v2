@@ -93,7 +93,7 @@ watch(user, async (value) => {
           </p>
           <div class="flex justify-between items-center text-sm italic text-gray-600 dark:text-gray-400">
             <p>
-              Your information is only used to display your name and reply by email.
+              Your informations are only used to display your name and reply by email.
             </p>
             <div class="cursor-pointer border hover:shadow-dark duration-300 border-dark rounded-md p-1 flex items-center justify-center space-x-2" @click="client.auth.signOut()">
               Logout <Icon name="material-symbols:logout-rounded" size="20px" class="ml-2" />
@@ -126,7 +126,7 @@ watch(user, async (value) => {
             You need to write a message longer than 5 characters to sign the guestbook
           </p>
           <p class="text-sm italic text-gray-600 dark:text-gray-400">
-            Your information is only used to display your name and reply by email.
+            Your informations are only used to display your name and reply by email.
           </p>
         </div>
       </div>
@@ -147,7 +147,7 @@ watch(user, async (value) => {
           <Icon class="social-login text-[#5865F2]" name="mdi:discord" size="32px" @click.prevent="useDiscordLogin()" />
         </div>
         <p class="text-sm italic">
-          Your information is only used to display your name and reply by email.
+          Your informations are only used to display your name and reply by email.
         </p>
       </div>
       <div class="space-y-8">
