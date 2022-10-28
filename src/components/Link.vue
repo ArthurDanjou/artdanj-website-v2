@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from '#imports'
+
 const props = defineProps({
   link: {
     type: String,
@@ -16,14 +18,10 @@ const props = defineProps({
 })
 
 const getColor = computed(() => {
-  if (props.group) {
-    return 'text-zinc-600 decoration-gray-500 group-hover:text-black group-hover:decoration-gray-500/30 focus:text-gray-500 focus:ring-gray-500/40\n'
-        + 'dark:(text-zinc-400 decoration-gray-300/30 group-hover:text-white group-hover:decoration-gray-400/30 group-hover:text-white focus:text-white focus:ring-gray-400/40)'
-  }
-  else {
-    return 'text-zinc-600 decoration-gray-500 hover:text-black hover:decoration-gray-500/30 focus:text-gray-500 focus:ring-gray-500/40\n'
-        + 'dark:(text-zinc-400 decoration-gray-300/30 hover:text-white hover:decoration-gray-400/30 hover:text-white focus:text-white focus:ring-gray-400/40)'
-  }
+  if (props.group)
+    return 'underline underline-offset-4 decoration-gray-300 underline-opacity-25 group-hover:(decoration-black underline-opacity-100) rounded-sm dark:(decoration-gray-600 group-hover:decoration-white)'
+  else
+    return 'underline underline-offset-4 decoration-gray-300 underline-opacity-25 hover:(decoration-black underline-opacity-100) rounded-sm dark:(decoration-gray-600 hover:decoration-white)'
 })
 </script>
 
@@ -31,10 +29,10 @@ const getColor = computed(() => {
   <NuxtLink
     :href="link"
     :target="target"
-    class="focusable rounded-sm font-medium
-      underline decoration-2 underline-offset-2 font-bold duration-300"
-    :class="getColor"
+    class="flex"
   >
-    <slot />
+    <div class="duration-500" :class="getColor">
+      <slot />
+    </div>
   </NuxtLink>
 </template>

@@ -21,14 +21,15 @@ useHead({
             <h1 class="font-bold text-4xl my-4 leading-12">
               What I have done
             </h1>
-            <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400">
-              See more projects on
+            <h3 class="my-4 text-sm flex space-x-1">
+              <span class="text-gray-600 dark:text-gray-400">
+                See more projects on
+              </span>
               <Link href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">
                 GitHub
               </Link>
             </h3>
           </div>
-          <CardButton />
         </CardLink>
       </Card>
       <Card v-for="project in projects.body" :key="project">
@@ -49,7 +50,10 @@ useHead({
               {{ project.description }}
             </h3>
             <div class="flex space-x-2 mt-2">
-              <SkillTag v-for="skill in project.skills" :key="skill" :skill="skill.name" />
+              <p class="text-xxs text-gray-600 dark:text-gray-400">
+                Made with
+              </p>
+              <SkillTag v-for="skill in project.skills" :key="skill" class="flex space-x-4" :skill="skill.name" />
             </div>
           </div>
         </CardLink>

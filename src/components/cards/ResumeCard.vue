@@ -12,7 +12,6 @@
           Learn more about me
         </h3>
       </div>
-      <CardButton />
     </CardLink>
   </Card>
 </template>

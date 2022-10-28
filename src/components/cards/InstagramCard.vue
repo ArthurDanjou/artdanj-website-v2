@@ -12,7 +12,6 @@
           @Arthur.dnj
         </h3>
       </div>
-      <CardButton />
     </CardLink>
   </Card>
 </template>

@@ -22,11 +22,10 @@ useHead({
               <span class="mx-1">Arthur Danjou</span>
               <span class="hey-animation inline-block">👋</span>
             </h1>
-            <p class="text-gray-600 dark:text-gray-400 pr-54px">
+            <p class="text-gray-600 dark:text-gray-400">
               A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
             </p>
           </div>
-          <CardButton />
         </CardLink>
       </Card>
       <AnnounceCard />
@@ -44,7 +43,6 @@ useHead({
               Discover my development environment
             </h3>
           </div>
-          <CardButton />
         </CardLink>
       </Card>
       <Card order="last">
@@ -60,7 +58,6 @@ useHead({
               Do you want to leave a message ?
             </h3>
           </div>
-          <CardButton />
         </CardLink>
       </Card>
       <ContactCard />
@@ -68,7 +65,7 @@ useHead({
       <TwitterCard />
       <GitHubCard />
       <Card height="2">
-        Latest project
+        Project
       </Card>
       <Card width="2">
         <CardLink href="/projects">
@@ -101,13 +98,9 @@ useHead({
           <h1 class="title !mb-0">
             What I do
           </h1>
-          <CardButton />
         </CardLink>
       </Card>
       <InstagramCard />
-      <Card>
-        Photos
-      </Card>
       <BlogCard width="2" :post="post[0]" />
     </CardContainer>
   </section>

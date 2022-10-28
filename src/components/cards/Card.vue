@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from '#imports'
+
 const props = defineProps({
   height: {
     type: String,
@@ -49,7 +51,7 @@ const getOrder = computed(() => {
 
 <template>
   <div
-    class="card relative rounded-24px flex flex-col
+    class="card relative rounded-12px flex flex-col
     border border-dark bg-white dark:bg-dark-900 w-full h-full"
     :class="[getRow, getColumn, getOrder]"
   >

@@ -12,7 +12,6 @@
           Just want to email me ?
         </h3>
       </div>
-      <CardButton />
     </CardLink>
   </Card>
 </template>

@@ -1,103 +1,102 @@
-{
-  "body": [
-    {
-      "name": "artdanj-website",
-      "description": "My personal website, my portfolio, and my blog",
-      "link": "https://arthurdanjou.fr",
-      "tags": ["Web"],
-      "skills": [
-        {
-          "name": "TypeScript"
-        },
-        {
-          "name": "NuxtJs"
-        },
-        {
-          "name": "MariaDB"
-        }
-      ],
-      "icon": "heroicons:globe-europe-africa-solid"
-    },
-    {
-      "name": "artdanj-api",
-      "description": "My personal API connected to my instances and my services",
-      "link": "https://api.arthurdanjou.fr",
-      "tags": ["API"],
-      "skills": [
-        {
-          "name": "TypeScript"
-        }, {
-          "name": "MariaDB"
-        }, {
-          "name": "Redis"
-        }
-      ],
-      "icon": "ph:gear-six-bold"
-    },
-    {
-      "name": "Erisium",
-      "description": "Junior Developer at Erisium, a French speaking minecraft server",
-      "link": "https://erisium.com",
-      "tags": ["MineCraft"],
-      "skills": [
-        {
-          "name": "Java"
-        }, {
-          "name": "MySQL"
-        }, {
-          "name": "Redis"
-        }
-      ],
-      "icon": "mdi:cube"
-    },
-    {
-      "name": "artdanj-shortener",
-      "description": "URL Shortener for Developers",
-      "link": "https://go.arthurdanjou.fr",
-      "tags": ["Software", "OpenSource"],
-      "skills": [
-        {
-          "name": "TypeScript"
-        }, {
-          "name": "MariaDB"
-        }, {
-          "name": "Redis"
-        }
-      ],
-      "icon": "mdi:toolbox-outline"
-    },
-    {
-      "name": "make-my-server",
-      "description": "Deploy many services present on my infrastructure from files for Kubernetes",
-      "link": "https://github.com/ArthurDanjou/make-my-server",
-      "tags": ["DevOps", "Servers"],
-      "skills": [
-        {
-          "name": "Kubernetes"
-        },
-        {
-          "name": "Docker"
-        },
-        {
-          "name": "Traefik"
-        }
-      ],
-      "icon": "tabler:server-2"
-    },
-    {
-      "name": "artdanj-fallback",
-      "description": "Upstream fallback routing for my hosted Traefik instance, routes traffic elsewhere when a service is down",
-      "link": "https://github.com/ArthurDanjou/artdanj-fallback",
-      "tags": ["DevOps", "Servers"],
-      "skills": [
-        {
-          "name": "TypeScript"
-        },
-        {
-          "name": "NuxtJs"
-        }
-      ],
-      "icon": "octicon:tools-16"
-    }
-  ]
-}
+[
+  {
+    "name": "artdanj-website",
+    "description": "My personal website, my portfolio, and my blog",
+    "link": "https://arthurdanjou.fr",
+    "tags": ["Web"],
+    "latest": "true",
+    "skills": [
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "NuxtJs"
+      },
+      {
+        "name": "MariaDB"
+      }
+    ],
+    "icon": "heroicons:globe-europe-africa-solid"
+  },
+  {
+    "name": "artdanj-api",
+    "description": "My personal API connected to my instances and my services",
+    "link": "https://api.arthurdanjou.fr",
+    "tags": ["API"],
+    "skills": [
+      {
+        "name": "TypeScript"
+      }, {
+        "name": "MariaDB"
+      }, {
+        "name": "Redis"
+      }
+    ],
+    "icon": "ph:gear-six-bold"
+  },
+  {
+    "name": "Erisium",
+    "description": "Junior Developer at Erisium, a French speaking minecraft server",
+    "link": "https://erisium.com",
+    "tags": ["MineCraft"],
+    "skills": [
+      {
+        "name": "Java"
+      }, {
+        "name": "MySQL"
+      }, {
+        "name": "Redis"
+      }
+    ],
+    "icon": "mdi:cube"
+  },
+  {
+    "name": "artdanj-shortener",
+    "description": "URL Shortener for Developers",
+    "link": "https://go.arthurdanjou.fr",
+    "tags": ["Software", "OpenSource"],
+    "skills": [
+      {
+        "name": "TypeScript"
+      }, {
+        "name": "MariaDB"
+      }, {
+        "name": "Redis"
+      }
+    ],
+    "icon": "mdi:toolbox-outline"
+  },
+  {
+    "name": "make-my-server",
+    "description": "Deploy many services present on my infrastructure from files for Kubernetes",
+    "link": "https://github.com/ArthurDanjou/make-my-server",
+    "tags": ["DevOps", "Servers"],
+    "skills": [
+      {
+        "name": "Kubernetes"
+      },
+      {
+        "name": "Docker"
+      },
+      {
+        "name": "Traefik"
+      }
+    ],
+    "icon": "tabler:server-2"
+  },
+  {
+    "name": "artdanj-fallback",
+    "description": "Upstream fallback routing for my hosted Traefik instance, routes traffic elsewhere when a service is down",
+    "link": "https://github.com/ArthurDanjou/artdanj-fallback",
+    "tags": ["DevOps", "Servers"],
+    "skills": [
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "NuxtJs"
+      }
+    ],
+    "icon": "octicon:tools-16"
+  }
+]

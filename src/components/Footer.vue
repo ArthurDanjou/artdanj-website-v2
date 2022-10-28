@@ -19,7 +19,7 @@ const year = computed(() => new Date().getFullYear())
       <p class="subtitle flex gap-x-1 items-center">
         Made with
         <a href="https://v3.nuxtjs.org/" target="_blank" class="group flex gap-x-1 items-center">
-          <span class="font-bold duration-300 text-black group-hover:(text-nuxt decoration-nuxt-light) decoration-nuxt dark:(text-white group-hover:decoration-nuxt-dark) underline decoration-2 underline-offset-2">Nuxt 3</span><NuxtLogo />
+          <span class="duration-300 text-black group-hover:(text-nuxt decoration-nuxt-light) decoration-nuxt dark:(text-white group-hover:decoration-nuxt-dark) underline underline-offset-4">Nuxt 3</span><NuxtLogo />
         </a>
       </p>
     </div>

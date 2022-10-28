@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   ],
 
   css: [
-    '@/assets/css/style.scss',
+    '@/assets/css/main.scss',
     '@/assets/css/scrollbar.scss',
   ],
 
@@ -33,9 +33,6 @@ export default defineNuxtConfig({
           emoticon: true,
         },
       },
-    },
-    highlight: {
-      theme: 'dracula',
     },
     locales: [
       'fr',

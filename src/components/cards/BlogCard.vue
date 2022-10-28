@@ -26,14 +26,6 @@ defineProps({
         <p>
           {{ post.publishedAt }} • {{ post.readingMins }} min read
         </p>
-        <div
-          class="px-4 py-2 duration-300 cursor-pointer border-2 rounded-full border-dark
-                bg-white text-stone-400 dark:(bg-dark-900 text-stone-600) group-hover:(shadow-dark text-black) dark:group-hover:text-white"
-        >
-          <div class="flex items-center justify-center font-medium">
-            Read more <Icon name="material-symbols:add-circle-outline-rounded" size="24px" class="ml-1" />
-          </div>
-        </div>
       </div>
     </CardLink>
   </Card>

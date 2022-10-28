@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SpotifyData } from '~/types/types'
-import { useAsyncData } from '#imports'
+import { onMounted, onUnmounted, useAsyncData } from '#imports'
 
 const { data, refresh, pending } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
@@ -60,7 +60,6 @@ onUnmounted(() => {
       <p v-else class="text-2xl font-bold">
         Nothing playing right now.
       </p>
-      <CardButton />
     </CardLink>
   </Card>
 </template>

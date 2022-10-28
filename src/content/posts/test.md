@@ -16,7 +16,9 @@ console.log(test)
 
 > Block quote
 
-`code inline`.  
+`code inline`
+
+
 `const codeInline: string = 'highlighted code inline'`{lang="ts"}
 
 ## H3 Heading
@@ -34,16 +36,6 @@ Is it laggy ?
 _Just an italic paragraph._
 
 [Hello World](https://google.com)
-
-:Alert
-
-::content-link
----
-link: "https://arthurdanjou.fr"
-target: "_blank"
----
-Hey 
-::
 
 ```js [.eslintrc.js]
 module.exports = {

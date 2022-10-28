@@ -12,7 +12,6 @@
           Let's work together
         </h3>
       </div>
-      <CardButton />
     </CardLink>
   </Card>
 </template>

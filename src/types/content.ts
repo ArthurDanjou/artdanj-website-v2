@@ -13,6 +13,7 @@ export interface Post extends MarkdownParsedContent {
 export interface Project {
   name: string
   description: string
+  latest?: string
   link: string
   icon: string
   skills: Skill[]

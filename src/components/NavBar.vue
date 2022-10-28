@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useRouter } from '#imports'
+
 const color = useColorMode()
 
 const playAnimation = (id) => {
@@ -16,7 +18,7 @@ const toggleColorMode = () => {
 
 const router = useRouter()
 const goBack = () => {
-  router.push('/blog')
+  router.back()
 }
 
 const isBlog = computed(() => {

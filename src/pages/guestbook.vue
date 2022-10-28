@@ -85,7 +85,7 @@ watch(user, async (value) => {
               Resign
             </button>
           </form>
-          <p v-else class="mt-4 text-green-500">
+          <p v-else class="mt-4 text-lime-500 dark:text-lime-700">
             Your have successfully signed the guestbook !
           </p>
           <p :class="formState.error ? 'opacity-100' : 'opacity-0'" class="mt-1 text-sm italic text-red-500 duration-300">
@@ -119,7 +119,7 @@ watch(user, async (value) => {
               Sign
             </button>
           </form>
-          <p v-else class="mt-4 text-green-500">
+          <p v-else class="mt-4 text-lime-500 dark:text-lime-700">
             Your have successfully signed the guestbook !
           </p>
           <p :class="formState.error ? 'opacity-100' : 'opacity-0'" class="mt-1 text-sm italic text-red-500 duration-300">
@@ -159,7 +159,7 @@ watch(user, async (value) => {
             <p class="text-gray-600 dark:text-gray-400">
               {{ message.username }}
             </p>
-            <span class="text-gray-300 dark:text-gray-700">/</span>
+            <span class="text-gray-300 dark:text-gray-600">/</span>
             <p class="text-gray-600 dark:text-gray-400">
               {{ formatGuestBookDate(message.updatedAt) }}
             </p>
