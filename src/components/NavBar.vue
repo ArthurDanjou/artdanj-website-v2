@@ -93,7 +93,7 @@ const isRoute = (route: string) => {
 }
 
 .nav-link {
-  @apply z-11 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-xl bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900)  flex items-center justify-center;
+  @apply z-11 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-lg bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900)  flex items-center justify-center;
 
   &.router-link-exact-active {
     @apply border-stone-700 text-black dark:text-white dark:border-stone-300;
