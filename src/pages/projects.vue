@@ -46,15 +46,12 @@ useHead({
             <h1 class="text-3xl font-bold">
               {{ project.name }}
             </h1>
-            <h3 class="text-sm text-gray-600 dark:text-gray-400 text-justify">
+            <h3 class="text-sm text-gray-500 dark:text-gray-300 text-justify">
               {{ project.description }}
             </h3>
-            <div class="flex space-x-2 mt-2">
-              <p class="text-xxs text-gray-600 dark:text-gray-400">
-                Made with
-              </p>
-              <SkillTag v-for="skill in project.skills" :key="skill" class="flex space-x-4" :skill="skill.name" />
-            </div>
+            <p class="flex space-x-2 mt-2 text-xs text-gray-600 dark:text-gray-400">
+              Made with {{ project.skills.map(skill => skill.name).join(', ') }}
+            </p>
           </div>
         </CardLink>
       </Card>
