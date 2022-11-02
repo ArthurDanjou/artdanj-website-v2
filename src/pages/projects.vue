@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import { useHead, useProjects } from '#imports'
+import {computed, ref, useElementHover, useHead, useParallax, useProjects} from '#imports'
 
 const { data: projects } = await useProjects()
 
 useHead({
   title: 'All Works - Arthur Danjou',
 })
+
+const main = ref(null)
+const { tilt, roll } = useParallax(main)
+const isHovered = useElementHover(main)
+const cardStyle = computed(() => ({
+  transform: `rotateX(${isHovered.value ? roll.value * 45 : 0}deg) rotateY(${isHovered.value ? tilt.value * 25 : 0}deg)`,
+}))
 </script>
 
 <template>
   <section>
     <PageTitle title="All Works" />
     <CardContainer>
-      <Card>
+      <Card ref="main" :style="cardStyle">
         <CardLink href="https://github.com/ArthurDanjou?tab=repositories" target="_blank">
           <CardIcon>
             <Icon name="ph:lightbulb-bold" size="42px" />

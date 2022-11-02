@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from '@vue/runtime-core'
 import type { Post } from '~/types/content'
+import { formatBlogDate } from '~/logic/date'
 
 defineProps({
   post: Object as PropType<Post>,
@@ -24,7 +25,7 @@ defineProps({
       </div>
       <div class="flex items-center justify-between mt-8">
         <p>
-          {{ post.publishedAt }} • {{ post.readingMins }} min read
+          {{ formatBlogDate(post.publishedAt) }} <span class="mx-1">•</span> {{ post.readingMins }} min read
         </p>
       </div>
     </CardLink>

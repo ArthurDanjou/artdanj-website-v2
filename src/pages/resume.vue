@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { useEducations, useHead, useSkills, useWorkExperiences } from '#imports'
+import {
+  computed,
+  ref,
+  useEducations,
+  useElementHover,
+  useHead,
+  useParallax,
+  useSkills,
+  useWorkExperiences
+} from '#imports'
 
 const { data: educations } = await useEducations()
 const { data: experiences } = await useWorkExperiences()
@@ -8,6 +17,13 @@ const { data: skills } = await useSkills()
 useHead({
   title: 'My Résumé - Arthur Danjou',
 })
+
+const main = ref(null)
+const { tilt, roll } = useParallax(main)
+const isHovered = useElementHover(main)
+const cardStyle = computed(() => ({
+  transform: `rotateX(${isHovered.value ? roll.value * 45 : 0}deg) rotateY(${isHovered.value ? tilt.value * 25 : 0}deg)`,
+}))
 </script>
 
 <template>
@@ -16,7 +32,7 @@ useHead({
     <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-16">
       <div class="w-full lg:w-1/4">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
-          <Card>
+          <Card ref="main" :style="cardStyle">
             <CardDiv>
               <img class="mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
               <h1 class="font-bold text-3xl">

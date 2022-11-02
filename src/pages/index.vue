@@ -1,17 +1,24 @@
 <script setup lang="ts">
-import { useHead, useLatestPost } from '#imports'
+import { computed, ref, useElementHover, useHead, useLatestPost, useParallax } from '#imports'
 
 const { data: post } = await useLatestPost()
 
 useHead({
   title: 'Arthur Danjou - Software Engineer',
 })
+
+const main = ref(null)
+const { tilt, roll } = useParallax(main)
+const isHovered = useElementHover(main)
+const cardStyle = computed(() => ({
+  transform: `rotateX(${isHovered.value ? roll.value * 45 : 0}deg) rotateY(${isHovered.value ? tilt.value * 25 : 0}deg)`,
+}))
 </script>
 
 <template>
   <section>
     <CardContainer>
-      <Card order="first" width="2">
+      <Card ref="main" order="first" width="2" :style="cardStyle">
         <CardLink href="about" class="flex flex-col">
           <div class="h-full flex items-center">
             <div class="bg-photo h-32 w-32 rounded-1/2" />

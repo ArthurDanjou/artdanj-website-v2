@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import { ref, useHead } from '#imports'
+import { computed, ref, useElementHover, useHead, useParallax } from '#imports'
 
 const age = ref(19)
 
 useHead({
   title: 'About Me - Arthur Danjou',
 })
+
+const main = ref(null)
+const { tilt, roll } = useParallax(main)
+const isHovered = useElementHover(main)
+const cardStyle = computed(() => ({
+  transform: `rotateX(${isHovered.value ? roll.value * 45 : 0}deg) rotateY(${isHovered.value ? tilt.value * 25 : 0}deg)`,
+}))
 </script>
 
 <template>
@@ -18,7 +25,7 @@ useHead({
           <!-- todo insert photo -->
         </CardDiv>
       </Card>
-      <Card order="first">
+      <Card ref="main" order="first" :style="cardStyle">
         <CardDiv class="flex">
           <h1 class="font-bold text-4xl my-4 leading-12">
             Hey, I am

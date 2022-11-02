@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FormData } from '~/types/types'
+import { ref, useAsyncData } from '#imports'
 
 const form = ref({
   name: '',
@@ -72,7 +73,7 @@ const handleForm = async () => {
         <textarea
           v-model="form.content"
           placeholder="Write your message"
-          class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300 invalid:bg-red-600 required:bg-red-600"
+          class="resize-none p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300 invalid:bg-red-600 required:bg-red-600"
         />
         <div class="w-full">
           <input

@@ -1,18 +1,24 @@
 <script setup lang="ts">
-import { useHead } from '#imports'
+import {computed, ref, useElementHover, useHead, useParallax} from '#imports'
 
 useHead({
   title: 'Contact Me - Arthur Danjou',
 })
 
 // todo complete cards
+const main = ref(null)
+const { tilt, roll } = useParallax(main)
+const isHovered = useElementHover(main)
+const cardStyle = computed(() => ({
+  transform: `rotateX(${isHovered.value ? roll.value * 45 : 0}deg) rotateY(${isHovered.value ? tilt.value * 25 : 0}deg)`,
+}))
 </script>
 
 <template>
   <section>
     <PageTitle title="Contact me" />
     <CardContainer>
-      <Card>
+      <Card ref="main" :style="cardStyle">
         <CardDiv>
           <CardIcon>
             <Icon name="material-symbols:inbox-outline" size="42px" />
