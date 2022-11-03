@@ -1,10 +1,8 @@
 <template>
   <Card order="first">
     <CardLink class="flex" target="_blank" href="https://github.com/ArthurDanjou">
-      <CardIcon>
-        <Icon name="mdi:github" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
+      <CardIcon icon="mdi:github" />
+      <div class="flex flex-col space-y-4 text-center">
         <h1 class="title">
           GitHub
         </h1>

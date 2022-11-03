@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SpotifyData } from '~/types/types'
-import { onMounted, onUnmounted, useAsyncData } from '#imports'
+import {computed, onMounted, onUnmounted, ref, useAsyncData, useElementHover, useMouseInElement} from '#imports'
 
 const { data, refresh, pending } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
@@ -13,14 +13,21 @@ onUnmounted(() => {
   if (refreshDataInterval)
     clearInterval(refreshDataInterval)
 })
+
+const spotify = ref(null)
+const isHovered = useElementHover(spotify)
+const { elementX, elementY } = useMouseInElement(spotify)
+const mouseStyle = computed(() => ({
+  top: `${elementY.value - 75 * 0.5}px`,
+  left: `${elementX.value - 75 * 0.5}px`,
+  opacity: isHovered.value ? 1 : 0,
+}))
 </script>
 
 <template>
-  <Card width="2">
+  <Card ref="spotify" width="2">
     <CardDiv v-if="pending">
-      <CardIcon>
-        <Icon style="animation: spin 2s infinite" name="ph:spinner-bold" size="42px" />
-      </CardIcon>
+      <CardIcon icon="ph:spinner-bold" />
       <div class="flex flex-col space-y-4">
         <h1 class="title">
           Loading state...
@@ -31,11 +38,10 @@ onUnmounted(() => {
       </div>
     </CardDiv>
     <CardLink v-else href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
-      <CardIcon>
-        <Icon name="mdi:spotify" size="42px" />
-      </CardIcon>
-      <div v-if="data && data.is_playing" class="flex flex-col space-y-2 mt-4">
-        <div class="flex space-x-2 items-center">
+      <div class="z-9 spotify-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
+      <CardIcon icon="mdi:spotify" />
+      <div v-if="data && data.is_playing" class="z-10 flex flex-col space-y-2 mt-4">
+        <div class="flex space-x-2 items-center justify-center">
           <div v-if="data.is_playing" class="flex items-center h-30px">
             <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
             <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
@@ -48,7 +54,7 @@ onUnmounted(() => {
             I'm listening to
           </h1>
         </div>
-        <div v-if="data !== null" class="flex space-x-2">
+        <div v-if="data !== null" class="z-10 flex space-x-2 justify-center">
           <h1 class="text-sm font-spotify">
             {{ data.name }},
           </h1>
@@ -57,7 +63,7 @@ onUnmounted(() => {
           </h1>
         </div>
       </div>
-      <p v-else class="text-2xl font-bold">
+      <p v-else class="text-2xl font-bold text-center">
         Nothing playing right now.
       </p>
     </CardLink>
@@ -65,6 +71,12 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
+.spotify-gradient {
+  background: repeating-linear-gradient(to right, #1db954 0%, #1ed760 100%);
+  filter: blur(100px);
+  opacity: 0.7;
+}
+
 .title {
   @apply text-3xl font-bold;
 }

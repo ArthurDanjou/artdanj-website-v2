@@ -22,7 +22,7 @@ const getRow = computed(() => {
     case '1':
       return 'row-span-1'
     case '2':
-      return 'lg:row-span-2'
+      return 'row-span-2'
   }
 })
 

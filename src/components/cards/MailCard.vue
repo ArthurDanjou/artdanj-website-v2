@@ -1,10 +1,8 @@
 <template>
   <Card width="2">
     <CardLink href="mailto:contact@arthurdanjou.fr">
-      <CardIcon>
-        <Icon name="material-symbols:alternate-email-rounded" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
+      <CardIcon icon="material-symbols:alternate-email-rounded" />
+      <div class="flex flex-col space-y-4 items-center">
         <Link class="title" link="mailto:contact@arthurdanjou.fr" :group="true">
           contact@arthurdanjou.fr
         </Link>

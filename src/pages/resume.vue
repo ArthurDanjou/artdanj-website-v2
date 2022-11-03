@@ -4,10 +4,9 @@ import {
   ref,
   useEducations,
   useElementHover,
-  useHead,
-  useParallax,
+  useHead, useMouseInElement,
   useSkills,
-  useWorkExperiences
+  useWorkExperiences,
 } from '#imports'
 
 const { data: educations } = await useEducations()
@@ -18,11 +17,13 @@ useHead({
   title: 'My Résumé - Arthur Danjou',
 })
 
-const main = ref(null)
-const { tilt, roll } = useParallax(main)
-const isHovered = useElementHover(main)
-const cardStyle = computed(() => ({
-  transform: `rotateX(${isHovered.value ? roll.value * 45 : 0}deg) rotateY(${isHovered.value ? tilt.value * 25 : 0}deg)`,
+const resume = ref(null)
+const isHovered = useElementHover(resume)
+const { elementX, elementY } = useMouseInElement(resume)
+const mouseStyle = computed(() => ({
+  top: `${elementY.value - 75 * 0.5}px`,
+  left: `${elementX.value - 75 * 0.5}px`,
+  opacity: isHovered.value ? 1 : 0,
 }))
 </script>
 
@@ -32,16 +33,17 @@ const cardStyle = computed(() => ({
     <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-16">
       <div class="w-full lg:w-1/4">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
-          <Card ref="main" :style="cardStyle">
-            <CardDiv>
-              <img class="mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
-              <h1 class="font-bold text-3xl">
+          <Card ref="resume">
+            <CardDiv class="flex flex-col items-center">
+              <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
+              <img class="z-10 mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
+              <h1 class="z-10 font-bold text-3xl">
                 Arthur Danjou
               </h1>
-              <h3 class="text-xl">
+              <h3 class="z-10 text-xl">
                 Software Engineer
               </h3>
-              <p class="text-md text-gray-600 dark:text-gray-400">
+              <p class="z-10 text-md text-gray-600 dark:text-gray-400">
                 Paris, France
               </p>
             </CardDiv>
@@ -95,7 +97,7 @@ const cardStyle = computed(() => ({
         <ResumeTitle title="Work Experiences" />
         <ResumeSection class="space-y-4">
           <WorkExperience
-            v-for="experience in experiences.body"
+            v-for="experience in experiences"
             :key="experience.id"
             :experience="experience"
           />
@@ -103,7 +105,7 @@ const cardStyle = computed(() => ({
         <ResumeTitle title="Educations" />
         <ResumeSection class="space-y-4">
           <Education
-            v-for="education in educations.body"
+            v-for="education in educations"
             :key="education.id"
             :education="education"
           />
@@ -111,7 +113,7 @@ const cardStyle = computed(() => ({
         <ResumeTitle title="Skills" />
         <ResumeSection>
           <Stack
-            v-for="skill in skills.body"
+            v-for="skill in skills"
             :key="skill.id"
             :skill="skill"
           />

@@ -1,10 +1,8 @@
 <template>
   <Card order="first">
     <CardLink class="flex" target="_blank" href="https://www.instagram.com/arthur.dnj/">
-      <CardIcon>
-        <Icon name="mdi:instagram" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
+      <CardIcon icon="mdi:instagram" />
+      <div class="flex flex-col space-y-4 text-center">
         <h1 class="title">
           Instagram
         </h1>

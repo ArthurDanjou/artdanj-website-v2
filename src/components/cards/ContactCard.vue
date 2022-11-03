@@ -1,10 +1,8 @@
 <template>
   <Card order="last">
     <CardLink href="contact">
-      <CardIcon>
-        <Icon name="material-symbols:inbox-outline" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
+      <CardIcon icon="material-symbols:inbox-outline" />
+      <div class="flex flex-col space-y-4 text-center">
         <h1 class="title">
           Get in touch
         </h1>

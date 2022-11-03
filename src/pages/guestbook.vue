@@ -79,7 +79,7 @@ watch(user, async (value) => {
               type="text"
               placeholder="Your message"
               required
-              class="w-full p-2 bg-stone-300 rounded-md dark:bg-neutral-700 outline-none duration-300 pr-18"
+              class="w-full p-2 bg-stone-300 rounded-md dark:bg-neutral-700 outline-none duration-300 pr-22"
             >
             <button class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="handleForm">
               Resign
@@ -113,7 +113,7 @@ watch(user, async (value) => {
               type="text"
               placeholder="Your message"
               required
-              class="w-full p-2 bg-stone-300 rounded-md dark:bg-neutral-700 outline-none duration-300 pr-18"
+              class="w-full p-2 bg-stone-300 rounded-md dark:bg-neutral-700 outline-none duration-300 pr-22"
             >
             <button class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="handleForm">
               Sign

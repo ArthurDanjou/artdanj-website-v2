@@ -1,16 +1,18 @@
 <script setup lang="ts">
 defineProps({
-  stick: {
-    type: Boolean,
-    default: false,
+  icon: {
+    type: String,
+    default: 'mdi:help-circle-outline',
+  },
+  size: {
+    type: Number,
+    default: 72,
   },
 })
 </script>
 
 <template>
-  <div class="flex" :class="stick ? '' : 'mb-8'">
-    <div class="p-1 rounded-lg bg-stone-100 dark:bg-dark-600 shadow-dark">
-      <slot />
-    </div>
+  <div class="flex justify-center mt-8">
+    <Icon :name="icon" :size="`${size}px`" />
   </div>
 </template>

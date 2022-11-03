@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useElementHover, useHead, useParallax } from '#imports'
+import { computed, ref, useElementHover, useHead, useMouseInElement } from '#imports'
 
 const age = ref(19)
 
@@ -7,11 +7,13 @@ useHead({
   title: 'About Me - Arthur Danjou',
 })
 
-const main = ref(null)
-const { tilt, roll } = useParallax(main)
-const isHovered = useElementHover(main)
-const cardStyle = computed(() => ({
-  transform: `rotateX(${isHovered.value ? roll.value * 45 : 0}deg) rotateY(${isHovered.value ? tilt.value * 25 : 0}deg)`,
+const about = ref(null)
+const isHovered = useElementHover(about)
+const { elementX, elementY } = useMouseInElement(about)
+const mouseStyle = computed(() => ({
+  top: `${elementY.value - 75 * 0.5}px`,
+  left: `${elementX.value - 75 * 0.5}px`,
+  opacity: isHovered.value ? 1 : 0,
 }))
 </script>
 
@@ -25,20 +27,21 @@ const cardStyle = computed(() => ({
           <!-- todo insert photo -->
         </CardDiv>
       </Card>
-      <Card ref="main" order="first" :style="cardStyle">
+      <Card ref="about" order="first">
         <CardDiv class="flex">
-          <h1 class="font-bold text-4xl my-4 leading-12">
+          <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
+          <h1 class="z-10 font-bold text-4xl my-4 leading-12 text-center">
             Hey, I am
             <span>Arthur Danjou</span> 👋
           </h1>
-          <h3 class="my-4 text-sm text-gray-600 dark:text-gray-400">
+          <h3 class="z-10 my-4 text-sm text-gray-600 dark:text-gray-400 text-center">
             A software engineer from France
           </h3>
         </CardDiv>
       </Card>
       <Card order="first" width="2">
         <CardDiv>
-          <h1 class="text-3xl font-bold mb-4">
+          <h1 class="text-3xl font-bold mb-4 text-center">
             About me
           </h1>
           <p class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
@@ -48,54 +51,42 @@ const cardStyle = computed(() => ({
       </Card>
       <Card width="2">
         <CardDiv>
-          <h1 class="text-3xl font-bold mb-12">
+          <h1 class="text-3xl font-bold mb-12 text-center">
             My Interests
           </h1>
           <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
-              <CardIcon :stick="true">
-                <Icon name="ph:cpu-bold" size="40px" />
-              </CardIcon>
+              <CardIcon icon="ph:cpu-bold" size="52" />
               <p class="interests-title">
                 Tech.
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon :stick="true">
-                <Icon name="uil:server" size="42px" />
-              </CardIcon>
+              <CardIcon icon="uil:server" size="52" />
               <p class="interests-title">
                 DevOps
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon :stick="true">
-                <Icon name="ph:airplane-tilt-bold" size="42px" />
-              </CardIcon>
+              <CardIcon icon="ph:airplane-tilt-bold" size="52" />
               <p class="interests-title">
                 Trips
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon :stick="true">
-                <Icon name="ph:camera-bold" size="42px" />
-              </CardIcon>
+              <CardIcon icon="ph:camera-bold" size="52" />
               <p class="interests-title">
                 Photo
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon :stick="true">
-                <Icon name="ic:outline-wb-cloudy" size="42px" />
-              </CardIcon>
+              <CardIcon icon="ic:outline-wb-cloudy" size="52" />
               <p class="interests-title">
                 Cloud
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon :stick="true">
-                <Icon name="mdi:function-variant" size="42px" />
-              </CardIcon>
+              <CardIcon icon="mdi:function-variant" size="52" />
               <p class="interests-title">
                 Maths.
               </p>

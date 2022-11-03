@@ -10,9 +10,7 @@ const { data: announce, pending } = await useAsyncData('announce', async () => {
 <template>
   <Card order="first" width="2">
     <CardDiv v-if="pending">
-      <CardIcon>
-        <Icon style="animation: spin 2s infinite" name="ph:spinner-bold" size="42px" />
-      </CardIcon>
+      <CardIcon style="animation: spin 2s infinite" icon="ph:spinner-bold" />
       <div class="flex flex-col space-y-4">
         <h1 class="title">
           Loading state...
@@ -23,10 +21,8 @@ const { data: announce, pending } = await useAsyncData('announce', async () => {
       </div>
     </CardDiv>
     <CardDiv v-else>
-      <CardIcon>
-        <Icon name="tabler:speakerphone" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
+      <CardIcon icon="tabler:speakerphone" />
+      <div class="flex flex-col space-y-4 text-center">
         <h1 v-if="announce" class="title">
           {{ announce.content }}
         </h1>

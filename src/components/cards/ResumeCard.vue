@@ -1,10 +1,8 @@
 <template>
   <Card order="last">
     <CardLink href="resume" class="flex flex-col justify-center">
-      <CardIcon>
-        <Icon name="fluent:person-12-regular" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
+      <CardIcon icon="fluent:person-12-regular" />
+      <div class="flex flex-col space-y-4 text-center">
         <h1 class="title">
           See my resume
         </h1>

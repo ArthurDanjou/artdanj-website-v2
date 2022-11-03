@@ -13,7 +13,7 @@ export interface Post extends MarkdownParsedContent {
 export interface Project {
   name: string
   description: string
-  latest?: string
+  latest: boolean
   link: string
   icon: string
   skills: Skill[]
@@ -36,10 +36,6 @@ export interface Education {
   location: string
   startDate: string
   endDate: string | 'Today'
-}
-
-export interface JsonParsedContent<T> extends ParsedContent {
-  body: T
 }
 
 interface Skill {

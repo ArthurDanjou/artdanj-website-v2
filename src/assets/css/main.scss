@@ -29,3 +29,9 @@ body {
     transform: scale(1, 1);
   }
 }
+
+.mouse-gradient {
+  background: repeating-linear-gradient(to right, #0047E1 0%, #6d34fe 50%, #ac00dc 100%);
+  filter: blur(100px);
+  opacity: 0.7;
+}

@@ -1,10 +1,8 @@
 <template>
   <Card order="first">
     <CardLink class="flex" target="_blank" href="https://twitter.com/ArthurDanj">
-      <CardIcon>
-        <Icon name="mdi:twitter" size="42px" />
-      </CardIcon>
-      <div class="flex flex-col space-y-4">
+      <CardIcon icon="mdi:twitter" />
+      <div class="flex flex-col space-y-4 text-center">
         <h1 class="title">
           Twitter
         </h1>
