@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '~/components/icons',
     '~/components/logos',
     '~/components/cards',
+    '~/components/resume',
   ],
 
   content: {

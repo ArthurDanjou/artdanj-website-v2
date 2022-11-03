@@ -18,7 +18,7 @@ defineProps({
         <span class="text-gray-600 dark:text-gray-400"> — {{ experience.title }}</span>
       </div>
       <h1 v-else class="text-lg">
-        <span class="font-medium text-black dark:text-white">{{ experience.company }}</span>
+        <span class="text-black dark:text-white">{{ experience.company }}</span>
         <span class="text-gray-600 dark:text-gray-400"> — {{ experience.title }}</span>
       </h1>
     </div>
