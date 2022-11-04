@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, ref, useElementHover, useHead, useMouseInElement, usePosts} from '#imports'
+import { computed, ref, useElementHover, useHead, useMouseInElement, usePosts } from '#imports'
 
 const { data: posts } = await usePosts()
 
