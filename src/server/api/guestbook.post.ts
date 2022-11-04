@@ -1,10 +1,10 @@
 import { defineEventHandler, readBody } from 'h3'
-import { PrismaClient } from '@prisma/client'
+import { usePrisma } from '#imports'
 
 export default defineEventHandler(async (event) => {
-  const client = new PrismaClient()
+  const client = usePrisma()
   const body = await readBody(event)
-  const guestBook = await client.guestBook.upsert({
+  return await client.guestBook.upsert({
     where: {
       email: body.email,
     },
@@ -18,6 +18,4 @@ export default defineEventHandler(async (event) => {
       username: body.username,
     },
   })
-  await client.$disconnect()
-  return guestBook
 })

@@ -1,13 +1,11 @@
 import { defineEventHandler } from 'h3'
-import { PrismaClient } from '@prisma/client'
+import { usePrisma } from '#imports'
 
 export default defineEventHandler(async () => {
-  const client = new PrismaClient()
-  const announce = await client.announcement.findFirst({
+  const client = usePrisma()
+  return await client.announcement.findFirst({
     orderBy: {
       createdAt: 'desc',
     },
   })
-  await client.$disconnect()
-  return announce
 })

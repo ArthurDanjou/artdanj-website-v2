@@ -1,10 +1,10 @@
 import { defineEventHandler, getQuery } from 'h3'
-import { PrismaClient } from '@prisma/client'
+import { usePrisma } from '#imports'
 
 export default defineEventHandler(async (event) => {
-  const client = new PrismaClient()
+  const client = usePrisma()
   const query = await getQuery(event)
-  const post = await client.post.upsert({
+  return await client.post.upsert({
     where: {
       slug: String(query.slug),
     },
@@ -13,6 +13,4 @@ export default defineEventHandler(async (event) => {
       slug: String(query.slug),
     },
   })
-  await client.$disconnect()
-  return post
 })
