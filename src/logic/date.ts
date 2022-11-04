@@ -10,5 +10,5 @@ export const formatBlogDate = (date: string) => {
 }
 
 export const formatGuestBookDate = (date: Date) => {
-  return useDateFormat(date, 'DD MMMM YYYY {o} hh:mm', { locales: 'en-EN' }).value.replace('{o}', 'at')
+  return useDateFormat(date, 'DD MMMM YYYY {o} HH:mm', { locales: 'en-EN' }).value.replace('{o}', 'at')
 }
