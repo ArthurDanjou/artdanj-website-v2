@@ -30,18 +30,18 @@ const mouseStyle = computed(() => ({
       <Card ref="about" order="first">
         <CardDiv class="flex">
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-          <h1 class="z-10 font-bold text-4xl my-4 leading-12 text-center">
+          <h1 class="z-10 font-bold text-4xl leading-12 text-center">
             Hey, I am
             <span>Arthur Danjou</span> 👋
           </h1>
-          <h3 class="z-10 my-4 text-sm text-gray-600 dark:text-gray-400 text-center">
+          <h3 class="z-10 text-sm text-gray-600 dark:text-gray-400 text-center">
             A software engineer from France
           </h3>
         </CardDiv>
       </Card>
       <Card order="first" width="2">
         <CardDiv>
-          <h1 class="text-3xl font-bold mb-4 text-center">
+          <h1 class="text-3xl font-bold text-center">
             About me
           </h1>
           <p class="text-lg leading-5 text-gray-600 dark:text-gray-400 text-justify">
@@ -51,42 +51,42 @@ const mouseStyle = computed(() => ({
       </Card>
       <Card width="2">
         <CardDiv>
-          <h1 class="text-3xl font-bold mb-12 text-center">
+          <h1 class="text-3xl font-bold text-center">
             My Interests
           </h1>
           <div class="grid w-full gap-x-4 gap-y-8 grid-rows-2 md:grid-rows-1 grid-flow-col-dense">
             <div class="interest-item">
-              <CardIcon icon="ph:cpu-bold" size="52" />
+              <CardIcon icon="ph:cpu-bold" :size="52" />
               <p class="interests-title">
                 Tech.
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon icon="uil:server" size="52" />
+              <CardIcon icon="uil:server" :size="52" />
               <p class="interests-title">
                 DevOps
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon icon="ph:airplane-tilt-bold" size="52" />
+              <CardIcon icon="ph:airplane-tilt-bold" :size="52" />
               <p class="interests-title">
                 Trips
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon icon="ph:camera-bold" size="52" />
+              <CardIcon icon="ph:camera-bold" :size="52" />
               <p class="interests-title">
                 Photo
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon icon="ic:outline-wb-cloudy" size="52" />
+              <CardIcon icon="ic:outline-wb-cloudy" :size="52" />
               <p class="interests-title">
                 Cloud
               </p>
             </div>
             <div class="interest-item">
-              <CardIcon icon="mdi:function-variant" size="52" />
+              <CardIcon icon="mdi:function-variant" :size="52" />
               <p class="interests-title">
                 Maths.
               </p>

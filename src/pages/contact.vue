@@ -24,12 +24,15 @@ const mouseStyle = computed(() => ({
         <CardDiv>
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
           <CardIcon icon="material-symbols:inbox-outline" />
-          <h1 class="mt-4 z-10 title">
-            Get in touch
-          </h1>
-          <h3 class="z-10 subtitle mt-4">
-            I’m always open to collaborate on a project or hear about an opportunity!
-          </h3>
+          <div class="z-10 absolute left-[37%] top-[10%] mouse-gradient h-[75px] w-[75px]" />
+          <div>
+            <h1 class="z-10 title">
+              Get in touch
+            </h1>
+            <h3 class="z-10 subtitle mt-2">
+              I’m always open to collaborate on a project or hear about an opportunity!
+            </h3>
+          </div>
         </CardDiv>
       </Card>
       <FormCard />
@@ -37,35 +40,41 @@ const mouseStyle = computed(() => ({
       <Card order="last">
         <CardDiv>
           <CardIcon icon="uil:web-grid" />
-          <h1 class="title">
-            Development
-          </h1>
-          <p class="subtitle">
-            ...
-          </p>
+          <div>
+            <h1 class="title">
+              Development
+            </h1>
+            <p class="subtitle">
+              ...
+            </p>
+          </div>
         </CardDiv>
       </Card>
       <TwitterCard order="normal" />
       <Card order="last">
         <CardDiv>
           <CardIcon icon="ic:outline-design-services" />
-          <h1 class="title">
-            Design
-          </h1>
-          <p class="subtitle">
-            ...
-          </p>
+          <div>
+            <h1 class="title">
+              Design
+            </h1>
+            <p class="subtitle">
+              ...
+            </p>
+          </div>
         </CardDiv>
       </Card>
       <Card order="last">
         <CardDiv>
           <CardIcon icon="uil:comment" />
-          <h1 class="title">
-            Strategy
-          </h1>
-          <p class="subtitle">
-            ...
-          </p>
+          <div>
+            <h1 class="title">
+              Strategy
+            </h1>
+            <p class="subtitle">
+              ...HEYHDHASJ
+            </p>
+          </div>
         </CardDiv>
       </Card>
       <MailCard />
@@ -79,6 +88,6 @@ const mouseStyle = computed(() => ({
 }
 
 .subtitle {
-  @apply text-lg leading-5 text-gray-600 dark:text-gray-400 text-center;
+  @apply mt-2 text-lg leading-5 text-gray-600 dark:text-gray-400 text-center;
 }
 </style>

@@ -2,7 +2,7 @@
   <Card order="last">
     <CardLink href="contact">
       <CardIcon icon="material-symbols:inbox-outline" />
-      <div class="flex flex-col space-y-4 text-center">
+      <div class="flex flex-col space-y-2 text-center">
         <h1 class="title">
           Get in touch
         </h1>

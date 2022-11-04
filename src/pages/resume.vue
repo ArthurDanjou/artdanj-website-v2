@@ -36,16 +36,19 @@ const mouseStyle = computed(() => ({
           <Card ref="resume">
             <CardDiv class="flex flex-col items-center">
               <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-              <img class="z-10 mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
-              <h1 class="z-10 font-bold text-3xl">
-                Arthur Danjou
-              </h1>
-              <h3 class="z-10 text-xl">
-                Software Engineer
-              </h3>
-              <p class="z-10 text-md text-gray-600 dark:text-gray-400">
-                Paris, France
-              </p>
+              <img class="z-11 mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
+              <div class="z-10 absolute left-[37%] top-[15%] mouse-gradient h-[75px] w-[75px]" />
+              <div class="flex flex-col items-center">
+                <h1 class="z-10 font-bold text-3xl">
+                  Arthur Danjou
+                </h1>
+                <h3 class="z-10 text-xl">
+                  Software Engineer
+                </h3>
+                <p class="z-10 text-md text-gray-600 dark:text-gray-400">
+                  Paris, France
+                </p>
+              </div>
             </CardDiv>
           </Card>
           <Card>

@@ -2,7 +2,7 @@
   <Card order="first">
     <CardLink class="flex" target="_blank" href="https://github.com/ArthurDanjou">
       <CardIcon icon="mdi:github" />
-      <div class="flex flex-col space-y-4 text-center">
+      <div class="flex flex-col space-y-2 text-center">
         <h1 class="title">
           GitHub
         </h1>

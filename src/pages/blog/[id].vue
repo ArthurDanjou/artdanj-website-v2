@@ -19,6 +19,9 @@ useHead({
 <template>
   <section class="mt-16 md:mt-32 md:w-2/3 mx-auto sm:rounded">
     <main class="max-w-2xl px-4 mx-auto sm:px-8">
+      <Link class="mb-4" link="/blog">
+        Back to the shelf
+      </Link>
       <h1 class="text-4xl font-bold">
         {{ postContent.title }}
       </h1>

@@ -24,12 +24,12 @@ const mouseStyle = computed(() => ({
       <Card ref="main" order="first" width="2" height="2">
         <CardLink href="about">
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-          <div class="h-full flex items-center justify-center my-12 relative">
-            <img src="~/assets/images/hand.png" alt="Hand" class="z-11 bg-white dark:bg-dark-900 border-dark border-2 h-40 w-40 rounded-1/2">
+          <div class="flex items-center justify-center relative">
+            <img src="~/assets/images/hand.png" alt="Hand" class="z-11 bg-white dark:bg-dark-900 h-40 w-40 rounded-1/2">
             <div class="z-10 absolute photo-gradient h-[175px] w-[175px]" />
           </div>
-          <div class="z-10 flex flex flex-col space-y-4 text-center">
-            <div class="mb-16">
+          <div class="z-10 flex flex flex-col text-center">
+            <div class="my-12">
               <h3 class="text-gray-600 dark:text-gray-400 text-3xl">
                 Hey, I am
               </h3>
@@ -46,9 +46,9 @@ const mouseStyle = computed(() => ({
       <AnnounceCard />
       <ResumeCard />
       <Card order="last">
-        <CardLink href="uses" class="flex flex-col justify-center">
+        <CardLink href="uses">
           <CardIcon icon="lucide:lamp-desk" />
-          <div class="flex flex-col space-y-4 text-center">
+          <div class="flex flex-col space-y-2 text-center">
             <h1 class="title">
               How do I work ?
             </h1>
@@ -59,9 +59,9 @@ const mouseStyle = computed(() => ({
         </CardLink>
       </Card>
       <Card order="last">
-        <CardLink href="guestbook" class="flex flex-col justify-center">
+        <CardLink href="guestbook">
           <CardIcon icon="icon-park-outline:bookshelf" />
-          <div class="flex flex-col space-y-4 text-center">
+          <div class="flex flex-col space-y-2 text-center">
             <h1 class="title">
               Sign my book
             </h1>
@@ -111,7 +111,7 @@ const mouseStyle = computed(() => ({
 
 <style scoped lang="scss">
 .title {
-  @apply mt-4 text-3xl font-bold;
+  @apply text-3xl font-bold;
 }
 
 .subtitle {

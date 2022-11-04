@@ -6,9 +6,9 @@ export const formatDate = (date: string) => {
 }
 
 export const formatBlogDate = (date: string) => {
-  return useDateFormat(date, 'D MMM YYYY').value
+  return useDateFormat(date, 'D MMM YYYY', { locales: 'en-EN' }).value
 }
 
 export const formatGuestBookDate = (date: Date) => {
-  return useDateFormat(date, 'DD MMMM YYYY {o} hh:mm').value.replace('{o}', 'at')
+  return useDateFormat(date, 'DD MMMM YYYY {o} hh:mm', { locales: 'en-EN' }).value.replace('{o}', 'at')
 }

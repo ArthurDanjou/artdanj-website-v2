@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex justify-center mt-8">
+  <div class="z-11 flex justify-center mt-8">
     <Icon :name="icon" :size="`${size}px`" />
   </div>
 </template>

@@ -25,17 +25,20 @@ const mouseStyle = computed(() => ({
         <CardLink href="https://github.com/ArthurDanjou?tab=repositories" target="_blank">
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
           <CardIcon icon="ph:lightbulb-bold" />
-          <h1 class="z-10 font-bold text-4xl my-4 leading-12 text-center">
-            What I have done
-          </h1>
-          <h3 class="z-10 my-4 text-sm flex space-x-1 justify-center">
-            <span class="text-gray-600 dark:text-gray-400">
-              See more projects on
-            </span>
-            <Link href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">
-              GitHub
-            </Link>
-          </h3>
+          <div class="z-10 absolute left-[45%] top-[15%] mouse-gradient h-[75px] w-[75px]" />
+          <div>
+            <h1 class="z-10 font-bold my-2 text-4xl leading-12 text-center">
+              What I have done
+            </h1>
+            <h3 class="z-10 text-sm flex space-x-1 justify-center">
+              <span class="text-gray-600 dark:text-gray-400">
+                See more projects on
+              </span>
+              <Link href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">
+                GitHub
+              </Link>
+            </h3>
+          </div>
         </CardLink>
       </Card>
       <ProjectCard v-for="project in projects" :key="project.name" :project="project" />

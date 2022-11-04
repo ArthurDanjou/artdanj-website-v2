@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SpotifyData } from '~/types/types'
-import {computed, onMounted, onUnmounted, ref, useAsyncData, useElementHover, useMouseInElement} from '#imports'
+import { computed, onMounted, onUnmounted, ref, useAsyncData, useElementHover, useMouseInElement } from '#imports'
 
 const { data, refresh, pending } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
@@ -28,7 +28,7 @@ const mouseStyle = computed(() => ({
   <Card ref="spotify" width="2">
     <CardDiv v-if="pending">
       <CardIcon icon="ph:spinner-bold" />
-      <div class="flex flex-col space-y-4">
+      <div class="flex flex-col space-y-2">
         <h1 class="title">
           Loading state...
         </h1>
@@ -40,6 +40,7 @@ const mouseStyle = computed(() => ({
     <CardLink v-else href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
       <div class="z-9 spotify-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
       <CardIcon icon="mdi:spotify" />
+      <div class="z-10 absolute left-[43%] top-[20%] spotify-gradient h-[75px] w-[75px]" />
       <div v-if="data && data.is_playing" class="z-10 flex flex-col space-y-2 mt-4">
         <div class="flex space-x-2 items-center justify-center">
           <div v-if="data.is_playing" class="flex items-center h-30px">

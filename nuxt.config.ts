@@ -36,7 +36,6 @@ export default defineNuxtConfig({
       },
     },
     locales: [
-      'fr',
       'en',
     ],
   },

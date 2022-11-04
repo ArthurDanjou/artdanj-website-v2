@@ -2,7 +2,7 @@
   <Card width="2">
     <CardLink href="mailto:contact@arthurdanjou.fr">
       <CardIcon icon="material-symbols:alternate-email-rounded" />
-      <div class="flex flex-col space-y-4 items-center">
+      <div class="flex flex-col space-y-2 items-center">
         <Link class="title" link="mailto:contact@arthurdanjou.fr" :group="true">
           contact@arthurdanjou.fr
         </Link>
