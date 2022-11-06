@@ -74,8 +74,8 @@ const mouseStyle = computed(() => ({
       <ContactCard />
       <SpotifyCard />
       <TwitterCard />
+      <LastTweetCard />
       <GitHubCard />
-      <InstagramCard />
       <ProjectCard :project="project[0]" />
       <Card width="2">
         <CardLink href="/projects">

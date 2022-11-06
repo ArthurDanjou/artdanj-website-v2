@@ -1,5 +1,5 @@
 import { defineEventHandler } from 'h3'
-import { usePrisma } from '#imports'
+import { usePrisma } from '~/composables/usePrisma'
 
 export default defineEventHandler(async () => {
   const client = usePrisma()

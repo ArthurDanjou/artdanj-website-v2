@@ -5,7 +5,7 @@ let prisma: PrismaClient
 export const usePrisma = () => {
   if (prisma === undefined) {
     prisma = new PrismaClient({
-      log: ['query', 'info', 'warn'],
+      log: ['info', 'warn', 'error'],
     })
   }
   return prisma

@@ -143,6 +143,26 @@ const mouseStyle = computed(() => ({
           Passion
         </p>
       </StatsCard>
+      <StatsCard>
+        <p>
+          All time view
+        </p>
+      </StatsCard>
+      <StatsCard>
+        <p>
+          All time reaction
+        </p>
+      </StatsCard>
+      <StatsCard>
+        <p>
+          Github followers
+        </p>
+      </StatsCard>
+      <StatsCard>
+        <p>
+          twitter followers
+        </p>
+      </StatsCard>
       <ContactCard />
       <TwitterCard />
       <GitHubCard />

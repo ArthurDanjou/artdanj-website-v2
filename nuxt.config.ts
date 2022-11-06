@@ -1,8 +1,8 @@
 export default defineNuxtConfig({
   srcDir: 'src',
 
-  router: {
-    trailingSlash: false,
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
 
   modules: [

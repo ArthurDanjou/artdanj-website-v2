@@ -48,8 +48,8 @@ export interface PostDB {
 export interface Maintenance {
   id: number
   reason: string
-  beginAt: Date
-  endAt: Date
+  beginAt: string
+  endAt: string
   createdAt: Date
   updatedAt: Date
 }

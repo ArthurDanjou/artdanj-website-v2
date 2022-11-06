@@ -24,7 +24,7 @@
     "@vueuse/nuxt": "^9.1.1",
     "@windicss/plugin-animations": "^1.0.9",
     "eslint": "^8.23.0",
-    "nuxt": "^3.0.0-rc.11",
+    "nuxt": "^3.0.0-rc.13",
     "nuxt-icon": "^0.1.5",
     "nuxt-windicss": "^2.5.1",
     "prisma": "^4.3.1",

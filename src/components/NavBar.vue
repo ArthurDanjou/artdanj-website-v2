@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useRouter } from '#imports'
+import { computed, useColorMode, useRouter } from '#imports'
 
 const color = useColorMode()
 
@@ -70,6 +70,27 @@ const isRoute = (route: string) => {
       <NavBarItem :is-route="isRoute('/contact')">
         <NuxtLink to="/contact" class="nav-link">
           <PinIcon :filled="isRoute('/contact')" class="text-2xl" />
+        </NuxtLink>
+      </NavBarItem>
+      <NavBarItem :is-route="isRoute('/uses')">
+        <NuxtLink to="/uses" class="nav-link">
+          <WrenchIcon :filled="isRoute('/uses')" class="text-2xl" />
+        </NuxtLink>
+      </NavBarItem>
+      <NavBarItem :is-route="isRoute('/talents')">
+        <NuxtLink to="/talents" class="nav-link">
+          <CrownIcon :filled="isRoute('/talents')" class="text-2xl" />
+        </NuxtLink>
+      </NavBarItem>
+      <div class="bg-stone-200 dark:bg-dark-300 w-1px mx-2 h-40px flex-shrink-0" />
+      <NavBarItem :is-route="isRoute('/guestbook')">
+        <NuxtLink to="/guestbook" class="nav-link">
+          <BookIcon :filled="isRoute('/guestbook')" class="text-2xl" />
+        </NuxtLink>
+      </NavBarItem>
+      <NavBarItem :is-route="isRoute('/ama')">
+        <NuxtLink to="/ama" class="nav-link">
+          <ChatIcon :filled="isRoute('/ama')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
       <div class="bg-stone-200 dark:bg-dark-300 w-1px mx-2 h-40px flex-shrink-0" />
