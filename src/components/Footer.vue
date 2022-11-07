@@ -12,9 +12,9 @@ const year = computed(() => new Date().getFullYear())
         <p class="subtitle">
           Designed & Built by
         </p>
-        <Link class="text-sm" link="https://twitter.com/arthurdanj" target="_blank">
+        <ALink class="text-sm" link="https://twitter.com/arthurdanj" target="_blank">
           Arthur Danjou
-        </Link>
+        </ALink>
       </div>
       <p class="subtitle flex gap-x-1 items-center">
         Made with

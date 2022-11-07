@@ -35,6 +35,11 @@ export default defineNuxtConfig({
         },
       },
     },
+    highlight: {
+      theme: {
+        default: 'one-dark-pro',
+      },
+    },
     locales: [
       'en',
     ],

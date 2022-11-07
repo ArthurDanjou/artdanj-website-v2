@@ -12,16 +12,16 @@ onMounted(() => {
 })
 
 useHead({
-  title: `${postContent.value.title} - Arthur Danjou's shelf`,
+  title: `${postContent.value?.title} - Arthur Danjou's shelf`,
 })
 </script>
 
 <template>
   <section class="mt-16 md:mt-32 md:w-2/3 mx-auto sm:rounded">
     <main class="max-w-2xl px-4 mx-auto sm:px-8">
-      <Link class="mb-4" link="/blog">
+      <ALink class="mb-4" link="/blog">
         Back to the shelf
-      </Link>
+      </ALink>
       <h1 class="text-4xl font-bold">
         {{ postContent.title }}
       </h1>
@@ -40,10 +40,25 @@ useHead({
         {{ postContent.cover }}
       </div>
       <ContentRenderer class="prose dark:prose-invert leading-6" :value="postContent" />
-      <div class="my-8">
-        Footer blog
+      <div class="relative py-8 mt-8 border-t border-.5 border-gray-150 dark:border-zinc-800">
+        <div class="absolute left-1/2 -top-5.5 -translate-x-1/2 transform bg-gray-100 px-8 py-2 dark:bg-black duration-300">
+          <Icon name="ph:info-bold" size="24" />
+        </div>
+        <p class="text-justify">
+          Thanks for reading this post! If you liked it, please consider sharing it with your friends.
+        </p>
         <div @click.prevent="like()">
           LIKE - {{ getLikes }}
+        </div>
+        Back to top
+        copy link
+      </div>
+      <div class="relative border-t border-.5 border-gray-150 dark:border-zinc-800">
+        <div class="absolute left-1/2 -top-6 -translate-x-1/2 transform bg-gray-100 px-8 py-2 dark:bg-black duration-300">
+          <Icon name="ph:chat-circle-bold" size="24" />
+        </div>
+        <div class="pt-8">
+          Comments
         </div>
       </div>
     </main>

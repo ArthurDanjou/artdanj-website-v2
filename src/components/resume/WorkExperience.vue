@@ -12,9 +12,9 @@ defineProps({
     <div>
       <DateTag :start-date="experience.startDate" :end-date="experience.endDate" />
       <div v-if="experience.companyLink" class="text-lg flex">
-        <Link :href="experience.companyLink" target="_blank">
+        <ALink :href="experience.companyLink" target="_blank">
           {{ experience.company }}
-        </Link>
+        </ALink>
         <span class="text-gray-600 dark:text-gray-400"> — {{ experience.title }}</span>
       </div>
       <h1 v-else class="text-lg">

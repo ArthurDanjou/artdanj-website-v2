@@ -26,17 +26,17 @@ const mouseStyle = computed(() => ({
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
           <CardIcon icon="ph:lightbulb-bold" />
           <div class="z-10 absolute left-[45%] top-[15%] mouse-gradient h-[75px] w-[75px]" />
-          <div>
-            <h1 class="z-10 font-bold my-2 text-4xl leading-12 text-center">
+          <div class="z-10">
+            <h1 class="font-bold my-2 text-4xl leading-12 text-center">
               What I have done
             </h1>
-            <h3 class="z-10 text-sm flex space-x-1 justify-center">
+            <h3 class="text-sm flex space-x-1 justify-center">
               <span class="text-gray-600 dark:text-gray-400">
                 See more projects on
               </span>
-              <Link href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">
+              <ALink href="https://github.com/ArthurDanjou?tab=repositories" target="_blank" :group="true">
                 GitHub
-              </Link>
+              </ALink>
             </h3>
           </div>
         </CardLink>

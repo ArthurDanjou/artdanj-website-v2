@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useElementHover, useHead, useMouseInElement } from '#imports'
+import {computed, ref, useAsyncData, useElementHover, useHead, useMouseInElement} from '#imports'
 
 const age = ref(19)
 
@@ -15,6 +15,9 @@ const mouseStyle = computed(() => ({
   left: `${elementX.value - 75 * 0.5}px`,
   opacity: isHovered.value ? 1 : 0,
 }))
+
+const { data: totalViews } = await useAsyncData('totalViews', () => $fetch('/api/views'))
+const { data: totalLikes } = await useAsyncData('totalLikes', () => $fetch('/api/likes'))
 </script>
 
 <template>
@@ -95,7 +98,7 @@ const mouseStyle = computed(() => ({
         </CardDiv>
       </Card>
       <StatsCard>
-        <div class="bg-clip-text bg-text-green">
+        <div class="bg-clip-text bg-text-yellow">
           <div class="text-7xl inline -mr-4 font-bold">
             12
           </div>
@@ -108,7 +111,7 @@ const mouseStyle = computed(() => ({
         </p>
       </StatsCard>
       <StatsCard>
-        <div class="bg-clip-text bg-text-blue">
+        <div class="bg-clip-text bg-text-lime">
           <div class="text-7xl inline -mr-2 font-bold">
             7
           </div>
@@ -121,7 +124,7 @@ const mouseStyle = computed(() => ({
         </p>
       </StatsCard>
       <StatsCard>
-        <div class="bg-clip-text bg-text-purple">
+        <div class="bg-clip-text bg-text-green">
           <div class="text-7xl inline -mr-4 font-bold">
             500
           </div>
@@ -134,7 +137,7 @@ const mouseStyle = computed(() => ({
         </p>
       </StatsCard>
       <StatsCard>
-        <div class="bg-clip-text bg-text-rose">
+        <div class="bg-clip-text bg-text-cyan">
           <div class="text-7xl font-bold">
             100%
           </div>
@@ -144,23 +147,43 @@ const mouseStyle = computed(() => ({
         </p>
       </StatsCard>
       <StatsCard>
-        <p>
-          All time view
+        <div class="bg-clip-text bg-text-blue">
+          <div class="text-7xl font-bold">
+            {{ totalViews._sum.views }}
+          </div>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          All-time posts views
         </p>
       </StatsCard>
       <StatsCard>
-        <p>
-          All time reaction
+        <div class="bg-clip-text bg-text-purple">
+          <div class="text-7xl font-bold">
+            {{ totalLikes._sum.likes }}
+          </div>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          All-time posts reactions
         </p>
       </StatsCard>
       <StatsCard>
-        <p>
+        <div class="bg-clip-text bg-text-rose">
+          <div class="text-7xl font-bold">
+            xxx
+          </div>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
           Github followers
         </p>
       </StatsCard>
       <StatsCard>
-        <p>
-          twitter followers
+        <div class="bg-clip-text bg-text-red">
+          <div class="text-7xl font-bold">
+            xxx
+          </div>
+        </div>
+        <p class="text-md text-gray-600 dark:text-gray-400">
+          Twitter followers
         </p>
       </StatsCard>
       <ContactCard />
@@ -184,13 +207,23 @@ const mouseStyle = computed(() => ({
   @apply text-black dark:text-white font-bold;
 }
 
+.bg-text-lime {
+  background-image: linear-gradient(120deg, #dce13d, #41b421);
+  @apply text-transparent;
+}
+
 .bg-text-green {
-  background-image: linear-gradient(225deg,#5af141,#2a9dce);
+  background-image: linear-gradient(225deg, #73d760,#2a9dce);
   @apply text-transparent;
 }
 
 .bg-text-blue {
-  background-image: linear-gradient(135deg,#63e3dc,#1254c2);
+  background-image: linear-gradient(135deg, #3b6bc7,#1254c2);
+  @apply text-transparent;
+}
+
+.bg-text-cyan {
+  background-image: linear-gradient(135deg,#63e3dc, #2d5ca9);
   @apply text-transparent;
 }
 
@@ -200,7 +233,17 @@ const mouseStyle = computed(() => ({
 }
 
 .bg-text-rose {
-  background-image: linear-gradient(135deg,#ffb077,#b82698);
+  background-image: linear-gradient(135deg, #7c4bc7,#b82698);
+  @apply text-transparent;
+}
+
+.bg-text-yellow {
+  background-image: linear-gradient(135deg,#f9f871,#f9b871);
+  @apply text-transparent;
+}
+
+.bg-text-red {
+  background-image: linear-gradient(135deg, #dc5e87, #af2929);
   @apply text-transparent;
 }
 </style>

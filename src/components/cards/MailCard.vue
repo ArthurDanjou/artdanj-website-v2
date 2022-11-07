@@ -3,9 +3,9 @@
     <CardLink href="mailto:contact@arthurdanjou.fr">
       <CardIcon icon="material-symbols:alternate-email-rounded" />
       <div class="flex flex-col space-y-2 items-center">
-        <Link class="title" link="mailto:contact@arthurdanjou.fr" :group="true">
+        <ALink class="title" link="mailto:contact@arthurdanjou.fr" :group="true">
           contact@arthurdanjou.fr
-        </Link>
+        </ALink>
         <h3 class="subtitle">
           Just want to email me ?
         </h3>

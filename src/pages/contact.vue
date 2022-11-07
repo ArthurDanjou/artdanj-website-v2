@@ -25,11 +25,11 @@ const mouseStyle = computed(() => ({
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
           <CardIcon icon="material-symbols:inbox-outline" />
           <div class="z-10 absolute left-[37%] top-[10%] mouse-gradient h-[75px] w-[75px]" />
-          <div>
-            <h1 class="z-10 title">
+          <div class="z-10">
+            <h1 class="title">
               Get in touch
             </h1>
-            <h3 class="z-10 subtitle mt-2">
+            <h3 class="subtitle mt-2">
               I’m always open to collaborate on a project or hear about an opportunity!
             </h3>
           </div>
