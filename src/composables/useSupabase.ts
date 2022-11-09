@@ -1,54 +1,79 @@
-import { useSupabaseClient } from '#imports'
+import { computed, useRouter, useSupabaseClient, useSupabaseUser } from '#imports'
 
 export const useSupabase = () => {
   const client = useSupabaseClient()
-  const redirectTo = 'http://localhost:3000/guestbook'
+  const user = useSupabaseUser()
+  const redirectTo = 'http://localhost:3000'
 
-  const useGithubLogin = () => {
-    return client.auth.signIn({
+  const isAdmin = computed(() => user.value?.role === 'admin')
+
+  const getRole = computed(() => {
+    return user.value?.role
+  })
+
+  const useGithubLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+    return client.auth.signInWithOAuth({
       provider: 'github',
-    }, {
-      redirectTo,
+      options: {
+        redirectTo: `${redirectTo}/${redirect}`,
+      },
     })
   }
 
-  const useTwitterLogin = () => {
-    return client.auth.signIn({
+  const useTwitterLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+    return client.auth.signInWithOAuth({
       provider: 'twitter',
-    }, {
-      redirectTo,
+      options: {
+        redirectTo: `${redirectTo}/${redirect}`,
+      },
     })
   }
 
-  const useTwitchLogin = () => {
-    return client.auth.signIn({
+  const useTwitchLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+    return client.auth.signInWithOAuth({
       provider: 'twitch',
-    }, {
-      redirectTo,
+      options: {
+        redirectTo: `${redirectTo}/${redirect}`,
+      },
     })
   }
 
-  const useDiscordLogin = () => {
-    return client.auth.signIn({
+  const useDiscordLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+    return client.auth.signInWithOAuth({
       provider: 'discord',
-    }, {
-      redirectTo,
+      options: {
+        redirectTo: `${redirectTo}/${redirect}`,
+      },
     })
   }
 
-  const useGoogleLogin = () => {
-    return client.auth.signIn({
+  const useGoogleLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+    return client.auth.signInWithOAuth({
       provider: 'google',
-    }, {
-      redirectTo,
+      options: {
+        redirectTo: `${redirectTo}/${redirect}`,
+      },
     })
   }
+
+  const logout = async () => {
+    await client.auth.signOut()
+  }
+
+  const isLoggedIn = computed(() => {
+    return user.value !== null
+  })
 
   return {
+    user,
     useGithubLogin,
     useTwitchLogin,
     useTwitterLogin,
     useDiscordLogin,
     useGoogleLogin,
+    isAdmin,
+    getRole,
+    logout,
+    isLoggedIn,
   }
 }

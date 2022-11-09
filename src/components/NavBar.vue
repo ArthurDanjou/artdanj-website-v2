@@ -1,13 +1,18 @@
 <script setup lang="ts">
-import { computed, useColorMode, useRouter } from '#imports'
+import { computed, useColorMode, useRouter, useSupabase } from '#imports'
 
 const color = useColorMode()
+const { isAdmin, logout, isLoggedIn } = useSupabase()
 
-const playAnimation = (id) => {
-  const element = document.getElementById(id)
-  element.style.transform = 'translateY(-75%) rotate(90deg)'
+const handleLogout = async () => {
+  await logout()
+}
+
+const playAnimation = (id: any) => {
+  const element: HTMLElement | null = document.getElementById(id)
+  element!.style.transform = 'translateY(-75%) rotate(90deg)'
   setTimeout(() => {
-    element.style.transform = 'translateY(0) rotate(0)'
+    element!.style.transform = 'translateY(0) rotate(0)'
   }, 400)
 }
 
@@ -98,6 +103,24 @@ const isRoute = (route: string) => {
         <Icon v-if="color.preference === 'light'" name="ph:sun-bold" size="24px" />
         <Icon v-else name="pepicons:moon" size="24px" />
       </div>
+      <NavBarItem v-if="isLoggedIn" :is-route="isRoute('/user')">
+        <NuxtLink to="/user" class="nav-link">
+          <UserIcon :filled="isRoute('/user')" class="text-2xl" />
+        </NuxtLink>
+      </NavBarItem>
+      <div v-if="isLoggedIn" class="nav-link" @click.prevent="handleLogout()">
+        <Icon name="material-symbols:logout" size="24px" class="text-2xl" />
+      </div>
+      <NavBarItem v-else :is-route="isRoute('/login')">
+        <NuxtLink to="/login" class="nav-link">
+          <Icon name="material-symbols:login" size="24px" class="text-2xl" />
+        </NuxtLink>
+      </NavBarItem>
+      <NavBarItem v-if="isAdmin" :is-route="isRoute('/dashboard')">
+        <NuxtLink to="/dashboard" class="nav-link">
+          <GearIcon :filled="isRoute('/dashboard')" class="text-2xl" />
+        </NuxtLink>
+      </NavBarItem>
     </nav>
   </div>
 </template>

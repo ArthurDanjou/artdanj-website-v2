@@ -1,5 +1,5 @@
 import type { Maintenance } from '~/types/types'
-import { defineNuxtRouteMiddleware, navigateTo } from '#app'
+import { defineNuxtRouteMiddleware, navigateTo } from '#imports'
 
 export default defineNuxtRouteMiddleware(async (to) => {
   const today = new Date()
@@ -16,6 +16,10 @@ export default defineNuxtRouteMiddleware(async (to) => {
     })
   }
 
-  if (!isMaintenance && to.path === '/maintenance')
-    return navigateTo('/')
+  if (!isMaintenance && to.path === '/maintenance') {
+    return navigateTo('/', {
+      redirectCode: 301,
+      replace: true,
+    })
+  }
 })

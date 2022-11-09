@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, ref, useAsyncData, useElementHover, useHead, useMouseInElement} from '#imports'
+import { computed, ref, useAsyncData, useElementHover, useHead, useMouseInElement } from '#imports'
 
 const age = ref(19)
 
@@ -16,15 +16,18 @@ const mouseStyle = computed(() => ({
   opacity: isHovered.value ? 1 : 0,
 }))
 
-const { data: totalViews } = await useAsyncData('totalViews', () => $fetch('/api/views'))
-const { data: totalLikes } = await useAsyncData('totalLikes', () => $fetch('/api/likes'))
+const { data: views } = await useAsyncData('stats:views', () => $fetch('/api/views'))
+const { data: likes } = await useAsyncData('stats:likes', () => $fetch('/api/likes'))
+const { data: github } = await useAsyncData('stats:github', () => $fetch('/api/github'))
+const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/hours'))
 </script>
 
 <template>
   <section>
     <PageTitle title="About Me" />
     <CardContainer>
-      <Card order="first" width="3">
+      <ActivityCard />
+      <Card order="first" width="2">
         <CardDiv>
           It is me
           <!-- todo insert photo -->
@@ -126,14 +129,14 @@ const { data: totalLikes } = await useAsyncData('totalLikes', () => $fetch('/api
       <StatsCard>
         <div class="bg-clip-text bg-text-green">
           <div class="text-7xl inline -mr-4 font-bold">
-            500
+            {{ hours.hours }}
           </div>
           <div class="text-4xl inline align-top leading-6 font-bold">
             +
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
-          Hours per year
+          All-time hours coding
         </p>
       </StatsCard>
       <StatsCard>
@@ -149,7 +152,7 @@ const { data: totalLikes } = await useAsyncData('totalLikes', () => $fetch('/api
       <StatsCard>
         <div class="bg-clip-text bg-text-blue">
           <div class="text-7xl font-bold">
-            {{ totalViews._sum.views }}
+            {{ views._sum.views }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
@@ -159,7 +162,7 @@ const { data: totalLikes } = await useAsyncData('totalLikes', () => $fetch('/api
       <StatsCard>
         <div class="bg-clip-text bg-text-purple">
           <div class="text-7xl font-bold">
-            {{ totalLikes._sum.likes }}
+            {{ likes._sum.likes }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
@@ -169,7 +172,7 @@ const { data: totalLikes } = await useAsyncData('totalLikes', () => $fetch('/api
       <StatsCard>
         <div class="bg-clip-text bg-text-rose">
           <div class="text-7xl font-bold">
-            xxx
+            {{ github.followers }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
@@ -218,7 +221,7 @@ const { data: totalLikes } = await useAsyncData('totalLikes', () => $fetch('/api
 }
 
 .bg-text-blue {
-  background-image: linear-gradient(135deg, #3b6bc7,#1254c2);
+  background-image: linear-gradient(135deg, #3bc796, #1273c2);
   @apply text-transparent;
 }
 

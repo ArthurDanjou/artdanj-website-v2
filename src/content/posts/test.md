@@ -18,10 +18,11 @@ console.log(test)
 
 `code inline`
 
-
 `const codeInline: string = 'highlighted code inline'`{lang="ts"}
 
-## H3 Heading
+## H2 Heading
+
+### H3 Heading
 
 - Just
 - An
@@ -36,6 +37,8 @@ Is it laggy ?
 _Just an italic paragraph._
 
 [Hello World](https://google.com)
+
+Voici un [Lien](https://google.com) vers Google
 
 ```js [.eslintrc.js]
 module.exports = {

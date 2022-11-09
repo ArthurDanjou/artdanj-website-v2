@@ -5,7 +5,7 @@
 <template>
   <Card>
     <CardDiv>
-      Last Tweet
+      Activity
     </CardDiv>
   </Card>
 </template>
