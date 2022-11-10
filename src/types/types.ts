@@ -15,6 +15,14 @@ export interface SpotifyData {
   started_at: number
 }
 
+export interface MetaDataSupabase {
+  provider: string
+  slug: string
+  username: string
+  description: string
+  avatar: string
+}
+
 export interface FormData {
   name: string
   email: string
@@ -25,7 +33,6 @@ export interface Announcement {
   id: number
   content: string
   createdAt: Date
-  updatedAt: Date
 }
 
 export interface GuestBookMessage {
@@ -34,7 +41,6 @@ export interface GuestBookMessage {
   username: string
   content: string
   createdAt: Date
-  updatedAt: Date
 }
 
 export interface PostDB {
@@ -42,8 +48,9 @@ export interface PostDB {
   slug: string
   views: number
   likes: number
+  author: User
   createdAt: Date
-  updatedAt: Date
+  comments: Comment[]
 }
 
 export interface Maintenance {
@@ -52,5 +59,49 @@ export interface Maintenance {
   beginAt: string
   endAt: string
   createdAt: Date
-  updatedAt: Date
+}
+
+export enum Role {
+  USER,
+  ADMIN,
+  BLOCKED,
+}
+
+export interface Question {
+  id: number
+  createdAt: Date
+  author: User
+  title: string
+  description?: string
+  comments: Comment[]
+}
+
+export interface Comment {
+  id: number
+  createdAt: Date
+  content: string
+  author: User
+  question?: Question
+  post?: PostDB
+}
+
+export interface User {
+  id: number
+  createdAt: Date
+  role: Role
+  username: string
+  twitterId?: string
+  githubId?: string
+  googleId?: string
+  twitchId?: string
+  discordId?: string
+  supabaseId: string
+  email: string
+  avatar: string
+  description: string
+  location: string
+  comments: Comment
+  questions: Question[]
+  posts: PostDB[]
+  guestbook: GuestBookMessage
 }

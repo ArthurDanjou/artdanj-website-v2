@@ -10,5 +10,13 @@ definePageMeta({
   <section>
     <PageTitle title="Dashboard" />
     DASHBOARD MAIN PAGE
+    <p>
+      Maintenance,
+      add talent,
+      see forms
+      see unseen questions
+      manage users
+      posts stats (likes, comments, views)
+    </p>
   </section>
 </template>

@@ -7,11 +7,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  role        Role       @default(USER)
+  username    String     @unique @db.VarChar(16)
+  twitterId   String?    @unique
+  githubId    String?    @unique
+  googleId    String?    @unique
+  twitchId    String?    @unique
+  discordId   String?    @unique
+  supabaseId  String?    @unique
+  email       String?    @unique
+  avatar      String?
+  description String?    @db.VarChar(256)
+  location    String?    @db.VarChar(32)
+  comments    Comment[]
+  questions   Question[]
+  posts       Post[]
+  guestbook   GuestBook? @relation(fields: [guestbookId], references: [id], onDelete: Cascade)
+  guestbookId Int?
+}
+
+enum Role {
+  USER
+  ADMIN
+  BLOCKED
+}
+
+model Comment {
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  content    String    @db.Text
+  author     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  question   Question? @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  post       Post?     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  questionId Int?
+  postId     Int?
+
+  @@index([questionId])
+  @@index([postId])
+}
+
+model Question {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  author      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String    @db.VarChar(256)
+  description String?   @db.VarChar(1024)
+  userId      Int
+  comments    Comment[]
+}
+
+model Talent {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+}
+
 model Announcement {
   id        Int      @id @default(autoincrement())
   content   String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model GuestBook {
@@ -20,16 +77,18 @@ model GuestBook {
   email     String   @unique
   content   String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  User      User[]
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  slug      String   @unique
-  likes     Int      @default(0)
-  views     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  id        Int       @id @default(autoincrement())
+  slug      String    @unique
+  likes     Int       @default(0)
+  views     Int       @default(0)
+  author    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  comments  Comment[]
+  createdAt DateTime  @default(now())
 }
 
 model Form {
@@ -38,7 +97,6 @@ model Form {
   email     String
   content   String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Maintenance {
@@ -47,5 +105,4 @@ model Maintenance {
   beginAt   DateTime
   endAt     DateTime
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
 }

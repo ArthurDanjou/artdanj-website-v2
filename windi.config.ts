@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite-plugin-windicss'
 import typography from 'windicss/plugin/typography'
-import animations from '@windicss/plugin-animations'
 
 export default defineConfig({
   darkMode: 'class',
@@ -39,6 +38,6 @@ export default defineConfig({
       dark: true,
       modifiers: ['sm', 'lg'],
     }),
-    animations(),
+    require('@windicss/plugin-animations'),
   ],
 })
