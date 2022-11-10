@@ -1,4 +1,4 @@
-import { computed, useRouter, useSupabaseClient, useSupabaseUser } from '#imports'
+import { computed, useSupabaseClient, useSupabaseUser } from '#imports'
 
 export const useSupabase = () => {
   const client = useSupabaseClient()
@@ -11,7 +11,7 @@ export const useSupabase = () => {
     return user.value?.role
   })
 
-  const useGithubLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+  const useGithubLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
     return client.auth.signInWithOAuth({
       provider: 'github',
       options: {
@@ -20,7 +20,7 @@ export const useSupabase = () => {
     })
   }
 
-  const useTwitterLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+  const useTwitterLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
     return client.auth.signInWithOAuth({
       provider: 'twitter',
       options: {
@@ -29,7 +29,7 @@ export const useSupabase = () => {
     })
   }
 
-  const useTwitchLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+  const useTwitchLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
     return client.auth.signInWithOAuth({
       provider: 'twitch',
       options: {
@@ -38,7 +38,7 @@ export const useSupabase = () => {
     })
   }
 
-  const useDiscordLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+  const useDiscordLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
     return client.auth.signInWithOAuth({
       provider: 'discord',
       options: {
@@ -47,7 +47,7 @@ export const useSupabase = () => {
     })
   }
 
-  const useGoogleLogin = (redirect: 'guestbook' | 'user' = 'guestbook') => {
+  const useGoogleLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
     return client.auth.signInWithOAuth({
       provider: 'google',
       options: {

@@ -4,10 +4,6 @@ import { computed, useColorMode, useRouter, useSupabase } from '#imports'
 const color = useColorMode()
 const { isAdmin, logout, isLoggedIn } = useSupabase()
 
-const handleLogout = async () => {
-  await logout()
-}
-
 const playAnimation = (id: any) => {
   const element: HTMLElement | null = document.getElementById(id)
   element!.style.transform = 'translateY(-75%) rotate(90deg)'
@@ -24,6 +20,13 @@ const toggleColorMode = () => {
 const router = useRouter()
 const goBack = () => {
   router.back()
+}
+
+const handleLogout = async () => {
+  if (router.currentRoute.value.path === '/user') {
+    await router.push('/')
+  }
+  await logout()
 }
 
 const isBlog = computed(() => {
@@ -99,7 +102,7 @@ const isRoute = (route: string) => {
         </NuxtLink>
       </NavBarItem>
       <div class="bg-stone-200 dark:bg-dark-300 w-1px mx-2 h-40px flex-shrink-0" />
-      <div id="color" class="nav-link h-44px w-44px" @click.prevent="toggleColorMode()">
+      <div id="color" class="nav-link h-44px w-44px" @click.prevent="toggleColorMode">
         <Icon v-if="color.preference === 'light'" name="ph:sun-bold" size="24px" />
         <Icon v-else name="pepicons:moon" size="24px" />
       </div>
@@ -108,7 +111,7 @@ const isRoute = (route: string) => {
           <UserIcon :filled="isRoute('/user')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <div v-if="isLoggedIn" class="nav-link" @click.prevent="handleLogout()">
+      <div v-if="isLoggedIn" class="nav-link" @click.prevent="handleLogout">
         <Icon name="material-symbols:logout" size="24px" class="text-2xl" />
       </div>
       <NavBarItem v-else :is-route="isRoute('/login')">
