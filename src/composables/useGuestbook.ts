@@ -1,4 +1,4 @@
-import { computed, useAsyncData, useSupabaseUser } from '#imports'
+import { useAsyncData, useSupabaseUser } from '#imports'
 import type { GuestBookMessage } from '~/types/types'
 
 export const useGuestbook = async () => {

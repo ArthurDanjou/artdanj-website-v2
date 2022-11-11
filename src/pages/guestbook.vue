@@ -9,13 +9,13 @@ import {
   watch,
 } from '#imports'
 import type { GuestBookMessage } from '~/types/types'
-import { formatGuestBookDate } from '~/logic/date'
+import { formatGuestBookDate } from '~/logic/dates'
 
 useHead({
   title: 'My Guestbook - Arthur Danjou',
 })
 
-const { user, isAdmin } = useSupabase()
+const { user, isAdmin, isLoggedIn } = useSupabase()
 
 const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
 const { getAllMessages, deleteMessage, signMessage, getOwnMessage } = await useGuestbook()
@@ -56,7 +56,7 @@ onMounted(async () => {
   ownRef.value = own.value
   content.value = ownRef.value?.content
 })
-watch(user, async (value) => {
+/* watch(user, async (value) => {
   if (value && value.email) {
     await refreshOwn()
     ownRef.value = own.value
@@ -65,14 +65,14 @@ watch(user, async (value) => {
   else {
     ownRef.value = null
   }
-})
+}) */
 </script>
 
 <template>
   <main>
     <PageTitle title="My Book" />
     <section class="md:w-1/2 mx-auto">
-      <div v-if="user" class="my-12 flex flex-col bg-stone-200 dark:bg-neutral-800 p-4 rounded-lg border border-dark">
+      <div v-if="isLoggedIn" class="my-12 flex flex-col bg-stone-200 dark:bg-neutral-800 p-4 rounded-lg border border-dark">
         <div>
           <h1 v-if="hasAlreadySigned" class="text-3xl font-bold">
             Sign the guestbook, again
@@ -149,7 +149,7 @@ watch(user, async (value) => {
               </p>
               <span class="text-gray-300 dark:text-gray-600">/</span>
               <p class="text-gray-600 dark:text-gray-400">
-                {{ formatGuestBookDate(message.updatedAt) }}
+                {{ formatGuestBookDate(message.createdAt) }}
               </p>
             </div>
             <div

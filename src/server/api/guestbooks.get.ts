@@ -5,7 +5,7 @@ export default defineEventHandler(async () => {
   const client = usePrisma()
   return await client.guestBook.findMany({
     orderBy: {
-      updatedAt: 'desc',
+      createdAt: 'desc',
     },
   })
 })

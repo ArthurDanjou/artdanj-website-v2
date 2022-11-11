@@ -11,6 +11,11 @@ export default defineEventHandler(async (event) => {
     update: {},
     create: {
       slug: String(query.slug),
+      author: {
+        connect: {
+          email: 'arthurdanjou@outlook.fr', // todo automate
+        },
+      },
     },
   })
 })

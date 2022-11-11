@@ -105,3 +105,11 @@ export interface User {
   posts: PostDB[]
   guestbook: GuestBookMessage
 }
+
+export enum Provider {
+  DISCORD = 'discord',
+  GITHUB = 'github',
+  GOOGLE = 'google',
+  TWITCH = 'twitch',
+  TWITTER = 'twitter',
+}

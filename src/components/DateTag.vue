@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formatDate } from '~/logic/date'
+import { formatDate } from '~/logic/dates'
 
 defineProps({
   startDate: Date,

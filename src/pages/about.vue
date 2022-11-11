@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, useAsyncData, useElementHover, useHead, useMouseInElement } from '#imports'
+import { formatBigNumber } from '~/logic/numbers'
 
 const age = ref(19)
 
@@ -102,7 +103,7 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/hou
       </Card>
       <StatsCard>
         <div class="bg-clip-text bg-text-yellow">
-          <div class="text-7xl inline -mr-4 font-bold">
+          <div class="text-7xl inline -mr-2 font-bold">
             12
           </div>
           <div class="text-4xl inline align-top leading-6 font-bold">
@@ -128,8 +129,8 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/hou
       </StatsCard>
       <StatsCard>
         <div class="bg-clip-text bg-text-green">
-          <div class="text-7xl inline -mr-4 font-bold">
-            {{ hours.hours }}
+          <div class="text-7xl inline -mr-2 font-bold">
+            {{ formatBigNumber(hours.hours) }}
           </div>
           <div class="text-4xl inline align-top leading-6 font-bold">
             +
@@ -152,7 +153,7 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/hou
       <StatsCard>
         <div class="bg-clip-text bg-text-blue">
           <div class="text-7xl font-bold">
-            {{ views._sum.views }}
+            {{ formatBigNumber(views._sum.views) }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
@@ -162,7 +163,7 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/hou
       <StatsCard>
         <div class="bg-clip-text bg-text-purple">
           <div class="text-7xl font-bold">
-            {{ likes._sum.likes }}
+            {{ formatBigNumber(likes._sum.likes) }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
@@ -172,7 +173,7 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/hou
       <StatsCard>
         <div class="bg-clip-text bg-text-rose">
           <div class="text-7xl font-bold">
-            {{ github.followers }}
+            {{ formatBigNumber(github.followers) }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">

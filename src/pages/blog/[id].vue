@@ -5,7 +5,7 @@ import { usePost } from '~/composables/usePost'
 
 const route = useRoute()
 const { data: postContent } = await useAsyncData(`blog:post-content:${route.params.id}`, () => queryContent<Post>(`/posts/${route.params.id}`).findOne())
-const { like, getLikes, view, getViews } = await usePost(route.params.id)
+const { like, likes, view, views } = await usePost(route.params.id)
 
 onMounted(() => {
   view()
@@ -33,7 +33,7 @@ useHead({
           Arthur Danjou / {{ postContent.publishedAt }}
         </div>
         <div>
-          {{ postContent.readingMins }} min read • {{ getViews }} views
+          {{ postContent.readingMins }} min read • {{ views }} views
         </div>
       </div>
       <div class="w-full bg-gray-300 my-4 rounded-md my-8">
@@ -48,7 +48,7 @@ useHead({
           Thanks for reading this post! If you liked it, please consider sharing it with your friends.
         </p>
         <div @click.prevent="like()">
-          LIKE - {{ getLikes }}
+          LIKE - {{ likes }}
         </div>
         Back to top
         copy link

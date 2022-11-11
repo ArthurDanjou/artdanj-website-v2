@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { definePageMeta, useSupabaseUser } from '#imports'
+import { definePageMeta, useSupabase, useSupabaseUser } from '#imports'
 
-const user = useSupabaseUser()
+const supabaseUser = useSupabaseUser()
+const { user } = useSupabase()
 
 definePageMeta({
   middleware: 'navigation',
@@ -18,5 +19,6 @@ definePageMeta({
       Account settings (email, username, logout, delete account)
     </div>
     {{ user }}
+    {{ supabaseUser }}
   </section>
 </template>

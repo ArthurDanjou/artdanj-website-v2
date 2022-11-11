@@ -11,7 +11,7 @@ model User {
   id          Int        @id @default(autoincrement())
   createdAt   DateTime   @default(now())
   role        Role       @default(USER)
-  username    String     @unique @db.VarChar(16)
+  username    String     @db.VarChar(16)
   twitterId   String?    @unique
   githubId    String?    @unique
   googleId    String?    @unique
@@ -27,6 +27,7 @@ model User {
   posts       Post[]
   guestbook   GuestBook? @relation(fields: [guestbookId], references: [id], onDelete: Cascade)
   guestbookId Int?
+  lastSeen    DateTime   @default(now())
 }
 
 enum Role {

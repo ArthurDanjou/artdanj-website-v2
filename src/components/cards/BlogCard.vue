@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from '@vue/runtime-core'
 import type { Post } from '~/types/content'
-import { formatBlogDate } from '~/logic/date'
+import { formatBlogDate } from '~/logic/dates'
 
 defineProps({
   post: Object as PropType<Post>,

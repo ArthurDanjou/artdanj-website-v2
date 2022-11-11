@@ -12,11 +12,16 @@ export default defineNuxtConfig({
     '@nuxt/content',
     'nuxt-icon',
     '@nuxtjs/supabase',
+    '@pinia/nuxt',
   ],
 
   css: [
     '@/assets/css/main.scss',
     '@/assets/css/scrollbar.scss',
+  ],
+
+  plugins: [
+    '@/plugins/persistedstate',
   ],
 
   components: [
@@ -50,5 +55,13 @@ export default defineNuxtConfig({
     fallback: 'light',
     classPrefix: '',
     classSuffix: '',
+  },
+
+  supabase: {
+    client: {
+      auth: {
+        detectSessionInUrl: true,
+      },
+    },
   },
 })

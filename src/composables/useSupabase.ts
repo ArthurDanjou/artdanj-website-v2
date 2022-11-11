@@ -1,18 +1,22 @@
-import { computed, useSupabaseClient, useSupabaseUser } from '#imports'
+import type { User } from '~/types/types'
+import { useSupabaseClient } from '#imports'
+import { useUserStore } from '~/store/user'
 
 export const useSupabase = () => {
   const client = useSupabaseClient()
-  const user = useSupabaseUser()
   const redirectTo = 'http://localhost:3000'
+  const { getUser, setUser, isLoggedIn, isAdmin, isBlocked, getRole } = useUserStore()
 
-  const isAdmin = computed(() => user.value?.role === 'admin')
-
-  const getRole = computed(() => {
-    return user.value?.role
+  client.auth.onAuthStateChange(async (event) => {
+    if (event === 'SIGNED_IN') {
+      setUser(await $fetch<User>('/api/callback', {
+        method: 'post',
+      }))
+    }
   })
 
-  const useGithubLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
-    return client.auth.signInWithOAuth({
+  const useGithubLogin = async (redirect: 'guestbook' | '' = 'guestbook') => {
+    await client.auth.signInWithOAuth({
       provider: 'github',
       options: {
         redirectTo: `${redirectTo}/${redirect}`,
@@ -20,8 +24,8 @@ export const useSupabase = () => {
     })
   }
 
-  const useTwitterLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
-    return client.auth.signInWithOAuth({
+  const useTwitterLogin = async (redirect: 'guestbook' | '' = 'guestbook') => {
+    await client.auth.signInWithOAuth({
       provider: 'twitter',
       options: {
         redirectTo: `${redirectTo}/${redirect}`,
@@ -29,8 +33,8 @@ export const useSupabase = () => {
     })
   }
 
-  const useTwitchLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
-    return client.auth.signInWithOAuth({
+  const useTwitchLogin = async (redirect: 'guestbook' | '' = 'guestbook') => {
+    await client.auth.signInWithOAuth({
       provider: 'twitch',
       options: {
         redirectTo: `${redirectTo}/${redirect}`,
@@ -38,8 +42,8 @@ export const useSupabase = () => {
     })
   }
 
-  const useDiscordLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
-    return client.auth.signInWithOAuth({
+  const useDiscordLogin = async (redirect: 'guestbook' | '' = 'guestbook') => {
+    await client.auth.signInWithOAuth({
       provider: 'discord',
       options: {
         redirectTo: `${redirectTo}/${redirect}`,
@@ -47,8 +51,8 @@ export const useSupabase = () => {
     })
   }
 
-  const useGoogleLogin = (redirect: 'guestbook' | '' = 'guestbook') => {
-    return client.auth.signInWithOAuth({
+  const useGoogleLogin = async (redirect: 'guestbook' | '' = 'guestbook') => {
+    await client.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${redirectTo}/${redirect}`,
@@ -58,22 +62,20 @@ export const useSupabase = () => {
 
   const logout = async () => {
     await client.auth.signOut()
+    setUser(null)
   }
 
-  const isLoggedIn = computed(() => {
-    return user.value !== null
-  })
-
   return {
-    user,
     useGithubLogin,
     useTwitchLogin,
     useTwitterLogin,
     useDiscordLogin,
     useGoogleLogin,
-    isAdmin,
-    getRole,
     logout,
+    user: getUser,
+    isAdmin,
+    isBlocked,
+    getRole,
     isLoggedIn,
   }
 }
