@@ -7,14 +7,6 @@ export const useSupabase = () => {
   const redirectTo = 'http://localhost:3000'
   const { getUser, setUser, isLoggedIn, isAdmin, isBlocked, getRole } = useUserStore()
 
-  client.auth.onAuthStateChange(async (event) => {
-    if (event === 'SIGNED_IN') {
-      setUser(await $fetch<User>('/api/callback', {
-        method: 'post',
-      }))
-    }
-  })
-
   const useGithubLogin = async (redirect: 'guestbook' | '' = 'guestbook') => {
     await client.auth.signInWithOAuth({
       provider: 'github',

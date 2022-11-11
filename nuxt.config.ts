@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    '@/plugins/persistedstate',
+    '~/plugins/pinia',
   ],
 
   components: [

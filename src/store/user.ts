@@ -4,14 +4,14 @@ import { Role } from '~/types/types'
 import { computed, ref } from '#imports'
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref<User | null>()
-  const getUser = computed(() => user.value)
+  const user = ref<User | null>(null)
+  const getUser = computed(async () => user.value)
 
   const setUser = (newUser: User | null) => {
     user.value = newUser
   }
 
-  const isLoggedIn = computed(() => !!user.value)
+  const isLoggedIn = computed(() => user.value !== null)
   const getRole = computed(() => user.value?.role)
   const isAdmin = computed(() => getRole.value === Role.ADMIN)
   const isBlocked = computed(() => getRole.value === Role.BLOCKED)
