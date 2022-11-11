@@ -20,10 +20,6 @@ export default defineNuxtConfig({
     '@/assets/css/scrollbar.scss',
   ],
 
-  plugins: [
-    '~/plugins/pinia',
-  ],
-
   components: [
     '~/components',
     '~/components/icons',

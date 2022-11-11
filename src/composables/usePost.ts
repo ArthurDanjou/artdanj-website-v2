@@ -4,19 +4,12 @@ import type { PostDB } from '~/types/types'
 
 export const usePost = async (slug: string | RouteParamValue[]) => {
   const post = ref<PostDB | null>()
-  const { data: postDb } = await useAsyncData(`blog:post-db:${slug}`, () => {
-    return $fetch<PostDB>('/api/post', {
-      method: 'GET',
-      query: {
-        slug,
-      },
-    })
-  })
+  const { data: postDb } = await useAsyncData(`blog:post-db:${slug}`, () => $fetch<PostDB>(`/api/posts/${slug}`))
   post.value = postDb.value
 
   const likes = ref(post.value!.likes)
   const like = async () => {
-    const data = await $fetch<PostDB>('/api/likes', {
+    const data = await $fetch<PostDB>('/api/posts/likes/add', {
       method: 'POST',
       body: {
         slug,
@@ -27,7 +20,7 @@ export const usePost = async (slug: string | RouteParamValue[]) => {
 
   const views = ref(post.value!.views)
   const view = async () => {
-    const data = await $fetch<PostDB>('/api/views', {
+    const data = await $fetch<PostDB>('/api/posts/views/add', {
       method: 'POST',
       body: {
         slug,

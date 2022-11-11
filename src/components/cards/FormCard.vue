@@ -17,7 +17,7 @@ const handleForm = async () => {
     return
 
   const { data } = await useAsyncData('form', () => {
-    return $fetch('/api/form', {
+    return $fetch('/api/forms/form', {
       method: 'POST',
       body: {
         name: form.value.name,
@@ -27,7 +27,7 @@ const handleForm = async () => {
     })
   })
 
-  if (data.value.code === 200)
+  if (data.value?.code === 200)
     sent.value.success = true
   else
     sent.value.error = true

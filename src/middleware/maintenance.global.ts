@@ -4,7 +4,7 @@ import { defineNuxtRouteMiddleware, navigateTo } from '#imports'
 export default defineNuxtRouteMiddleware(async (to) => {
   const today = new Date()
 
-  const maintenance = await $fetch<Maintenance>('/api/maintenance', {
+  const maintenance = await $fetch<Maintenance>('/api/dashboard/maintenance', {
     method: 'GET',
   })
   const isMaintenance = maintenance && new Date(maintenance.beginAt).getTime() < today.getTime() && new Date(maintenance.endAt).getTime() > today.getTime()

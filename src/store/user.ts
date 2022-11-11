@@ -5,19 +5,24 @@ import { computed, ref } from '#imports'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref<User | null>(null)
-  const getUser = computed(async () => user.value)
+  const getUser = computed(() => user.value)
 
-  const setUser = (newUser: User | null) => {
+  const setUser = (newUser: User) => {
     user.value = newUser
   }
 
-  const isLoggedIn = computed(() => user.value !== null)
+  const resetUser = () => {
+    user.value = null
+  }
+
+  const isLoggedIn = computed(() => !!user.value)
   const getRole = computed(() => user.value?.role)
   const isAdmin = computed(() => getRole.value === Role.ADMIN)
   const isBlocked = computed(() => getRole.value === Role.BLOCKED)
 
   return {
     setUser,
+    resetUser,
     isLoggedIn,
     isAdmin,
     isBlocked,

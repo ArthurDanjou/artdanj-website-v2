@@ -2,9 +2,9 @@
 import { formatDate } from '~/logic/dates'
 
 defineProps({
-  startDate: Date,
+  startDate: String,
   endDate: {
-    type: Date,
+    type: String,
     required: true,
   },
 })

@@ -5,11 +5,11 @@ export const useGuestbook = async () => {
   const user = useSupabaseUser()
 
   const getAllMessages = () => {
-    return useAsyncData('guestbook:messages', () => $fetch<GuestBookMessage[]>('/api/guestbooks'))
+    return useAsyncData('guestbook:messages', () => $fetch<GuestBookMessage[]>('/api/guestbook/all'))
   }
 
   const signMessage = async (content: string) => {
-    await $fetch('/api/guestbook', {
+    await $fetch('/api/guestbook/guestbook', {
       method: 'post',
       body: {
         content,
@@ -21,21 +21,13 @@ export const useGuestbook = async () => {
 
   const getOwnMessage = () => {
     return useAsyncData('guestbook:own', () => {
-      return $fetch<GuestBookMessage>('/api/guestbook', {
-        method: 'GET',
-        query: {
-          email: user.value?.email,
-        },
-      })
+      return $fetch<GuestBookMessage>(`/api/guestbook/${user.value?.email}`)
     })
   }
 
   const deleteMessage = async () => {
-    await $fetch('/api/guestbook', {
+    await $fetch(`/api/guestbook/${user.value?.email}`, {
       method: 'delete',
-      body: {
-        email: user.value?.email,
-      },
     })
   }
 

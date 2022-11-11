@@ -17,10 +17,10 @@ const mouseStyle = computed(() => ({
   opacity: isHovered.value ? 1 : 0,
 }))
 
-const { data: views } = await useAsyncData('stats:views', () => $fetch('/api/views'))
-const { data: likes } = await useAsyncData('stats:likes', () => $fetch('/api/likes'))
-const { data: github } = await useAsyncData('stats:github', () => $fetch('/api/github'))
-const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/hours'))
+const { data: views } = await useAsyncData('stats:views', () => $fetch('/api/posts/views/total'))
+const { data: likes } = await useAsyncData('stats:likes', () => $fetch('/api/posts/likes/total'))
+const { data: github } = await useAsyncData('stats:github', () => $fetch('/api/stats/github'))
+const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/stats/hours'))
 </script>
 
 <template>

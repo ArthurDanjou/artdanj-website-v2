@@ -3,7 +3,7 @@ import { useAsyncData } from '#imports'
 import type { Announcement } from '~/types/types'
 
 const { data: announce, pending } = await useAsyncData('announce', async () => {
-  return $fetch<Announcement>('/api/announces')
+  return $fetch<Announcement>('/api/auth/callback')
 })
 </script>
 
