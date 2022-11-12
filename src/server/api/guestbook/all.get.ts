@@ -7,5 +7,8 @@ export default defineEventHandler(async () => {
     orderBy: {
       createdAt: 'desc',
     },
+    include: {
+      author: true,
+    },
   })
 })

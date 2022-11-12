@@ -41,7 +41,7 @@ const isRoute = (route: string) => {
 
 <template>
   <!-- add tooltip -->
-  <div class="duration-300 z-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 width">
+  <div class="z-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 width">
     <transition name="arrow">
       <div v-if="isBlog" class="cursor-pointer nav-container group" @click.prevent="goBack">
         <div class="h-44px w-44px p-2 duration-300 rounded-xl bg-stone-200 text-black dark:(text-white bg-dark-900) text-black dark:text-white flex items-center justify-center">

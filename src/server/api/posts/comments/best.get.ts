@@ -5,10 +5,13 @@ export default defineEventHandler(async () => {
   const client = usePrisma()
   return await client.post.findMany({
     orderBy: {
-      likes: 'desc',
+      comments: {
+        _count: 'desc',
+      },
     },
     include: {
       author: true,
+      comments: true,
     },
     take: 1,
   })

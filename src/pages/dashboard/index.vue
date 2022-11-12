@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import { computed, definePageMeta, ref, useElementHover, useMouseInElement } from '#imports'
-import { useDashboard } from '~/composables/useDashboard'
-import { formatBigNumber } from '~/logic/numbers'
 
 definePageMeta({
   middleware: 'navigation',
 })
-
-const { mostViewed, mostLiked } = await useDashboard()
-const viewed = await mostViewed()
-const liked = await mostLiked()
 
 const dashboard = ref(null)
 const isHovered = useElementHover(dashboard)
@@ -25,7 +19,7 @@ const mouseStyle = computed(() => ({
   <section>
     <PageTitle title="Dashboard" />
     <CardContainer>
-      <Card ref="dashboard" width="2" height="2">
+      <Card ref="dashboard" width="2" height="1">
         <CardDiv>
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
           <CardIcon icon="ph:gear-bold" />
@@ -40,40 +34,20 @@ const mouseStyle = computed(() => ({
           </div>
         </CardDiv>
       </Card>
-      <DashboardStatsCard :href="`/blog/${viewed[0].slug}`">
-        <div class="text-2xl text-center ext-gray-600 dark:text-gray-400">
-          Post <span class="font-bold text-white">{{ viewed[0].slug }}</span> <br>
-          with <span class="font-bold text-white">{{ formatBigNumber(viewed[0].views) }}</span> views <br>
-          written by <span class="font-bold text-white">{{ viewed[0].author.username }}</span>
-        </div>
-        <p class="text-md text-gray-600 dark:text-gray-400">
-          Most viewed blog post
-        </p>
-      </DashboardStatsCard>
-      <DashboardStatsCard :href="`/blog/${liked[0].slug}`">
-        <div class="text-2xl text-center ext-gray-600 dark:text-gray-400">
-          Post <span class="font-bold text-white">{{ liked[0].slug }}</span> <br>
-          with <span class="font-bold text-white">{{ formatBigNumber(liked[0].likes) }}</span> likes <br>
-          written by <span class="font-bold text-white">{{ liked[0].author.username }}</span>
-        </div>
-        <p class="text-md text-gray-600 dark:text-gray-400">
-          Most liked blog post
-        </p>
-      </DashboardStatsCard>
-      <DashboardStatsCard :href="`/blog/${liked[0].slug}`">
-        <div class="text-2xl text-center ext-gray-600 dark:text-gray-400">
-          Post <span class="font-bold text-white">{{ liked[0].slug }}</span> <br>
-          with <span class="font-bold text-white">{{ formatBigNumber(liked[0].likes) }}</span> comments <br>
-          written by <span class="font-bold text-white">{{ liked[0].author.username }}</span>
-        </div>
-        <p class="text-md text-gray-600 dark:text-gray-400">
-          Most commented blog post
-        </p>
-      </DashboardStatsCard>
+      <Card>
+        <CardLink href="/dashboard/stats">
+          <div class="flex flex-col items-center space-y-8">
+            <Icon name="akar-icons:statistic-up" size="52" />
+            <p class="text-xl text-center">
+              See statistics
+            </p>
+          </div>
+        </CardLink>
+      </Card>
       <Card>
         <CardLink href="/dashboard/maintenance">
           <div class="flex flex-col items-center space-y-8">
-            <Icon name="jam:tools" size="52" />
+            <Icon name="ooui:network-off" size="52" />
             <p class="text-xl text-center">
               Manage the maintenances
             </p>

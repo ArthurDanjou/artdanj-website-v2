@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import {
   computed,
-  onMounted,
   ref,
   useGuestbook,
   useHead,
   useSupabase,
-  watch,
 } from '#imports'
-import type { GuestBookMessage } from '~/types/types'
 import { formatGuestBookDate } from '~/logic/dates'
 
 useHead({
@@ -20,9 +17,9 @@ const { user, isAdmin, isLoggedIn } = useSupabase()
 const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
 const { getAllMessages, deleteMessage, signMessage, getOwnMessage } = await useGuestbook()
 
-const { data: messages, refresh: refreshAllMessages } = await getAllMessages()
-const { data: own, refresh: refreshOwn } = await getOwnMessage()
-const hasAlreadySigned = computed(() => own.value !== '')
+const messages = await getAllMessages()
+const own = await getOwnMessage()
+const hasAlreadySigned = computed(() => own !== null)
 
 const content = ref<string | undefined>('')
 const formState = ref({
@@ -40,32 +37,12 @@ const signNewMessage = async () => {
   await signMessage(content.value!)
   formState.value.sent = true
   setTimeout(() => formState.value.sent = false, 5000)
-  await refreshAllMessages()
-  await refreshOwn()
 }
 
 const handleDelete = async () => {
   content.value = ''
   await deleteMessage()
-  await refreshOwn()
-  await refreshAllMessages()
 }
-
-const ownRef = ref<GuestBookMessage | null>()
-onMounted(async () => {
-  ownRef.value = own.value
-  content.value = ownRef.value?.content
-})
-/* watch(user, async (value) => {
-  if (value && value.email) {
-    await refreshOwn()
-    ownRef.value = own.value
-    content.value = ownRef.value?.content
-  }
-  else {
-    ownRef.value = null
-  }
-}) */
 </script>
 
 <template>

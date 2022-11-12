@@ -1,21 +1,29 @@
 import { defineEventHandler, readBody } from 'h3'
 import { usePrisma } from '~/composables/usePrisma'
 
+interface GuestBook {
+  name: string
+  email: string
+  content: string
+}
+
 export default defineEventHandler(async (event) => {
   const client = usePrisma()
-  const body = await readBody(event)
+  const body = await readBody<GuestBook>(event)
   return await client.guestBook.upsert({
     where: {
-      email: body.email,
+      userEmail: body.email,
     },
     create: {
       content: body.content,
-      username: body.username,
-      email: body.email,
+      author: {
+        connect: {
+          email: body.email,
+        },
+      },
     },
     update: {
       content: body.content,
-      username: body.username,
       createdAt: new Date(),
     },
   })

@@ -1,11 +1,12 @@
-import { useAsyncData, useSupabaseUser } from '#imports'
+import { useSupabaseUser } from '#imports'
 import type { GuestBookMessage } from '~/types/types'
 
 export const useGuestbook = async () => {
+  // todo use store email
   const user = useSupabaseUser()
 
   const getAllMessages = () => {
-    return useAsyncData('guestbook:messages', () => $fetch<GuestBookMessage[]>('/api/guestbook/all'))
+    return $fetch<GuestBookMessage[]>('/api/guestbook/all')
   }
 
   const signMessage = async (content: string) => {
@@ -20,9 +21,7 @@ export const useGuestbook = async () => {
   }
 
   const getOwnMessage = () => {
-    return useAsyncData('guestbook:own', () => {
-      return $fetch<GuestBookMessage>(`/api/guestbook/${user.value?.email}`)
-    })
+    return $fetch<GuestBookMessage>(`/api/guestbook/${user.value?.email}`)
   }
 
   const deleteMessage = async () => {

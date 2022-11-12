@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useAsyncData, useElementHover, useHead, useMouseInElement } from '#imports'
+import { computed, ref, useAsyncData, useElementHover, useHead, useMouseInElement, useStats } from '#imports'
 import { formatBigNumber } from '~/logic/numbers'
 
 const age = ref(19)
@@ -17,8 +17,9 @@ const mouseStyle = computed(() => ({
   opacity: isHovered.value ? 1 : 0,
 }))
 
-const { data: views } = await useAsyncData('stats:views', () => $fetch('/api/posts/views/total'))
-const { data: likes } = await useAsyncData('stats:likes', () => $fetch('/api/posts/likes/total'))
+const { getTotalViews, getTotalLikes } = await useStats()
+const totalViews = await getTotalViews()
+const totalLikes = await getTotalLikes()
 const { data: github } = await useAsyncData('stats:github', () => $fetch('/api/stats/github'))
 const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/stats/hours'))
 </script>
@@ -153,7 +154,7 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/sta
       <StatsCard>
         <div class="bg-clip-text bg-text-blue">
           <div class="text-7xl font-bold">
-            {{ formatBigNumber(views._sum.views) }}
+            {{ formatBigNumber(totalViews._sum.views) }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
@@ -163,7 +164,7 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/sta
       <StatsCard>
         <div class="bg-clip-text bg-text-purple">
           <div class="text-7xl font-bold">
-            {{ formatBigNumber(likes._sum.likes) }}
+            {{ formatBigNumber(totalLikes._sum.likes) }}
           </div>
         </div>
         <p class="text-md text-gray-600 dark:text-gray-400">
