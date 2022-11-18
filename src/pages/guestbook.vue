@@ -42,9 +42,9 @@ const handleDelete = async () => {
 </script>
 
 <template>
-  <main>
+  <section>
     <PageTitle title="My Book" />
-    <section class="md:w-1/2 mx-auto">
+    <div class="md:w-1/2 mx-auto">
       <div v-if="isLoggedIn" class="my-12 flex flex-col bg-stone-200 dark:bg-neutral-800 p-4 rounded-lg border border-dark">
         <div>
           <h1 v-if="signed" class="text-3xl font-bold">
@@ -135,8 +135,8 @@ const handleDelete = async () => {
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
