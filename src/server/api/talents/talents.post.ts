@@ -5,7 +5,6 @@ import type { Talent } from '~/types/types'
 export default defineEventHandler(async (event) => {
   const prisma = usePrisma()
   const body = await readBody<{ talent: Talent }>(event)
-  console.log(body.talent)
   return await prisma.talent.update({
     where: {
       id: body.talent.id,
