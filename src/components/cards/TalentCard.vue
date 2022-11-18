@@ -7,6 +7,7 @@ const props = defineProps({
   talent: Object as PropType<Talent>,
 })
 
+// const isAdmin = true // todo remove test
 const { isAdmin } = useSupabase()
 const { refreshTalents } = await useTalents()
 const getLink = computed(() => props.talent?.website.includes('https://') ? props.talent?.website : `https://${props.talent?.website}`)
@@ -38,13 +39,13 @@ const toggleFavorite = async (talent: Talent, favorite: boolean) => {
         />
         <Icon
           v-else-if="isAdmin && !talent.favorite"
-          class="absolute -top-1 right-2 text-black dark:text-white hover:text-amber-300 duration-500"
+          class="absolute -top-3 right-2 text-black dark:text-white hover:(text-amber-300 -top-1) duration-500"
           name="material-symbols:bookmark"
           size="24"
           @click.prevent="toggleFavorite(talent, true)"
         />
         <Icon
-          v-else
+          v-else-if="talent.favorite"
           class="absolute -top-1 right-2 text-amber-300"
           name="material-symbols:bookmark"
           size="24"
