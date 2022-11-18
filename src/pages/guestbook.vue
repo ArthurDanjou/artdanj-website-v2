@@ -15,10 +15,9 @@ useHead({
 const { user, isAdmin, isLoggedIn } = useSupabase()
 
 const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
-const { getAllMessages, deleteMessage, signMessage, getOwnMessage } = await useGuestbook()
+const { getAllMessages, deleteMessage, signMessage, own } = await useGuestbook()
 
 const messages = await getAllMessages()
-const own = await getOwnMessage()
 const hasAlreadySigned = computed(() => own !== null)
 
 const content = ref<string | undefined>('')
