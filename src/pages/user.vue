@@ -9,13 +9,16 @@ const open = ref(false)
 const modal = ref(null)
 
 const setOpened = (state: boolean) => {
-  document.body.classList.add('overflow-hidden')
+  if (state)
+    document.body.classList.add('overflow-hidden')
+  else
+    document.body.classList.remove('overflow-hidden')
+
   open.value = state
 }
 
 onClickOutside(modal, () => {
   setOpened(false)
-  document.body.classList.remove('overflow-hidden')
 })
 
 const { getOwnMessage } = await useGuestbook()
