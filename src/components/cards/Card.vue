@@ -23,6 +23,8 @@ const getRow = computed(() => {
       return 'row-span-1'
     case '2':
       return 'row-span-2'
+    case '3':
+      return 'row-span-3'
   }
 })
 
