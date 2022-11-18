@@ -94,7 +94,7 @@ const handleDelete = async () => {
           </div>
         </div>
       </div>
-      <div v-else class="my-12 flex flex-col bg-stone-200 dark:bg-neutral-800 p-4 rounded-lg border border-dark">
+      <div v-else class="my-12 flex flex-col bg-white dark:bg-dark-900 p-4 rounded-lg border border-dark">
         <div>
           <h1 class="text-3xl font-bold">
             Sign the guestbook
@@ -143,7 +143,7 @@ const handleDelete = async () => {
   </main>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .social-login {
   @apply cursor-pointer border border-dark rounded-md p-1 flex items-center justify-center transform duration-300 hover:scale-105;
 }
