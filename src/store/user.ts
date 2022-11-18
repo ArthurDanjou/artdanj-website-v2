@@ -4,11 +4,13 @@ import { Role } from '~/types/types'
 import { computed, ref } from '#imports'
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref<User | null>(null)
+  const user = ref<User | null>()
   const getUser = computed(() => user.value)
 
   const setUser = (newUser: User) => {
+    console.log('setUser', newUser)
     user.value = newUser
+    console.log(user)
   }
 
   const resetUser = () => {
@@ -32,5 +34,8 @@ export const useUserStore = defineStore('user', () => {
 }, {
   persist: {
     key: 'user',
+    afterRestore: (context) => {
+      console.log(context.store)
+    },
   },
 })
