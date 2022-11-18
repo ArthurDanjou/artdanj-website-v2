@@ -85,6 +85,15 @@ export interface Comment {
   post?: PostDB
 }
 
+export interface Talent {
+  id: number
+  name: string
+  website: string
+  logo: string
+  work: string
+  favorite: boolean
+}
+
 export interface User {
   id: number
   createdAt: Date

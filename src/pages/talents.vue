@@ -5,9 +5,11 @@ useHead({
   title: 'Discover new talents - Arthur Danjou',
 })
 
-const talents = ref(null)
-const isHovered = useElementHover(talents)
-const { elementX, elementY } = useMouseInElement(talents)
+const talents = await $fetch('/api/talents/talents')
+
+const talentEl = ref(null)
+const isHovered = useElementHover(talentEl)
+const { elementX, elementY } = useMouseInElement(talentEl)
 const mouseStyle = computed(() => ({
   top: `${elementY.value - 75 * 0.5}px`,
   left: `${elementX.value - 75 * 0.5}px`,
@@ -18,8 +20,8 @@ const mouseStyle = computed(() => ({
 <template>
   <section>
     <PageTitle title="Talents" />
-    <CardContainer>
-      <Card ref="talents" width="2">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 grid-flow-row-dense auto-rows-fr">
+      <Card ref="talentEl" width="2" height="2">
         <CardDiv>
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
           <CardIcon icon="ph:crown-simple-bold" />
@@ -34,6 +36,7 @@ const mouseStyle = computed(() => ({
           </div>
         </CardDiv>
       </Card>
-    </CardContainer>
+      <TalentCard v-for="talent in talents" :key="talent.name" :talent="talent" />
+    </div>
   </section>
 </template>
