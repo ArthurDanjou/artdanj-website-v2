@@ -15,20 +15,66 @@ const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwit
 <template>
   <section>
     <PageTitle title="Login" />
-    <div>
-      <div class="flex space-x-4 my-4">
-        <Icon class="social-login" name="mdi:github" size="32px" @click.prevent="useGithubLogin('')" />
-        <Icon class="social-login text-[#1DA1F2]" name="mdi:twitter" size="32px" @click.prevent="useTwitterLogin('')" />
-        <Icon class="social-login text-[#DB4437]" name="bxl:google" size="32px" @click.prevent="useGoogleLogin('')" />
-        <Icon class="social-login text-[#6441a5]" name="mdi:twitch" size="32px" @click.prevent="useTwitchLogin('')" />
-        <Icon class="social-login text-[#5865F2]" name="mdi:discord" size="32px" @click.prevent="useDiscordLogin('')" />
+    <main class="lg:flex items-center md:mx-16 my-12">
+      <div class="lg:w-1/2">
+        <div class="flex justify-center my-4">
+          <div class="relative">
+            <div class="bg-gray-200 dark:bg-zinc-800 target h-[250px] w-[250px]">
+              <div class="bg-stone-100 dark:bg-black target h-[200px] w-[200px]">
+                <div class="bg-gray-200 dark:bg-zinc-800 target h-[150px] w-[150px]">
+                  <div class="bg-stone-100 dark:bg-black target h-[100px] w-[100px]">
+                    <div class="p-2 bg-amber-400 rounded-full flex items-center justify-center">
+                      <Icon class="text-white dark:text-dark-900" name="ant-design:fire-filled" size="32" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute -left-2">
+                <div class="p-2 bg-pink-400 rounded-full flex items-center justify-center">
+                  <Icon class="text-gray-200 dark:text-zinc-800" name="ant-design:like-filled" size="24" />
+                </div>
+              </div>
+              <div class="absolute left-45 top-5">
+                <div class="p-2 bg-purple-400 rounded-full flex items-center justify-center">
+                  <Icon class="text-gray-200 dark:text-zinc-800" name="teenyicons:briefcase-alt-solid" size="24" />
+                </div>
+              </div>
+              <div class="absolute bottom-5 left-45">
+                <div class="p-2 bg-blue-400 rounded-full flex items-center justify-center">
+                  <Icon class="text-gray-200 dark:text-zinc-800" name="ic:baseline-lightbulb" size="24" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="lg:w-1/2">
+        <h3 class="text-center font-bold text-xl">
+          Sign in by using your favorite provider to connect with other users and write your own message in the guestbook, ask questions, and more!
+        </h3>
+        <p class="text-center italic text-sm mb-8 mt-2 text-gray-600 dark:text-gray-400">
+          Your informations are only used to display your name and reply by email.
+        </p>
+        <div class="flex justify-center">
+          <div class="flex space-x-2 md:space-x-8 flex-wrap">
+            <Icon class="social-login" name="mdi:github" size="64" @click.prevent="useGithubLogin('')" />
+            <Icon class="social-login text-[#1DA1F2]" name="mdi:twitter" size="64" @click.prevent="useTwitterLogin('')" />
+            <Icon class="social-login text-[#DB4437]" name="bxl:google" size="64" @click.prevent="useGoogleLogin('')" />
+            <Icon class="social-login text-[#6441a5]" name="mdi:twitch" size="64" @click.prevent="useTwitchLogin('')" />
+            <Icon class="social-login text-[#5865F2]" name="mdi:discord" size="64" @click.prevent="useDiscordLogin('')" />
+          </div>
+        </div>
+      </div>
+    </main>
   </section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .social-login {
-  @apply cursor-pointer border border-dark rounded-md p-1 flex items-center justify-center transform duration-300 hover:scale-105;
+  @apply cursor-pointer border border-dark rounded-md p-2 flex items-center justify-center transform duration-500 hover:(bg-gray-200 dark:bg-dark-700);
+}
+
+.target {
+  @apply flex items-center justify-center rounded-full;
 }
 </style>
