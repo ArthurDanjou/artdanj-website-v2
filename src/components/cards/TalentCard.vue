@@ -1,20 +1,54 @@
 <script setup lang="ts">
 import type { PropType } from '@vue/runtime-core'
 import type { Talent } from '~/types/types'
-import { computed } from '#imports'
+import { computed, useSupabase, useTalents } from '#imports'
 
 const props = defineProps({
   talent: Object as PropType<Talent>,
 })
 
+const { isAdmin } = useSupabase()
+const { refreshTalents } = await useTalents()
 const getLink = computed(() => props.talent?.website.includes('https://') ? props.talent?.website : `https://${props.talent?.website}`)
+
+const toggleFavorite = async (talent: Talent, favorite: boolean) => {
+  await $fetch<Talent>('/api/talents/talents', {
+    method: 'post',
+    body: {
+      talent: {
+        ...talent,
+        favorite,
+      },
+    },
+  })
+  await refreshTalents()
+}
 </script>
 
 <template>
   <Card>
     <CardLink :href="getLink" target="_blank" class="p-0">
       <div class="h-full flex flex-col justify-between">
-        <Icon v-if="talent.favorite" class="absolute -top-1 right-2 text-amber-300" name="ph:bookmark-simple-fill" size="24" />
+        <Icon
+          v-if="isAdmin && talent.favorite"
+          class="absolute -top-1 right-2 text-amber-300 hover:text-red-400 duration-500"
+          name="material-symbols:bookmark"
+          size="24"
+          @click.prevent="toggleFavorite(talent, false)"
+        />
+        <Icon
+          v-else-if="isAdmin && !talent.favorite"
+          class="absolute -top-1 right-2 text-black dark:text-white hover:text-amber-300 duration-500"
+          name="material-symbols:bookmark"
+          size="24"
+          @click.prevent="toggleFavorite(talent, true)"
+        />
+        <Icon
+          v-else
+          class="absolute -top-1 right-2 text-amber-300"
+          name="material-symbols:bookmark"
+          size="24"
+        />
         <!-- todo: Add tooltip for favorite -->
         <div class="p-4 flex items-center justify-center space-x-4 h-full">
           <img :src="talent.logo" alt="Talent Logo" height="28" width="28" class="rounded-lg">

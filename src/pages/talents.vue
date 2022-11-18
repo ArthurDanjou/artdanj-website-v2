@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, useElementHover, useHead, useMouseInElement } from '#imports'
+import { computed, ref, useElementHover, useHead, useMouseInElement, useTalents } from '#imports'
 
 useHead({
   title: 'Discover new talents - Arthur Danjou',
 })
 
-const talents = await $fetch('/api/talents/talents')
+const { getTalents } = await useTalents()
 
 const talentEl = ref(null)
 const isHovered = useElementHover(talentEl)
@@ -36,7 +36,7 @@ const mouseStyle = computed(() => ({
           </div>
         </CardDiv>
       </Card>
-      <TalentCard v-for="talent in talents" :key="talent.name" :talent="talent" />
+      <TalentCard v-for="talent in getTalents" :key="talent.name" :talent="talent" />
     </div>
   </section>
 </template>
