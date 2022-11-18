@@ -57,5 +57,6 @@ export default defineNuxtConfig({
     '~/components/logos',
     '~/components/cards',
     '~/components/resume',
+    '~/components/modals',
   ],
 })
