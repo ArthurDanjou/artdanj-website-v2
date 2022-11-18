@@ -8,8 +8,8 @@ export const useTalents = async () => {
   } = await useAsyncData('talents', async () => await $fetch('/api/talents/talents'))
 
   const toggleFavorite = async (talent: Talent, favorite: boolean) => {
-    await $fetch<Talent>('/api/talents/talents', {
-      method: 'post',
+    await $fetch<Talent>(`/api/talents/${talent.id}`, {
+      method: 'put',
       body: {
         talent: {
           ...talent,
@@ -21,7 +21,6 @@ export const useTalents = async () => {
   }
 
   const deleteTalent = async (id: number | null) => {
-    console.log(id)
     if (id == null)
       return
     await $fetch<Talent>(`/api/talents/${id}`, {
