@@ -6,7 +6,6 @@
 - Dashboard (Maintenance, add talent, see forms, see unseen questions, manage users, posts, stats (likes, comments, views))
 
 ## Implements
-- posts likes & post views ?
 - SEO
 
 ## Design
