@@ -8,9 +8,7 @@ export const useUserStore = defineStore('user', () => {
   const getUser = computed(() => user.value)
 
   const setUser = (newUser: User) => {
-    console.log('setUser', newUser)
     user.value = newUser
-    console.log(user)
   }
 
   const resetUser = () => {
@@ -34,8 +32,5 @@ export const useUserStore = defineStore('user', () => {
 }, {
   persist: {
     key: 'user',
-    afterRestore: (context) => {
-      console.log(context.store)
-    },
   },
 })

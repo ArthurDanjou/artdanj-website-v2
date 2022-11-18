@@ -30,6 +30,15 @@ body {
   }
 }
 
+.modal-enter-active, .modal-leave-active {
+  transition: opacity .3s;
+}
+
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
 .mouse-gradient {
   background: repeating-linear-gradient(to right, #0047E1 0%, #6d34fe 50%, #ac00dc 100%);
   filter: blur(100px);
