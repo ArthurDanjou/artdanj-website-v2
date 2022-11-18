@@ -31,7 +31,7 @@ const { getOwnQuestions } = await useQuestion()
 <template>
   <section>
     <PageTitle title="Your profile" />
-    <main class="md:w-1/2 mx-auto">
+    <div class="md:w-1/2 mx-auto">
       <div class="py-16 border-b border-.5 border-gray-150 dark:border-zinc-800">
         <h1 class="font-bold text-4xl mb-2">
           Settings
@@ -109,6 +109,6 @@ const { getOwnQuestions } = await useQuestion()
           </div>
         </transition>
       </client-only>
-    </main>
+    </div>
   </section>
 </template>

@@ -15,7 +15,7 @@ const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwit
 <template>
   <section>
     <PageTitle title="Login" />
-    <main class="lg:flex items-center md:mx-16 my-12">
+    <div class="lg:flex items-center md:mx-16 my-12">
       <div class="lg:w-1/2">
         <div class="flex justify-center my-4">
           <div class="relative">
@@ -65,7 +65,7 @@ const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwit
           </div>
         </div>
       </div>
-    </main>
+    </div>
   </section>
 </template>
 
