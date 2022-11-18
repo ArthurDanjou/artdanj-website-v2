@@ -7,7 +7,6 @@ definePageMeta({
 
 const open = ref(false)
 const modal = ref(null)
-
 const setOpened = (state: boolean) => {
   if (state)
     document.body.classList.add('overflow-hidden')
@@ -16,15 +15,12 @@ const setOpened = (state: boolean) => {
 
   open.value = state
 }
-
 onClickOutside(modal, () => {
   setOpened(false)
 })
 
 const { own: getGuestbookMessage } = await useGuestbook()
-
 const { getOwnComments } = await useComment()
-
 const { getOwnQuestions } = await useQuestion()
 </script>
 

@@ -9,21 +9,8 @@ const props = defineProps({
 
 // const isAdmin = true // todo remove test
 const { isAdmin } = useSupabase()
-const { refreshTalents } = await useTalents()
+const { toggleFavorite } = await useTalents()
 const getLink = computed(() => props.talent?.website.includes('https://') ? props.talent?.website : `https://${props.talent?.website}`)
-
-const toggleFavorite = async (talent: Talent, favorite: boolean) => {
-  await $fetch<Talent>('/api/talents/talents', {
-    method: 'post',
-    body: {
-      talent: {
-        ...talent,
-        favorite,
-      },
-    },
-  })
-  await refreshTalents()
-}
 </script>
 
 <template>

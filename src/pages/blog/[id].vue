@@ -46,27 +46,29 @@ useHead({
         {{ postContent.cover }}
       </div>
       <ContentRenderer class="prose dark:prose-invert leading-6" :value="postContent" />
-      <div class="relative py-8 mt-8 border-t border-.5 border-gray-150 dark:border-zinc-800">
-        <div class="absolute left-1/2 -top-5.5 -translate-x-1/2 transform bg-gray-100 px-8 py-2 dark:bg-black duration-300">
+      <Separator>
+        <template #icon>
           <Icon name="ph:info-bold" size="24" />
+        </template>
+        <div>
+          <p class="text-justify">
+            Thanks for reading this post! If you liked it, please consider sharing it with your friends.
+          </p>
+          <div @click.prevent="like()">
+            LIKE - {{ likes }}
+          </div>
+          Back to top
+          copy link
         </div>
-        <p class="text-justify">
-          Thanks for reading this post! If you liked it, please consider sharing it with your friends.
-        </p>
-        <div @click.prevent="like()">
-          LIKE - {{ likes }}
-        </div>
-        Back to top
-        copy link
-      </div>
-      <div class="relative border-t border-.5 border-gray-150 dark:border-zinc-800">
-        <div class="absolute left-1/2 -top-6 -translate-x-1/2 transform bg-gray-100 px-8 py-2 dark:bg-black duration-300">
+      </Separator>
+      <Separator>
+        <template #icon>
           <Icon name="ph:chat-circle-bold" size="24" />
-        </div>
-        <div class="pt-8">
+        </template>
+        <div>
           Comments
         </div>
-      </div>
+      </Separator>
     </main>
   </section>
 </template>
