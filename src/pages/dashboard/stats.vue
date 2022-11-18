@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { useStats } from '~/composables/useStats'
 import { formatBigNumber } from '~/logic/numbers'
+import { useHead, useStats } from '#imports'
 
-const { getTotalLikes, getMostLiked, getTotalViews, getMostViewed, getTotalComments, getMostCommented } = await useStats()
+useHead({
+  title: 'Statistiques overview - Arthur\'s Dashboard',
+})
+
+const { getTotalLikes, getMostLiked, getTotalViews, getMostViewed, getMostCommented } = await useStats()
 
 const mostLiked = await getMostLiked()
 const mostViewed = await getMostViewed()
@@ -14,7 +18,7 @@ const totalViews = await getTotalViews()
 
 <template>
   <section>
-    <PageTitle title="Stats Page" />
+    <PageTitle title="See Stats" />
     <CardContainer>
       <DashboardStatsCard v-if="mostViewed && mostViewed[0]" :href="`/blog/${mostViewed[0].slug}`">
         <div class="flex space-x-4 items-center">
