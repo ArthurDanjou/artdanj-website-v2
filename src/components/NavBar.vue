@@ -29,21 +29,21 @@ const handleLogout = async () => {
   await logout()
 }
 
-const isBlog = computed(() => {
-  return router.currentRoute.value.path.includes('/blog/')
-})
-
 const isRoute = (route: string) => {
   const currentRoutePath = router.currentRoute.value.path
-  return currentRoutePath === route || (currentRoutePath.includes(route) && route !== '/')
+  return currentRoutePath === route || (currentRoutePath.startsWith(route) && route !== '/')
 }
+
+const isBlog = computed(() => isRoute('/blog'))
+
+const isDashboard = computed(() => isRoute('/dashboard/'))
 </script>
 
 <template>
   <!-- add tooltip -->
   <div class="z-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 width">
     <transition name="arrow">
-      <div v-if="isBlog" class="cursor-pointer nav-container group" @click.prevent="goBack">
+      <div v-if="isBlog || isDashboard " class="cursor-pointer nav-container group" @click.prevent="goBack">
         <div class="h-44px w-44px p-2 duration-300 rounded-xl bg-stone-200 text-black dark:(text-white bg-dark-900) text-black dark:text-white flex items-center justify-center">
           <Icon name="humbleicons:arrow-go-back" size="24px" class="duration-500 group-hover:opacity-50 text-2xl" />
         </div>
