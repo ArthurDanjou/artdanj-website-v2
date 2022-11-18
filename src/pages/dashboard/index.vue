@@ -19,7 +19,7 @@ const mouseStyle = computed(() => ({
   <section>
     <PageTitle title="Dashboard" />
     <CardContainer>
-      <Card ref="dashboard" width="2" height="1">
+      <Card ref="dashboard" width="2" height="3">
         <CardDiv>
           <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
           <CardIcon icon="ph:gear-bold" />
