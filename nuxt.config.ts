@@ -1,4 +1,8 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
+  // extends: '@nuxt-themes/typography',
+
   srcDir: 'src',
 
   app: {
@@ -7,11 +11,38 @@ export default defineNuxtConfig({
 
   modules: [
     'nuxt-windicss',
-    '@nuxtjs/color-mode',
+    ['@nuxtjs/color-mode', {
+      preference: 'system',
+      fallback: 'light',
+      classPrefix: '',
+      classSuffix: '',
+    }],
     '@vueuse/nuxt',
-    '@nuxt/content',
+    ['@nuxt/content', {
+      markdown: {
+        remarkPlugins: {
+          'remark-emoji': {
+            emoticon: true,
+          },
+        },
+      },
+      highlight: {
+        theme: {
+          default: 'one-dark-pro',
+        },
+      },
+      locales: [
+        'en',
+      ],
+    }],
     'nuxt-icon',
-    '@nuxtjs/supabase',
+    ['@nuxtjs/supabase', {
+      client: {
+        auth: {
+          detectSessionInUrl: true,
+        },
+      },
+    }],
     '@pinia/nuxt',
   ],
 
@@ -27,37 +58,4 @@ export default defineNuxtConfig({
     '~/components/cards',
     '~/components/resume',
   ],
-
-  content: {
-    markdown: {
-      remarkPlugins: {
-        'remark-emoji': {
-          emoticon: true,
-        },
-      },
-    },
-    highlight: {
-      theme: {
-        default: 'one-dark-pro',
-      },
-    },
-    locales: [
-      'en',
-    ],
-  },
-
-  colorMode: {
-    preference: 'system',
-    fallback: 'light',
-    classPrefix: '',
-    classSuffix: '',
-  },
-
-  supabase: {
-    client: {
-      auth: {
-        detectSessionInUrl: true,
-      },
-    },
-  },
 })
