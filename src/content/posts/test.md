@@ -6,6 +6,7 @@ publishedAt: '06 February 2021'
 modifiedAt: '06 February 2021'
 readingMins: 5
 cover: 'test'
+author: 'arthurdanjou@outlook.fr'
 ---
 This is my new post !
 

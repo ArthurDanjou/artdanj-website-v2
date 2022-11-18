@@ -4,8 +4,8 @@ import { onMounted, queryContent, useAsyncData, useHead, useRoute } from '#impor
 import { usePost } from '~/composables/usePost'
 
 const route = useRoute()
-const { data: postContent } = await useAsyncData(`blog:post-content:${route.params.id}`, () => queryContent<Post>(`/posts/${route.params.id}`).findOne())
-const { like, likes, view, views } = await usePost(route.params.id)
+const { data: postContent } = await useAsyncData<Post>(`blog:post-content:${route.params.id}`, () => queryContent<Post>(`/posts/${route.params.id}`).findOne())
+const { post, like, likes, view, views } = await usePost(route.params.id, postContent.value?.author)
 
 onMounted(() => {
   view()
@@ -29,8 +29,14 @@ useHead({
         {{ postContent.description }}
       </h3>
       <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
-        <div>
-          Arthur Danjou / {{ postContent.publishedAt }}
+        <div class="flex space-x-4">
+          <p>
+            {{ post.author.username }}
+          </p>
+          <span>/</span>
+          <p>
+            {{ postContent.publishedAt }}
+          </p>
         </div>
         <div>
           {{ postContent.readingMins }} min read • {{ views }} views

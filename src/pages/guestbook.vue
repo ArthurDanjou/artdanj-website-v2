@@ -15,10 +15,7 @@ useHead({
 const { user, isAdmin, isLoggedIn } = useSupabase()
 
 const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
-const { getAllMessages, deleteMessage, signMessage, own } = await useGuestbook()
-
-const messages = await getAllMessages()
-const hasAlreadySigned = computed(() => own !== null)
+const { getAllMessages, deleteMessage, signMessage, signed } = await useGuestbook()
 
 const content = ref<string | undefined>('')
 const formState = ref({
@@ -50,13 +47,13 @@ const handleDelete = async () => {
     <section class="md:w-1/2 mx-auto">
       <div v-if="isLoggedIn" class="my-12 flex flex-col bg-stone-200 dark:bg-neutral-800 p-4 rounded-lg border border-dark">
         <div>
-          <h1 v-if="hasAlreadySigned" class="text-3xl font-bold">
+          <h1 v-if="signed" class="text-3xl font-bold">
             Sign the guestbook, again
           </h1>
           <h1 v-else class="text-3xl font-bold">
             Sign the guestbook
           </h1>
-          <h3 v-if="hasAlreadySigned" class="text-lg text-gray-600 dark:text-gray-400">
+          <h3 v-if="signed" class="text-lg text-gray-600 dark:text-gray-400">
             You have already shared a message. You can edit it below.
           </h3>
           <h3 v-else class="text-lg text-gray-600 dark:text-gray-400">
@@ -70,7 +67,7 @@ const handleDelete = async () => {
               required
               class="w-full p-2 bg-stone-300 rounded-md dark:bg-neutral-700 outline-none duration-300 pr-22"
             >
-            <button v-if="hasAlreadySigned" class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
+            <button v-if="signed" class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
               Resign
             </button>
             <button v-else class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
@@ -114,17 +111,17 @@ const handleDelete = async () => {
         </p>
       </div>
       <div class="space-y-8">
-        <div v-for="message in messages" :key="message" class="flex flex-col space-y-2">
+        <div v-for="message in getAllMessages" :key="message" class="flex flex-col space-y-2">
           <p class="text-lg font-bold">
             {{ message.content }}
           </p>
           <div class="flex items-center space-x-8 text-sm">
-            <div class="flex items-center space-x-4 text-sm">
-              <p class="text-gray-600 dark:text-gray-400">
-                {{ message.username }}
+            <div class="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+              <p>
+                {{ message.author.username }}
               </p>
-              <span class="text-gray-300 dark:text-gray-600">/</span>
-              <p class="text-gray-600 dark:text-gray-400">
+              <span>/</span>
+              <p>
                 {{ formatGuestBookDate(message.createdAt) }}
               </p>
             </div>

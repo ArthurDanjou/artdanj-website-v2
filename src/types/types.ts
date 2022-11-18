@@ -38,7 +38,7 @@ export interface Announcement {
 export interface GuestBookMessage {
   id: string
   email: string
-  username: string
+  author: User
   content: string
   createdAt: Date
 }

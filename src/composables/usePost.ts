@@ -2,10 +2,14 @@ import type { RouteParamValue } from 'vue-router'
 import { computed, ref, useAsyncData } from '#imports'
 import type { PostDB } from '~/types/types'
 
-export const usePost = async (slug: string | RouteParamValue[]) => {
-  const post = ref<PostDB | null>()
-  const { data: postDb } = await useAsyncData(`blog:post-db:${slug}`, () => $fetch<PostDB>(`/api/posts/${slug}`))
-  post.value = postDb.value
+export const usePost = async (slug: string | RouteParamValue[], author: string) => {
+  const { data: post } = await useAsyncData<PostDB>(`blog:post-db:${slug}`, async () => {
+    return await $fetch<PostDB>(`/api/posts/${slug}`, {
+      query: {
+        author,
+      },
+    })
+  })
 
   const likes = ref(post.value!.likes)
   const like = async () => {
@@ -30,6 +34,7 @@ export const usePost = async (slug: string | RouteParamValue[]) => {
   }
 
   return {
+    post,
     like,
     view,
     likes: computed(() => likes.value),

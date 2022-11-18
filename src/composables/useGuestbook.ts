@@ -1,13 +1,11 @@
-import { useSupabaseUser } from '#imports'
+import { computed, useAsyncData, useSupabaseUser } from '#imports'
 import type { GuestBookMessage } from '~/types/types'
 
 export const useGuestbook = async () => {
   // todo use store email
   const user = useSupabaseUser()
 
-  const getAllMessages = () => {
-    return $fetch<GuestBookMessage[]>('/api/guestbook/all')
-  }
+  const { data: getAllMessages, refresh: refreshAllMessages } = await useAsyncData('guestbook:all', async () => await $fetch<GuestBookMessage[]>('/api/guestbook/all'))
 
   const signMessage = async (content: string) => {
     await $fetch('/api/guestbook/guestbook', {
@@ -21,11 +19,13 @@ export const useGuestbook = async () => {
   }
 
   const own = await $fetch<GuestBookMessage>(`/api/guestbook/${user.value?.email}`)
+  const signed = computed(() => own !== null)
 
   const deleteMessage = async () => {
     await $fetch(`/api/guestbook/${user.value?.email}`, {
       method: 'delete',
     })
+    await refreshAllMessages()
   }
 
   return {
@@ -33,5 +33,6 @@ export const useGuestbook = async () => {
     signMessage,
     own,
     deleteMessage,
+    signed,
   }
 }

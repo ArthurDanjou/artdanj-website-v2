@@ -8,6 +8,7 @@ export interface Post extends MarkdownParsedContent {
   publishedAt: string
   modifiedAt: string
   cover: string
+  author: string
 }
 
 export interface Project {
