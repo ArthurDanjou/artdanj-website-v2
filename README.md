@@ -7,9 +7,14 @@
 
 ## Implements
 - posts likes & post views ?
+- SEO
 
 ## Design
 - projects covers
 - blog covers
 
 ## Rewrite blog posts
+
+# modules
+
+- https://nuxt.com/modules/robots
