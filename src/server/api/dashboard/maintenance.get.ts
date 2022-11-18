@@ -3,9 +3,10 @@ import { usePrisma } from '~/composables/usePrisma'
 
 export default defineEventHandler(async () => {
   const client = usePrisma()
-  return await client.maintenance.findFirst({
+  const maintenance = await client.maintenance.findFirst({
     orderBy: {
       createdAt: 'desc',
     },
   })
+  return maintenance || {}
 })
