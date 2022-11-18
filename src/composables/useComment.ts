@@ -1,15 +1,14 @@
 import type { Comment } from '~/types/types'
-import { useSupabaseUser } from '#imports'
+import { useAsyncData, useSupabaseUser } from '#imports'
 
-export const useComment = () => {
+export const useComment = async () => {
   // todo use store email
   const user = useSupabaseUser()
 
-  const getOwnComments = () => {
-    return $fetch<Comment[]>(`/api/comments/${user.value?.email}`)
-  }
+  const { data: getOwnComments, refresh: refreshOwnComments } = await useAsyncData('comments:own', async () => await $fetch<Comment[]>(`/api/comments/${user.value?.email}`))
 
   return {
     getOwnComments,
+    refreshOwnComments,
   }
 }

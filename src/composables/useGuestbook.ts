@@ -20,9 +20,7 @@ export const useGuestbook = async () => {
     })
   }
 
-  const getOwnMessage = () => {
-    return $fetch<GuestBookMessage>(`/api/guestbook/${user.value?.email}`)
-  }
+  const own = await $fetch<GuestBookMessage>(`/api/guestbook/${user.value?.email}`)
 
   const deleteMessage = async () => {
     await $fetch(`/api/guestbook/${user.value?.email}`, {
@@ -33,7 +31,7 @@ export const useGuestbook = async () => {
   return {
     getAllMessages,
     signMessage,
-    getOwnMessage,
+    own,
     deleteMessage,
   }
 }

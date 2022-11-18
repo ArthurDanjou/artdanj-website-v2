@@ -21,14 +21,11 @@ onClickOutside(modal, () => {
   setOpened(false)
 })
 
-const { getOwnMessage } = await useGuestbook()
-const guestbook = await getOwnMessage()
+const { own: getGuestbookMessage } = await useGuestbook()
 
-const { getOwnComments } = useComment()
-const comments = await getOwnComments()
+const { getOwnComments } = await useComment()
 
-const { getOwnQuestions } = useQuestion()
-const questions = await getOwnQuestions()
+const { getOwnQuestions } = await useQuestion()
 </script>
 
 <template>
@@ -66,7 +63,7 @@ const questions = await getOwnQuestions()
             Your questions
           </h3>
           <p>
-            {{ questions }}
+            {{ getOwnQuestions }}
           </p>
         </div>
         <div class="mb-8">
@@ -74,7 +71,7 @@ const questions = await getOwnQuestions()
             Your guestbook message
           </h3>
           <p>
-            {{ guestbook }}
+            {{ getGuestbookMessage }}
           </p>
         </div>
         <div class="mb-!">
@@ -82,7 +79,7 @@ const questions = await getOwnQuestions()
             Your comments
           </h3>
           <p>
-            {{ comments }}
+            {{ getOwnComments }}
           </p>
         </div>
       </div>
