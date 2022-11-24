@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, useElementHover, useHead, useMouseInElement, useTalents } from '#imports'
+import { computed, ref, useElementHover, useHead, useMouseInElement, useTalent } from '#imports'
 
 useHead({
   title: 'Discover new talents - Arthur Danjou',
 })
 
-const { getTalents } = await useTalents()
+const { getTalents } = await useTalent()
 
 const talentEl = ref(null)
 const isHovered = useElementHover(talentEl)

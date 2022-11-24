@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from '@vue/runtime-core'
 import type { Talent } from '~/types/types'
-import { computed, useSupabase, useTalents } from '#imports'
+import { computed, useSupabase, useTalent } from '#imports'
 
 const props = defineProps({
   talent: Object as PropType<Talent>,
@@ -9,7 +9,7 @@ const props = defineProps({
 
 // const isAdmin = true // todo remove test
 const { isAdmin } = useSupabase()
-const { toggleFavorite } = await useTalents()
+const { toggleFavorite } = await useTalent()
 const getLink = computed(() => props.talent?.website.includes('https://') ? props.talent?.website : `https://${props.talent?.website}`)
 </script>
 

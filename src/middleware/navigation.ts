@@ -16,7 +16,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
      })
    }
 
-   if (to.path === '/user' && !isLoggedIn) {
+   if (to.path === '/profile' && !isLoggedIn) {
      return navigateTo('/', {
        redirectCode: 401,
        replace: true,

@@ -23,9 +23,8 @@ const goBack = () => {
 }
 
 const handleLogout = async () => {
-  if (router.currentRoute.value.path === '/user') {
+  if (router.currentRoute.value.path === '/user')
     await router.push('/')
-  }
   await logout()
 }
 
@@ -34,16 +33,15 @@ const isRoute = (route: string) => {
   return currentRoutePath === route || (currentRoutePath.startsWith(route) && route !== '/')
 }
 
-const isBlog = computed(() => isRoute('/blog'))
-
-const isDashboard = computed(() => isRoute('/dashboard/'))
+const isBlog = computed(() => isRoute('/blog/'))
+const isAMA = computed(() => isRoute('/ama/'))
 </script>
 
 <template>
   <!-- add tooltip -->
   <div class="z-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 width">
     <transition name="arrow">
-      <div v-if="isBlog || isDashboard " class="cursor-pointer nav-container group" @click.prevent="goBack">
+      <div v-if="isBlog || isAMA" class="cursor-pointer nav-container group" @click.prevent="goBack">
         <div class="h-44px w-44px p-2 duration-300 rounded-xl bg-stone-200 text-black dark:(text-white bg-dark-900) text-black dark:text-white flex items-center justify-center">
           <Icon name="humbleicons:arrow-go-back" size="24px" class="duration-500 group-hover:opacity-50 text-2xl" />
         </div>
@@ -61,13 +59,13 @@ const isDashboard = computed(() => isRoute('/dashboard/'))
         </NuxtLink>
       </NavBarItem>
       <NavBarItem :is-route="isRoute('/blog')">
-        <NuxtLink to="/blog" class="nav-link" :class="{ 'router-link-exact-active': isRoute('/blog') }">
+        <NuxtLink to="/blog" class="nav-link" :class="{ 'router-link-exact-active': isBlog }">
           <PencilIcon :filled="isRoute('/blog')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
       <NavBarItem :is-route="isRoute('/projects')">
         <NuxtLink to="/projects" class="nav-link">
-          <LightningIcon :filled="isRoute('/projects')" class="text-2xl" />
+          <FlaskIcon :filled="isRoute('/projects')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
       <NavBarItem :is-route="isRoute('/resume')">
@@ -97,7 +95,7 @@ const isDashboard = computed(() => isRoute('/dashboard/'))
         </NuxtLink>
       </NavBarItem>
       <NavBarItem :is-route="isRoute('/ama')">
-        <NuxtLink to="/ama" class="nav-link">
+        <NuxtLink to="/ama" class="nav-link" :class="{ 'router-link-exact-active': isAMA }">
           <ChatIcon :filled="isRoute('/ama')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
@@ -119,11 +117,6 @@ const isDashboard = computed(() => isRoute('/dashboard/'))
           <Icon name="material-symbols:login" size="24px" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <NavBarItem v-if="isAdmin" :is-route="isRoute('/dashboard')">
-        <NuxtLink to="/dashboard" class="nav-link">
-          <GearIcon :filled="isRoute('/dashboard')" class="text-2xl" />
-        </NuxtLink>
-      </NavBarItem>
     </nav>
   </div>
 </template>
@@ -142,7 +135,7 @@ const isDashboard = computed(() => isRoute('/dashboard/'))
 .nav-link {
   @apply z-11 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-lg bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900)  flex items-center justify-center;
 
-  &.router-link-exact-active {
+  &.router-link-exact-active, &.router-link-active {
     @apply border-stone-700 text-black dark:text-white dark:border-stone-300;
   }
 }

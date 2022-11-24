@@ -39,5 +39,6 @@ export default defineConfig({
       modifiers: ['sm', 'lg'],
     }),
     require('@windicss/plugin-animations'),
+    require('windicss/plugin/line-clamp'),
   ],
 })

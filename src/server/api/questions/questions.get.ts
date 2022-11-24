@@ -2,14 +2,11 @@ import { defineEventHandler } from 'h3'
 import { usePrisma } from '~/composables/usePrisma'
 
 export default defineEventHandler(async () => {
-  const client = usePrisma()
-  return await client.post.findMany({
-    orderBy: {
-      views: 'desc',
-    },
+  const prisma = usePrisma()
+  const questions = await prisma.question.findMany({
     include: {
       author: true,
     },
-    take: 1,
   })
+  return questions || []
 })

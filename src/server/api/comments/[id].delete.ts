@@ -3,12 +3,9 @@ import { usePrisma } from '~/composables/usePrisma'
 
 export default defineEventHandler(async (event) => {
   const prisma = usePrisma()
-  const questions = await prisma.question.findMany({
+  return await prisma.comment.delete({
     where: {
-      author: {
-        email: event.context.params.email,
-      },
+      id: Number(event.context.params.id),
     },
   })
-  return questions || []
 })

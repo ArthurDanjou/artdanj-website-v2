@@ -21,7 +21,6 @@ onClickOutside(modal, () => {
 
 const { own: getGuestbookMessage } = await useGuestbook()
 const { getOwnComments } = await useComment()
-const { getOwnQuestions } = await useQuestion()
 </script>
 
 <template>
@@ -42,8 +41,8 @@ const { getOwnQuestions } = await useQuestion()
           <div class="text-sm border border-.5 border-dark py-1 px-2 rounded-md bg-gray-300/60 dark:(bg-dark-400/60 text-white) text-black cursor-pointer duration-300 font-bold hover:(bg-gray-200/40 dark:bg-dark-400)">
             Logout
           </div>
-          <div class="text-sm border border-.5 border-red-500 py-1 px-2 rounded-md bg-red-400/20 text-red-500 cursor-pointer duration-300 font-bold hover:(bg-red-600 text-white)" @click.prevent="setOpened(true)">
-            Delete your account
+          <div>
+            <DeleteButton :big="true" content="Delete your account" @click.prevent="setOpened(true)" />
           </div>
         </div>
       </div>
@@ -59,7 +58,7 @@ const { getOwnQuestions } = await useQuestion()
             Your questions
           </h3>
           <p>
-            {{ getOwnQuestions }}
+            to define
           </p>
         </div>
         <div class="mb-8">

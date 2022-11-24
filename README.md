@@ -7,6 +7,7 @@
 
 ## Implements
 - SEO
+- post method to create and put to update
 
 ## Design
 - projects covers

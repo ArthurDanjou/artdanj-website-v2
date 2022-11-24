@@ -112,27 +112,13 @@ const handleDelete = async () => {
       </div>
       <div class="space-y-8">
         <div v-for="message in getAllMessages" :key="message" class="flex flex-col space-y-2">
-          <p class="text-lg font-bold">
+          <div class="flex items-center space-x-4">
+            <UserLine :author="message.author" :date="message.created_at" />
+            <DeleteButton v-if="user && user.email && message.email === user.email || isAdmin" content="Delete message" @click.prevent="handleDelete" />
+          </div>
+          <p class="pl-11 text-gray-600 dark:text-gray-400">
             {{ message.content }}
           </p>
-          <div class="flex items-center space-x-8 text-sm">
-            <div class="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
-              <p>
-                {{ message.author.username }}
-              </p>
-              <span>/</span>
-              <p>
-                {{ formatGuestBookDate(message.createdAt) }}
-              </p>
-            </div>
-            <div
-              v-if="user && user.email && message.email === user.email || isAdmin"
-              class="text-red-500 text-xxs px-1 py-.5 border rounded-md border-red-500 cursor-pointer hover:(bg-red-500 bg-opacity-25) duration-300"
-              @click.prevent="handleDelete"
-            >
-              Delete message
-            </div>
-          </div>
         </div>
       </div>
     </div>

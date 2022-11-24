@@ -3,9 +3,9 @@ import { usePrisma } from '~/composables/usePrisma'
 
 export default defineEventHandler(async (event) => {
   const prisma = usePrisma()
-  return await prisma.user.delete({
+  return await prisma.question.delete({
     where: {
-      email: event.context.params.email,
+      id: Number(event.context.params.id),
     },
   })
 })

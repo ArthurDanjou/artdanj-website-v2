@@ -43,3 +43,7 @@ body {
   background: repeating-linear-gradient(to right, #0047E1 0%, #6d34fe 50%, #ac00dc 100%);
   filter: blur(100px);
 }
+
+.content-link {
+  @apply text-black dark:text-white cursor-pointer duration-300 underline underline-offset-4 decoration-gray-300 underline-opacity-25 hover:(decoration-black underline-opacity-100) rounded-sm dark:(decoration-gray-600 hover:decoration-white);
+}

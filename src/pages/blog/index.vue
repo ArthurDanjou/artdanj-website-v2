@@ -21,7 +21,7 @@ const mouseStyle = computed(() => ({
   <section>
     <PageTitle title="My Shelf" />
     <div class="flex justify-center">
-      <div class="w-full grid grid-cols-1 lg:grid-cols-4 gap-2 grid-flow-row-dense auto-rows-fr">
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 grid-flow-row-dense auto-rows-fr">
         <Card ref="blog" width="2">
           <CardDiv>
             <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />

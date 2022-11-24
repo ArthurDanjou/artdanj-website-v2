@@ -23,6 +23,7 @@ export default defineEventHandler(async (event) => {
           email: user.email,
         },
         data: {
+          username: prismaUser.username.trim(),
           lastSeen: new Date(user.last_sign_in_at || Date.now()),
           twitterId: getIdentity(user, Provider.TWITTER)?.identity_data.user_name || prismaUser.twitterId,
           discordId: getIdentity(user, Provider.DISCORD)?.identity_data.full_name || prismaUser.discordId,
@@ -40,7 +41,7 @@ export default defineEventHandler(async (event) => {
           avatar: user.user_metadata.picture,
           location: 'Unknown',
           supabaseId: user.id,
-          username: user.user_metadata.full_name || user.user_metadata.nickname || user.user_metadata.slug,
+          username: String(user.user_metadata.full_name || user.user_metadata.nickname || user.user_metadata.slug).trim(),
           twitterId: getIdentity(user, Provider.TWITTER)?.identity_data.user_name || '',
           discordId: getIdentity(user, Provider.DISCORD)?.identity_data.full_name || '',
           githubId: getIdentity(user, Provider.GITHUB)?.identity_data.user_name || '',
