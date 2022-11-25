@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormData } from '~/types/types'
-import { ref, useAsyncData } from '#imports'
+import { computed, ref, useAsyncData } from '#imports'
 
 const form = ref({
   name: '',
@@ -9,6 +9,8 @@ const form = ref({
 } as FormData)
 const sent = ref({ error: false, success: false })
 
+const isSendable = computed(() => form.value.name.length >= 3 && form.value.email.length >= 5 && form.value.email.includes('@') && form.value.content.length >= 10)
+
 const handleForm = async () => {
   if (sent.value.success)
     return
@@ -16,8 +18,8 @@ const handleForm = async () => {
   if (form.value.name.length <= 0 || form.value.email.length <= 0 || form.value.content.length <= 0)
     return
 
-  const { data } = await useAsyncData('form', () => {
-    return $fetch('/api/forms/forms', {
+  const { data } = await useAsyncData<{ code: number }>('form', () => {
+    return $fetch('/api/forms/form', {
       method: 'POST',
       body: {
         name: form.value.name,
@@ -73,12 +75,14 @@ const handleForm = async () => {
         <textarea
           v-model="form.content"
           placeholder="Write your message"
+          required
           class="resize-none p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300 invalid:bg-red-600 required:bg-red-600"
         />
         <div class="w-full">
           <input
             type="submit"
-            class="w-full p-4 rounded-md cursor-pointer font-bold text-black bg-stone-200 hover:bg-stone-300 duration-500 dark:(bg-neutral-700 text-white hover:bg-neutral-500)"
+            :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
+            class="w-full p-4 rounded-md cursor-pointer font-bold"
             value="Send your message"
             @click.prevent="handleForm()"
           >
@@ -91,7 +95,7 @@ const handleForm = async () => {
 <style scoped lang="scss">
 @keyframes fiestAnimation {
   0% {
-    // todo do animation
+    // todo animation
   }
 }
 </style>
