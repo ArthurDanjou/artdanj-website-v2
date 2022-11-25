@@ -19,6 +19,11 @@ export default defineEventHandler(async (event) => {
     },
     include: {
       author: true,
+      comments: {
+        include: {
+          author: true,
+        },
+      },
     },
   })
 })

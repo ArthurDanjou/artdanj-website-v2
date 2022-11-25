@@ -3,7 +3,7 @@ import { computed, ref, useAsyncData } from '#imports'
 import type { PostDB } from '~/types/types'
 
 export const usePost = async (slug: string | RouteParamValue[], author: string) => {
-  const { data: post } = await useAsyncData<PostDB>(`blog:post-db:${slug}`, async () => {
+  const { data: post, refresh: refreshPost } = await useAsyncData<PostDB>(`blog:post-db:${slug}`, async () => {
     return await $fetch<PostDB>(`/api/posts/${slug}`, {
       query: {
         author,
@@ -37,6 +37,7 @@ export const usePost = async (slug: string | RouteParamValue[], author: string) 
     post,
     like,
     view,
+    refreshPost,
     likes: computed(() => likes.value),
     views: computed(() => views.value),
   }

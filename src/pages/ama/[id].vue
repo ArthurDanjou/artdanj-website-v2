@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, useComment, useQuestion, useRoute } from '#imports'
+import { computed, ref, useComment, useHead, useQuestion, useRoute } from '#imports'
 import { convertStringToLink } from '~/logic/stringToLink'
-import { useHead } from '#head'
 
 const isLoggedIn = true
 const isAdmin = true
@@ -17,8 +16,7 @@ useHead({
 })
 
 const answer = ref('')
-const isSendable = computed(() => answer.value.length > 0)
-
+const isSendable = computed(() => answer.value.length >= 5)
 const sendAnswer = async () => {
   if (!isSendable.value)
     return
@@ -37,10 +35,10 @@ const handleDelete = async (id: number) => {
 <template>
   <section class="mt-16 md:mt-32 md:w-2/3 mx-auto sm:rounded">
     <main class="max-w-2xl px-4 mx-auto sm:px-8">
-      <ALink class="mb-4" target="/ama">
+      <ALink class="mb-4" link="/ama">
         Go back to the AMA
       </ALink>
-      <UserLine :author="question.author" :date="question.createdAt" />
+      <UserLine :link="true" :author="question.author" :date="question.createdAt" />
       <div class="my-4">
         <h1 class="text-2xl font-bold mb-2">
           {{ question.title }}
@@ -55,17 +53,18 @@ const handleDelete = async (id: number) => {
         </template>
         <div v-if="question.comments.length > 0" class="space-y-6 my-4">
           <div v-for="comment in question.comments" :key="comment.id">
-            <div class="flex items-center space-x-4">
-              <UserLine :author="comment.author" :date="comment.createdAt" />
-              <div>
-                <DeleteButton
-                  v-if="isAdmin"
-                  content="Delete comment"
-                  @click.prevent="handleDelete(comment.id)"
-                />
+            <a :href="`#comment-${comment.id}`" class="cursor-default">
+              <div class="flex items-center space-x-4 flex-wrap">
+                <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
+                <div>
+                  <DeleteButton
+                    v-if="isAdmin"
+                    @click.prevent="handleDelete(comment.id)"
+                  />
+                </div>
               </div>
-            </div>
-            <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)" />
+              <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)" />
+            </a>
           </div>
         </div>
         <div v-else class="text-gray-600 dark:text-gray-400 flex items-center space-x-2">
@@ -96,13 +95,3 @@ const handleDelete = async (id: number) => {
     </main>
   </section>
 </template>
-
-<style scoped lang="scss">
-.button-sendable {
-  @apply cursor-pointer text-black bg-gray-200 hover:bg-gray-300 dark:(text-white bg-dark-700 hover:bg-dark-300);
-}
-
-.button-not-sendable {
-  @apply cursor-not-allowed text-gray-500 bg-gray-100 dark:bg-opacity-10;
-}
-</style>

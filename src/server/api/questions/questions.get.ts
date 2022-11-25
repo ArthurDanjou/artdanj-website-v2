@@ -7,6 +7,9 @@ export default defineEventHandler(async () => {
     include: {
       author: true,
     },
+    orderBy: {
+      createdAt: 'desc',
+    },
   })
   return questions || []
 })

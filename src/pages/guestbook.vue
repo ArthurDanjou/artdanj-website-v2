@@ -15,7 +15,7 @@ useHead({
 const { user, isAdmin, isLoggedIn } = useSupabase()
 
 const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
-const { getAllMessages, deleteMessage, signMessage, signed } = await useGuestbook()
+const { getAllMessages, deleteMessage, signMessage } = await useGuestbook()
 
 const content = ref<string | undefined>('')
 const formState = ref({
@@ -35,9 +35,9 @@ const signNewMessage = async () => {
   setTimeout(() => formState.value.sent = false, 5000)
 }
 
-const handleDelete = async () => {
+const handleDelete = async (email: string) => {
   content.value = ''
-  await deleteMessage()
+  await deleteMessage(email)
 }
 </script>
 
@@ -100,26 +100,26 @@ const handleDelete = async () => {
           </h3>
         </div>
         <div class="flex space-x-4 my-4">
-          <Icon class="social-login" name="mdi:github" size="32px" @click.prevent="useGithubLogin()" />
-          <Icon class="social-login text-[#1DA1F2]" name="mdi:twitter" size="32px" @click.prevent="useTwitterLogin()" />
-          <Icon class="social-login text-[#DB4437]" name="bxl:google" size="32px" @click.prevent="useGoogleLogin()" />
-          <Icon class="social-login text-[#6441a5]" name="mdi:twitch" size="32px" @click.prevent="useTwitchLogin()" />
-          <Icon class="social-login text-[#5865F2]" name="mdi:discord" size="32px" @click.prevent="useDiscordLogin()" />
+          <Icon class="social-login" name="mdi:github" size="48" @click.prevent="useGithubLogin()" />
+          <Icon class="social-login text-[#1DA1F2]" name="mdi:twitter" size="48" @click.prevent="useTwitterLogin()" />
+          <Icon class="social-login text-[#DB4437]" name="bxl:google" size="48" @click.prevent="useGoogleLogin()" />
+          <Icon class="social-login text-[#6441a5]" name="mdi:twitch" size="48" @click.prevent="useTwitchLogin()" />
+          <Icon class="social-login text-[#5865F2]" name="mdi:discord" size="48" @click.prevent="useDiscordLogin()" />
         </div>
         <p class="text-sm italic">
           Your informations are only used to display your name and reply by email.
         </p>
       </div>
       <div class="space-y-8">
-        <div v-for="message in getAllMessages" :key="message" class="flex flex-col space-y-2">
+        <a v-for="message in getAllMessages" :key="message.id" class="cursor-default flex flex-col space-y-2" :href="`#${message.id}`">
           <div class="flex items-center space-x-4">
             <UserLine :author="message.author" :date="message.created_at" />
-            <DeleteButton v-if="user && user.email && message.email === user.email || isAdmin" content="Delete message" @click.prevent="handleDelete" />
+            <DeleteButton v-if="user && user.email && message.email === user.email || isAdmin" @click.prevent="handleDelete(message.author.email)" />
           </div>
           <p class="pl-11 text-gray-600 dark:text-gray-400">
             {{ message.content }}
           </p>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -127,6 +127,6 @@ const handleDelete = async () => {
 
 <style scoped lang="scss">
 .social-login {
-  @apply cursor-pointer border border-dark rounded-md p-1 flex items-center justify-center transform duration-300 hover:scale-105;
+  @apply cursor-pointer border border-dark rounded-md p-2 flex items-center justify-center transform duration-500 hover:(bg-gray-200 dark:bg-dark-700);
 }
 </style>

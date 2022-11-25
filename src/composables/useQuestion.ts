@@ -3,7 +3,7 @@ import type { Question } from '~/types/types'
 import { useAsyncData, useSupabaseUser } from '#imports'
 
 export const useQuestion = async () => {
-  // todo use store email
+  // todo use store username
   const user = useSupabaseUser()
 
   const {
@@ -13,6 +13,18 @@ export const useQuestion = async () => {
 
   const getQuestion = (id: string | RouteParamValue[]) => {
     return useAsyncData<Question>(`question:id:${id}`, async () => await $fetch<Question>(`/api/questions/${id}`))
+  }
+
+  const createQuestion = async (title: string, description: string) => {
+    await $fetch('/api/questions/question', {
+      method: 'POST',
+      body: {
+        title,
+        description,
+        email: user.value?.email,
+      },
+    })
+    await refreshAllQuestions()
   }
 
   const deleteQuestion = async (id: number | null) => {
@@ -29,5 +41,6 @@ export const useQuestion = async () => {
     refreshAllQuestions,
     getQuestion,
     deleteQuestion,
+    createQuestion,
   }
 }

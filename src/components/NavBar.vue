@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, useColorMode, useRouter, useSupabase } from '#imports'
+import { computed, useColorMode, useRouter, useSupabase, useSupabaseUser } from '#imports'
 
 const color = useColorMode()
-const { isAdmin, logout, isLoggedIn } = useSupabase()
+const user = useSupabaseUser() // todo user store user
+const { logout, isLoggedIn } = useSupabase()
 
 const playAnimation = (id: any) => {
   const element: HTMLElement | null = document.getElementById(id)
@@ -35,6 +36,7 @@ const isRoute = (route: string) => {
 
 const isBlog = computed(() => isRoute('/blog/'))
 const isAMA = computed(() => isRoute('/ama/'))
+const isUser = computed(() => isRoute('/user/'))
 </script>
 
 <template>
@@ -105,7 +107,7 @@ const isAMA = computed(() => isRoute('/ama/'))
         <Icon v-else name="pepicons:moon" size="24px" />
       </div>
       <NavBarItem v-if="isLoggedIn" :is-route="isRoute('/user')">
-        <NuxtLink to="/user" class="nav-link">
+        <NuxtLink :to="`/user/${user.user_metadata.nickname}`" class="nav-link" :class="{ 'router-link-exact-active': isUser }">
           <UserIcon :filled="isRoute('/user')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>

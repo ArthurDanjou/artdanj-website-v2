@@ -27,7 +27,7 @@ const getColor = computed(() => {
 
 <template>
   <NuxtLink
-    :href="link"
+    :to="link"
     :target="target"
     class="flex"
   >

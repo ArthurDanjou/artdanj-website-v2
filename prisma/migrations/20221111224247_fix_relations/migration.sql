@@ -1,7 +1,7 @@
 /*
   Warnings:
 
-  - You are about to drop the column `email` on the `GuestBook` table. All the data in the column will be lost.
+  - You are about to drop the column `username` on the `GuestBook` table. All the data in the column will be lost.
   - You are about to drop the column `username` on the `GuestBook` table. All the data in the column will be lost.
 
 */

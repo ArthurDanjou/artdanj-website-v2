@@ -112,7 +112,7 @@ export interface User {
   comments: Comment
   questions: Question[]
   posts: PostDB[]
-  guestbook: GuestBookMessage
+  guestbook?: GuestBookMessage
 }
 
 export enum Provider {

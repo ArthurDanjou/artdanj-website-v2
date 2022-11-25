@@ -17,7 +17,7 @@ const handleForm = async () => {
     return
 
   const { data } = await useAsyncData('form', () => {
-    return $fetch('/api/forms/form', {
+    return $fetch('/api/forms/forms', {
       method: 'POST',
       body: {
         name: form.value.name,
