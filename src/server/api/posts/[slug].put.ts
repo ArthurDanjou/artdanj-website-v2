@@ -1,9 +1,14 @@
-import { defineEventHandler, getQuery } from 'h3'
+import { defineEventHandler, readBody } from 'h3'
 import { usePrisma } from '~/composables/usePrisma'
+
+interface Body {
+  email: string
+  title: string
+}
 
 export default defineEventHandler(async (event) => {
   const client = usePrisma()
-  const query = await getQuery(event)
+  const body = await readBody<Body>(event)
   return await client.post.upsert({
     where: {
       slug: event.context.params.slug,
@@ -11,9 +16,10 @@ export default defineEventHandler(async (event) => {
     update: {},
     create: {
       slug: event.context.params.slug,
+      title: body.title,
       author: {
         connect: {
-          email: String(query.author), // todo automate
+          email: body.email, // todo automate
         },
       },
     },

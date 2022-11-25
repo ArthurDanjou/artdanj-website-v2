@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, useRoute, useRouter, useSupabaseUser, useUser } from '#imports'
 
-// todo user store user
+// todo users store users
 const user = useSupabaseUser()
 const route = useRoute()
 const { getUserFromDB, updateUser } = await useUser(route.params.user)
@@ -44,7 +44,7 @@ const handleForm = async () => {
         class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
         type="email"
       >
-      <p class="text-xs text-gray-600 dark:text-gray-400">
+      <p class="text-xs text-red-400 dark:text-red-500">
         Updating your username will break any existing links to your profile, so you know, don’t do it too often.
       </p>
       <div class="flex">

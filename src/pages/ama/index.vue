@@ -23,7 +23,7 @@ const mouseStyle = computed(() => ({
   opacity: isHovered.value ? 1 : 0,
 }))
 
-// todo: change with store user
+// todo: change with store users
 const user = useSupabaseUser()
 const { isLoggedIn } = useSupabase()
 

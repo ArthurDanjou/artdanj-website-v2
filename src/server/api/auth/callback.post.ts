@@ -39,7 +39,6 @@ export default defineEventHandler(async (event) => {
           lastSeen: new Date(user.last_sign_in_at || Date.now()),
           email: user.email,
           avatar: user.user_metadata.picture,
-          location: '',
           supabaseId: user.id,
           username: String(user.user_metadata.full_name || user.user_metadata.nickname || user.user_metadata.slug).replaceAll(' ', ''),
           twitterId: getIdentity(user, Provider.TWITTER)?.identity_data.user_name || '',

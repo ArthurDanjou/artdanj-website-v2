@@ -1,12 +1,23 @@
 <script setup lang="ts">
 import type { Post } from '~/types/content'
-import { computed, onMounted, queryContent, ref, useAsyncData, useComment, useHead, useRoute } from '#imports'
+import {
+  computed,
+  onMounted,
+  queryContent,
+  ref,
+  useAsyncData,
+  useComment,
+  useHead,
+  useRoute,
+  useSupabaseUser,
+  useUser,
+} from '#imports'
 import { usePost } from '~/composables/usePost'
 import { convertStringToLink } from '~/logic/stringToLink'
 
 const route = useRoute()
 const { data: postContent } = await useAsyncData<Post>(`blog:post-content:${route.params.id}`, async () => await queryContent<Post>(`/posts/${route.params.id}`).findOne())
-const { post, like, likes, view, views, refreshPost } = await usePost(route.params.id, postContent.value?.author)
+const { post, like, likes, view, views, refreshPost } = await usePost(route.params.id, postContent.value?.author, postContent.value?.title)
 
 onMounted(() => {
   view()
@@ -31,12 +42,12 @@ const copyToClipboard = () => {
 
 const isAdmin = true
 // const { isLoggedIn, IsAdmin } = useSupabase()
+const user = useSupabaseUser() // todo use store user
 
 const answer = ref('')
 const isSendable = computed(() => answer.value.length >= 5)
 
 const { deleteComment, replyToPost } = await useComment()
-
 const sendAnswer = async () => {
   if (!isSendable.value)
     return
@@ -48,6 +59,14 @@ const sendAnswer = async () => {
 const handleDelete = async (id: number) => {
   await deleteComment(id)
   await refreshPost()
+}
+
+const { unsavePost, savePost, isSavedPost } = await useUser(user.value?.user_metadata.nickname)
+const handleSave = async () => {
+  if (isSavedPost(post.value!.slug))
+    await unsavePost(post.value!.slug)
+  else
+    await savePost(post.value!.slug)
 }
 </script>
 
@@ -79,7 +98,7 @@ const handleDelete = async (id: number) => {
         </template>
         <div>
           <p class="text-justify">
-            Thanks for reading this post! If you liked it, please consider sharing it with your friends. Leave a like and a comment just below!
+            Thanks for reading this post! If you liked it, please consider sharing it with your friends. <strong>Leave a like and a comment just below!</strong>
           </p>
           <div class="flex items-center space-x-4 mt-4">
             <div class="flex space-x-2 blog-other select-none" @click.prevent="like()">
@@ -92,6 +111,10 @@ const handleDelete = async (id: number) => {
             <div class="blog-other" @click.prevent="copyToClipboard()">
               <Icon v-if="isCopied" class="text-green-400" name="lucide:clipboard-check" size="24" />
               <Icon v-else name="lucide:clipboard" size="24" />
+            </div>
+            <div class="blog-other" @click.prevent="handleSave">
+              <Icon v-if="isSavedPost(post.slug)" name="material-symbols:bookmark-remove-outline" size="24" />
+              <Icon v-else name="material-symbols:bookmark-add-outline-rounded" size="24" />
             </div>
           </div>
         </div>

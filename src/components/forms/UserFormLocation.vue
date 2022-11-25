@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, useRoute, useSupabaseUser, useUser } from '#imports'
 
-// todo user store user
+// todo users store users
 const user = useSupabaseUser()
 const route = useRoute()
 const { getUserFromDB, refreshUser, updateUser } = await useUser(route.params.user)

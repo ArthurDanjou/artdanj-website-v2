@@ -8,25 +8,26 @@ datasource db {
 }
 
 model User {
-  id          Int        @id @default(autoincrement())
-  createdAt   DateTime   @default(now())
-  role        Role       @default(USER)
-  username    String     @unique @db.VarChar(16)
-  twitterId   String?    @unique
-  githubId    String?    @unique
-  googleId    String?    @unique
-  twitchId    String?    @unique
-  discordId   String?    @unique
-  supabaseId  String?    @unique
-  email       String?    @unique
+  id          Int         @id @default(autoincrement())
+  createdAt   DateTime    @default(now())
+  role        Role        @default(USER)
+  username    String      @unique @db.VarChar(16)
+  twitterId   String?     @unique
+  githubId    String?     @unique
+  googleId    String?     @unique
+  twitchId    String?     @unique
+  discordId   String?     @unique
+  supabaseId  String?     @unique
+  email       String?     @unique
   avatar      String?
-  description String?    @db.VarChar(256)
-  location    String?    @db.VarChar(32)
+  description String?     @db.VarChar(256)
+  location    String?     @db.VarChar(32)
   comments    Comment[]
   questions   Question[]
   posts       Post[]
-  lastSeen    DateTime   @default(now())
+  lastSeen    DateTime    @default(now())
   guestbook   GuestBook?
+  savedPosts  SavedPost[]
 }
 
 enum Role {
@@ -85,14 +86,25 @@ model GuestBook {
 }
 
 model Post {
-  id        Int       @id @default(autoincrement())
-  slug      String    @unique
-  likes     Int       @default(0)
-  views     Int       @default(0)
-  author    User      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  id         Int         @id @default(autoincrement())
+  slug       String      @unique
+  title      String
+  likes      Int         @default(0)
+  views      Int         @default(0)
+  author     User        @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId     Int
+  comments   Comment[]
+  createdAt  DateTime    @default(now())
+  savedPosts SavedPost[]
+}
+
+model SavedPost {
+  id        Int      @id @default(autoincrement())
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  postId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    Int
-  comments  Comment[]
-  createdAt DateTime  @default(now())
+  createdAt DateTime @default(now())
 }
 
 model Form {

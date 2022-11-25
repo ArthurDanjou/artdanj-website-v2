@@ -2,7 +2,7 @@
 import { computed, useColorMode, useRouter, useSupabase, useSupabaseUser } from '#imports'
 
 const color = useColorMode()
-const user = useSupabaseUser() // todo user store user
+const user = useSupabaseUser() // todo users store users
 const { logout, isLoggedIn } = useSupabase()
 
 const playAnimation = (id: any) => {
@@ -24,7 +24,7 @@ const goBack = () => {
 }
 
 const handleLogout = async () => {
-  if (router.currentRoute.value.path === '/user')
+  if (router.currentRoute.value.path === '/users')
     await router.push('/')
   await logout()
 }
@@ -36,7 +36,7 @@ const isRoute = (route: string) => {
 
 const isBlog = computed(() => isRoute('/blog/'))
 const isAMA = computed(() => isRoute('/ama/'))
-const isUser = computed(() => isRoute('/user/'))
+const isUser = computed(() => isRoute('/users/'))
 </script>
 
 <template>
@@ -106,9 +106,9 @@ const isUser = computed(() => isRoute('/user/'))
         <Icon v-if="color.preference === 'light'" name="ph:sun-bold" size="24px" />
         <Icon v-else name="pepicons:moon" size="24px" />
       </div>
-      <NavBarItem v-if="isLoggedIn" :is-route="isRoute('/user')">
+      <NavBarItem v-if="isLoggedIn" :is-route="isRoute('/users')">
         <NuxtLink :to="`/user/${user.user_metadata.nickname}`" class="nav-link" :class="{ 'router-link-exact-active': isUser }">
-          <UserIcon :filled="isRoute('/user')" class="text-2xl" />
+          <UserIcon :filled="isRoute('/users')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
       <div v-if="isLoggedIn" class="nav-link" @click.prevent="handleLogout">

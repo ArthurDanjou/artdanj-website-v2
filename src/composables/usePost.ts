@@ -2,11 +2,13 @@ import type { RouteParamValue } from 'vue-router'
 import { computed, ref, useAsyncData } from '#imports'
 import type { PostDB } from '~/types/types'
 
-export const usePost = async (slug: string | RouteParamValue[], author: string) => {
+export const usePost = async (slug: string | RouteParamValue[], author: string, title: string) => {
   const { data: post, refresh: refreshPost } = await useAsyncData<PostDB>(`blog:post-db:${slug}`, async () => {
     return await $fetch<PostDB>(`/api/posts/${slug}`, {
-      query: {
-        author,
+      method: 'PUT',
+      body: {
+        title,
+        email: author,
       },
     })
   })

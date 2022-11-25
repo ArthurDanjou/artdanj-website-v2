@@ -29,7 +29,7 @@ onClickOutside(modal, () => {
   setOpened(false)
 })
 
-const { getUserFromDB, refreshUser } = await useUser(route.params.user)
+const { getUserFromDB, refreshUser, unsavePost } = await useUser(route.params.user)
 if (!getUserFromDB.value?.email) {
   showError({
     statusCode: 404,
@@ -37,22 +37,25 @@ if (!getUserFromDB.value?.email) {
   })
 }
 
-// todo test with store user
+// todo test with store users
 const user = useSupabaseUser()
 const { isAdmin, isLoggedIn } = useSupabase()
-const isUser = computed(() => true) // todo: route.params.user === user.value?.user_metadata.nickname && isLoggedIn)
+const isUser = computed(() => true) // todo: route.params.users === users.value?.user_metadata.nickname && isLoggedIn)
 
 const { deleteMessage } = await useGuestbook()
 const { deleteComment } = await useComment()
 const { deleteQuestion } = await useQuestion()
 
-const handleDelete = async (type: 'comment' | 'question', id: number) => {
+const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number | string) => {
   switch (type) {
     case 'comment':
-      await deleteComment(id)
+      await deleteComment(Number(id))
       break
     case 'question':
-      await deleteQuestion(id)
+      await deleteQuestion(Number(id))
+      break
+    case 'saved':
+      await unsavePost(String(id))
       break
   }
   await refreshUser()
@@ -98,7 +101,6 @@ const handleDelete = async (type: 'comment' | 'question', id: number) => {
           <h3 class="font-bold text-xl mb-4">
             Your questions
           </h3>
-          {{ deleting }}
           <div v-if="getUserFromDB.questions && getUserFromDB.questions.length > 0" class="space-y-4">
             <ul v-for="question in getUserFromDB.questions" :key="question.id">
               <li class="list-disc ml-4">
@@ -144,6 +146,31 @@ const handleDelete = async (type: 'comment' | 'question', id: number) => {
           </div>
           <p v-else class="text-gray-600 dark:text-gray-400">
             You haven't signed the guestbook yet.
+          </p>
+        </div>
+        <div class="mb-8">
+          <h3 class="font-bold text-xl mb-4">
+            Your Saved Posts
+          </h3>
+          <div v-if="getUserFromDB.savedPosts && getUserFromDB.savedPosts.length > 0" class="space-y-4">
+            <ul v-for="savedPost in getUserFromDB.savedPosts" :key="savedPost.id">
+              <li class="list-disc ml-4">
+                <NuxtLink class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400" :href="`/blog/${savedPost.post.slug}`">
+                  <p class="font-bold text-black dark:text-white">
+                    {{ savedPost.post.title }}
+                  </p>
+                  <span>·</span>
+                  <div>{{ formatGuestBookDate(savedPost.createdAt.toString()) }}</div>
+                  <DeleteButton
+                    v-if="isUser || isAdmin"
+                    @click.prevent="handleDelete('saved', savedPost.slug)"
+                  />
+                </NuxtLink>
+              </li>
+            </ul>
+          </div>
+          <p v-else class="text-gray-600 dark:text-gray-400">
+            You haven't saved any posts yet.
           </p>
         </div>
         <div class="mb-!">

@@ -32,6 +32,11 @@ export default defineEventHandler(async (event) => {
           author: true,
         },
       },
+      savedPosts: {
+        include: {
+          post: true,
+        },
+      },
     },
   })
   return user || {}

@@ -51,6 +51,7 @@ export interface PostDB {
   author: User
   createdAt: Date
   comments: Comment[]
+  savedPosts: SavedPost[]
 }
 
 export interface Maintenance {
@@ -113,6 +114,14 @@ export interface User {
   questions: Question[]
   posts: PostDB[]
   guestbook?: GuestBookMessage
+  savedPosts: SavedPost[]
+}
+
+export interface SavedPost {
+  id: number
+  post: PostDB
+  user: User
+  createdAt: Date
 }
 
 export enum Provider {

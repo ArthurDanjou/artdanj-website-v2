@@ -10,7 +10,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   // todo remove after dev
   /* if (to.path === '/dashboard' && !isAdmin) {
-     return navigateTo('/user', {
+     return navigateTo('/users', {
        redirectCode: 500,
        replace: true,
      })
