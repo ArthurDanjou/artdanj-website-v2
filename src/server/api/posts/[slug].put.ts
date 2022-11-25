@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
       title: body.title,
       author: {
         connect: {
-          email: body.email, // todo automate
+          email: body.email,
         },
       },
     },
