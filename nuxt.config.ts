@@ -44,6 +44,9 @@ export default defineNuxtConfig({
       },
     }],
     '@pinia/nuxt',
+    ['@nuxtjs/robots', {
+      UserAgent: '*', Disallow: '',
+    }],
   ],
 
   css: [

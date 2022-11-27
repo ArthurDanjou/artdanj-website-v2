@@ -6,7 +6,8 @@ import {
   useElementHover,
   useHead,
   useMouseInElement,
-  useQuestion, useSupabase,
+  useQuestion,
+  useSupabase,
   useSupabaseUser,
 } from '#imports'
 
@@ -91,7 +92,7 @@ const handleOpening = () => {
             <div v-else class="italic text-xs flex justify-center items-center space-x-1 mt-2">
               <Icon name="ri:question-line" size="16" />
               <h5>
-                You need to be logged in to ask your question
+                You need to be connected to ask your question
               </h5>
             </div>
           </div>

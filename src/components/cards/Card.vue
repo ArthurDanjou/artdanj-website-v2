@@ -54,7 +54,7 @@ const getOrder = computed(() => {
 <template>
   <div
     class="relative rounded-12px flex flex-col duration-300 ease-out
-    border border-dark bg-white dark:bg-dark-900 w-full h-full"
+    border border-dark bg-white dark:bg-dark-900 w-full h-full shadow-sm"
     :class="[getRow, getColumn, getOrder]"
   >
     <slot />

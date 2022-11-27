@@ -72,19 +72,19 @@ const handleSave = async () => {
 
 <template>
   <section class="mt-16 md:mt-32 md:w-2/3 mx-auto sm:rounded">
-    <main class="max-w-2xl px-4 mx-auto sm:px-8">
+    <main v-if="postContent" class="max-w-2xl px-4 mx-auto sm:px-8">
       <ALink class="mb-4" link="/blog">
         Back to the shelf
       </ALink>
       <h1 class="text-4xl font-bold">
         {{ postContent.title }}
       </h1>
-      <h3 class="text-xl text-gray-600 dark:text-gray-400 my-2">
+      <h3 class="text-xl text-gray-600 dark:text-gray-400 mt-2 mb-4">
         {{ postContent.description }}
       </h3>
-      <div class="flex justify-between items-center text-sm text-gray-600 dark:text-gray-400">
+      <div class="flex justify-between items-center text-sm">
         <UserLine :link="true" :author="post.author" :date="post.createdAt" />
-        <div>
+        <div class="text-gray-600 dark:text-gray-400">
           {{ postContent.readingMins }} min read • {{ views }} views
         </div>
       </div>

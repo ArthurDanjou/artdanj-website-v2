@@ -19,6 +19,7 @@ export const useGuestbook = async () => {
         username: user.value?.user_metadata.full_name,
       },
     })
+    await refreshAllMessages()
   }
 
   const deleteMessage = async (email: string) => {

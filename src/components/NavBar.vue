@@ -5,7 +5,7 @@ const color = useColorMode()
 const user = useSupabaseUser() // todo users store users
 const { logout, isLoggedIn } = useSupabase()
 
-const playAnimation = (id: any) => {
+const playAnimation = (id: string) => {
   const element: HTMLElement | null = document.getElementById(id)
   element!.style.transform = 'translateY(-75%) rotate(90deg)'
   setTimeout(() => {
@@ -43,11 +43,11 @@ const isUser = computed(() => isRoute('/users/'))
   <!-- add tooltip -->
   <div class="z-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 width">
     <transition name="arrow">
-      <div v-if="isBlog || isAMA" class="cursor-pointer nav-container group" @click.prevent="goBack">
-        <div class="h-44px w-44px p-2 duration-300 rounded-xl bg-stone-200 text-black dark:(text-white bg-dark-900) text-black dark:text-white flex items-center justify-center">
-          <Icon name="humbleicons:arrow-go-back" size="24px" class="duration-500 group-hover:opacity-50 text-2xl" />
+      <NavBarItem v-if="isBlog || isAMA" class="cursor-pointer nav-container group" @click.prevent="goBack">
+        <div class="nav-link">
+          <Icon name="humbleicons:arrow-go-back" size="24px" class="text-2xl" />
         </div>
-      </div>
+      </NavBarItem>
     </transition>
     <nav class="nav-container overflow-x-auto sm:overflow-x-hidden">
       <NavBarItem :is-route="isRoute('/')">
@@ -135,7 +135,7 @@ const isUser = computed(() => isRoute('/users/'))
 }
 
 .nav-link {
-  @apply z-11 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-lg bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900)  flex items-center justify-center;
+  @apply z-12 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-lg bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900) flex items-center justify-center;
 
   &.router-link-exact-active, &.router-link-active {
     @apply border-stone-700 text-black dark:text-white dark:border-stone-300;

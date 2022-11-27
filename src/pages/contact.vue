@@ -44,8 +44,8 @@ const mouseStyle = computed(() => ({
             <h1 class="title">
               Development
             </h1>
-            <p class="subtitle">
-              ...
+            <p class="subtitle !text-sm">
+              I develop applications, websites, software and more or less useful tools on a daily basis.
             </p>
           </div>
         </CardDiv>
@@ -58,8 +58,8 @@ const mouseStyle = computed(() => ({
             <h1 class="title">
               Design
             </h1>
-            <p class="subtitle">
-              ...
+            <p class="subtitle !text-sm">
+              I always design my projects in the best possible way to make the user experience unique.
             </p>
           </div>
         </CardDiv>
@@ -71,8 +71,8 @@ const mouseStyle = computed(() => ({
             <h1 class="title">
               Strategy
             </h1>
-            <p class="subtitle">
-              ...HEYHDHASJ
+            <p class="subtitle !text-sm">
+              I always think about the best way to make my projects the most efficient and the most profitable.
             </p>
           </div>
         </CardDiv>

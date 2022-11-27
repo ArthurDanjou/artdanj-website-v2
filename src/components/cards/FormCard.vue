@@ -56,33 +56,36 @@ const handleForm = async () => {
     </CardDiv>
     <CardDiv v-else>
       <form class="w-full h-full flex flex-col space-y-4">
-        <div class="flex flex-col space-y-4">
+        <div class="w-full">
           <input
             v-model="form.name"
             type="text"
             placeholder="Name"
             required
-            class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
+            class="w-full p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
           >
+        </div>
+        <div class="w-full">
           <input
             v-model="form.email"
             type="email"
             placeholder="Email"
             required
-            class="p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
+            class="w-full p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
           >
         </div>
-        <textarea
-          v-model="form.content"
-          placeholder="Write your message"
-          required
-          class="resize-none p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300 invalid:bg-red-600 required:bg-red-600"
-        />
+        <div class="w-full h-full">
+          <textarea
+            v-model="form.content"
+            placeholder="Write your message"
+            class="w-full h-full resize-none p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300"
+          />
+        </div>
         <div class="w-full">
           <input
             type="submit"
             :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-            class="w-full p-4 rounded-md cursor-pointer font-bold"
+            class="w-full p-4 rounded-md cursor-pointer font-bold duration-300"
             value="Send your message"
             @click.prevent="handleForm()"
           >

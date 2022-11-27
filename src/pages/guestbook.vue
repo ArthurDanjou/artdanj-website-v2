@@ -1,23 +1,22 @@
 <script setup lang="ts">
 import {
-  computed,
   ref,
   useGuestbook,
   useHead,
-  useSupabase,
+  useSupabase, useSupabaseUser, useUser,
 } from '#imports'
-import { formatGuestBookDate } from '~/logic/dates'
+import { convertStringToLink } from '~/logic/stringToLink'
 
 useHead({
   title: 'My Guestbook - Arthur Danjou',
 })
 
-const { user, isAdmin, isLoggedIn } = useSupabase()
-
-const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
+const user = useSupabaseUser() // todo use store user
+const { isAdmin, isLoggedIn, useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
 const { getAllMessages, deleteMessage, signMessage } = await useGuestbook()
+const { hasSignedGuestbook, refreshUser, getGuestBookMessage } = await useUser(user!.value?.user_metadata.nickname)
 
-const content = ref<string | undefined>('')
+const content = ref<string | undefined>(getGuestBookMessage?.value?.content)
 const formState = ref({
   error: false,
   sent: false,
@@ -31,6 +30,7 @@ const signNewMessage = async () => {
     return
   }
   await signMessage(content.value!)
+  await refreshUser()
   formState.value.sent = true
   setTimeout(() => formState.value.sent = false, 5000)
 }
@@ -47,13 +47,13 @@ const handleDelete = async (email: string) => {
     <div class="md:w-1/2 mx-auto">
       <div v-if="isLoggedIn" class="my-12 flex flex-col bg-stone-200 dark:bg-neutral-800 p-4 rounded-lg border border-dark">
         <div>
-          <h1 v-if="signed" class="text-3xl font-bold">
+          <h1 v-if="hasSignedGuestbook" class="text-3xl font-bold">
             Sign the guestbook, again
           </h1>
           <h1 v-else class="text-3xl font-bold">
             Sign the guestbook
           </h1>
-          <h3 v-if="signed" class="text-lg text-gray-600 dark:text-gray-400">
+          <h3 v-if="hasSignedGuestbook" class="text-md text-gray-600 dark:text-gray-400">
             You have already shared a message. You can edit it below.
           </h3>
           <h3 v-else class="text-lg text-gray-600 dark:text-gray-400">
@@ -67,7 +67,7 @@ const handleDelete = async (email: string) => {
               required
               class="w-full p-2 bg-stone-300 rounded-md dark:bg-neutral-700 outline-none duration-300 pr-22"
             >
-            <button v-if="signed" class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
+            <button v-if="hasSignedGuestbook" class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
               Resign
             </button>
             <button v-else class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
@@ -113,12 +113,10 @@ const handleDelete = async (email: string) => {
       <div class="space-y-8">
         <a v-for="message in getAllMessages" :key="message.id" class="cursor-default flex flex-col space-y-2" :href="`#${message.id}`">
           <div class="flex items-center space-x-4">
-            <UserLine :author="message.author" :date="message.created_at" />
+            <UserLine :link="true" :author="message.author" :date="message.createdAt.toString()" />
             <DeleteButton v-if="user && user.email && message.email === user.email || isAdmin" @click.prevent="handleDelete(message.author.email)" />
           </div>
-          <p class="pl-11 text-gray-600 dark:text-gray-400">
-            {{ message.content }}
-          </p>
+          <p class="pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(message.content)" />
         </a>
       </div>
     </div>
