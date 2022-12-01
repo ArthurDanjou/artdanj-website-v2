@@ -1,11 +1,12 @@
 import type { SavedPost, User } from '~/types/types'
-import {computed, useAsyncData } from '#imports'
+import { computed, useAsyncData } from '#imports'
 
 interface UserUpdate {
   username?: string
   email?: string
   location?: string
   description?: string
+  website?: string
 }
 
 export const useUser = async (username: string | null | string[]) => {
@@ -50,8 +51,13 @@ export const useUser = async (username: string | null | string[]) => {
   }
 
   const hasSignedGuestbook = computed(() => getUserFromDB.value?.guestbook?.id !== undefined)
-
   const getGuestBookMessage = computed(() => getUserFromDB.value?.guestbook)
+
+  const deleteUser = async () => {
+    await $fetch(`/api/users/${username}`, {
+      method: 'DELETE',
+    })
+  }
 
   return {
     getUserFromDB,
@@ -60,6 +66,7 @@ export const useUser = async (username: string | null | string[]) => {
     savePost,
     unsavePost,
     isSavedPost,
+    deleteUser,
     hasSignedGuestbook,
     getGuestBookMessage,
   }

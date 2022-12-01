@@ -44,7 +44,7 @@ const handleForm = async () => {
       <input
         v-model="location"
         class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-        type="email"
+        type="text"
       >
       <p class="text-xs text-gray-600 dark:text-gray-400">
         Your location will only be visible on your profile page.

@@ -113,7 +113,7 @@ const handleDelete = async (email: string) => {
         <div v-for="message in getAllMessages" :id="message.id" :key="message.id" class="cursor-default flex flex-col space-y-2">
           <div class="flex items-center space-x-4">
             <UserLine :link="true" :author="message.author" :date="message.createdAt.toString()" />
-            <DeleteButton v-if="(user && message.email === user.email) || isAdmin" @click.prevent="handleDelete(message.author.email)" />
+            <DeleteButton v-if="(user && message.author.email === user.email) || isAdmin" @click.prevent="handleDelete(message.author.email)" />
           </div>
           <p class="pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(message.content)" />
         </div>

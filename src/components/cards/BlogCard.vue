@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from '@vue/runtime-core'
 import type { Post } from '~/types/content'
-import { formatBlogDate } from '~/logic/dates'
+import { formatShortDate } from '~/logic/dates'
 
 defineProps({
   post: Object as PropType<Post>,
@@ -21,7 +21,7 @@ defineProps({
       </div>
       <div class="flex justify-center mt-16 space-x-4">
         <p>
-          {{ formatBlogDate(post.publishedAt) }}
+          {{ formatShortDate(post.publishedAt) }}
         </p>
         <span>•</span>
         <p>

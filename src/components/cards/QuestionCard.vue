@@ -2,7 +2,7 @@
 import type { PropType } from '@vue/runtime-core'
 import { useQuestion, useSupabase } from '#imports'
 import type { Question } from '~/types/types'
-import { formatBlogDate } from '~/logic/dates'
+import { formatShortDate } from '~/logic/dates'
 
 const props = defineProps({
   question: Object as PropType<Question>,
@@ -32,7 +32,7 @@ const { deleteQuestion } = await useQuestion()
             </div>
             <div class="flex space-x-2">
               <div>
-                {{ formatBlogDate(question.createdAt.toString()) }}
+                {{ formatShortDate(question.createdAt.toString()) }}
               </div>
               <DeleteButton
                 v-if="isAdmin"

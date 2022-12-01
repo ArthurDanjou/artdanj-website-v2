@@ -4,16 +4,16 @@ import { computed, ref, useRoute, useSupabase, useUser } from '#imports'
 const { user } = useSupabase()
 const route = useRoute()
 const { getUserFromDB, refreshUser, updateUser } = await useUser(route.params.user)
-const description = ref(getUserFromDB.value?.description)
-const editable = ref(Boolean(getUserFromDB.value?.description === null))
-const isSendable = computed(() => description.value && description.value!.length >= 3)
+const website = ref(getUserFromDB.value?.website)
+const editable = ref(Boolean(getUserFromDB.value?.website === null))
+const isSendable = computed(() => website.value && website.value!.length >= 3)
 
 const handleForm = async () => {
   if (!isSendable.value)
     return
 
   await updateUser(user.value?.email, {
-    description: description.value,
+    website: website.value,
   })
   await refreshUser()
   editable.value = false
@@ -23,11 +23,11 @@ const handleForm = async () => {
 <template>
   <div class="flex flex-col space-y-1">
     <h1 class="font-bold text-xl">
-      Description
+      Website
     </h1>
-    <div v-if="getUserFromDB && getUserFromDB.description !== null" class="flex space-x-2">
+    <div v-if="getUserFromDB && getUserFromDB.location !== null" class="flex space-x-2">
       <h3>
-        {{ getUserFromDB.description }}
+        {{ getUserFromDB.website }}
       </h3>
       <span>·</span>
       <div v-if="!editable" class="content-link" @click.prevent="editable = true">
@@ -38,16 +38,16 @@ const handleForm = async () => {
       </div>
     </div>
     <p v-else class="text-gray-600 dark:text-gray-400">
-      Your description was never set. Just fill the form below.
+      Your website was never set. Just fill the form below.
     </p>
     <form v-if="editable" class="space-y-2 w-full">
       <input
-        v-model="description"
+        v-model="website"
         class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
         type="text"
       >
       <p class="text-xs text-gray-600 dark:text-gray-400">
-        Describe yourself in a few words.
+        Your website will be visible on your profile page.
       </p>
       <div class="flex">
         <div
@@ -55,7 +55,7 @@ const handleForm = async () => {
           :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
           @click.prevent="handleForm"
         >
-          Save description
+          Save website
         </div>
       </div>
     </form>

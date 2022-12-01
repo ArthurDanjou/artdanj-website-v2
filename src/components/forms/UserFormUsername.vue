@@ -41,7 +41,7 @@ const handleForm = async () => {
       <input
         v-model="username"
         class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-        type="email"
+        type="text"
       >
       <p class="text-xs text-red-400 dark:text-red-500">
         Updating your username will break any existing links to your profile, so you know, don’t do it too often.

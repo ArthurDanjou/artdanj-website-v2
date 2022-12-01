@@ -34,7 +34,7 @@ const isRoute = (route: string) => {
 
 const isBlog = computed(() => isRoute('/blog/'))
 const isAMA = computed(() => isRoute('/ama/'))
-const isUser = computed(() => isRoute('/users/'))
+const isUser = computed(() => isRoute('/user/'))
 </script>
 
 <template>

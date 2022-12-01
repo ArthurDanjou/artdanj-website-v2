@@ -29,10 +29,9 @@ const getColor = computed(() => {
   <NuxtLink
     :to="link"
     :target="target"
-    class="flex"
+    class="flex duration-500"
+    :class="getColor"
   >
-    <div class="duration-500" :class="getColor">
-      <slot />
-    </div>
+    <slot />
   </NuxtLink>
 </template>

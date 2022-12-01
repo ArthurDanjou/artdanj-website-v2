@@ -7,7 +7,7 @@ import {
   useRoute, useSupabase,
   useUser,
 } from '#imports'
-import { formatGuestBookDate } from '~/logic/dates'
+import { formatLongDate } from '~/logic/dates'
 
 const route = useRoute()
 
@@ -29,7 +29,7 @@ onClickOutside(modal, () => {
   setOpened(false)
 })
 
-const { getUserFromDB, refreshUser, unsavePost } = await useUser(route.params.user)
+const { getUserFromDB, refreshUser, unsavePost, deleteUser } = await useUser(route.params.user)
 if (!getUserFromDB.value?.email) {
   showError({
     statusCode: 404,
@@ -37,7 +37,7 @@ if (!getUserFromDB.value?.email) {
   })
 }
 
-const { isAdmin, user, isLoggedIn } = useSupabase()
+const { isAdmin, user, isLoggedIn, logout } = useSupabase()
 const isUser = computed(() => isLoggedIn && getUserFromDB.value?.email === user.value?.email)
 
 const { deleteMessage } = await useGuestbook()
@@ -58,6 +58,13 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
   }
   await refreshUser()
 }
+
+const deleteAccount = async () => {
+  setOpened(false)
+  await deleteUser()
+  await useRouter().push('/')
+  await logout()
+}
 </script>
 
 <template>
@@ -72,18 +79,112 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
         <p class="text-gray-600 dark:text-gray-400 mb-16">
           Edit below your settings
         </p>
-        <div class="space-y-8">
-          <UserFormUsername />
-          <UserFormEmail />
-          <UserFormLocation />
-          <UserFormDescription />
-        </div>
+        <client-only>
+          <div class="space-y-8">
+            <UserFormUsername />
+            <UserFormEmail />
+            <UserFormLocation />
+            <UserFormDescription />
+            <UserFormWebsite />
+          </div>
+        </client-only>
         <div class="flex justify-between mt-8">
           <div class="text-sm border border-.5 border-dark py-1 px-2 rounded-md bg-gray-300/60 dark:(bg-dark-400/60 text-white) text-black cursor-pointer duration-300 font-bold hover:(bg-gray-200/40 dark:bg-dark-400)">
             Logout
           </div>
           <div>
             <DeleteButton :big="true" content="Delete your account" @click.prevent="setOpened(true)" />
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <h1 class="font-bold text-4xl mb-2">
+          Profile
+        </h1>
+        <p class="text-gray-600 dark:text-gray-400 mb-16">
+          Discover {{ getUserFromDB.username }}'s profile
+        </p>
+        <div>
+          <div>
+            <img :src="getUserFromDB.avatar" alt="User avatar" class="w-32 h-32 rounded-full">
+            <div class="my-4">
+              <h1 class="font-bold text-3xl">
+                {{ getUserFromDB.username }}
+              </h1>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ getUserFromDB.description }}
+              </p>
+            </div>
+            <div class="space-y-">
+              <div class="flex mb-2">
+                <div
+                  v-if="getUserFromDB.role === 'ADMIN'"
+                  class="font-bold text-amber-500 text-sm bg-amber-200/70 px-2 py-.5 rounded-full dark:(bg-amber-400/90 text-white)"
+                >
+                  ADMIN 👑
+                </div>
+                <div
+                  v-if="getUserFromDB.role === 'BLOCKED'"
+                  class="font-bold text-red-400 text-sm bg-red-200/60 px-2 py-.5 rounded-full dark:(bg-red-600/70 text-white)"
+                >
+                  BLOCKED 🚫
+                </div>
+              </div>
+              <div class="flex space-x-2 items-center">
+                <Icon name="ph:hourglass-low-bold" size="20" />
+                <h3>
+                  {{ formatLongDate(getUserFromDB.lastSeen.toString()) }} <span class="text-gray-600 dark:text-gray-400 text-xxs">(last activity)</span>
+                </h3>
+              </div>
+              <div v-if="getUserFromDB.location" class="flex space-x-2 items-center">
+                <Icon name="ph:map-pin-bold" size="20" />
+                <h3>
+                  {{ getUserFromDB.location }}
+                </h3>
+              </div>
+              <ALink v-if="getUserFromDB.website" target="_blank" :link="getUserFromDB.website.includes('https://') ? getUserFromDB.website : `https://${getUserFromDB.website}`" class="flex space-x-2 items-center">
+                <Icon name="ph:globe-bold" size="20" />
+                <h3>
+                  {{ getUserFromDB.website }}
+                </h3>
+              </ALink>
+              <ALink v-if="getUserFromDB.twitterId" target="_blank" :link="`https://twitter.com/${getUserFromDB.twitterId}`" class="flex space-x-2 items-center">
+                <Icon name="ph:twitter-logo-bold" size="20" />
+                <h3>
+                  <span class="text-gray-400 dark:text-gray-600">@</span>{{ getUserFromDB.twitterId }}
+                </h3>
+              </ALink>
+              <div v-if="getUserFromDB.discordId" class="flex space-x-2 items-center">
+                <Icon name="ph:discord-logo-bold" size="20" />
+                <h3>
+                  {{ getUserFromDB.discordId }}
+                </h3>
+              </div>
+              <ALink v-if="getUserFromDB.githubId" target="_blank" :link="`https://github.com/${getUserFromDB.githubId}`" class="flex space-x-2 items-center">
+                <Icon name="ph:github-logo-bold" size="20" />
+                <h3>
+                  {{ getUserFromDB.githubId }}
+                </h3>
+              </ALink>
+              <ALink v-if="getUserFromDB.twitchId" target="_blank" :link="`https://twitch.tv/${getUserFromDB.twitchId}`" class="flex space-x-2 items-center">
+                <Icon name="ph:twitch-logo-bold" size="20" />
+                <h3>
+                  {{ getUserFromDB.twitchId }}
+                </h3>
+              </ALink>
+              <div v-if="getUserFromDB.googleId" class="flex space-x-2 items-center">
+                <Icon name="ph:google-logo" size="20" />
+                <h3>
+                  {{ getUserFromDB.googleId }}
+                </h3>
+              </div>
+              <div v-if="getUserFromDB.discordId" class="flex space-x-2 items-center">
+                <Icon name="ph:discord-logo-bold" size="20" />
+                <h3>
+                  {{ getUserFromDB.discordId }}
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -107,7 +208,7 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
                     {{ question.title }}
                   </p>
                   <span>·</span>
-                  <div>{{ formatGuestBookDate(question.createdAt.toString()) }}</div>
+                  <div>{{ formatLongDate(question.createdAt.toString()) }}</div>
                   <span>·</span>
                   <div v-if="question.comments.length <= 1">
                     {{ question.comments.length }} answer
@@ -156,7 +257,7 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
                     {{ savedPost.post.title }}
                   </p>
                   <span>·</span>
-                  <div>{{ formatGuestBookDate(savedPost.createdAt.toString()) }}</div>
+                  <div>{{ formatLongDate(savedPost.createdAt.toString()) }}</div>
                   <DeleteButton
                     v-if="isUser || isAdmin"
                     @click.prevent="handleDelete('saved', savedPost.post.slug)"
@@ -181,7 +282,7 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
                     {{ comment.content }}
                   </p>
                   <span>·</span>
-                  <div>{{ formatGuestBookDate(comment.createdAt.toString()) }}</div>
+                  <div>{{ formatLongDate(comment.createdAt.toString()) }}</div>
                   <DeleteButton
                     v-if="isUser || isAdmin"
                     @click.prevent="handleDelete('comment', comment.id)"
@@ -212,7 +313,7 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
                     Are you sure you want to delete your account? All of your data will be
                     <strong><u>permanently</u></strong> removed. This action cannot be undone.
                   </p>
-                  <div class="text-center text-md border border-.5 border-red-500 py-1 px-2 rounded-md bg-red-400/20 text-red-500 cursor-pointer duration-300 font-bold hover:(bg-red-600 text-white)" @click.prevent="setOpened(false)">
+                  <div class="text-center text-md border border-.5 border-red-500 py-1 px-2 rounded-md bg-red-400/20 text-red-500 cursor-pointer duration-300 font-bold hover:(bg-red-600 text-white)" @click.prevent="deleteAccount()">
                     Delete my account
                   </div>
                 </div>

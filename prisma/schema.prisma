@@ -20,6 +20,7 @@ model User {
   supabaseId  String?     @unique
   email       String?     @unique
   avatar      String?
+  website     String?
   description String?     @db.VarChar(256)
   location    String?     @db.VarChar(32)
   comments    Comment[]

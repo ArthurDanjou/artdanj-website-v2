@@ -15,14 +15,6 @@ export interface SpotifyData {
   started_at: number
 }
 
-export interface MetaDataSupabase {
-  provider: string
-  slug: string
-  username: string
-  description: string
-  avatar: string
-}
-
 export interface FormData {
   name: string
   email: string
@@ -110,12 +102,14 @@ export interface User {
   email: string
   avatar: string
   description: string
+  website: string
   location: string
   comments: Comment
   questions: Question[]
   posts: PostDB[]
   guestbook?: GuestBookMessage
   savedPosts: SavedPost[]
+  lastSeen: Date
 }
 
 export interface SavedPost {
