@@ -5,7 +5,6 @@ useHead({
   title: 'Contact Me - Arthur Danjou',
 })
 
-// todo complete cards
 const mail = ref(null)
 const isHovered = useElementHover(mail)
 const { elementX, elementY } = useMouseInElement(mail)

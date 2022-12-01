@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, useRoute, useSupabaseUser, useUser } from '#imports'
+import { computed, ref, useRoute, useSupabase, useUser } from '#imports'
 
-// todo users store users
-const user = useSupabaseUser()
+const { user } = useSupabase()
 const route = useRoute()
 const { getUserFromDB, refreshUser, updateUser } = await useUser(route.params.user)
 const email = ref(getUserFromDB.value?.email)
@@ -13,7 +12,7 @@ const handleForm = async () => {
   if (!isSendable.value)
     return
 
-  await updateUser(user.value?.email, {
+  await updateUser(user?.value.email, {
     email: email.value,
   })
   await refreshUser()
@@ -26,7 +25,7 @@ const handleForm = async () => {
     <h1 class="font-bold text-xl">
       Email
     </h1>
-    <div class="flex space-x-2">
+    <div v-if="getUserFromDB" class="flex space-x-2">
       <h3>
         {{ getUserFromDB.email }}
       </h3>

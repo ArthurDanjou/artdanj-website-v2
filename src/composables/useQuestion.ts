@@ -1,10 +1,9 @@
 import type { RouteParamValue } from 'vue-router'
 import type { Question } from '~/types/types'
-import { useAsyncData, useSupabaseUser } from '#imports'
+import { useAsyncData, useSupabase } from '#imports'
 
 export const useQuestion = async () => {
-  // todo use store username
-  const user = useSupabaseUser()
+  const { user } = useSupabase()
 
   const {
     data: getAllQuestions,

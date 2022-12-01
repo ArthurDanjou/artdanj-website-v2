@@ -1,9 +1,8 @@
-import { useAsyncData, useSupabaseUser } from '#imports'
+import { useAsyncData, useSupabase } from '#imports'
 import type { GuestBookMessage } from '~/types/types'
 
 export const useGuestbook = async () => {
-  // todo use store username
-  const user = useSupabaseUser()
+  const { user } = useSupabase()
 
   const {
     data: getAllMessages,
@@ -15,8 +14,8 @@ export const useGuestbook = async () => {
       method: 'post',
       body: {
         content,
-        email: user.value?.email,
-        username: user.value?.user_metadata.full_name,
+        email: user.value.email,
+        username: user.value.username,
       },
     })
     await refreshAllMessages()

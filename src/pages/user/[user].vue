@@ -5,7 +5,7 @@ import {
   ref, showError, useComment, useGuestbook,
   useHead, useQuestion,
   useRoute, useSupabase,
-  useSupabaseUser, useUser,
+  useUser,
 } from '#imports'
 import { formatGuestBookDate } from '~/logic/dates'
 
@@ -37,10 +37,8 @@ if (!getUserFromDB.value?.email) {
   })
 }
 
-// todo test with store users
-const user = useSupabaseUser()
-const { isAdmin, isLoggedIn } = useSupabase()
-const isUser = computed(() => true) // todo: route.params.users === users.value?.user_metadata.nickname && isLoggedIn)
+const { isAdmin, user, isLoggedIn } = useSupabase()
+const isUser = computed(() => isLoggedIn && getUserFromDB.value?.email === user.value?.email)
 
 const { deleteMessage } = await useGuestbook()
 const { deleteComment } = await useComment()
@@ -94,14 +92,14 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
           Activity
         </h1>
         <p class="text-gray-600 dark:text-gray-400 mb-16 text-justify">
-          Find below all your activity on the site including your questions, your comments and your message in the guestbook.
+          {{ isUser ? 'Find below all your activity on the site including your questions, your comments and your message in the guestbook.' : 'Find below all the activity of the user on the site including their questions, their comments and their message in the guestbook.' }}
           <span class="italic text-xxs">(Click on the line to go to the page)</span>
         </p>
         <div class="mb-8">
           <h3 class="font-bold text-xl mb-4">
-            Your questions
+            {{ isUser ? 'Your' : 'User\'s' }} questions
           </h3>
-          <div v-if="getUserFromDB.questions && getUserFromDB.questions.length > 0" class="space-y-4">
+          <div v-if="getUserFromDB.questions.length > 0" class="space-y-4">
             <ul v-for="question in getUserFromDB.questions" :key="question.id">
               <li class="list-disc ml-4">
                 <NuxtLink class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400" :href="`/ama/${question.id}`">
@@ -126,33 +124,31 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
             </ul>
           </div>
           <p v-else class="text-gray-600 dark:text-gray-400">
-            You haven't asked any questions yet.
+            {{ isUser ? 'You haven\'t' : 'The user hasn\'t' }} asked any questions yet.
           </p>
         </div>
         <div class="mb-8">
           <h3 class="font-bold text-xl mb-4">
-            Your guestbook message
+            {{ isUser ? 'Your' : 'User\'s' }} guestbook message
           </h3>
-          <div v-if="getUserFromDB.guestbook">
-            <NuxtLink class="flex flex-col space-y-2" :href="`/guestbook#${getUserFromDB.guestbook.id}`">
-              <div class="flex items-center space-x-4">
-                <UserLine :author="getUserFromDB.guestbook.author" :date="getUserFromDB.guestbook.createdAt.toString()" />
-                <DeleteButton v-if="isUser || isAdmin" @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)" />
-              </div>
-              <p class="pl-11 text-gray-600 dark:text-gray-400">
-                {{ getUserFromDB.guestbook.content }}
-              </p>
-            </NuxtLink>
-          </div>
+          <NuxtLink v-if="getUserFromDB.guestbook" class="flex flex-col space-y-2" :href="`/guestbook#${getUserFromDB.guestbook.id}`">
+            <div class="flex items-center space-x-4">
+              <UserLine :author="getUserFromDB.guestbook.author" :date="getUserFromDB.guestbook.createdAt.toString()" />
+              <DeleteButton v-if="isUser || isAdmin" @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)" />
+            </div>
+            <p class="pl-11 text-gray-600 dark:text-gray-400">
+              {{ getUserFromDB.guestbook.content }}
+            </p>
+          </NuxtLink>
           <p v-else class="text-gray-600 dark:text-gray-400">
-            You haven't signed the guestbook yet.
+            {{ isUser ? 'You haven\'t' : 'The user hasn\'t' }} signed the guestbook yet.
           </p>
         </div>
         <div class="mb-8">
           <h3 class="font-bold text-xl mb-4">
-            Your Saved Posts
+            {{ isUser ? 'Your' : 'User\'s' }} saved Posts
           </h3>
-          <div v-if="getUserFromDB.savedPosts && getUserFromDB.savedPosts.length > 0" class="space-y-4">
+          <div v-if="getUserFromDB.savedPosts.length > 0" class="space-y-4">
             <ul v-for="savedPost in getUserFromDB.savedPosts" :key="savedPost.id">
               <li class="list-disc ml-4">
                 <NuxtLink class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400" :href="`/blog/${savedPost.post.slug}`">
@@ -163,21 +159,21 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
                   <div>{{ formatGuestBookDate(savedPost.createdAt.toString()) }}</div>
                   <DeleteButton
                     v-if="isUser || isAdmin"
-                    @click.prevent="handleDelete('saved', savedPost.slug)"
+                    @click.prevent="handleDelete('saved', savedPost.post.slug)"
                   />
                 </NuxtLink>
               </li>
             </ul>
           </div>
           <p v-else class="text-gray-600 dark:text-gray-400">
-            You haven't saved any posts yet.
+            {{ isUser ? 'You haven\'t' : 'The user hasn\'t' }} saved any posts yet.
           </p>
         </div>
         <div class="mb-!">
           <h3 class="font-bold text-xl mb-4">
-            Your comments
+            {{ isUser ? 'Your' : 'User\'s' }} comments
           </h3>
-          <div v-if="getUserFromDB.comments && getUserFromDB.comments.length > 0" class="space-y-4">
+          <div v-if="getUserFromDB.comments.length > 0" class="space-y-4">
             <ul v-for="comment in getUserFromDB.comments" :key="comment.id">
               <li class="list-disc ml-4">
                 <NuxtLink class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400" :href="comment.question ? `/ama/${comment.question.id}#comment-${comment.id}` : `/blog/${comment.post.slug}#comment-${comment.id}`">
@@ -195,7 +191,7 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
             </ul>
           </div>
           <p v-else class="text-gray-600 dark:text-gray-400">
-            You haven't posted any comments yet.
+            {{ isUser ? 'You haven\'t' : 'The user hasn\'t' }} posted any comments yet.
           </p>
         </div>
       </div>

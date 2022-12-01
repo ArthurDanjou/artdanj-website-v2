@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, useRoute, useSupabaseUser, useUser } from '#imports'
+import { computed, ref, useRoute, useSupabase, useUser } from '#imports'
 
-// todo users store users
-const user = useSupabaseUser()
+const { user } = useSupabase()
 const route = useRoute()
 const { getUserFromDB, refreshUser, updateUser } = await useUser(route.params.user)
 const description = ref(getUserFromDB.value?.description)
@@ -26,7 +25,7 @@ const handleForm = async () => {
     <h1 class="font-bold text-xl">
       Description
     </h1>
-    <div v-if="getUserFromDB.description !== null" class="flex space-x-2">
+    <div v-if="getUserFromDB && getUserFromDB.description !== null" class="flex space-x-2">
       <h3>
         {{ getUserFromDB.description }}
       </h3>

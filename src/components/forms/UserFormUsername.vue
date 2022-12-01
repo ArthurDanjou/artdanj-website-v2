@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, useRoute, useRouter, useSupabaseUser, useUser } from '#imports'
+import { computed, ref, useRoute, useRouter, useSupabase, useUser } from '#imports'
 
-// todo users store users
-const user = useSupabaseUser()
+const { user } = useSupabase()
 const route = useRoute()
 const { getUserFromDB, updateUser } = await useUser(route.params.user)
 const username = ref(getUserFromDB.value?.username)
@@ -13,7 +12,7 @@ const handleForm = async () => {
   if (!isSendable.value)
     return
 
-  await updateUser(user.value?.email, {
+  await updateUser(user?.value.email, {
     username: username.value,
   })
   await useRouter().push(`/user/${username.value}`)

@@ -1,6 +1,5 @@
-import type { RouteParamValue } from 'vue-router'
 import type { SavedPost, User } from '~/types/types'
-import { computed, useAsyncData } from '#imports'
+import {computed, useAsyncData } from '#imports'
 
 interface UserUpdate {
   username?: string
@@ -9,7 +8,7 @@ interface UserUpdate {
   description?: string
 }
 
-export const useUser = async (username: string | RouteParamValue[]) => {
+export const useUser = async (username: string | null | string[]) => {
   const {
     data: getUserFromDB,
     refresh: refreshUser,

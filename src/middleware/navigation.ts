@@ -8,7 +8,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (to.hash.includes('token') || from.hash.includes('token'))
     return
 
-  if (to.path === '/login' && isLoggedIn) {
+  if (to.path === '/login' && isLoggedIn.value) {
     return navigateTo('/', {
       redirectCode: 301,
       replace: true,

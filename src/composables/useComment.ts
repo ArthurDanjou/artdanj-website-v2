@@ -1,16 +1,15 @@
 import type { Comment } from '~/types/types'
-import { useSupabaseUser } from '#imports'
+import {useSupabase} from '#imports'
 
 export const useComment = async () => {
-  // todo use store username
-  const user = useSupabaseUser()
+  const { user } = useSupabase()
 
   const replyToQuestion = async (questionId: number, content: string) => {
     return await $fetch<Comment>('/api/comments/question', {
       method: 'post',
       body: {
         content,
-        email: user.value?.email,
+        email: user.value.email,
         questionId,
       },
     })
@@ -21,7 +20,7 @@ export const useComment = async () => {
       method: 'post',
       body: {
         content,
-        email: user.value?.email,
+        email: user.value.email,
         postId,
       },
     })

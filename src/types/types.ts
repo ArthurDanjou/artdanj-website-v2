@@ -46,6 +46,7 @@ export interface GuestBookMessage {
 export interface PostDB {
   id: number
   slug: string
+  title: string
   views: number
   likes: number
   author: User
@@ -63,9 +64,9 @@ export interface Maintenance {
 }
 
 export enum Role {
-  USER,
-  ADMIN,
-  BLOCKED,
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+  BLOCKED = 'BLOCKED',
 }
 
 export interface Question {

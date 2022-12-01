@@ -8,8 +8,7 @@ import {
   useAsyncData,
   useComment,
   useHead,
-  useRoute,
-  useSupabaseUser,
+  useRoute, useSupabase,
   useUser,
 } from '#imports'
 import { usePost } from '~/composables/usePost'
@@ -40,9 +39,7 @@ const copyToClipboard = () => {
   }, 7000)
 }
 
-const isAdmin = true
-// const { isLoggedIn, IsAdmin } = useSupabase()
-const user = useSupabaseUser() // todo use store user
+const { user, isAdmin } = useSupabase()
 
 const answer = ref('')
 const isSendable = computed(() => answer.value.length >= 5)
@@ -61,7 +58,7 @@ const handleDelete = async (id: number) => {
   await refreshPost()
 }
 
-const { unsavePost, savePost, isSavedPost } = await useUser(user.value?.user_metadata.nickname)
+const { unsavePost, savePost, isSavedPost } = await useUser(user.value ? user.value.username : null)
 const handleSave = async () => {
   if (isSavedPost(post.value!.slug))
     await unsavePost(post.value!.slug)
@@ -124,17 +121,15 @@ const handleSave = async () => {
           <Icon name="ph:chat-circle-bold" size="24" />
         </template>
         <div v-if="post.comments.length > 0" class="space-y-6 my-4">
-          <div v-for="comment in post.comments" :key="comment.id">
-            <a :href="`#comment-${comment.id}`" class="cursor-default">
-              <div class="flex items-center space-x-4 flex-wrap">
-                <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
-                <DeleteButton
-                  v-if="isAdmin"
-                  @click.prevent="handleDelete(comment.id)"
-                />
-              </div>
-              <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)" />
-            </a>
+          <div v-for="comment in post.comments" :key="comment.id" :id="`#comment-${comment.id}`">
+            <div class="flex items-center space-x-4 flex-wrap">
+              <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
+              <DeleteButton
+                v-if="isAdmin"
+                @click.prevent="handleDelete(comment.id)"
+              />
+            </div>
+            <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)" />
           </div>
         </div>
         <div v-else class="text-gray-600 dark:text-gray-400 flex items-center space-x-2">

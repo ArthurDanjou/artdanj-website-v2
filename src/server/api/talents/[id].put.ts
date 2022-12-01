@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody<{ talent: Talent }>(event)
   return await prisma.talent.update({
     where: {
-      id: event.context.params.id,
+      id: Number(event.context.params.id),
     },
     data: {
       name: body.talent.name,

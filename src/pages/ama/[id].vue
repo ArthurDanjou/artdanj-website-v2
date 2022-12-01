@@ -39,7 +39,7 @@ const handleDelete = async (id: number) => {
         Go back to the AMA
       </ALink>
       <UserLine :link="true" :author="question.author" :date="question.createdAt" />
-      <div class="my-4">
+      <div v-if="question" class="my-4">
         <h1 class="text-2xl font-bold mb-2">
           {{ question.title }}
         </h1>
@@ -51,20 +51,18 @@ const handleDelete = async (id: number) => {
         <template #icon>
           <Icon name="ph:chat-circle-bold" size="24" />
         </template>
-        <div v-if="question.comments.length > 0" class="space-y-6 my-4">
-          <div v-for="comment in question.comments" :key="comment.id">
-            <a :href="`#comment-${comment.id}`" class="cursor-default">
-              <div class="flex items-center space-x-4 flex-wrap">
-                <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
-                <div>
-                  <DeleteButton
-                    v-if="isAdmin"
-                    @click.prevent="handleDelete(comment.id)"
-                  />
-                </div>
+        <div v-if="question && question.comments.length > 0" class="space-y-6 my-4">
+          <div v-for="comment in question.comments" :id="`#comment-${comment.id}`" :key="comment.id">
+            <div class="flex items-center space-x-4 flex-wrap">
+              <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
+              <div>
+                <DeleteButton
+                  v-if="isAdmin"
+                  @click.prevent="handleDelete(comment.id)"
+                />
               </div>
-              <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)" />
-            </a>
+            </div>
+            <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)" />
           </div>
         </div>
         <div v-else class="text-gray-600 dark:text-gray-400 flex items-center space-x-2">

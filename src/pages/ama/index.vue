@@ -8,7 +8,6 @@ import {
   useMouseInElement,
   useQuestion,
   useSupabase,
-  useSupabaseUser,
 } from '#imports'
 
 useHead({
@@ -24,8 +23,7 @@ const mouseStyle = computed(() => ({
   opacity: isHovered.value ? 1 : 0,
 }))
 
-// todo: change with store users
-const user = useSupabaseUser()
+const { user } = useSupabase()
 const { isLoggedIn } = useSupabase()
 
 const open = ref(false)
@@ -53,7 +51,6 @@ const postQuestion = async () => {
   if (!isSendable.value)
     return
 
-  // todo sendQuestion
   await createQuestion(questionForm.value.title, questionForm.value.description)
   questionForm.value.title = ''
   questionForm.value.description = ''
@@ -84,7 +81,9 @@ const handleOpening = () => {
               If you have any questions about my knowledge, my stuff or anything else, just create a new question. I will answer it as fast as I can
             </h3>
             <div v-if="isLoggedIn" class="italic text-xs flex justify-center items-center space-x-1 mt-2">
-              <Icon name="majesticons:hand-pointer-event-line" size="16" />
+              <div class="animate animate-pulse animate-slower">
+                <Icon name="majesticons:hand-pointer-event-line" size="16" />
+              </div>
               <h5>
                 Click on the card to ask a new question
               </h5>
@@ -115,12 +114,13 @@ const handleOpening = () => {
                   <form class="w-full space-y-4">
                     <div class="w-full flex space-x-2 items-center">
                       <div class="w-10 h-10">
-                        <img :src="user.user_metadata.avatar_url" alt="User avatar" class="rounded-full">
+                        <img :src="user.avatar" alt="User avatar" class="rounded-full">
                       </div>
                       <textarea
                         v-model="questionForm.title"
                         style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 42px;"
                         rows="1"
+                        maxlength="256"
                         class="block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
                         placeholder="Ask me anything..."
                       />
@@ -130,6 +130,7 @@ const handleOpening = () => {
                         v-model="questionForm.description"
                         style="overflow-wrap: break-word; resize: none;"
                         rows="5"
+                        maxlength="1024"
                         class="resize-y block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
                         placeholder="Optional: add a description with more details..."
                       />

@@ -1,11 +1,11 @@
-import { useSupabaseClient } from '#imports'
+import { computed, useSupabaseClient } from '#imports'
 import { useUserStore } from '~/store/user'
 import type { User } from '~/types/types'
 
 export const useSupabase = () => {
   const client = useSupabaseClient()
   const redirectTo = 'http://localhost:3000'
-  const { getUser, setUser, resetUser, isLoggedIn, isAdmin, isBlocked, getRole } = useUserStore()
+  const { getUser, setUser, resetUser, isLoggedIn, isAdmin, isBlocked } = useUserStore()
 
   const syncUser = async () => {
     setUser(await $fetch<User>('/api/auth/callback', { method: 'post' }))
@@ -61,8 +61,9 @@ export const useSupabase = () => {
   }
 
   const logout = async () => {
+    await resetUser()
     await client.auth.signOut()
-    resetUser()
+    await window.location.reload()
   }
 
   return {
@@ -72,10 +73,9 @@ export const useSupabase = () => {
     useDiscordLogin,
     useGoogleLogin,
     logout,
-    user: getUser,
-    isAdmin,
-    isBlocked,
-    getRole,
-    isLoggedIn,
+    user: computed(() => getUser),
+    isAdmin: computed(() => isAdmin),
+    isBlocked: computed(() => isBlocked),
+    isLoggedIn: computed(() => isLoggedIn),
   }
 }

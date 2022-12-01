@@ -1,19 +1,20 @@
 <script setup lang="ts">
 // todo do the activity card
-import { useSupabase, useSupabaseUser } from '#imports'
+import { useSupabase } from '#imports'
 
-const { user, logout } = useSupabase()
-const supabaseUser = useSupabaseUser()
+const { user, logout, isAdmin, isLoggedIn } = useSupabase()
 </script>
 
 <template>
   <Card @click.prevent="logout">
     <CardDiv>
       Activity
-      {{ user }}
-      <p v-if="supabaseUser">
-        {{ supabaseUser.email }}
-      </p>
+      <div>
+        admin: {{ isAdmin }}
+      </div>
+      <div>
+        loggedIn : {{ isLoggedIn }}
+      </div>
     </CardDiv>
   </Card>
 </template>
