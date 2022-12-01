@@ -115,7 +115,7 @@ const deleteAccount = async () => {
                 {{ getUserFromDB.description }}
               </p>
             </div>
-            <div class="space-y-">
+            <div class="space-y-1">
               <div class="flex mb-2">
                 <div
                   v-if="getUserFromDB.role === 'ADMIN'"
