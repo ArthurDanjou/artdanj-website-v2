@@ -154,12 +154,6 @@ const deleteAccount = async () => {
                   <span class="text-gray-400 dark:text-gray-600">@</span>{{ getUserFromDB.twitterId }}
                 </h3>
               </ALink>
-              <div v-if="getUserFromDB.discordId" class="flex space-x-2 items-center">
-                <Icon name="ph:discord-logo-bold" size="20" />
-                <h3>
-                  {{ getUserFromDB.discordId }}
-                </h3>
-              </div>
               <ALink v-if="getUserFromDB.githubId" target="_blank" :link="`https://github.com/${getUserFromDB.githubId}`" class="flex space-x-2 items-center">
                 <Icon name="ph:github-logo-bold" size="20" />
                 <h3>

@@ -39,7 +39,7 @@ const copyToClipboard = () => {
   }, 7000)
 }
 
-const { user, isAdmin } = useSupabase()
+const { user, isAdmin, isLoggedIn } = useSupabase()
 
 const answer = ref('')
 const isSendable = computed(() => answer.value.length >= 5)
@@ -109,7 +109,7 @@ const handleSave = async () => {
               <Icon v-if="isCopied" class="text-green-400" name="lucide:clipboard-check" size="24" />
               <Icon v-else name="lucide:clipboard" size="24" />
             </div>
-            <div class="blog-other" @click.prevent="handleSave">
+            <div v-if="isLoggedIn" class="blog-other" @click.prevent="handleSave">
               <Icon v-if="isSavedPost(post.slug)" name="material-symbols:bookmark-remove-outline" size="24" />
               <Icon v-else name="material-symbols:bookmark-add-outline-rounded" size="24" />
             </div>
