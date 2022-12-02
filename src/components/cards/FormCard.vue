@@ -94,11 +94,3 @@ const handleForm = async () => {
     </CardDiv>
   </Card>
 </template>
-
-<style scoped lang="scss">
-@keyframes fiestAnimation {
-  0% {
-    // todo animation
-  }
-}
-</style>

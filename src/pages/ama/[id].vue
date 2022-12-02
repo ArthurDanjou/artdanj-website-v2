@@ -2,7 +2,7 @@
 import { computed, ref, useComment, useHead, useQuestion, useRoute } from '#imports'
 import { convertStringToLink } from '~/logic/stringToLink'
 
-const { isLoggedIn, isAdmin, user } = useSupabase()
+const { isLoggedIn, isAdmin, user, isBlocked } = useSupabase()
 const route = useRoute()
 const { getQuestion } = await useQuestion()
 const { replyToQuestion, deleteComment } = await useComment()
@@ -68,7 +68,13 @@ const handleDelete = async (id: number) => {
           <Icon name="ph:arrow-down-bold" size="20" />
         </div>
       </Separator>
-      <form v-if="isLoggedIn">
+      <div v-if="isBlocked" class="italic text-xs flex justify-center items-center space-x-1 mt-2 text-red-400">
+        <Icon name="octicon:blocked-16" size="16" />
+        <h5>
+          You are blocked due to your behavior. You can't comment anymore.
+        </h5>
+      </div>
+      <form v-else-if="isLoggedIn && !isBlocked">
         <div class="relative">
           <textarea
             v-model="answer"

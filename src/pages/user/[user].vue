@@ -174,7 +174,7 @@ const deleteAccount = async () => {
           </div>
         </client-only>
         <div class="flex justify-between mt-8">
-          <div class="text-sm border border-.5 border-dark py-1 px-2 rounded-md bg-gray-300/60 dark:(bg-dark-400/60 text-white) text-black cursor-pointer duration-300 font-bold hover:(bg-gray-200/40 dark:bg-dark-400)">
+          <div class="text-sm border border-.5 border-dark py-1 px-2 rounded-md bg-gray-100/60 dark:(bg-dark-300/50 text-white) text-black cursor-pointer duration-300 font-bold hover:(bg-gray-300/70 dark:bg-dark-400)">
             Logout
           </div>
           <div>
@@ -186,10 +186,16 @@ const deleteAccount = async () => {
         <h1 class="font-bold text-4xl mb-2">
           Activity
         </h1>
-        <p class="text-gray-600 dark:text-gray-400 mb-16 text-justify">
+        <div class="text-gray-600 dark:text-gray-400 mb-16 text-justify">
           {{ isUser ? 'Find below all your activity on the site including your questions, your comments and your message in the guestbook.' : 'Find below all the activity of the user on the site including their questions, their comments and their message in the guestbook.' }}
           <span class="italic text-xxs">(Click on the line to go to the page)</span>
-        </p>
+          <div v-if="getUserFromDB.role === 'BLOCKED'" class="italic text-xs flex items-center space-x-1 mt-2 text-red-400">
+            <Icon name="octicon:blocked-16" size="16" />
+            <h5>
+              {{ isUser ? 'You are blocked due to your behaviour' : 'This user is blocked due to is behaviour' }}
+            </h5>
+          </div>
+        </div>
         <div class="mb-8">
           <h3 class="font-bold text-xl mb-4">
             {{ isUser ? 'Your' : 'User\'s' }} questions
@@ -291,30 +297,28 @@ const deleteAccount = async () => {
         </div>
       </div>
       <client-only>
-        <transition v-show="open" name="modal">
-          <div>
-            <ModalBackground />
-            <ModalContainer ref="modal">
-              <div class="flex flex-col">
-                <div class="rounded-t-xl p-4 border-b border-dark rounded-t-lg flex justify-between items-center">
-                  <h1 class="font-bold text-xl">
-                    Delete account
-                  </h1>
-                  <Icon class="cursor-pointer duration-500 text-gray-400 dark:text-dark-100 hover:text-black dark:hover:text-white" name="maki:cross" size="20" @click="setOpened(false)" />
-                </div>
-                <div class="rounded-b-xl p-4">
-                  <p class="text-md text-gray-600 dark:text-gray-400 text-justify mb-4">
-                    Are you sure you want to delete your account? All of your data will be
-                    <strong><u>permanently</u></strong> removed. This action cannot be undone.
-                  </p>
-                  <div class="text-center text-md border border-.5 border-red-500 py-1 px-2 rounded-md bg-red-400/20 text-red-500 cursor-pointer duration-300 font-bold hover:(bg-red-600 text-white)" @click.prevent="deleteAccount()">
-                    Delete my account
-                  </div>
+        <div v-if="open">
+          <ModalBackground />
+          <ModalContainer ref="modal">
+            <div class="flex flex-col">
+              <div class="rounded-t-xl p-4 border-b border-dark rounded-t-lg flex justify-between items-center">
+                <h1 class="font-bold text-xl">
+                  Delete account
+                </h1>
+                <Icon class="cursor-pointer duration-500 text-gray-400 dark:text-dark-100 hover:text-black dark:hover:text-white" name="maki:cross" size="20" @click="setOpened(false)" />
+              </div>
+              <div class="rounded-b-xl p-4">
+                <p class="text-md text-gray-600 dark:text-gray-400 text-justify mb-4">
+                  Are you sure you want to delete your account? All of your data will be
+                  <strong><u>permanently</u></strong> removed. This action cannot be undone.
+                </p>
+                <div class="text-center text-md border border-.5 border-red-500 py-1 px-2 rounded-md bg-red-400/20 text-red-500 cursor-pointer duration-300 font-bold hover:(bg-red-600 text-white)" @click.prevent="deleteAccount()">
+                  Delete my account
                 </div>
               </div>
-            </ModalContainer>
-          </div>
-        </transition>
+            </div>
+          </ModalContainer>
+        </div>
       </client-only>
     </div>
   </section>

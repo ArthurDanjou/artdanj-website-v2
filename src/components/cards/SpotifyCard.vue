@@ -4,10 +4,9 @@ import { computed, onMounted, onUnmounted, ref, useAsyncData, useElementHover, u
 
 const { data, refresh, pending } = await useAsyncData<SpotifyData>('spotify', () => $fetch('https://api.arthurdanjou.fr/spotify'))
 
-const refreshDataInterval: null | ReturnType<typeof setInterval> = null
+let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
-  // todo remove comment
-  // refreshDataInterval = setInterval(refresh, 5000)
+  refreshDataInterval = setInterval(refresh, 2 * 60 * 1000) // every 2 minutes
 })
 onUnmounted(() => {
   if (refreshDataInterval)

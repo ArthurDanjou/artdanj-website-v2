@@ -3,7 +3,7 @@ import {
   ref,
   useGuestbook,
   useHead,
-  useSupabase, useSupabaseUser, useUser,
+  useSupabase, useUser,
 } from '#imports'
 import { convertStringToLink } from '~/logic/stringToLink'
 
@@ -11,7 +11,7 @@ useHead({
   title: 'My Guestbook - Arthur Danjou',
 })
 
-const { user, isAdmin, isLoggedIn, useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
+const { user, isBlocked, isAdmin, isLoggedIn, useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
 const { getAllMessages, deleteMessage, signMessage } = await useGuestbook()
 const { hasSignedGuestbook, refreshUser, getGuestBookMessage } = await useUser(user.value ? user.value.username : null)
 
@@ -44,7 +44,17 @@ const handleDelete = async (email: string) => {
   <section>
     <PageTitle title="My Book" />
     <div class="md:w-1/2 mx-auto">
-      <div v-if="isLoggedIn" class="my-12 flex flex-col bg-stone-200 dark:bg-neutral-800 p-4 rounded-lg border border-dark">
+      <div v-if="isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900  p-4 rounded-lg border border-dark">
+        <div>
+          <h1 class="text-3xl font-bold">
+            You cannot sign my guestbook
+          </h1>
+          <h3 v-if="hasSignedGuestbook" class="text-md text-gray-600 dark:text-gray-400">
+            You are blocked due to your behavior.
+          </h3>
+        </div>
+      </div>
+      <div v-else-if="isLoggedIn && !isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900  p-4 rounded-lg border border-dark">
         <div>
           <h1 v-if="hasSignedGuestbook" class="text-3xl font-bold">
             Sign the guestbook, again
@@ -64,9 +74,9 @@ const handleDelete = async (email: string) => {
               type="text"
               placeholder="Your message"
               required
-              class="w-full p-2 bg-stone-300 rounded-md dark:bg-neutral-700 outline-none duration-300 pr-22"
+              class="w-full p-2 bg-stone-200 rounded-md dark:bg-neutral-800 outline-none duration-300 pr-22"
             >
-            <button v-if="hasSignedGuestbook" class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
+            <button v-if="hasSignedGuestbook" class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-300 hover:bg-stone-400 dark:(bg-neutral-700 hover:bg-neutral-600)" @click.prevent="signNewMessage">
               Resign
             </button>
             <button v-else class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
@@ -83,7 +93,7 @@ const handleDelete = async (email: string) => {
             <p>
               Your informations are only used to display your name and reply by email.
             </p>
-            <div class="cursor-pointer border hover:shadow-dark duration-300 border-dark rounded-md p-1 flex items-center justify-center space-x-2" @click="logout">
+            <div class="button-sendable text-sm border border-.5 border-dark py-1 px-2 rounded-md font-bold duration-300 flex items-center justify-center space-x-2" @click="logout">
               Logout <Icon name="material-symbols:logout-rounded" size="20px" class="ml-2" />
             </div>
           </div>

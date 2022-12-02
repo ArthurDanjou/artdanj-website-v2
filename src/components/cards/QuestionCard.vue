@@ -4,7 +4,7 @@ import { useQuestion, useSupabase } from '#imports'
 import type { Question } from '~/types/types'
 import { formatShortDate } from '~/logic/dates'
 
-const props = defineProps({
+defineProps({
   question: Object as PropType<Question>,
 })
 
@@ -16,7 +16,6 @@ const { deleteQuestion } = await useQuestion()
   <Card>
     <CardLink :href="`/ama/${question.id}`" class="p-0">
       <div class="h-full flex flex-col justify-between">
-        <!-- todo: Add tooltip for favorite -->
         <div class="flex items-center justify-center space-x-4 h-full">
           <h1 class="text-lg font-bold px-4 flex relative line-clamp-2">
             {{ question.title }}

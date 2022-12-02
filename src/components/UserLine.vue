@@ -19,15 +19,15 @@ defineProps({
           <p class="duration-300 underline underline-offset-4 decoration-transparent underline-opacity-25 group-hover:(decoration-black underline-opacity-100) dark:group-hover:decoration-white">
             <span class="text-gray-400 dark:text-gray-500">@</span>{{ author.username }}
           </p>
-          <div class="flex">
+          <div v-if="author.role === 'ADMIN'" class="flex">
             <div
-              v-if="author.role === 'ADMIN'"
               class="font-bold text-amber-500 text-xxs bg-amber-200/70 px-2 py-.5 rounded-full dark:(bg-amber-400/90 text-white)"
             >
               ADMIN 👑
             </div>
+          </div>
+          <div v-if="author.role === 'BLOCKED'">
             <div
-              v-if="author.role === 'BLOCKED'"
               class="font-bold text-red-400 text-xxs bg-red-200/60 px-2 py-.5 rounded-full dark:(bg-red-600/70 text-white)"
             >
               BLOCKED 🚫

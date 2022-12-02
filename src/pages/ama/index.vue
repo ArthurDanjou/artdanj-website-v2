@@ -23,8 +23,7 @@ const mouseStyle = computed(() => ({
   opacity: isHovered.value ? 1 : 0,
 }))
 
-const { user } = useSupabase()
-const { isLoggedIn } = useSupabase()
+const { user, isBlocked, isLoggedIn } = useSupabase()
 
 const open = ref(false)
 const modal = ref(null)
@@ -80,7 +79,13 @@ const handleOpening = () => {
             <h3 class="text-sm text-gray-600 dark:text-gray-400 text-center">
               If you have any questions about my knowledge, my stuff or anything else, just create a new question. I will answer it as fast as I can
             </h3>
-            <div v-if="isLoggedIn" class="italic text-xs flex justify-center items-center space-x-1 mt-2">
+            <div v-if="isBlocked" class="italic text-xs flex justify-center items-center space-x-1 mt-2 text-red-400">
+              <Icon name="octicon:blocked-16" size="16" />
+              <h5>
+                You are blocked due to your behavior. You can't ask new question anymore.
+              </h5>
+            </div>
+            <div v-else-if="isLoggedIn && !isBlocked" class="italic text-xs flex justify-center items-center space-x-1 mt-2">
               <div class="animate animate-pulse animate-slower">
                 <Icon name="majesticons:hand-pointer-event-line" size="16" />
               </div>
@@ -99,57 +104,55 @@ const handleOpening = () => {
       </Card>
       <QuestionCard v-for="question in getAllQuestions" :key="question.id" :question="question" />
       <client-only>
-        <transition v-show="open" name="modal">
-          <div>
-            <ModalBackground />
-            <ModalContainer ref="modal">
-              <div class="flex flex-col">
-                <div class="rounded-t-xl p-x-4 py-2 border-b border-dark rounded-t-lg flex justify-between items-center">
-                  <h1 class="font-bold text-md">
-                    Ask me anything
-                  </h1>
-                  <Icon class="cursor-pointer duration-500 text-gray-400 dark:text-dark-100 hover:text-black dark:hover:text-white" name="maki:cross" size="20" @click="setOpened(false)" />
-                </div>
-                <div class="rounded-b-xl p-4">
-                  <form class="w-full space-y-4">
-                    <div class="w-full flex space-x-2 items-center">
-                      <div class="w-10 h-10">
-                        <img :src="user.avatar" alt="User avatar" class="rounded-full">
-                      </div>
-                      <textarea
-                        v-model="questionForm.title"
-                        style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 42px;"
-                        rows="1"
-                        maxlength="256"
-                        class="block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-                        placeholder="Ask me anything..."
-                      />
-                    </div>
-                    <div class="pl-11">
-                      <textarea
-                        v-model="questionForm.description"
-                        style="overflow-wrap: break-word; resize: none;"
-                        rows="5"
-                        maxlength="1024"
-                        class="resize-y block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-                        placeholder="Optional: add a description with more details..."
-                      />
-                    </div>
-                    <div class="flex justify-end">
-                      <div
-                        :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-                        class="duration-300 flex items-center justify-center px-6 py-1 rounded-md shadow-xs hover:shadow-sm border border-dark"
-                        @click.prevent="postQuestion"
-                      >
-                        Ask
-                      </div>
-                    </div>
-                  </form>
-                </div>
+        <div v-if="open">
+          <ModalBackground />
+          <ModalContainer ref="modal">
+            <div class="flex flex-col">
+              <div class="rounded-t-xl p-x-4 py-2 border-b border-dark rounded-t-lg flex justify-between items-center">
+                <h1 class="font-bold text-md">
+                  Ask me anything
+                </h1>
+                <Icon class="cursor-pointer duration-500 text-gray-400 dark:text-dark-100 hover:text-black dark:hover:text-white" name="maki:cross" size="20" @click="setOpened(false)" />
               </div>
-            </ModalContainer>
-          </div>
-        </transition>
+              <div class="rounded-b-xl p-4">
+                <form class="w-full space-y-4">
+                  <div class="w-full flex space-x-2 items-center">
+                    <div class="w-10 h-10">
+                      <img :src="user.avatar" alt="User avatar" class="rounded-full">
+                    </div>
+                    <textarea
+                      v-model="questionForm.title"
+                      style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 42px;"
+                      rows="1"
+                      maxlength="256"
+                      class="block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
+                      placeholder="Ask me anything..."
+                    />
+                  </div>
+                  <div class="pl-11">
+                    <textarea
+                      v-model="questionForm.description"
+                      style="overflow-wrap: break-word; resize: none;"
+                      rows="5"
+                      maxlength="1024"
+                      class="resize-y block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
+                      placeholder="Optional: add a description with more details..."
+                    />
+                  </div>
+                  <div class="flex justify-end">
+                    <div
+                      :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
+                      class="duration-300 flex items-center justify-center px-6 py-1 rounded-md shadow-xs hover:shadow-sm border border-dark"
+                      @click.prevent="postQuestion"
+                    >
+                      Ask
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </ModalContainer>
+        </div>
       </client-only>
     </div>
   </section>

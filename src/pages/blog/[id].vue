@@ -30,16 +30,11 @@ const top = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-const isCopied = ref(false)
-const copyToClipboard = () => {
-  navigator.clipboard.writeText(`https://arthurdanjou.fr/blog/${route.params.id}`)
-  isCopied.value = true
-  setTimeout(() => {
-    isCopied.value = false
-  }, 7000)
-}
+const { copy, copied } = useClipboard({
+  source: `https://arthurdanjou.fr/blog/${route.params.id}`,
+})
 
-const { user, isAdmin, isLoggedIn } = useSupabase()
+const { user, isAdmin, isLoggedIn, isBlocked } = useSupabase()
 
 const answer = ref('')
 const isSendable = computed(() => answer.value.length >= 5)
@@ -105,8 +100,8 @@ const handleSave = async () => {
             <div class="blog-other" @click.prevent="top()">
               <Icon name="ph:arrow-up-bold" size="24" />
             </div>
-            <div class="blog-other" @click.prevent="copyToClipboard()">
-              <Icon v-if="isCopied" class="text-green-400" name="lucide:clipboard-check" size="24" />
+            <div class="blog-other" @click.prevent="copy()">
+              <Icon v-if="copied" class="text-green-400" name="lucide:clipboard-check" size="24" />
               <Icon v-else name="lucide:clipboard" size="24" />
             </div>
             <div v-if="isLoggedIn" class="blog-other" @click.prevent="handleSave">
@@ -137,7 +132,13 @@ const handleSave = async () => {
           <Icon name="ph:arrow-down-bold" size="20" />
         </div>
       </Separator>
-      <form v-if="isLoggedIn">
+      <div v-if="isBlocked" class="italic text-xs flex justify-center items-center space-x-1 mt-2 text-red-400">
+        <Icon name="octicon:blocked-16" size="16" />
+        <h5>
+          You are blocked due to your behavior. You can't comment anymore.
+        </h5>
+      </div>
+      <form v-else-if="isLoggedIn && !isBlocked">
         <div class="relative">
           <textarea
             v-model="answer"
