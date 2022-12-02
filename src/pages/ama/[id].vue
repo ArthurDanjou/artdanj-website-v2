@@ -2,9 +2,7 @@
 import { computed, ref, useComment, useHead, useQuestion, useRoute } from '#imports'
 import { convertStringToLink } from '~/logic/stringToLink'
 
-const isLoggedIn = true
-const isAdmin = true
-// const { isLoggedIn, IsAdmin } = useSupabase()
+const { isLoggedIn, isAdmin, user } = useSupabase()
 const route = useRoute()
 const { getQuestion } = await useQuestion()
 const { replyToQuestion, deleteComment } = await useComment()
@@ -57,7 +55,7 @@ const handleDelete = async (id: number) => {
               <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
               <div>
                 <DeleteButton
-                  v-if="isAdmin"
+                  v-if="isAdmin || (user && user.username && comment.author.username === user.username)"
                   @click.prevent="handleDelete(comment.id)"
                 />
               </div>
@@ -70,7 +68,7 @@ const handleDelete = async (id: number) => {
           <Icon name="ph:arrow-down-bold" size="20" />
         </div>
       </Separator>
-      <form>
+      <form v-if="isLoggedIn">
         <div class="relative">
           <textarea
             v-model="answer"
@@ -90,6 +88,12 @@ const handleDelete = async (id: number) => {
           </div>
         </div>
       </form>
+      <div v-else class="italic text-xs flex justify-center items-center space-x-1 mt-2">
+        <Icon name="ri:question-line" size="16" />
+        <h5>
+          You need to be connected to answer this question
+        </h5>
+      </div>
     </main>
   </section>
 </template>

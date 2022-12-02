@@ -121,11 +121,11 @@ const handleSave = async () => {
           <Icon name="ph:chat-circle-bold" size="24" />
         </template>
         <div v-if="post.comments.length > 0" class="space-y-6 my-4">
-          <div v-for="comment in post.comments" :key="comment.id" :id="`#comment-${comment.id}`">
+          <div v-for="comment in post.comments" :id="`#comment-${comment.id}`" :key="comment.id">
             <div class="flex items-center space-x-4 flex-wrap">
               <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
               <DeleteButton
-                v-if="isAdmin"
+                v-if="isAdmin || (user && user.username && comment.author.username === user.username)"
                 @click.prevent="handleDelete(comment.id)"
               />
             </div>
@@ -137,7 +137,7 @@ const handleSave = async () => {
           <Icon name="ph:arrow-down-bold" size="20" />
         </div>
       </Separator>
-      <form>
+      <form v-if="isLoggedIn">
         <div class="relative">
           <textarea
             v-model="answer"
@@ -146,17 +146,23 @@ const handleSave = async () => {
             class="w-full rounded-md px-4 py-2 bg-gray-1000 dark:bg-white dark:bg-opacity-5 bg-opacity-5 border border-dark block"
           />
           <div class="absolute bottom-1 right-1.25">
-            <button
+            <div
               type="submit"
               :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
               class="duration-300 flex items-center justify-center p-2 rounded-md shadow-xs hover:shadow-sm border border-dark"
               @click.prevent="sendAnswer()"
             >
               <Icon name="ph:arrow-up-bold" size="16" />
-            </button>
+            </div>
           </div>
         </div>
       </form>
+      <div v-else class="italic text-xs flex justify-center items-center space-x-1 mt-2">
+        <Icon name="ri:question-line" size="16" />
+        <h5>
+          You need to be connected to comment this post
+        </h5>
+      </div>
     </main>
   </section>
 </template>
