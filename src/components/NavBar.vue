@@ -24,6 +24,7 @@ const goBack = () => {
 }
 
 const handleLogout = async () => {
+  await playAnimation('logout')
   await logout()
 }
 
@@ -109,7 +110,7 @@ const isUser = computed(() => isRoute('/user/'))
           <UserIcon :filled="isRoute('/user')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <div v-if="isLoggedIn" class="nav-link" @click.prevent="handleLogout">
+      <div v-if="isLoggedIn" id="logout" class="nav-link" @click.prevent="handleLogout">
         <Icon name="material-symbols:logout" size="24px" class="text-2xl" />
       </div>
       <NavBarItem v-else :is-route="isRoute('/login')">
