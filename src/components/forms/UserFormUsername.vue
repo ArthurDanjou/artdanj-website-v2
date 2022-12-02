@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { computed, ref, useRoute, useRouter, useSupabase, useUser } from '#imports'
+import type { User } from '~/types/types'
 
 const { user } = useSupabase()
 const route = useRoute()
 const { getUserFromDB, updateUser } = await useUser(route.params.user)
 const username = ref(getUserFromDB.value?.username)
 const editable = ref(getUserFromDB.value?.username.length === 0)
-const isSendable = computed(() => username.value!.length > 5)
 
+const isUsernameTaken = computedAsync<boolean>(async () => {
+  const newUser = await $fetch<User>(`/api/users/${username.value}`)
+  return newUser?.username === username.value
+}, false)
+
+const isSendable = computed(() => username.value!.length > 5 || !isUsernameTaken.value)
 const handleForm = async () => {
   if (!isSendable.value)
     return
@@ -17,6 +23,7 @@ const handleForm = async () => {
   })
   await useRouter().push(`/user/${username.value}`)
   editable.value = false
+  await window.location.reload()
 }
 </script>
 
@@ -43,7 +50,10 @@ const handleForm = async () => {
         class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
         type="text"
       >
-      <p class="text-xs text-red-400 dark:text-red-500">
+      <p v-if="isUsernameTaken" class="text-xs text-red-400 dark:text-red-500">
+        This username is already taken.
+      </p>
+      <p v-else class="text-xs text-red-400 dark:text-red-500">
         Updating your username will break any existing links to your profile, so you know, don’t do it too often.
       </p>
       <div class="flex">
