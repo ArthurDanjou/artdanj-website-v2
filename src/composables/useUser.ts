@@ -1,5 +1,6 @@
 import type { SavedPost, User } from '~/types/types'
 import { computed, useAsyncData } from '#imports'
+import { useUserStore } from '~/store/user'
 
 interface UserUpdate {
   username?: string
@@ -10,6 +11,7 @@ interface UserUpdate {
 }
 
 export const useUser = async (username: string | null | string[]) => {
+  const { setUser } = useUserStore()
   const {
     data: getUserFromDB,
     refresh: refreshUser,
@@ -18,13 +20,14 @@ export const useUser = async (username: string | null | string[]) => {
   const updateUser = async (email: string | undefined, user: UserUpdate) => {
     if (!email)
       return
-    await $fetch(`/api/users/${email}`, {
+    const updated = await $fetch<User>(`/api/users/${email}`, {
       method: 'PUT',
       body: {
         ...user,
       },
     })
     await refreshUser()
+    await setUser(updated)
   }
 
   const savePost = async (slug: string) => {
@@ -39,7 +42,7 @@ export const useUser = async (username: string | null | string[]) => {
   }
 
   const isSavedPost = (slug: string) => {
-    return getUserFromDB.value?.savedPosts.some(post => post.post.slug === slug)
+    return getUserFromDB.value?.savedPosts && getUserFromDB.value?.savedPosts.some(post => post.post.slug === slug)
   }
 
   const unsavePost = async (slug: string) => {
