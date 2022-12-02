@@ -72,32 +72,7 @@ const deleteAccount = async () => {
     <PageTitle v-if="isUser" title="Your Profile" />
     <PageTitle v-else title="User Profile" />
     <div v-if="getUserFromDB" class="md:w-1/2 mx-auto">
-      <div v-if="isUser" class="py-16 border-b border-.5 border-gray-150 dark:border-zinc-800">
-        <h1 class="font-bold text-4xl mb-2">
-          Settings
-        </h1>
-        <p class="text-gray-600 dark:text-gray-400 mb-16">
-          Edit below your settings
-        </p>
-        <client-only>
-          <div class="space-y-8">
-            <UserFormUsername />
-            <UserFormEmail />
-            <UserFormLocation />
-            <UserFormDescription />
-            <UserFormWebsite />
-          </div>
-        </client-only>
-        <div class="flex justify-between mt-8">
-          <div class="text-sm border border-.5 border-dark py-1 px-2 rounded-md bg-gray-300/60 dark:(bg-dark-400/60 text-white) text-black cursor-pointer duration-300 font-bold hover:(bg-gray-200/40 dark:bg-dark-400)">
-            Logout
-          </div>
-          <div>
-            <DeleteButton :big="true" content="Delete your account" @click.prevent="setOpened(true)" />
-          </div>
-        </div>
-      </div>
-      <div v-else>
+      <div class="py-16 border-b border-.5 border-gray-150 dark:border-zinc-800">
         <h1 class="font-bold text-4xl mb-2">
           Profile
         </h1>
@@ -167,7 +142,7 @@ const deleteAccount = async () => {
                 </h3>
               </ALink>
               <div v-if="getUserFromDB.googleId" class="flex space-x-2 items-center">
-                <Icon name="ph:google-logo" size="20" />
+                <Icon name="mdi:google" size="20" />
                 <h3>
                   {{ getUserFromDB.googleId }}
                 </h3>
@@ -179,6 +154,31 @@ const deleteAccount = async () => {
                 </h3>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div v-if="isUser" class="py-16 border-b border-.5 border-gray-150 dark:border-zinc-800">
+        <h1 class="font-bold text-4xl mb-2">
+          Settings
+        </h1>
+        <p class="text-gray-600 dark:text-gray-400 mb-16">
+          Edit below your settings
+        </p>
+        <client-only>
+          <div class="space-y-8">
+            <UserFormUsername />
+            <UserFormEmail />
+            <UserFormLocation />
+            <UserFormDescription />
+            <UserFormWebsite />
+          </div>
+        </client-only>
+        <div class="flex justify-between mt-8">
+          <div class="text-sm border border-.5 border-dark py-1 px-2 rounded-md bg-gray-300/60 dark:(bg-dark-400/60 text-white) text-black cursor-pointer duration-300 font-bold hover:(bg-gray-200/40 dark:bg-dark-400)">
+            Logout
+          </div>
+          <div>
+            <DeleteButton :big="true" content="Delete your account" @click.prevent="setOpened(true)" />
           </div>
         </div>
       </div>
