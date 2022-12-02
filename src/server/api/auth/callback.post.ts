@@ -17,16 +17,23 @@ export default defineEventHandler(async (event) => {
         email: user.email,
       },
     })
+    const isUsernameTaken = async () => {
+      const other = await prisma.user.findUnique({
+        where: {
+          username: String(user.user_metadata.full_name || user.user_metadata.nickname || user.user_metadata.slug).replaceAll(' ', ''),
+        },
+      })
+      return !!other
+    }
     if (prismaUser) {
       return await prisma.user.update({
         where: {
           email: user.email,
         },
         data: {
-          username: prismaUser.username.replaceAll(' ', ''),
           lastSeen: new Date(user.last_sign_in_at || Date.now()),
           twitterId: getIdentity(user, Provider.TWITTER)?.identity_data.user_name || prismaUser.twitterId,
-          discordId: getIdentity(user, Provider.DISCORD)?.identity_data.full_name || prismaUser.discordId,
+          discordId: getIdentity(user, Provider.DISCORD)?.identity_data.name || prismaUser.discordId,
           githubId: getIdentity(user, Provider.GITHUB)?.identity_data.user_name || prismaUser.githubId,
           googleId: getIdentity(user, Provider.GOOGLE)?.identity_data.full_name.trim() || prismaUser.googleId,
           twitchId: getIdentity(user, Provider.TWITCH)?.identity_data.nickname || prismaUser.twitchId,
@@ -40,12 +47,14 @@ export default defineEventHandler(async (event) => {
           email: user.email,
           avatar: user.user_metadata.picture,
           supabaseId: user.id,
-          username: String(user.user_metadata.full_name || user.user_metadata.nickname || user.user_metadata.slug).replaceAll(' ', ''),
-          twitterId: getIdentity(user, Provider.TWITTER)?.identity_data.user_name || '',
-          discordId: getIdentity(user, Provider.DISCORD)?.identity_data.full_name || '',
-          githubId: getIdentity(user, Provider.GITHUB)?.identity_data.user_name || '',
-          googleId: getIdentity(user, Provider.GOOGLE)?.identity_data.full_name.trim() || '',
-          twitchId: getIdentity(user, Provider.TWITCH)?.identity_data.nickname || '',
+          username: await isUsernameTaken()
+            ? `${String(user.user_metadata.full_name || user.user_metadata.nickname || user.user_metadata.slug).replaceAll(' ', '')}-${Math.floor(Math.random() * 1000)}`
+            : String(user.user_metadata.full_name || user.user_metadata.nickname || user.user_metadata.slug).replaceAll(' ', ''),
+          twitterId: getIdentity(user, Provider.TWITTER)?.identity_data.user_name || undefined,
+          discordId: getIdentity(user, Provider.DISCORD)?.identity_data.name || undefined,
+          githubId: getIdentity(user, Provider.GITHUB)?.identity_data.user_name || undefined,
+          googleId: getIdentity(user, Provider.GOOGLE)?.identity_data.full_name.trim() || undefined,
+          twitchId: getIdentity(user, Provider.TWITCH)?.identity_data.nickname || undefined,
         },
       })
     }
