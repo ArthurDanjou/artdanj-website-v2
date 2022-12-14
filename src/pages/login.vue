@@ -9,7 +9,7 @@ definePageMeta({
   middleware: 'navigation',
 })
 
-const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin } = useSupabase()
+const { login, Providers } = useSupabase()
 </script>
 
 <template>
@@ -57,11 +57,36 @@ const { useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwit
         </p>
         <div class="flex justify-center">
           <div class="flex space-x-2 md:space-x-8 flex-wrap">
-            <Icon class="social-login" name="mdi:github" size="64" @click.prevent="useGithubLogin('')" />
-            <Icon class="social-login text-[#1DA1F2]" name="mdi:twitter" size="64" @click.prevent="useTwitterLogin('')" />
-            <Icon class="social-login text-[#DB4437]" name="bxl:google" size="64" @click.prevent="useGoogleLogin('')" />
-            <Icon class="social-login text-[#6441a5]" name="mdi:twitch" size="64" @click.prevent="useTwitchLogin('')" />
-            <Icon class="social-login text-[#5865F2]" name="mdi:discord" size="64" @click.prevent="useDiscordLogin('')" />
+            <button
+              class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#333] text-white hover:shadow-md hover:shadow-[#333]"
+              @click.prevent="login(Providers.GITHUB)"
+            >
+              <Icon class="text-white" name="mdi:github" size="48" />
+            </button>
+            <button
+              class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#1DA1F2] text-white hover:shadow-md hover:shadow-[#1DA1F2]"
+              @click.prevent="login(Providers.TWITTER)"
+            >
+              <Icon class="text-white" name="mdi:twitter" size="48" />
+            </button>
+            <button
+              class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#DB4437] text-white hover:shadow-md hover:shadow-[#DB4437]"
+              @click.prevent="login(Providers.GOOGLE)"
+            >
+              <Icon class="text-white" name="bxl:google" size="48" />
+            </button>
+            <button
+              class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#6441a5] text-white hover:shadow-md hover:shadow-[#6441a5]"
+              @click.prevent="login(Providers.TWITCH)"
+            >
+              <Icon class="text-white" name="mdi:twitch" size="48" />
+            </button>
+            <button
+              class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#5865F2] text-white hover:shadow-md hover:shadow-[#5865F2]"
+              @click.prevent="login(Providers.DISCORD)"
+            >
+              <Icon class="text-white" name="mdi:discord" size="48" />
+            </button>
           </div>
         </div>
       </div>

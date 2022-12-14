@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
   computed,
-  onClickOutside,
   ref, showError, useComment, useGuestbook,
   useHead, useQuestion,
   useRoute, useSupabase,
@@ -16,18 +15,10 @@ useHead({
 })
 
 const open = ref(false)
-const modal = ref(null)
-const setOpened = (state: boolean) => {
-  if (state)
-    document.body.classList.add('overflow-hidden')
-  else
-    document.body.classList.remove('overflow-hidden')
-
-  open.value = state
+const setOpen = () => {
+  open.value = true
+  document.body.classList.add('overflow-hidden')
 }
-onClickOutside(modal, () => {
-  setOpened(false)
-})
 
 const { getUserFromDB, refreshUser, unsavePost, deleteUser } = await useUser(route.params.user)
 if (!getUserFromDB.value?.email) {
@@ -60,7 +51,7 @@ const handleDelete = async (type: 'comment' | 'question' | 'saved', id: number |
 }
 
 const deleteAccount = async () => {
-  setOpened(false)
+  open.value = false
   await deleteUser()
   await useRouter().push('/')
   await logout()
@@ -174,12 +165,8 @@ const deleteAccount = async () => {
           </div>
         </client-only>
         <div class="flex justify-between mt-8">
-          <div class="text-sm border border-.5 border-dark py-1 px-2 rounded-md bg-gray-100/60 dark:(bg-dark-300/50 text-white) text-black cursor-pointer duration-300 font-bold hover:(bg-gray-300/70 dark:bg-dark-400)">
-            Logout
-          </div>
-          <div>
-            <DeleteButton :big="true" content="Delete your account" @click.prevent="setOpened(true)" />
-          </div>
+          <Button content="Logout" icon="material-symbols:logout-rounded" @click.prevent="logout()" />
+          <DeleteButton :thin="true" content="Delete your account" @click.prevent="setOpen" />
         </div>
       </div>
       <div class="py-16">
@@ -218,6 +205,7 @@ const deleteAccount = async () => {
                   </div>
                   <DeleteButton
                     v-if="isUser || isAdmin"
+                    :thin="true"
                     @click.prevent="handleDelete('question', question.id)"
                   />
                 </NuxtLink>
@@ -235,7 +223,7 @@ const deleteAccount = async () => {
           <NuxtLink v-if="getUserFromDB.guestbook" class="flex flex-col space-y-2" :href="`/guestbook#${getUserFromDB.guestbook.id}`">
             <div class="flex items-center space-x-4">
               <UserLine :author="getUserFromDB.guestbook.author" :date="getUserFromDB.guestbook.createdAt.toString()" />
-              <DeleteButton v-if="isUser || isAdmin" @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)" />
+              <DeleteButton v-if="isUser || isAdmin" :thin="true" @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)" />
             </div>
             <p class="pl-11 text-gray-600 dark:text-gray-400">
               {{ getUserFromDB.guestbook.content }}
@@ -260,6 +248,7 @@ const deleteAccount = async () => {
                   <div>{{ formatLongDate(savedPost.createdAt.toString()) }}</div>
                   <DeleteButton
                     v-if="isUser || isAdmin"
+                    :thin="true"
                     @click.prevent="handleDelete('saved', savedPost.post.slug)"
                   />
                 </NuxtLink>
@@ -285,6 +274,7 @@ const deleteAccount = async () => {
                   <div>{{ formatLongDate(comment.createdAt.toString()) }}</div>
                   <DeleteButton
                     v-if="isUser || isAdmin"
+                    :thin="true"
                     @click.prevent="handleDelete('comment', comment.id)"
                   />
                 </NuxtLink>
@@ -297,28 +287,18 @@ const deleteAccount = async () => {
         </div>
       </div>
       <client-only>
-        <div v-if="open">
-          <ModalBackground />
-          <ModalContainer ref="modal">
-            <div class="flex flex-col">
-              <div class="rounded-t-xl p-4 border-b border-dark rounded-t-lg flex justify-between items-center">
-                <h1 class="font-bold text-xl">
-                  Delete account
-                </h1>
-                <Icon class="cursor-pointer duration-500 text-gray-400 dark:text-dark-100 hover:text-black dark:hover:text-white" name="maki:cross" size="20" @click="setOpened(false)" />
-              </div>
-              <div class="rounded-b-xl p-4">
-                <p class="text-md text-gray-600 dark:text-gray-400 text-justify mb-4">
-                  Are you sure you want to delete your account? All of your data will be
-                  <strong><u>permanently</u></strong> removed. This action cannot be undone.
-                </p>
-                <div class="text-center text-md border border-.5 border-red-500 py-1 px-2 rounded-md bg-red-400/20 text-red-500 cursor-pointer duration-300 font-bold hover:(bg-red-600 text-white)" @click.prevent="deleteAccount()">
-                  Delete my account
-                </div>
-              </div>
+        <Modal v-if="open" @close="open = false">
+          <div class="flex flex-col">
+            <ModalTitle title="Delete account" />
+            <p class="text-md text-gray-600 dark:text-gray-400 text-justify mb-4">
+              Are you sure you want to delete your account? All of your data will be
+              <strong><u>permanently</u></strong> removed. This action cannot be undone.
+            </p>
+            <div class="flex justify-center">
+              <DeleteButton content="Delete my account" @click.prevent="deleteAccount()" />
             </div>
-          </ModalContainer>
-        </div>
+          </div>
+        </Modal>
       </client-only>
     </div>
   </section>

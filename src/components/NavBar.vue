@@ -130,7 +130,7 @@ const isUser = computed(() => isRoute('/user/'))
 }
 
 .nav-container {
-  @apply z-11 flex items-center shadow-nav-dark bg-white dark:(bg-dark-800 shadow-nav-light) border-dark border rounded-16px flex p-10px gap-2;
+  @apply flex items-center shadow-nav-dark bg-white dark:(bg-dark-800 shadow-nav-light) border-dark border rounded-16px flex p-10px gap-2;
 }
 
 .nav-link {

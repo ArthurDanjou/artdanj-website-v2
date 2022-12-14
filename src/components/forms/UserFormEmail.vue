@@ -18,6 +18,10 @@ const handleForm = async () => {
   await refreshUser()
   editable.value = false
 }
+
+const updateValue = (content: any) => {
+  email.value = content
+}
 </script>
 
 <template>
@@ -38,23 +42,11 @@ const handleForm = async () => {
       </div>
     </div>
     <form v-if="editable" class="space-y-2 w-full">
-      <input
-        v-model="email"
-        class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-        type="email"
-      >
+      <Input icon="material-symbols:alternate-email-rounded" class="w-full" label="Email" :content="email" @update="updateValue" />
       <p class="text-xs text-gray-600 dark:text-gray-400">
         Adding your email will allow you to turn on replies for comments or AMA questions.
       </p>
-      <div class="flex">
-        <div
-          class="text-sm border border-.5 border-dark py-1 px-2 rounded-md font-bold duration-300"
-          :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-          @click.prevent="handleForm"
-        >
-          Save email
-        </div>
-      </div>
+      <Button content="Save email" :sendable="isSendable" icon="fa-regular:save" @click.prevent="handleForm" />
     </form>
   </div>
 </template>

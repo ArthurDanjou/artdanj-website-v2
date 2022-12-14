@@ -54,31 +54,31 @@ const mouseStyle = computed(() => ({
           <Card>
             <CardDiv>
               <div class="flex md:flex-col lg:flex-row justify-between md:space-y-8 lg:space-y-0">
-                <NuxtLink class="social-div" target="_blank" to="https://instagram.com/arthur.dnj">
+                <NuxtLink class="social-div bg-[#C13584] text-white hover:shadow-md hover:shadow-[#C13584]" target="_blank" to="https://instagram.com/arthur.dnj">
                   <Icon name="mdi:instagram" size="24px" />
                   <p class="hidden md:block lg:hidden">
                     Instagram
                   </p>
                 </NuxtLink>
-                <NuxtLink class="social-div" target="_blank" to="https://github.com/arthurdanjou">
+                <NuxtLink class="social-div bg-[#333] text-white hover:shadow-md hover:shadow-[#333]" target="_blank" to="https://github.com/arthurdanjou">
                   <Icon name="mdi:github" size="24px" />
                   <p class="hidden md:block lg:hidden">
                     GitHub
                   </p>
                 </NuxtLink>
-                <NuxtLink class="social-div" target="_blank" to="https://twitter.com/arthurdanj">
+                <NuxtLink class="social-div bg-[#1DA1F2] text-white hover:shadow-md hover:shadow-[#1DA1F2]" target="_blank" to="https://twitter.com/arthurdanj">
                   <Icon name="mdi:twitter" size="24px" />
                   <p class="hidden md:block lg:hidden">
                     Twitter
                   </p>
                 </NuxtLink>
-                <NuxtLink class="social-div" target="_blank" to="https://www.linkedin.com/in/arthurdanjou/">
+                <NuxtLink class="social-div bg-[#4682b4] text-white hover:shadow-md hover:shadow-[#4682b4] dark:(bg-[#0e76a8] hover:shadow-[#0e76a8])" target="_blank" to="https://www.linkedin.com/in/arthurdanjou/">
                   <Icon name="mdi:linkedin" size="24px" />
                   <p class="hidden md:block lg:hidden">
                     LinkedIn
                   </p>
                 </NuxtLink>
-                <NuxtLink class="social-div" target="_blank" to="mailto:contact@arthurdanjou.fr">
+                <NuxtLink class="social-div bg-stone-200 text-black hover:shadow-md hover:shadow-stone-300 dark:(bg-dark-200 text-white hover:shadow-dark-500)" target="_blank" to="mailto:contact@arthurdanjou.fr">
                   <Icon name="ic:baseline-alternate-email" size="24px" />
                   <p class="hidden md:block lg:hidden">
                     Mail
@@ -132,10 +132,9 @@ const mouseStyle = computed(() => ({
 
 <style scoped lang="scss">
 .social-div {
-  @apply flex space-x-4 p-2 hover:(bg-gray-100 dark:bg-dark-800) duration-300 rounded-12px;
+  @apply rounded-xl duration-300 p-2 hover:-translate-y-1 transform;
 
   svg {
-    // center icon
     @apply self-center;
   }
 }

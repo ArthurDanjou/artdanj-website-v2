@@ -35,6 +35,7 @@ const { deleteQuestion } = await useQuestion()
               </div>
               <DeleteButton
                 v-if="isAdmin"
+                :thin="true"
                 @click.prevent="deleteQuestion(question.id)"
               />
             </div>

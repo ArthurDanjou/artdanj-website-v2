@@ -6,7 +6,7 @@ const route = useRoute()
 const { getUserFromDB, refreshUser, updateUser } = await useUser(route.params.user)
 const location = ref(getUserFromDB.value?.location)
 const editable = ref(Boolean(getUserFromDB.value?.location === null))
-const isSendable = computed(() => location.value && location.value!.length >= 3)
+const isSendable = computed(() => location.value!.length >= 3)
 
 const handleForm = async () => {
   if (!isSendable.value)
@@ -17,6 +17,10 @@ const handleForm = async () => {
   })
   await refreshUser()
   editable.value = false
+}
+
+const updateValue = (content: any) => {
+  location.value = content
 }
 </script>
 
@@ -41,23 +45,11 @@ const handleForm = async () => {
       Your location was never set. Just fill the form below.
     </p>
     <form v-if="editable" class="space-y-2 w-full">
-      <input
-        v-model="location"
-        class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-        type="text"
-      >
+      <Input icon="material-symbols:location-on-outline" class="w-full" label="Location" :content="location" @update="updateValue" />
       <p class="text-xs text-gray-600 dark:text-gray-400">
         Your location will only be visible on your profile page.
       </p>
-      <div class="flex">
-        <div
-          class="text-sm border border-.5 border-dark py-1 px-2 rounded-md font-bold duration-300"
-          :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-          @click.prevent="handleForm"
-        >
-          Save location
-        </div>
-      </div>
+      <Button content="Save location" :sendable="isSendable" icon="fa-regular:save" @click.prevent="handleForm" />
     </form>
   </div>
 </template>

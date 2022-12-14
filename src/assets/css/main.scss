@@ -38,11 +38,3 @@ body {
 .content-link {
   @apply text-black dark:text-white cursor-pointer duration-300 underline underline-offset-4 decoration-gray-300 underline-opacity-25 hover:(decoration-black underline-opacity-100) rounded-sm dark:(decoration-gray-600 hover:decoration-white);
 }
-
-.button-sendable {
-  @apply cursor-pointer text-black bg-gray-100/60 hover:bg-gray-300/70 dark:(text-white bg-dark-300/50 hover:bg-dark-400);
-}
-
-.button-not-sendable {
-  @apply cursor-not-allowed text-gray-500 bg-gray-100 dark:bg-opacity-10;
-}

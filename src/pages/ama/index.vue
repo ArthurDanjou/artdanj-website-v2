@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
   computed,
-  onClickOutside,
   ref,
   useElementHover,
   useHead,
@@ -26,18 +25,10 @@ const mouseStyle = computed(() => ({
 const { user, isBlocked, isLoggedIn } = useSupabase()
 
 const open = ref(false)
-const modal = ref(null)
-const setOpened = (state: boolean) => {
-  if (state)
-    document.body.classList.add('overflow-hidden')
-  else
-    document.body.classList.remove('overflow-hidden')
-
-  open.value = state
+const setOpen = () => {
+  open.value = true
+  document.body.classList.add('overflow-hidden')
 }
-onClickOutside(modal, () => {
-  setOpened(false)
-})
 
 const questionForm = ref({
   title: '',
@@ -53,13 +44,13 @@ const postQuestion = async () => {
   await createQuestion(questionForm.value.title, questionForm.value.description)
   questionForm.value.title = ''
   questionForm.value.description = ''
-  setOpened(false)
+  open.value = false
 }
 
 const handleOpening = () => {
   if (!isLoggedIn)
     return
-  setOpened(true)
+  setOpen()
 }
 </script>
 
@@ -104,55 +95,39 @@ const handleOpening = () => {
       </Card>
       <QuestionCard v-for="question in getAllQuestions" :key="question.id" :question="question" />
       <client-only>
-        <div v-if="open">
-          <ModalBackground />
-          <ModalContainer ref="modal">
-            <div class="flex flex-col">
-              <div class="rounded-t-xl p-x-4 py-2 border-b border-dark rounded-t-lg flex justify-between items-center">
-                <h1 class="font-bold text-md">
-                  Ask me anything
-                </h1>
-                <Icon class="cursor-pointer duration-500 text-gray-400 dark:text-dark-100 hover:text-black dark:hover:text-white" name="maki:cross" size="20" @click="setOpened(false)" />
+        <Modal v-if="open" @close="open = false">
+          <div class="flex flex-col">
+            <ModalTitle title="Ask me anything" />
+            <form class="w-full space-y-4">
+              <div class="w-full flex space-x-2 items-center">
+                <div class="w-10 h-10">
+                  <img :src="user.avatar" alt="User avatar" class="rounded-full">
+                </div>
+                <textarea
+                  v-model="questionForm.title"
+                  style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 42px;"
+                  rows="1"
+                  maxlength="256"
+                  class="block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
+                  placeholder="Ask me anything..."
+                />
               </div>
-              <div class="rounded-b-xl p-4">
-                <form class="w-full space-y-4">
-                  <div class="w-full flex space-x-2 items-center">
-                    <div class="w-10 h-10">
-                      <img :src="user.avatar" alt="User avatar" class="rounded-full">
-                    </div>
-                    <textarea
-                      v-model="questionForm.title"
-                      style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 42px;"
-                      rows="1"
-                      maxlength="256"
-                      class="block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-                      placeholder="Ask me anything..."
-                    />
-                  </div>
-                  <div class="pl-11">
-                    <textarea
-                      v-model="questionForm.description"
-                      style="overflow-wrap: break-word; resize: none;"
-                      rows="5"
-                      maxlength="1024"
-                      class="resize-y block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-                      placeholder="Optional: add a description with more details..."
-                    />
-                  </div>
-                  <div class="flex justify-end">
-                    <div
-                      :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-                      class="duration-300 flex items-center justify-center px-6 py-1 rounded-md shadow-xs hover:shadow-sm border border-dark"
-                      @click.prevent="postQuestion"
-                    >
-                      Ask
-                    </div>
-                  </div>
-                </form>
+              <div class="pl-11">
+                <textarea
+                  v-model="questionForm.description"
+                  style="overflow-wrap: break-word; resize: none;"
+                  rows="5"
+                  maxlength="1024"
+                  class="resize-y block w-full px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
+                  placeholder="Optional: add a description with more details..."
+                />
               </div>
-            </div>
-          </ModalContainer>
-        </div>
+              <div class="flex justify-end">
+                <Button content="Ask" icon="mingcute:send-plane-line" :sendable="isSendable" @click.prevent="postQuestion" />
+              </div>
+            </form>
+          </div>
+        </Modal>
       </client-only>
     </div>
   </section>

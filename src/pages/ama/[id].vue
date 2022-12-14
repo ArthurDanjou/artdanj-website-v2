@@ -56,6 +56,7 @@ const handleDelete = async (id: number) => {
               <div>
                 <DeleteButton
                   v-if="isAdmin || (user && user.username && comment.author.username === user.username)"
+                  :thin="true"
                   @click.prevent="handleDelete(comment.id)"
                 />
               </div>
@@ -74,25 +75,32 @@ const handleDelete = async (id: number) => {
           You are blocked due to your behavior. You can't comment anymore.
         </h5>
       </div>
-      <form v-else-if="isLoggedIn && !isBlocked">
-        <div class="relative">
-          <textarea
-            v-model="answer"
-            placeholder="Write a comment..."
-            style="padding-right: 64px; max-height: 192px; overflow: hidden; overflow-wrap: break-word; resize: none; height: 42px;"
-            class="w-full rounded-md px-4 py-2 bg-gray-1000 dark:bg-white dark:bg-opacity-5 bg-opacity-5 border border-dark block"
-          />
-          <div class="absolute bottom-1 right-1.25">
-            <div
-              type="submit"
-              :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-              class="duration-300 flex items-center justify-center p-2 rounded-md shadow-xs hover:shadow-sm border border-dark"
-              @click.prevent="sendAnswer()"
-            >
-              <Icon name="ph:arrow-up-bold" size="16" />
+      <form v-else-if="isLoggedIn && !isBlocked" class="flex w-full space-x-2">
+        <div class="relative w-full">
+          <div class="w-full flex items-center group">
+            <div class="group-focus-within:(-translate-x-1 -translate-y-1 transform bg-stone-200 shadow-lg) dark:group-focus-within:(bg-dark-400 shadow-lg) duration-300 flex items-center justify-center p-2 absolute rounded-xl">
+              <Icon name="ph:chat-circle-bold" size="20" />
             </div>
+            <input
+              id="input"
+              v-model="answer"
+              class="w-full pl-10 rounded-lg px-4 py-2 focus:outline-0 bg-white dark:bg-dark-800"
+            >
+            <label
+              for="input"
+              class="absolute left-10 group-focus-within:(opacity-0 transform translate-x-2) duration-300 text-gray-600 dark:text-gray-200 text-opacity-60"
+              :class="answer.length === 0 ? '' : 'opacity-0 transform translate-x-2'"
+            >
+              Write a comment...
+            </label>
           </div>
         </div>
+        <Button
+          icon="mingcute:send-plane-line"
+          content="Send"
+          :sendable="isSendable"
+          @click.prevent="sendAnswer"
+        />
       </form>
       <div v-else class="italic text-xs flex justify-center items-center space-x-1 mt-2">
         <Icon name="ri:question-line" size="16" />

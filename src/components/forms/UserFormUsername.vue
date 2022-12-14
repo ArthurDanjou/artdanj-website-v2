@@ -25,6 +25,10 @@ const handleForm = async () => {
   editable.value = false
   await window.location.reload()
 }
+
+const updateValue = (content: any) => {
+  username.value = content
+}
 </script>
 
 <template>
@@ -45,26 +49,14 @@ const handleForm = async () => {
       </div>
     </div>
     <form v-if="editable" class="space-y-2 w-full">
-      <input
-        v-model="username"
-        class="w-full border border-dark px-4 py-2 bg-stone-200 rounded-md dark:bg-neutral-800 duration-300"
-        type="text"
-      >
+      <Input icon="ri:user-3-line" class="w-full" label="Username" :content="username" @update="updateValue" />
       <p v-if="isUsernameTaken" class="text-xs text-red-400 dark:text-red-500">
         This username is already taken.
       </p>
       <p v-else class="text-xs text-red-400 dark:text-red-500">
         Updating your username will break any existing links to your profile, so you know, don’t do it too often.
       </p>
-      <div class="flex">
-        <div
-          class="text-sm border border-.5 border-dark py-1 px-2 rounded-md font-bold duration-300"
-          :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-          @click.prevent="handleForm"
-        >
-          Save username
-        </div>
-      </div>
+      <Button content="Save username" :sendable="isSendable" icon="fa-regular:save" @click.prevent="handleForm" />
     </form>
   </div>
 </template>

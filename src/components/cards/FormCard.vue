@@ -12,7 +12,7 @@ const sent = ref({ error: false, success: false })
 const isSendable = computed(() => form.value.name.length >= 3 && form.value.email.length >= 5 && form.value.email.includes('@') && form.value.content.length >= 10)
 
 const handleForm = async () => {
-  if (sent.value.success)
+  if (sent.value.success || !isSendable.value)
     return
 
   if (form.value.name.length <= 0 || form.value.email.length <= 0 || form.value.content.length <= 0)
@@ -33,6 +33,20 @@ const handleForm = async () => {
     sent.value.success = true
   else
     sent.value.error = true
+}
+
+const updateValue = (type: 'name' | 'email' | 'content', content: any) => {
+  switch (type) {
+    case 'name':
+      form.value.name = content
+      break
+    case 'email':
+      form.value.email = content
+      break
+    case 'content':
+      form.value.content = content
+      break
+  }
 }
 </script>
 
@@ -57,38 +71,21 @@ const handleForm = async () => {
     <CardDiv v-else>
       <form class="w-full h-full flex flex-col space-y-4">
         <div class="w-full">
-          <input
-            v-model="form.name"
-            type="text"
-            placeholder="Name"
-            required
-            class="w-full p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
-          >
+          <Input icon="ri:user-3-line" label="Name" :content="form.name" @update="updateValue('name', $event)" />
         </div>
         <div class="w-full">
-          <input
-            v-model="form.email"
-            type="email"
-            placeholder="Email"
-            required
-            class="w-full p-4 bg-stone-100 rounded-md dark:bg-neutral-800 outline-none duration-300"
-          >
+          <Input icon="material-symbols:alternate-email" label="Email" :content="form.email" @update="updateValue('email', $event)" />
         </div>
         <div class="w-full h-full">
-          <textarea
-            v-model="form.content"
-            placeholder="Write your message"
-            class="w-full h-full resize-none p-4 bg-stone-100 rounded-md dark:bg-neutral-800 h-full resize-none outline-none duration-300"
+          <TextArea
+            class="h-full"
+            :content="form.content"
+            label="Write your message"
+            @update="updateValue('content', $event)"
           />
         </div>
-        <div class="w-full">
-          <input
-            type="submit"
-            :class="isSendable ? 'button-sendable' : 'button-not-sendable'"
-            class="w-full p-4 rounded-md cursor-pointer font-bold duration-300"
-            value="Send your message"
-            @click.prevent="handleForm()"
-          >
+        <div class="w-full text-center">
+          <Button icon="mingcute:send-plane-line" content="Send your message" :sendable="isSendable" @click.prevent="handleForm()" />
         </div>
       </form>
     </CardDiv>

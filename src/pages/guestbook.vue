@@ -11,7 +11,7 @@ useHead({
   title: 'My Guestbook - Arthur Danjou',
 })
 
-const { user, isBlocked, isAdmin, isLoggedIn, useGithubLogin, useDiscordLogin, useTwitchLogin, useGoogleLogin, useTwitterLogin, logout } = useSupabase()
+const { user, isBlocked, isAdmin, isLoggedIn, login, logout, Providers } = useSupabase()
 const { getAllMessages, deleteMessage, signMessage } = await useGuestbook()
 const { hasSignedGuestbook, refreshUser, getGuestBookMessage } = await useUser(user.value ? user.value.username : null)
 
@@ -38,13 +38,17 @@ const handleDelete = async (email: string) => {
   content.value = ''
   await deleteMessage(email)
 }
+
+const updateValue = (content: any) => {
+  content.value = content
+}
 </script>
 
 <template>
   <section>
     <PageTitle title="My Book" />
     <div class="md:w-1/2 mx-auto">
-      <div v-if="isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900  p-4 rounded-lg border border-dark">
+      <div v-if="isBlocked" class="my-12 flex flex-col bg-stone-100 dark:bg-dark-900  p-4 rounded-lg border border-dark">
         <div>
           <h1 class="text-3xl font-bold">
             You cannot sign my guestbook
@@ -54,48 +58,37 @@ const handleDelete = async (email: string) => {
           </h3>
         </div>
       </div>
-      <div v-else-if="isLoggedIn && !isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900  p-4 rounded-lg border border-dark">
+      <div v-else-if="isLoggedIn && !isBlocked" class="my-12 flex flex-col bg-stone-10_00 dark:bg-dark-900 p-4 rounded-lg border border-dark">
         <div>
-          <h1 v-if="hasSignedGuestbook" class="text-3xl font-bold">
-            Sign the guestbook, again
+          <h1 class="text-3xl font-bold">
+            {{ hasSignedGuestbook ? 'Sign the guestbook, again' : 'Sign the guestbook' }}
           </h1>
-          <h1 v-else class="text-3xl font-bold">
-            Sign the guestbook
-          </h1>
-          <h3 v-if="hasSignedGuestbook" class="text-md text-gray-600 dark:text-gray-400">
-            You have already shared a message. You can edit it below.
-          </h3>
-          <h3 v-else class="text-lg text-gray-600 dark:text-gray-400">
-            Share a message with the future visitors of my website
+          <h3 class="text-md text-gray-600 dark:text-gray-400">
+            {{ hasSignedGuestbook ? 'You have already shared a message. You can edit it below.' : 'Share a message with the future visitors of my website' }}
           </h3>
           <form v-if="!formState.sent" class="w-full relative mt-4">
-            <input
-              v-model="content"
-              type="text"
-              placeholder="Your message"
-              required
-              class="w-full p-2 bg-stone-200 rounded-md dark:bg-neutral-800 outline-none duration-300 pr-22"
-            >
-            <button v-if="hasSignedGuestbook" class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-300 hover:bg-stone-400 dark:(bg-neutral-700 hover:bg-neutral-600)" @click.prevent="signNewMessage">
-              Resign
-            </button>
-            <button v-else class="absolute right-1 top-1 px-4 p-1 rounded-md duration-300 bg-stone-400 hover:bg-stone-500 dark:(bg-neutral-600 hover:bg-neutral-500)" @click.prevent="signNewMessage">
-              Sign
-            </button>
+            <Input
+              :content="content"
+              label="Your message"
+              icon="ph:pencil"
+              :message="formState.error ? 'You need to write a message longer than 5 characters to sign the guestbook' : ''"
+              @update="updateValue"
+            />
           </form>
-          <p v-else class="mt-4 text-lime-500 dark:text-lime-700">
+          <p v-else class="my-4 text-lime-500 dark:text-lime-700">
             Your have successfully signed the guestbook !
           </p>
-          <p :class="formState.error ? 'opacity-100' : 'opacity-0'" class="mt-1 text-sm italic text-red-500 duration-300">
-            You need to write a message longer than 5 characters to sign the guestbook
+          <p class="italic text-xs text-gray-600 dark:text-gray-400">
+            Your informations are only used to display your name and reply by email.
           </p>
-          <div class="flex justify-between items-center text-sm italic text-gray-600 dark:text-gray-400">
-            <p>
-              Your informations are only used to display your name and reply by email.
-            </p>
-            <div class="button-sendable text-sm border border-.5 border-dark py-1 px-2 rounded-md font-bold duration-300 flex items-center justify-center space-x-2" @click="logout">
-              Logout <Icon name="material-symbols:logout-rounded" size="20px" class="ml-2" />
-            </div>
+          <div class="mt-2 flex justify-between">
+            <Button
+              :content="hasSignedGuestbook ? 'Resign' : 'Sign'"
+              :sendable="content.length > 5"
+              icon="fa-regular:save"
+              @click.prevent="signNewMessage"
+            />
+            <Button content="Logout" icon="material-symbols:logout-rounded" @click.prevent="logout" />
           </div>
         </div>
       </div>
@@ -109,11 +102,36 @@ const handleDelete = async (email: string) => {
           </h3>
         </div>
         <div class="flex space-x-4 my-4">
-          <Icon class="social-login" name="mdi:github" size="48" @click.prevent="useGithubLogin()" />
-          <Icon class="social-login text-[#1DA1F2]" name="mdi:twitter" size="48" @click.prevent="useTwitterLogin()" />
-          <Icon class="social-login text-[#DB4437]" name="bxl:google" size="48" @click.prevent="useGoogleLogin()" />
-          <Icon class="social-login text-[#6441a5]" name="mdi:twitch" size="48" @click.prevent="useTwitchLogin()" />
-          <Icon class="social-login text-[#5865F2]" name="mdi:discord" size="48" @click.prevent="useDiscordLogin()" />
+          <button
+            class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#333] text-white hover:shadow-md hover:shadow-[#333]"
+            @click.prevent="login(Providers.GITHUB)"
+          >
+            <Icon class="text-white" name="mdi:github" size="32" />
+          </button>
+          <button
+            class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#1DA1F2] text-white hover:shadow-md hover:shadow-[#1DA1F2]"
+            @click.prevent="login(Providers.TWITTER)"
+          >
+            <Icon class="text-white" name="mdi:twitter" size="32" />
+          </button>
+          <button
+            class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#DB4437] text-white hover:shadow-md hover:shadow-[#DB4437]"
+            @click.prevent="login(Providers.GOOGLE)"
+          >
+            <Icon class="text-white" name="bxl:google" size="32" />
+          </button>
+          <button
+            class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#6441a5] text-white hover:shadow-md hover:shadow-[#6441a5]"
+            @click.prevent="login(Providers.TWITCH)"
+          >
+            <Icon class="text-white" name="mdi:twitch" size="32" />
+          </button>
+          <button
+            class="rounded-xl duration-300 p-2 hover:-translate-y-1 transform bg-[#5865F2] text-white hover:shadow-md hover:shadow-[#5865F2]"
+            @click.prevent="login(Providers.DISCORD)"
+          >
+            <Icon class="text-white" name="mdi:discord" size="32" />
+          </button>
         </div>
         <p class="text-sm italic">
           Your informations are only used to display your name and reply by email.
@@ -123,7 +141,11 @@ const handleDelete = async (email: string) => {
         <div v-for="message in getAllMessages" :id="message.id" :key="message.id" class="cursor-default flex flex-col space-y-2">
           <div class="flex items-center space-x-4">
             <UserLine :link="true" :author="message.author" :date="message.createdAt.toString()" />
-            <DeleteButton v-if="(user && message.author.email === user.email) || isAdmin" @click.prevent="handleDelete(message.author.email)" />
+            <DeleteButton
+              v-if="(user && message.author.email === user.email) || isAdmin"
+              :thin="true"
+              @click.prevent="handleDelete(message.author.email)"
+            />
           </div>
           <p class="pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(message.content)" />
         </div>
