@@ -2,10 +2,10 @@
 
 ## Pages:
 - 404
-- User (Comments, AMA (questions) and more... & Account settings (settings..., delete account))
 
 ## Implements
 - SEO
+- Login activity ?
 
 ## Design
 - projects covers
@@ -16,3 +16,8 @@
 # modules
 
 - https://nuxt.com/modules/robots
+
+# Rework Components
+- Input
+- Notification
+- Tooltip
