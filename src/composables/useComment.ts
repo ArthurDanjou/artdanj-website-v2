@@ -1,5 +1,5 @@
 import type { Comment } from '~/types/types'
-import {useSupabase} from '#imports'
+import { useSupabase } from '#imports'
 
 export const useComment = async () => {
   const { user } = useSupabase()

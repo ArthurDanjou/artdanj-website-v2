@@ -1,8 +1,8 @@
 import { defineEventHandler } from 'h3'
 import type { User } from '@supabase/gotrue-js'
-import { serverSupabaseUser } from '#supabase/server'
 import { usePrisma } from '~/composables/usePrisma'
 import { Provider } from '~/types/types'
+import { serverSupabaseUser } from '#supabase/server'
 
 const getIdentity = (user: User | null, provider: Provider) => {
   return user!.identities?.filter(identity => identity.provider === provider)[0]
