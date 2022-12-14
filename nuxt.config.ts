@@ -10,7 +10,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    'nuxt-windicss',
     ['@nuxtjs/color-mode', {
       preference: 'system',
       fallback: 'light',
@@ -48,6 +47,7 @@ export default defineNuxtConfig({
     ['@nuxtjs/robots', {
       UserAgent: '*', Disallow: '',
     }],
+    'nuxt-windicss',
   ],
 
   css: [
@@ -63,5 +63,6 @@ export default defineNuxtConfig({
     '~/components/resume',
     '~/components/modals',
     '~/components/forms',
+    '~/components/buttons',
   ],
 })
