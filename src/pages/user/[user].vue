@@ -1,14 +1,26 @@
 <script setup lang="ts">
 import {
   computed,
-  ref, showError, useComment, useGuestbook,
-  useHead, useQuestion,
-  useRoute, useSupabase,
+  definePageMeta,
+  ref,
+  showError,
+  useComment,
+  useGuestbook,
+  useHead,
+  useQuestion,
+  useRoute,
+  useSupabase,
   useUser,
 } from '#imports'
-import { formatLongDate } from '~/logic/dates'
+import {formatLongDate} from '~/logic/dates'
 
 const route = useRoute()
+
+definePageMeta({
+  validate: async (route) => {
+    return /^([A-Za-z0-9]+)$/.test(route.params.user as string)
+  },
+})
 
 useHead({
   title: `${route.params.user}'s Profile - Arthur Danjou`,
@@ -189,8 +201,9 @@ const deleteAccount = async () => {
           </h3>
           <div v-if="getUserFromDB.questions.length > 0" class="space-y-2">
             <ul v-for="question in getUserFromDB.questions" :key="question.id">
-              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-gray-200 dark:bg-dark-800 transform -translate-y-0.5)">
-                <NuxtLink class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400" :href="`/ama/${question.id}`">
+              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
+                <NuxtLink :href="`/ama/${question.id}`"
+                          class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400">
                   <p class="font-bold text-black dark:text-white">
                     {{ question.title }}
                   </p>
@@ -220,10 +233,13 @@ const deleteAccount = async () => {
           <h3 class="font-bold text-xl mb-4">
             {{ isUser ? 'Your' : 'User\'s' }} guestbook message
           </h3>
-          <NuxtLink v-if="getUserFromDB.guestbook" class="flex flex-col space-y-2 duration-300 p-1 rounded-xl hover:(bg-gray-200 dark:bg-dark-800 transform -translate-y-0.5)" :href="`/guestbook#${getUserFromDB.guestbook.id}`">
+          <NuxtLink v-if="getUserFromDB.guestbook"
+                    :href="`/guestbook#${getUserFromDB.guestbook.id}`"
+                    class="flex flex-col space-y-2 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
             <div class="flex items-center space-x-4">
-              <UserLine :author="getUserFromDB.guestbook.author" :date="getUserFromDB.guestbook.createdAt.toString()" />
-              <DeleteButton v-if="isUser || isAdmin" :thin="true" @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)" />
+              <UserLine :author="getUserFromDB.guestbook.author" :date="getUserFromDB.guestbook.createdAt.toString()"/>
+              <DeleteButton v-if="isUser || isAdmin" :thin="true"
+                            @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)"/>
             </div>
             <p class="pl-11 text-gray-600 dark:text-gray-400">
               {{ getUserFromDB.guestbook.content }}
@@ -239,17 +255,18 @@ const deleteAccount = async () => {
           </h3>
           <div v-if="getUserFromDB.savedPosts.length > 0" class="space-y-2">
             <ul v-for="savedPost in getUserFromDB.savedPosts" :key="savedPost.id">
-              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-gray-200 dark:bg-dark-800 transform -translate-y-0.5)">
-                <NuxtLink class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400" :href="`/blog/${savedPost.post.slug}`">
+              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
+                <NuxtLink :href="`/blog/${savedPost.post.slug}`"
+                          class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400">
                   <p class="font-bold text-black dark:text-white">
                     {{ savedPost.post.title }}
                   </p>
                   <span>·</span>
                   <div>{{ formatLongDate(savedPost.createdAt.toString()) }}</div>
                   <DeleteButton
-                    v-if="isUser || isAdmin"
-                    :thin="true"
-                    @click.prevent="handleDelete('saved', savedPost.post.slug)"
+                      v-if="isUser || isAdmin"
+                      :thin="true"
+                      @click.prevent="handleDelete('saved', savedPost.post.slug)"
                   />
                 </NuxtLink>
               </li>
@@ -265,17 +282,18 @@ const deleteAccount = async () => {
           </h3>
           <div v-if="getUserFromDB.comments.length > 0" class="space-y-2">
             <ul v-for="comment in getUserFromDB.comments" :key="comment.id">
-              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-gray-200 dark:bg-dark-800 transform -translate-y-0.5)">
-                <NuxtLink class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400" :href="comment.question ? `/ama/${comment.question.id}#comment-${comment.id}` : `/blog/${comment.post.slug}#comment-${comment.id}`">
+              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
+                <NuxtLink :href="comment.question ? `/ama/${comment.question.id}#comment-${comment.id}` : `/blog/${comment.post.slug}#comment-${comment.id}`"
+                          class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400">
                   <p class="font-bold text-black dark:text-white truncate">
                     {{ comment.content }}
                   </p>
                   <span>·</span>
                   <div>{{ formatLongDate(comment.createdAt.toString()) }}</div>
                   <DeleteButton
-                    v-if="isUser || isAdmin"
-                    :thin="true"
-                    @click.prevent="handleDelete('comment', comment.id)"
+                      v-if="isUser || isAdmin"
+                      :thin="true"
+                      @click.prevent="handleDelete('comment', comment.id)"
                   />
                 </NuxtLink>
               </li>

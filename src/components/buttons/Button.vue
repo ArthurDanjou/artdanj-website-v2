@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps({
-  content: String || Number,
+  content: String,
   icon: String,
   color: String,
   thin: Boolean,

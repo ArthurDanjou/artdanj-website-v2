@@ -4,7 +4,8 @@ import {
   ref,
   useEducations,
   useElementHover,
-  useHead, useMouseInElement,
+  useHead,
+  useMouseInElement,
   useSkills,
   useWorkExperiences,
 } from '#imports'
@@ -132,7 +133,7 @@ const mouseStyle = computed(() => ({
 
 <style scoped lang="scss">
 .social-div {
-  @apply rounded-xl duration-300 p-2 hover:-translate-y-1 transform;
+  @apply rounded-xl duration-300 p-2 hover:-translate-y-1 transform flex space-x-2;
 
   svg {
     @apply self-center;

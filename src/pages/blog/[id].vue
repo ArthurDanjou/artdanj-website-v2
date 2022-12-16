@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Post } from '~/types/content'
+import type {Post} from '~/types/content'
 import {
   computed,
   onMounted,
@@ -8,11 +8,12 @@ import {
   useAsyncData,
   useComment,
   useHead,
-  useRoute, useSupabase,
+  useRoute,
+  useSupabase,
   useUser,
 } from '#imports'
-import { usePost } from '~/composables/usePost'
-import { convertStringToLink } from '~/logic/stringToLink'
+import {usePost} from '~/composables/usePost'
+import {convertStringToLink} from '~/logic/stringToLink'
 
 const route = useRoute()
 const { data: postContent } = await useAsyncData<Post>(`blog:post-content:${route.params.id}`, async () => await queryContent<Post>(`/posts/${route.params.id}`).findOne())
@@ -95,10 +96,10 @@ const handleSave = async () => {
           </p>
           <div class="flex items-center space-x-4 mt-4">
             <Button
-              :content="likes"
-              icon="ph:heart-bold"
-              color="red"
-              @click.prevent="like()"
+                :content="`${likes}`"
+                color="red"
+                icon="ph:heart-bold"
+                @click.prevent="like()"
             />
             <Button
               content="Go to top"
@@ -135,19 +136,19 @@ const handleSave = async () => {
       </Separator>
       <Separator>
         <template #icon>
-          <Icon name="ph:chat-circle-bold" size="24" />
+          <Icon name="ph:chat-circle-bold" size="24"/>
         </template>
-        <div v-if="post.comments.length > 0" class="space-y-6 my-4">
-          <div v-for="comment in post.comments" :id="`#comment-${comment.id}`" :key="comment.id">
+        <div v-if="post && post.comments.length > 0" class="space-y-6 my-4">
+          <div v-for="comment in post.comments" :id="`comment-${comment.id}`" :key="comment.id">
             <div class="flex items-center space-x-4 flex-wrap">
-              <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
+              <UserLine :author="comment.author" :date="comment.createdAt" :link="true"/>
               <DeleteButton
-                v-if="isAdmin || (user && user.username && comment.author.username === user.username)"
-                :thin="true"
-                @click.prevent="handleDelete(comment.id)"
+                  v-if="isAdmin || (user && user.username && comment.author.username === user.username)"
+                  :thin="true"
+                  @click.prevent="handleDelete(comment.id)"
               />
             </div>
-            <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)" />
+            <p class="mt-1 pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(comment.content)"/>
           </div>
         </div>
         <div v-else class="text-gray-600 dark:text-gray-400 flex items-center space-x-2">

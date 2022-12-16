@@ -32,10 +32,10 @@ const getColor = computed(() => {
         <Icon :name="icon" size="20" />
       </div>
       <input
-        id="input"
-        v-model="value"
-        class="w-full rounded-lg px-4 py-2 focus:outline-0 bg-stone-100 dark:bg-dark-800"
-        :class="icon ? 'pl-10' : ''"
+          id="input"
+          v-model="value"
+          :class="icon ? 'pl-10' : ''"
+          class="w-full rounded-lg px-4 py-2 focus:outline-0 bg-white dark:bg-dark-800"
       >
       <label
         for="input"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, useComment, useHead, useQuestion, useRoute } from '#imports'
-import { convertStringToLink } from '~/logic/stringToLink'
+import {computed, ref, useComment, useHead, useQuestion, useRoute} from '#imports'
+import {convertStringToLink} from '~/logic/stringToLink'
 
 const { isLoggedIn, isAdmin, user, isBlocked } = useSupabase()
 const route = useRoute()
@@ -50,14 +50,14 @@ const handleDelete = async (id: number) => {
           <Icon name="ph:chat-circle-bold" size="24" />
         </template>
         <div v-if="question && question.comments.length > 0" class="space-y-6 my-4">
-          <div v-for="comment in question.comments" :id="`#comment-${comment.id}`" :key="comment.id">
+          <div v-for="comment in question.comments" :id="`comment-${comment.id}`" :key="comment.id">
             <div class="flex items-center space-x-4 flex-wrap">
-              <UserLine :link="true" :author="comment.author" :date="comment.createdAt" />
+              <UserLine :author="comment.author" :date="comment.createdAt" :link="true"/>
               <div>
                 <DeleteButton
-                  v-if="isAdmin || (user && user.username && comment.author.username === user.username)"
-                  :thin="true"
-                  @click.prevent="handleDelete(comment.id)"
+                    v-if="isAdmin || (user && user.username && comment.author.username === user.username)"
+                    :thin="true"
+                    @click.prevent="handleDelete(comment.id)"
                 />
               </div>
             </div>

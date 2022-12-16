@@ -22,10 +22,10 @@ const isEmpty = computed(() => value.value!.length === 0 ? '' : 'opacity-0 trans
         <Icon :name="icon" size="20" />
       </div>
       <textarea
-        id="textarea"
-        v-model="value"
-        class="w-full h-full rounded-lg px-4 py-2 focus:outline-0 bg-stone-100 dark:bg-dark-800"
-        :class="icon ? 'pl-10' : ''"
+          id="textarea"
+          v-model="value"
+          :class="icon ? 'pl-10' : ''"
+          class="w-full h-full rounded-lg px-4 py-2 focus:outline-0 bg-white dark:bg-dark-800"
       />
       <label
         for="textarea"

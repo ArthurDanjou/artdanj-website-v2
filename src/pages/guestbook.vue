@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import {
-  ref,
-  useGuestbook,
-  useHead,
-  useSupabase, useUser,
-} from '#imports'
-import { convertStringToLink } from '~/logic/stringToLink'
+import {ref, useGuestbook, useHead, useSupabase, useUser,} from '#imports'
+import {convertStringToLink} from '~/logic/stringToLink'
 
 useHead({
   title: 'My Guestbook - Arthur Danjou',
@@ -48,7 +43,8 @@ const updateValue = (content: any) => {
   <section>
     <PageTitle title="My Book" />
     <div class="md:w-1/2 mx-auto">
-      <div v-if="isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900 p-4 rounded-lg shadow-card dark:shadow-card-dark">
+      <div v-if="isBlocked"
+           class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl shadow-card dark:shadow-card-dark">
         <div>
           <h1 class="text-3xl font-bold">
             You cannot sign my guestbook
@@ -58,17 +54,20 @@ const updateValue = (content: any) => {
           </h3>
         </div>
       </div>
-      <div v-else-if="isLoggedIn && !isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900 p-4 rounded-lg shadow-card dark:shadow-card-dark">
+      <div v-else-if="isLoggedIn && !isBlocked"
+           class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl shadow-card dark:shadow-card-dark">
         <div>
           <h1 class="text-3xl font-bold">
             {{ hasSignedGuestbook ? 'Sign the guestbook, again' : 'Sign the guestbook' }}
           </h1>
           <h3 class="text-md text-gray-600 dark:text-gray-400">
-            {{ hasSignedGuestbook ? 'You have already shared a message. You can edit it below.' : 'Share a message with the future visitors of my website' }}
+            {{
+              hasSignedGuestbook ? 'You have already shared a message. You can edit it below.' : 'Share a message with the future visitors of my website'
+            }}
           </h3>
           <form v-if="!formState.sent" class="w-full relative mt-4">
             <Input
-              :content="content"
+                :content="content"
               label="Your message"
               icon="ph:pencil"
               :message="formState.error ? 'You need to write a message longer than 5 characters to sign the guestbook' : ''"
@@ -92,7 +91,7 @@ const updateValue = (content: any) => {
           </div>
         </div>
       </div>
-      <div v-else class="my-12 flex flex-col bg-white dark:bg-dark-900 p-4 rounded-lg border border-dark">
+      <div v-else class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl  shadow-card dark:shadow-card-dark">
         <div>
           <h1 class="text-3xl font-bold">
             Sign the guestbook

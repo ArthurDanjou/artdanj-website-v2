@@ -1,5 +1,5 @@
-import type { RouterConfig } from '@nuxt/schema'
-import { useNuxtApp } from '#imports'
+import type {RouterConfig} from '@nuxt/schema'
+import {useNuxtApp} from '#imports'
 
 // https://router.vuejs.org/api/#routeroptions
 export default <RouterConfig>{
@@ -15,6 +15,7 @@ export default <RouterConfig>{
         })
       })
     }
+
     // Prevent oauth
     if (to.hash.includes('token') || from.hash.includes('token'))
       return
@@ -22,14 +23,13 @@ export default <RouterConfig>{
     // Scroll to heading on click
     if (to.hash) {
       setTimeout(() => {
-        const heading = document.getElementById(to.hash) as any
-
-        return window.scrollTo({
+        const heading = document.querySelector(to.hash) as any
+  
+        window.scrollTo({
           top: heading.offsetTop,
           behavior: 'smooth',
         })
-      })
-      return
+      }, 50)
     }
 
     // route change
