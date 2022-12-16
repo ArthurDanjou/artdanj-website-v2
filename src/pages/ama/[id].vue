@@ -88,7 +88,7 @@ const handleDelete = async (id: number) => {
             >
             <label
               for="input"
-              class="absolute left-10 group-focus-within:(opacity-0 transform translate-x-2) duration-300 text-gray-600 dark:text-gray-200 text-opacity-60"
+              class="cursor-text absolute left-10 group-focus-within:(opacity-0 transform translate-x-2) duration-300 text-gray-600 dark:text-gray-200 text-opacity-60"
               :class="answer.length === 0 ? '' : 'opacity-0 transform translate-x-2'"
             >
               Write a comment...

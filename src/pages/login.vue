@@ -20,9 +20,9 @@ const { login, Providers } = useSupabase()
         <div class="flex justify-center my-4">
           <div class="relative">
             <div class="bg-gray-200 dark:bg-zinc-800 target h-[250px] w-[250px]">
-              <div class="bg-stone-100 dark:bg-black target h-[200px] w-[200px]">
+              <div class="bg-stone-100 dark:bg-dark-900 target h-[200px] w-[200px]">
                 <div class="bg-gray-200 dark:bg-zinc-800 target h-[150px] w-[150px]">
-                  <div class="bg-stone-100 dark:bg-black target h-[100px] w-[100px]">
+                  <div class="bg-stone-100 dark:bg-dark-900 target h-[100px] w-[100px]">
                     <div class="p-2 bg-amber-400 rounded-full flex items-center justify-center">
                       <Icon class="text-white dark:text-dark-900" name="ant-design:fire-filled" size="32" />
                     </div>

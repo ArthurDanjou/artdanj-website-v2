@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Ref } from 'vue'
 import type { FormData } from '~/types/types'
 import { computed, ref, useAsyncData } from '#imports'
 

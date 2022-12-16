@@ -48,7 +48,7 @@ const updateValue = (content: any) => {
   <section>
     <PageTitle title="My Book" />
     <div class="md:w-1/2 mx-auto">
-      <div v-if="isBlocked" class="my-12 flex flex-col bg-stone-100 dark:bg-dark-900  p-4 rounded-lg border border-dark">
+      <div v-if="isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900 p-4 rounded-lg shadow-card dark:shadow-card-dark">
         <div>
           <h1 class="text-3xl font-bold">
             You cannot sign my guestbook
@@ -58,7 +58,7 @@ const updateValue = (content: any) => {
           </h3>
         </div>
       </div>
-      <div v-else-if="isLoggedIn && !isBlocked" class="my-12 flex flex-col bg-stone-10_00 dark:bg-dark-900 p-4 rounded-lg border border-dark">
+      <div v-else-if="isLoggedIn && !isBlocked" class="my-12 flex flex-col bg-white dark:bg-dark-900 p-4 rounded-lg shadow-card dark:shadow-card-dark">
         <div>
           <h1 class="text-3xl font-bold">
             {{ hasSignedGuestbook ? 'Sign the guestbook, again' : 'Sign the guestbook' }}

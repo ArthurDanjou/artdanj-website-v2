@@ -13,7 +13,7 @@ defineProps({
 <template>
   <div class="z-11 flex">
     <NuxtLink v-if="link" :href="`/user/${author.username}`" class="flex space-x-4 items-center group">
-      <img :src="author.avatar" alt="User avatar" height="28" width="28" class="rounded-full">
+      <img :src="author.avatar" alt="User avatar" height="28" width="28" class="rounded-full group-hover:(transform -translate-y-1) duration-300">
       <div class="flex flex-col space-y-1 md:(space-y-0 flex-row space-x-2 items-center) flex-wrap">
         <div class="flex space-x-2 items-center">
           <p class="duration-300 underline underline-offset-4 decoration-transparent underline-opacity-25 group-hover:(decoration-black underline-opacity-100) dark:group-hover:decoration-white">

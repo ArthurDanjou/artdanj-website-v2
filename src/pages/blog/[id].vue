@@ -32,6 +32,7 @@ const top = () => {
 
 const { copy, copied } = useClipboard({
   source: `https://arthurdanjou.fr/blog/${route.params.id}`,
+  copiedDuring: 4000,
 })
 
 const { user, isAdmin, isLoggedIn, isBlocked } = useSupabase()
@@ -93,21 +94,42 @@ const handleSave = async () => {
             Thanks for reading this post! If you liked it, please consider sharing it with your friends. <strong>Leave a like and a comment just below!</strong>
           </p>
           <div class="flex items-center space-x-4 mt-4">
-            <div class="flex space-x-2 blog-other select-none" @click.prevent="like()">
-              <span>{{ likes }}</span>
-              <Icon class="text-red-500" name="ph:heart-bold" size="24" />
-            </div>
-            <div class="blog-other" @click.prevent="top()">
-              <Icon name="ph:arrow-up-bold" size="24" />
-            </div>
-            <div class="blog-other" @click.prevent="copy()">
-              <Icon v-if="copied" class="text-green-400" name="lucide:clipboard-check" size="24" />
-              <Icon v-else name="lucide:clipboard" size="24" />
-            </div>
-            <div v-if="isLoggedIn" class="blog-other" @click.prevent="handleSave">
-              <Icon v-if="isSavedPost(post.slug)" name="material-symbols:bookmark-remove-outline" size="24" />
-              <Icon v-else name="material-symbols:bookmark-add-outline-rounded" size="24" />
-            </div>
+            <Button
+              :content="likes"
+              icon="ph:heart-bold"
+              color="red"
+              @click.prevent="like()"
+            />
+            <Button
+              content="Go to top"
+              icon="ph:arrow-up-bold"
+              @click.prevent="top()"
+            />
+            <Button
+              v-if="copied"
+              content="Link copied"
+              icon="lucide:clipboard-check"
+              color="green"
+              @click.prevent="copy()"
+            />
+            <Button
+              v-else
+              content="Copy link"
+              icon="lucide:clipboard"
+              @click.prevent="copy()"
+            />
+            <Button
+              v-if="isLoggedIn && isSavedPost(post.slug)"
+              content="Unsave post"
+              icon="material-symbols:bookmark-remove-outline"
+              @click.prevent="handleSave()"
+            />
+            <Button
+              v-else
+              content="Save post"
+              icon="material-symbols:bookmark-add-outline-rounded"
+              @click.prevent="handleSave()"
+            />
           </div>
         </div>
       </Separator>
@@ -152,7 +174,7 @@ const handleSave = async () => {
             >
             <label
               for="input"
-              class="absolute left-10 group-focus-within:(opacity-0 transform translate-x-2) duration-300 text-gray-600 dark:text-gray-200 text-opacity-60"
+              class="cursor-text absolute left-10 group-focus-within:(opacity-0 transform translate-x-2) duration-300 text-gray-600 dark:text-gray-200 text-opacity-60"
               :class="answer.length === 0 ? '' : 'opacity-0 transform translate-x-2'"
             >
               Write a comment...

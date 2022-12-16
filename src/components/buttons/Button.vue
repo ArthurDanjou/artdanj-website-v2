@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps({
-  content: String,
+  content: String || Number,
   icon: String,
   color: String,
   thin: Boolean,
@@ -13,7 +13,9 @@ const props = defineProps({
 const getColor = computed(() => {
   switch (props.color) {
     case 'red':
-      return 'bg-red-500 text-black hover:shadow-md hover:shadow-red-400 dark:hover:shadow-red-600 font-bold'
+      return 'bg-red-500 text-black hover:shadow-md hover:shadow-red-400 dark:hover:shadow-red-600'
+    case 'green':
+      return 'bg-green-500 text-black hover:shadow-md hover:shadow-green-400 dark:hover:shadow-green-600'
     default:
       return 'bg-stone-200 text-black hover:shadow-md hover:shadow-stone-300 dark:(bg-dark-400 text-white hover:shadow-dark-500)'
   }

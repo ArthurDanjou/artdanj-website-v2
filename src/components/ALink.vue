@@ -8,7 +8,7 @@ const props = defineProps({
   },
   target: {
     type: String,
-    default: '_parent',
+    default: '_self',
     enum: ['_blank', '_parent', '_self', '_top'],
   },
   group: {
@@ -27,7 +27,7 @@ const getColor = computed(() => {
 
 <template>
   <NuxtLink
-    :to="link"
+    :href="link"
     :target="target"
     class="flex duration-500"
     :class="getColor"

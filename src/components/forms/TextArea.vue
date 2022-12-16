@@ -29,7 +29,7 @@ const isEmpty = computed(() => value.value!.length === 0 ? '' : 'opacity-0 trans
       />
       <label
         for="textarea"
-        class="absolute top-2 right-2 group-focus-within:(opacity-0 transform translate-x-2) duration-300 text-gray-600 dark:text-gray-200 text-opacity-60"
+        class="cursor-text absolute top-2 right-2 group-focus-within:(opacity-0 transform translate-x-2) duration-300 text-gray-600 dark:text-gray-200 text-opacity-60"
         :class="[hasIcon, isEmpty]"
       >
         {{ label }}
