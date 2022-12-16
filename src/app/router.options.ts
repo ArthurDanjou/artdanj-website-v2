@@ -5,7 +5,7 @@ import {useNuxtApp} from '#imports'
 export default <RouterConfig>{
   scrollBehavior(to, from, savedPosition) {
     const nuxtApp = useNuxtApp()
-
+    
     // If history back
     if (savedPosition) {
       // Handle Suspense resolution
