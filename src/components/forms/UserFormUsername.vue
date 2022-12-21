@@ -4,8 +4,8 @@ import type { User } from '~/types/types'
 
 const { user } = useSupabase()
 const route = useRoute()
-const { getUserFromDB, updateUser } = await useUser(route.params.user)
-const username = ref(getUserFromDB.value?.username)
+const {getUserFromDB, updateUser} = await useUser(route.params.user)
+const username = ref<string>(getUserFromDB.value?.username || '')
 const editable = ref(getUserFromDB.value?.username.length === 0)
 
 const isUsernameTaken = computedAsync<boolean>(async () => {
@@ -13,7 +13,7 @@ const isUsernameTaken = computedAsync<boolean>(async () => {
   return newUser?.username === username.value
 }, false)
 
-const isSendable = computed(() => username.value!.length > 5 || !isUsernameTaken.value)
+const isSendable = computed(() => username.value.length > 5 || !isUsernameTaken.value)
 const handleForm = async () => {
   if (!isSendable.value)
     return

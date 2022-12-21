@@ -24,15 +24,16 @@ const mouseStyle = computed(() => ({
       <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 grid-flow-row-dense auto-rows-fr">
         <Card ref="blog" width="2">
           <CardDiv>
-            <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-            <CardIcon icon="ph:books-bold" />
-            <div class="z-10 absolute left-[43%] top-[10%] mouse-gradient h-[75px] w-[75px]" />
-            <div class="z-10">
+            <div :style="mouseStyle" class="z-[9] mouse-gradient w-[75px] h-[75px] absolute top-0 left-0"/>
+            <CardIcon icon="ph:books-bold"/>
+            <div class="z-[10] absolute left-[43%] top-[10%] mouse-gradient h-[75px] w-[75px]"/>
+            <div class="z-[10]">
               <h1 class="font-bold text-4xl leading-12 text-center">
                 What I have written
               </h1>
               <h3 class="my-4 text-sm text-center text-gray-600 dark:text-gray-400">
-                I write articles about my life, development and my passions. I also write about my projects, my discoveries and my thoughts. <s>It is sometimes updated.</s>
+                I write articles about my life, development and my passions. I also write about my projects, my
+                discoveries and my thoughts. <s>It is sometimes updated.</s>
               </h3>
             </div>
           </CardDiv>

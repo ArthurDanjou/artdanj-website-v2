@@ -96,7 +96,7 @@ const { login, Providers } = useSupabase()
 
 <style scoped lang="scss">
 .social-login {
-  @apply cursor-pointer border border-dark rounded-md p-2 flex items-center justify-center transform duration-500 hover:(bg-gray-200 dark:bg-dark-700);
+  @apply cursor-pointer border border-dark rounded-md p-2 flex items-center justify-center transform duration-500 hover:bg-gray-200 hover:dark:bg-dark-700;
 }
 
 .target {

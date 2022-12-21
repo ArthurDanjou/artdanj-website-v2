@@ -1,41 +1,41 @@
 <script setup lang="ts">
-import {ref, useGuestbook, useHead, useSupabase, useUser,} from '#imports'
+import {ref, useGuestbook, useHead, useSupabase, useUser} from '#imports'
 import {convertStringToLink} from '~/logic/stringToLink'
 
 useHead({
   title: 'My Guestbook - Arthur Danjou',
 })
 
-const { user, isBlocked, isAdmin, isLoggedIn, login, logout, Providers } = useSupabase()
-const { getAllMessages, deleteMessage, signMessage } = await useGuestbook()
-const { hasSignedGuestbook, refreshUser, getGuestBookMessage } = await useUser(user.value ? user.value.username : null)
+const {user, isBlocked, isAdmin, isLoggedIn, login, logout, Providers} = useSupabase()
+const {getAllMessages, deleteMessage, signMessage} = await useGuestbook()
+const {hasSignedGuestbook, refreshUser, getGuestBookMessage} = await useUser(user.value ? user.value.username : null)
 
-const content = ref<string | undefined>(getGuestBookMessage?.value?.content)
+const message = ref<string>(getGuestBookMessage?.value?.content || '')
 const formState = ref({
   error: false,
   sent: false,
 })
 const signNewMessage = async () => {
-  if (content.value!.length <= 5) {
+  if (message.value.length <= 5) {
     formState.value.error = true
     setTimeout(() => {
       formState.value.error = false
     }, 5000)
     return
   }
-  await signMessage(content.value!)
+  await signMessage(message.value!)
   await refreshUser()
   formState.value.sent = true
   setTimeout(() => formState.value.sent = false, 5000)
 }
 
 const handleDelete = async (email: string) => {
-  content.value = ''
+  message.value = ''
   await deleteMessage(email)
 }
 
 const updateValue = (content: any) => {
-  content.value = content
+  message.value = content
 }
 </script>
 
@@ -43,8 +43,10 @@ const updateValue = (content: any) => {
   <section>
     <PageTitle title="My Book" />
     <div class="md:w-1/2 mx-auto">
-      <div v-if="isBlocked"
-           class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl shadow-card dark:shadow-card-dark">
+      <div
+          v-if="isBlocked"
+          class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl shadow-card dark:shadow-card-dark"
+      >
         <div>
           <h1 class="text-3xl font-bold">
             You cannot sign my guestbook
@@ -54,8 +56,10 @@ const updateValue = (content: any) => {
           </h3>
         </div>
       </div>
-      <div v-else-if="isLoggedIn && !isBlocked"
-           class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl shadow-card dark:shadow-card-dark">
+      <div
+          v-else-if="isLoggedIn && !isBlocked"
+          class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl shadow-card dark:shadow-card-dark"
+      >
         <div>
           <h1 class="text-3xl font-bold">
             {{ hasSignedGuestbook ? 'Sign the guestbook, again' : 'Sign the guestbook' }}
@@ -67,11 +71,11 @@ const updateValue = (content: any) => {
           </h3>
           <form v-if="!formState.sent" class="w-full relative mt-4">
             <Input
-                :content="content"
-              label="Your message"
-              icon="ph:pencil"
-              :message="formState.error ? 'You need to write a message longer than 5 characters to sign the guestbook' : ''"
-              @update="updateValue"
+                :content="message"
+                :message="formState.error ? 'You need to write a message longer than 5 characters to sign the guestbook' : ''"
+                icon="ph:pencil"
+                label="Your message"
+                @update="updateValue"
             />
           </form>
           <p v-else class="my-4 text-lime-500 dark:text-lime-700">
@@ -82,16 +86,16 @@ const updateValue = (content: any) => {
           </p>
           <div class="mt-2 flex justify-between">
             <Button
-              :content="hasSignedGuestbook ? 'Resign' : 'Sign'"
-              :sendable="content.length > 5"
-              icon="fa-regular:save"
-              @click.prevent="signNewMessage"
+                :content="hasSignedGuestbook ? 'Resign' : 'Sign'"
+                :sendable="message.length > 5"
+                icon="fa-regular:save"
+                @click.prevent="signNewMessage"
             />
             <Button content="Logout" icon="material-symbols:logout-rounded" @click.prevent="logout" />
           </div>
         </div>
       </div>
-      <div v-else class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl  shadow-card dark:shadow-card-dark">
+      <div v-else class="my-12 flex flex-col dark:bg-dark-900 p-4 rounded-xl shadow-card dark:shadow-card-dark">
         <div>
           <h1 class="text-3xl font-bold">
             Sign the guestbook
@@ -137,16 +141,17 @@ const updateValue = (content: any) => {
         </p>
       </div>
       <div class="space-y-8">
-        <div v-for="message in getAllMessages" :id="message.id" :key="message.id" class="cursor-default flex flex-col space-y-2">
+        <div v-for="guestbook in getAllMessages" :id="guestbook.id" :key="guestbook.id"
+             class="cursor-default flex flex-col space-y-2">
           <div class="flex items-center space-x-4">
-            <UserLine :link="true" :author="message.author" :date="message.createdAt.toString()" />
+            <UserLine :author="guestbook.author" :date="guestbook.createdAt.toString()" :link="true"/>
             <DeleteButton
-              v-if="(user && message.author.email === user.email) || isAdmin"
-              :thin="true"
-              @click.prevent="handleDelete(message.author.email)"
+                v-if="(user && guestbook.author.email === user.email) || isAdmin"
+                :thin="true"
+                @click.prevent="handleDelete(guestbook.author.email)"
             />
           </div>
-          <p class="pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(message.content)" />
+          <p class="pl-11 text-gray-600 dark:text-gray-400" v-html="convertStringToLink(guestbook.content)"/>
         </div>
       </div>
     </div>
@@ -155,6 +160,6 @@ const updateValue = (content: any) => {
 
 <style scoped lang="scss">
 .social-login {
-  @apply cursor-pointer border border-dark rounded-md p-2 flex items-center justify-center transform duration-500 hover:(bg-gray-200 dark:bg-dark-700);
+  @apply cursor-pointer border border-dark rounded-md p-2 flex items-center justify-center transform duration-500 hover:bg-gray-200 hover:dark:bg-dark-700;
 }
 </style>

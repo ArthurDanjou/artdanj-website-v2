@@ -40,11 +40,11 @@ const isUser = computed(() => isRoute('/user/'))
 
 <template>
   <!-- add tooltip -->
-  <div class="z-100 fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 width">
+  <div class="z-[100] fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 width">
     <transition name="arrow">
       <NavBarItem v-if="isBlog || isAMA" class="cursor-pointer nav-container group" @click.prevent="goBack">
         <div class="nav-link">
-          <Icon name="humbleicons:arrow-go-back" size="24px" class="text-2xl" />
+          <Icon class="text-2xl" name="humbleicons:arrow-go-back" size="24px"/>
         </div>
       </NavBarItem>
     </transition>
@@ -89,7 +89,7 @@ const isUser = computed(() => isRoute('/user/'))
           <CrownIcon :filled="isRoute('/talents')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <div class="bg-stone-200 dark:bg-dark-300 w-1px mx-2 h-40px flex-shrink-0" />
+      <div class="bg-stone-200 dark:bg-dark-300 w-[1px] mx-2 h-[40px] flex-shrink-0"/>
       <NavBarItem :is-route="isRoute('/guestbook')">
         <NuxtLink to="/guestbook" class="nav-link">
           <BookIcon :filled="isRoute('/guestbook')" class="text-2xl" />
@@ -100,7 +100,7 @@ const isUser = computed(() => isRoute('/user/'))
           <ChatIcon :filled="isRoute('/ama')" class="text-2xl" />
         </NuxtLink>
       </NavBarItem>
-      <div class="bg-stone-200 dark:bg-dark-300 w-1px mx-2 h-40px flex-shrink-0" />
+      <div class="bg-stone-200 dark:bg-dark-300 w-[1px] mx-2 h-[40px] flex-shrink-0"/>
       <div id="color" class="nav-link h-44px w-44px" @click.prevent="toggleColorMode">
         <Icon v-if="color.preference === 'light'" name="ph:sun-bold" size="24px" />
         <Icon v-else name="pepicons:moon" size="24px" />
@@ -130,11 +130,11 @@ const isUser = computed(() => isRoute('/user/'))
 }
 
 .nav-container {
-  @apply flex items-center bg-white dark:bg-dark-800 border-dark border rounded-16px flex p-10px gap-2;
+  @apply flex items-center bg-white dark:bg-dark-800 border-dark border rounded-[16px] flex p-[10px] gap-2;
 }
 
 .nav-link {
-  @apply z-12 p-2 border-2 border-transparent cursor-pointer duration-500 hover:(text-black dark:text-white) rounded-lg bg-stone-200 text-stone-400 dark:(text-stone-600 bg-dark-900) flex items-center justify-center;
+  @apply p-2 border-2 border-transparent cursor-pointer duration-500 hover:text-black hover:dark:text-white rounded-lg bg-stone-200 text-stone-400 dark:text-stone-600 dark:bg-dark-900 flex items-center justify-center;
 
   &.router-link-exact-active, &.router-link-active {
     @apply border-stone-700 text-black dark:text-white dark:border-stone-300;

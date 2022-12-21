@@ -37,24 +37,24 @@ const mouseStyle = computed(() => ({
       </div>
     </CardDiv>
     <CardLink v-else href="https://open.spotify.com/user/p3tavwpsi4zpz4xpmwlacwjoz" target="_blank">
-      <div class="z-9 spotify-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-      <CardIcon icon="mdi:spotify" />
-      <div class="z-10 absolute left-[43%] top-[20%] spotify-gradient h-[75px] w-[75px]" />
-      <div v-if="data && data.is_playing" class="z-10 flex flex-col space-y-2 mt-4">
+      <div :style="mouseStyle" class="z-[9] spotify-gradient w-[75px] h-[75px] absolute top-0 left-0"/>
+      <CardIcon icon="mdi:spotify"/>
+      <div class="z-[10] absolute left-[43%] top-[20%] spotify-gradient h-[75px] w-[75px]"/>
+      <div v-if="data && data.is_playing" class="z-[10] flex flex-col space-y-2 mt-4">
         <div class="flex space-x-2 items-center justify-center">
           <div v-if="data.is_playing" class="flex items-center h-30px">
-            <div class="play-indicator" style="animation: playAnimation 0.85s infinite" />
-            <div class="play-indicator" style="animation: playAnimation 1.26s infinite" />
-            <div class="play-indicator" style="animation: playAnimation 0.62s infinite" />
-            <div class="play-indicator" style="animation: playAnimation 1.11s infinite" />
-            <div class="play-indicator" style="animation: playAnimation 0.79s infinite" />
-            <div class="play-indicator" style="animation: playAnimation 1s infinite" />
+            <div class="play-indicator" style="animation: playAnimation 0.85s infinite"/>
+            <div class="play-indicator" style="animation: playAnimation 1.26s infinite"/>
+            <div class="play-indicator" style="animation: playAnimation 0.62s infinite"/>
+            <div class="play-indicator" style="animation: playAnimation 1.11s infinite"/>
+            <div class="play-indicator" style="animation: playAnimation 0.79s infinite"/>
+            <div class="play-indicator" style="animation: playAnimation 1s infinite"/>
           </div>
           <h1 class="text-3xl font-bold">
             I'm listening to
           </h1>
         </div>
-        <div v-if="data !== null" class="z-10 flex space-x-2 justify-center">
+        <div v-if="data !== null" class="z-[10] flex space-x-2 justify-center">
           <h1 class="text-sm font-spotify">
             {{ data.name }},
           </h1>
@@ -86,7 +86,7 @@ const mouseStyle = computed(() => ({
 }
 
 .play-indicator {
-  @apply w-3px h-3px mr-3px rounded-3px bg-black dark:bg-white;
+  @apply w-[3px] h-[3px] mr-[3px] rounded-[3px] bg-black dark:bg-white;
 }
 
 @keyframes playAnimation {

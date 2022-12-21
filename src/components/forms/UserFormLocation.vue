@@ -3,10 +3,10 @@ import { computed, ref, useRoute, useSupabase, useUser } from '#imports'
 
 const { user } = useSupabase()
 const route = useRoute()
-const { getUserFromDB, refreshUser, updateUser } = await useUser(route.params.user)
-const location = ref(getUserFromDB.value?.location)
+const {getUserFromDB, refreshUser, updateUser} = await useUser(route.params.user)
+const location = ref<string>(getUserFromDB.value?.location || '')
 const editable = ref(Boolean(getUserFromDB.value?.location === null))
-const isSendable = computed(() => location.value!.length >= 3)
+const isSendable = computed(() => location.value.length >= 3)
 
 const handleForm = async () => {
   if (!isSendable.value)

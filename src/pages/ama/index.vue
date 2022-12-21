@@ -25,9 +25,11 @@ const mouseStyle = computed(() => ({
 const { user, isBlocked, isLoggedIn } = useSupabase()
 
 const open = ref(false)
-const setOpen = () => {
-  open.value = true
-  document.body.classList.add('overflow-hidden')
+const openModal = () => {
+  if (isLoggedIn) {
+    open.value = true
+    document.body.classList.add('overflow-hidden')
+  }
 }
 
 const questionForm = ref({
@@ -46,29 +48,24 @@ const postQuestion = async () => {
   questionForm.value.description = ''
   open.value = false
 }
-
-const handleOpening = () => {
-  if (!isLoggedIn)
-    return
-  setOpen()
-}
 </script>
 
 <template>
   <section>
     <PageTitle title="Ask Me" />
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 grid-flow-row-dense auto-rows-fr">
-      <Card ref="ama" :class="isLoggedIn ? 'cursor-pointer' : ''" width="2" height="2" @click.prevent="handleOpening()">
+      <Card ref="ama" :class="isLoggedIn ? 'cursor-pointer' : ''" height="2" width="2" @click.prevent="openModal()">
         <CardDiv>
-          <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-          <CardIcon icon="mdi:comment-question-outline" />
-          <div class="z-10 absolute left-[45%] top-[10%] mouse-gradient h-[75px] w-[75px]" />
+          <div :style="mouseStyle" class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0"/>
+          <CardIcon icon="mdi:comment-question-outline"/>
+          <div class="z-10 absolute left-[45%] top-[10%] mouse-gradient h-[75px] w-[75px]"/>
           <div class="z-10">
             <h1 class="font-bold text-4xl leading-12 text-center">
               Ask me anything
             </h1>
             <h3 class="text-sm text-gray-600 dark:text-gray-400 text-center">
-              If you have any questions about my knowledge, my stuff or anything else, just create a new question. I will answer it as fast as I can
+              If you have any questions about my knowledge, my stuff or anything else, just create a new question. I
+              will answer it as fast as I can
             </h3>
             <div v-if="isBlocked" class="italic text-xs flex justify-center items-center space-x-1 mt-2 text-red-400">
               <Icon name="octicon:blocked-16" size="16" />

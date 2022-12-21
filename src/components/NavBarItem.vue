@@ -16,6 +16,6 @@ defineProps({
 
 <style lang="scss">
 .indicator {
-  @apply duration-300 w-4px h-4px rounded-3px bg-black dark:bg-white mt-2 z-20 -bottom-1.75;
+  @apply duration-300 w-[4px] h-[4px] rounded-[4px] bg-black dark:bg-white mt-2 z-20 -bottom-[0.45rem];
 }
 </style>

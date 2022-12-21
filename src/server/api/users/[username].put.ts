@@ -6,6 +6,7 @@ interface Body {
   username?: string
   location?: string
   description?: string
+  website?: string
 }
 
 export default defineEventHandler(async (event) => {
@@ -20,6 +21,7 @@ export default defineEventHandler(async (event) => {
       username: body.username,
       location: body.location,
       description: body.description,
+      website: body.website,
     },
   })
   return user || {}

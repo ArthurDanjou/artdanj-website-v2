@@ -37,12 +37,12 @@ const { data: hours } = await useAsyncData('stats:hours', () => $fetch('/api/sta
       </Card>
       <Card ref="about" order="first">
         <CardDiv class="flex">
-          <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-          <h1 class="z-10 font-bold text-4xl leading-12 text-center">
+          <div :style="mouseStyle" class="z-[9] mouse-gradient w-[75px] h-[75px] absolute top-0 left-0"/>
+          <h1 class="z-[10] font-bold text-4xl leading-12 text-center">
             Hey, I am
             <span>Arthur Danjou</span> 👋
           </h1>
-          <h3 class="z-10 text-sm text-gray-600 dark:text-gray-400 text-center">
+          <h3 class="z-[10] text-sm text-gray-600 dark:text-gray-400 text-center">
             A software engineer from France
           </h3>
         </CardDiv>

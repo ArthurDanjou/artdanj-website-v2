@@ -36,5 +36,5 @@ body {
 }
 
 .content-link {
-  @apply text-black dark:text-white cursor-pointer duration-300 underline underline-offset-4 decoration-gray-300 underline-opacity-25 hover:(decoration-black underline-opacity-100) rounded-sm dark:(decoration-gray-600 hover:decoration-white);
+  @apply text-black dark:text-white cursor-pointer duration-300 underline underline-offset-4 decoration-gray-300 underline-opacity-25 hover:decoration-black hover:underline-opacity-100 rounded-sm dark:decoration-gray-600 hover:dark:decoration-white;
 }

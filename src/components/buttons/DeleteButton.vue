@@ -9,5 +9,5 @@ defineProps({
 </script>
 
 <template>
-  <Button :content="content" icon="ph:trash-bold" color="red" :thin="thin" />
+  <Button :content="content" :thin="thin" class="text-white" color="red" icon="ph:trash-bold"/>
 </template>

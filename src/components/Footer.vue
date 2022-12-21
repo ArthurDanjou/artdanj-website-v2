@@ -4,7 +4,7 @@ const year = computed(() => new Date().getFullYear())
 
 <template>
   <footer class="flex items-center justify-center mt-8 mb-28">
-    <div class="w-full duration-300 text-center flex flex-col md:(flex-row justify-between) items-center gap-y-2">
+    <div class="w-full duration-300 text-center flex flex-col md:flex-row md:justify-between items-center gap-y-2">
       <p class="subtitle">
         © {{ year }} ArtDanjProduction
       </p>
@@ -19,7 +19,9 @@ const year = computed(() => new Date().getFullYear())
       <p class="subtitle flex gap-x-1 items-center">
         Made with
         <a href="https://v3.nuxtjs.org/" target="_blank" class="group flex gap-x-1 items-center">
-          <span class="duration-300 text-black group-hover:(text-nuxt decoration-nuxt-light) decoration-nuxt dark:(text-white group-hover:decoration-nuxt-dark) underline underline-offset-4">Nuxt 3</span><NuxtLogo />
+          <span
+              class="duration-300 text-black group-hover:text-nuxt group-hover:decoration-nuxt-light decoration-nuxt dark:text-white dark:group-hover:decoration-nuxt-dark underline underline-offset-4">Nuxt 3</span>
+          <NuxtLogo/>
         </a>
       </p>
     </div>

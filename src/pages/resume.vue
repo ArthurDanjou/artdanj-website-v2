@@ -32,13 +32,13 @@ const mouseStyle = computed(() => ({
   <section>
     <PageTitle title="My Résumé" />
     <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-16">
-      <div class="w-full lg:w-1/4">
+      <div class="w-full lg:w-[35%]">
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
           <Card ref="resume">
             <CardDiv class="flex flex-col items-center">
-              <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
-              <img class="z-11 mb-4 w-1/2" src="~/assets/images/inch.png" alt="Image of me">
-              <div class="z-10 absolute left-[37%] top-[15%] mouse-gradient h-[75px] w-[75px]" />
+              <div :style="mouseStyle" class="z-[9] mouse-gradient w-[75px] h-[75px] absolute top-0 left-0"/>
+              <img alt="Image of me" class="z-[11] mb-4 w-1/2" src="~/assets/images/inch.png">
+              <div class="z-[10] absolute left-[37%] top-[15%] mouse-gradient h-[75px] w-[75px]"/>
               <div class="flex flex-col items-center z-10">
                 <h1 class="font-bold text-3xl">
                   Arthur Danjou
@@ -79,8 +79,10 @@ const mouseStyle = computed(() => ({
                     LinkedIn
                   </p>
                 </NuxtLink>
-                <NuxtLink class="social-div bg-stone-200 text-black hover:shadow-md hover:shadow-stone-300 dark:(bg-dark-200 text-white hover:shadow-dark-500)" target="_blank" to="mailto:contact@arthurdanjou.fr">
-                  <Icon name="ic:baseline-alternate-email" size="24px" />
+                <NuxtLink
+                    class="social-div bg-stone-200 text-black hover:shadow-md hover:shadow-stone-300 dark:bg-dark-200 dark:text-white dark:hover:shadow-dark-500"
+                    target="_blank" to="mailto:contact@arthurdanjou.fr">
+                  <Icon name="ic:baseline-alternate-email" size="24px"/>
                   <p class="hidden md:block lg:hidden">
                     Mail
                   </p>

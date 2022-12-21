@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .underline-opacity-25 {
+        --tw-line-opacity: 0.25;
+    }
+
+    .underline-opacity-100 {
+        --tw-line-opacity: 1;
+    }
+}

@@ -27,7 +27,7 @@ useHead({
 })
 
 const open = ref(false)
-const setOpen = () => {
+const openModal = () => {
   open.value = true
   document.body.classList.add('overflow-hidden')
 }
@@ -96,14 +96,14 @@ const deleteAccount = async () => {
             <div class="space-y-1">
               <div class="flex mb-2">
                 <div
-                  v-if="getUserFromDB.role === 'ADMIN'"
-                  class="font-bold text-amber-500 text-sm bg-amber-200/70 px-2 py-.5 rounded-full dark:(bg-amber-400/90 text-white)"
+                    v-if="getUserFromDB.role === 'ADMIN'"
+                    class="font-bold text-amber-500 text-sm bg-amber-200/70 px-2 py-.5 rounded-full dark:bg-amber-400/90 dark:text-white"
                 >
                   ADMIN 👑
                 </div>
                 <div
-                  v-if="getUserFromDB.role === 'BLOCKED'"
-                  class="font-bold text-red-400 text-sm bg-red-200/60 px-2 py-.5 rounded-full dark:(bg-red-600/70 text-white)"
+                    v-if="getUserFromDB.role === 'BLOCKED'"
+                    class="font-bold text-red-400 text-sm bg-red-200/60 px-2 py-.5 rounded-full dark:bg-red-600/70 dark:text-white"
                 >
                   BLOCKED 🚫
                 </div>
@@ -178,7 +178,7 @@ const deleteAccount = async () => {
         </client-only>
         <div class="flex justify-between mt-8">
           <Button content="Logout" icon="material-symbols:logout-rounded" @click.prevent="logout()" />
-          <DeleteButton :thin="true" content="Delete your account" @click.prevent="setOpen" />
+          <DeleteButton :thin="true" content="Delete your account" @click.prevent="openModal()"/>
         </div>
       </div>
       <div class="py-16">
@@ -201,9 +201,11 @@ const deleteAccount = async () => {
           </h3>
           <div v-if="getUserFromDB.questions.length > 0" class="space-y-2">
             <ul v-for="question in getUserFromDB.questions" :key="question.id">
-              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
-                <NuxtLink :href="`/ama/${question.id}`"
-                          class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400">
+              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:bg-white hover:dark:bg-dark-800 hover:transform hover:-translate-y-0.5">
+                <NuxtLink
+                    :href="`/ama/${question.id}`"
+                    class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400"
+                >
                   <p class="font-bold text-black dark:text-white">
                     {{ question.title }}
                   </p>
@@ -233,13 +235,17 @@ const deleteAccount = async () => {
           <h3 class="font-bold text-xl mb-4">
             {{ isUser ? 'Your' : 'User\'s' }} guestbook message
           </h3>
-          <NuxtLink v-if="getUserFromDB.guestbook"
-                    :href="`/guestbook#${getUserFromDB.guestbook.id}`"
-                    class="flex flex-col space-y-2 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
+          <NuxtLink
+              v-if="getUserFromDB.guestbook"
+              :href="`/guestbook#${getUserFromDB.guestbook.id}`"
+              class="flex flex-col space-y-2 duration-300 p-1 rounded-xl hover:bg-white hover:dark:bg-dark-800 hover:transform hover:-translate-y-0.5"
+          >
             <div class="flex items-center space-x-4">
               <UserLine :author="getUserFromDB.guestbook.author" :date="getUserFromDB.guestbook.createdAt.toString()"/>
-              <DeleteButton v-if="isUser || isAdmin" :thin="true"
-                            @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)"/>
+              <DeleteButton
+                  v-if="isUser || isAdmin" :thin="true"
+                  @click.prevent="deleteMessage(getUserFromDB.guestbook.author.email)"
+              />
             </div>
             <p class="pl-11 text-gray-600 dark:text-gray-400">
               {{ getUserFromDB.guestbook.content }}
@@ -255,9 +261,11 @@ const deleteAccount = async () => {
           </h3>
           <div v-if="getUserFromDB.savedPosts.length > 0" class="space-y-2">
             <ul v-for="savedPost in getUserFromDB.savedPosts" :key="savedPost.id">
-              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
-                <NuxtLink :href="`/blog/${savedPost.post.slug}`"
-                          class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400">
+              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:bg-white hover:dark:bg-dark-800 hover:transform hover:-translate-y-0.5">
+                <NuxtLink
+                    :href="`/blog/${savedPost.post.slug}`"
+                    class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400"
+                >
                   <p class="font-bold text-black dark:text-white">
                     {{ savedPost.post.title }}
                   </p>
@@ -282,9 +290,11 @@ const deleteAccount = async () => {
           </h3>
           <div v-if="getUserFromDB.comments.length > 0" class="space-y-2">
             <ul v-for="comment in getUserFromDB.comments" :key="comment.id">
-              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:(bg-white dark:bg-dark-800 transform -translate-y-0.5)">
-                <NuxtLink :href="comment.question ? `/ama/${comment.question.id}#comment-${comment.id}` : `/blog/${comment.post.slug}#comment-${comment.id}`"
-                          class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400">
+              <li class="list-disc ml-4 duration-300 p-1 rounded-xl hover:bg-white hover:dark:bg-dark-800 hover:transform hover:-translate-y-0.5">
+                <NuxtLink
+                    :href="comment.question ? `/ama/${comment.question.id}#comment-${comment.id}` : `/blog/${comment.post.slug}#comment-${comment.id}`"
+                    class="flex flex-wrap space-x-2 text-gray-600 dark:text-gray-400"
+                >
                   <p class="font-bold text-black dark:text-white truncate">
                     {{ comment.content }}
                   </p>

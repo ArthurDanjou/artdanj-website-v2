@@ -17,7 +17,7 @@ const getColor = computed(() => {
     case 'green':
       return 'bg-green-500 text-black hover:shadow-md hover:shadow-green-400 dark:hover:shadow-green-600'
     default:
-      return 'bg-stone-200 text-black hover:shadow-md hover:shadow-stone-300 dark:(bg-dark-400 text-white hover:shadow-dark-500)'
+      return 'bg-stone-200 text-black hover:shadow-md hover:shadow-stone-300 dark:bg-dark-400 dark:text-white dark:hover:shadow-dark-500'
   }
 })
 

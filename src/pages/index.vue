@@ -23,12 +23,13 @@ const mouseStyle = computed(() => ({
     <CardContainer>
       <Card ref="main" order="first" width="2" height="2">
         <CardLink href="about">
-          <div class="z-9 mouse-gradient w-[75px] h-[75px] absolute top-0 left-0" :style="mouseStyle" />
+          <div :style="mouseStyle" class="z-[9] mouse-gradient w-[75px] h-[75px] absolute top-0 left-0"/>
           <div class="flex items-center justify-center relative">
-            <img src="~/assets/images/hand.png" alt="Hand" class="z-11 bg-white dark:bg-dark-900 h-40 w-40 rounded-1/2">
-            <div class="z-10 absolute photo-gradient h-[175px] w-[175px]" />
+            <img alt="Hand" class="z-[11] bg-white dark:bg-dark-900 h-40 w-40 rounded-full"
+                 src="~/assets/images/hand.png">
+            <div class="z-[10] absolute photo-gradient h-[175px] w-[175px]"/>
           </div>
-          <div class="z-10 flex flex flex-col text-center">
+          <div class="z-[10] flex flex flex-col text-center">
             <div class="my-12">
               <h3 class="text-gray-600 dark:text-gray-400 text-3xl">
                 Hey, I am
@@ -38,7 +39,8 @@ const mouseStyle = computed(() => ({
               </h1>
             </div>
             <p class="text-gray-600 dark:text-gray-400">
-              A software engineer passionate about networking, infrastructure and cloud but also a student living in France.
+              A software engineer passionate about networking, infrastructure and cloud but also a student living in
+              France.
             </p>
           </div>
         </CardLink>

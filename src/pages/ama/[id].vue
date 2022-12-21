@@ -2,12 +2,12 @@
 import {computed, ref, useComment, useHead, useQuestion, useRoute} from '#imports'
 import {convertStringToLink} from '~/logic/stringToLink'
 
-const { isLoggedIn, isAdmin, user, isBlocked } = useSupabase()
+const {isLoggedIn, isAdmin, user, isBlocked} = useSupabase()
 const route = useRoute()
-const { getQuestion } = await useQuestion()
-const { replyToQuestion, deleteComment } = await useComment()
+const {getQuestion} = await useQuestion()
+const {replyToQuestion, deleteComment} = await useComment()
 
-const { data: question, refresh: refreshQuestion } = await getQuestion(route.params.id)
+const {data: question, refresh: refreshQuestion} = await getQuestion(route.params.id)
 
 useHead({
   title: `${question.value?.title} - Ask me anything`,
@@ -78,8 +78,9 @@ const handleDelete = async (id: number) => {
       <form v-else-if="isLoggedIn && !isBlocked" class="flex w-full space-x-2">
         <div class="relative w-full">
           <div class="w-full flex items-center group">
-            <div class="group-focus-within:(-translate-x-1 -translate-y-1 transform bg-stone-200 shadow-lg) dark:group-focus-within:(bg-dark-400 shadow-lg) duration-300 flex items-center justify-center p-2 absolute rounded-xl">
-              <Icon name="ph:chat-circle-bold" size="20" />
+            <div
+                class="group-focus-within:-translate-x-1 group-focus-within:-translate-y-1 group-focus-within:transform group-focus-within:bg-stone-200 group-focus-within:shadow-lg dark:group-focus-within:bg-dark-400 dark:group-focus-within:shadow-lg duration-300 flex items-center justify-center p-2 absolute rounded-xl">
+              <Icon name="ph:chat-circle-bold" size="20"/>
             </div>
             <input
               id="input"

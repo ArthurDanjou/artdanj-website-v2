@@ -3,8 +3,8 @@ import { computed, ref, useRoute, useSupabase, useUser } from '#imports'
 
 const { user } = useSupabase()
 const route = useRoute()
-const { getUserFromDB, refreshUser, updateUser } = await useUser(route.params.user)
-const website = ref(getUserFromDB.value?.website)
+const {getUserFromDB, refreshUser, updateUser} = await useUser(route.params.user)
+const website = ref<string>(getUserFromDB.value?.website || '')
 const editable = ref(Boolean(getUserFromDB.value?.website === null))
 const isSendable = computed(() => website.value!.length >= 3)
 
@@ -29,7 +29,7 @@ const updateValue = (content: any) => {
     <h1 class="font-bold text-xl">
       Website
     </h1>
-    <div v-if="getUserFromDB && getUserFromDB.location !== null" class="flex space-x-2">
+    <div v-if="getUserFromDB && getUserFromDB.website !== null" class="flex space-x-2">
       <h3>
         {{ getUserFromDB.website }}
       </h3>

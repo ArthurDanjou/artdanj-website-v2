@@ -19,9 +19,9 @@ const props = defineProps({
 
 const getColor = computed(() => {
   if (props.group)
-    return 'underline underline-offset-4 decoration-gray-300 underline-opacity-25 group-hover:(decoration-black underline-opacity-100) rounded-sm dark:(decoration-gray-600 group-hover:decoration-white)'
+    return 'underline underline-offset-4 decoration-gray-300 underline-opacity-25 group-hover:decoration-black group-hover:underline-opacity-100 rounded-sm dark:decoration-gray-600 dark:group-hover:decoration-white'
   else
-    return 'underline underline-offset-4 decoration-gray-300 underline-opacity-25 hover:(decoration-black underline-opacity-100) rounded-sm dark:(decoration-gray-600 hover:decoration-white)'
+    return 'underline underline-offset-4 decoration-gray-300 underline-opacity-25 hover:decoration-black hover:underline-opacity-100 rounded-sm dark:decoration-gray-600 dark:hover:decoration-white'
 })
 </script>
 

@@ -1,12 +1,26 @@
-import { defineConfig } from 'vite-plugin-windicss'
-import typography from 'windicss/plugin/typography'
+import type {Config} from 'tailwindcss'
+import tailwindTypography from '@tailwindcss/typography'
 
-export default defineConfig({
+export default <Partial<Config>>{
   darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         spotify: ['DynaPuff', 'sans-serif'],
+      },
+      colors: {
+        dark: {
+          50: '#4a4a4a',
+          100: '#3c3c3c',
+          200: '#323232',
+          300: '#2d2d2d',
+          400: '#222222',
+          500: '#1f1f1f',
+          600: '#1c1c1e',
+          700: '#1b1b1b',
+          800: '#181818',
+          900: '#0f0f0f',
+        },
       },
       textColor: {
         spotify: '#1db954',
@@ -33,11 +47,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    typography({
-      dark: true,
-      modifiers: ['sm', 'lg'],
-    }),
-    require('@windicss/plugin-animations'),
-    require('windicss/plugin/line-clamp'),
+    tailwindTypography,
   ],
-})
+}

@@ -10,7 +10,7 @@ defineProps({
 
 <template>
   <h3>
-    <span class="pl-1 pr-4 title py-1 font-bold text-xl relative bg-black text-white dark:(bg-white text-black)">
+    <span class="pl-1 pr-4 title py-1 font-bold text-xl relative bg-black text-white dark:bg-white dark:text-black">
       {{ title }}
     </span>
   </h3>
